@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Copyright 2020 The Android Open Source Project
+
+  Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+  in compliance with the License. You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software distributed under the License
+  is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+  or implied. See the License for the specific language governing permissions and limitations under
+  the License.
+  -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <path
+        android:fillColor="#ffffff"
+        android:pathData="M54,36C44.06,36 36,44.06 36,54C36,63.94 44.06,72 54,72C55.66,72 57,70.66 57,69C57,68.22 56.7,67.52 56.22,66.98C55.76,66.46 55.46,65.76 55.46,65C55.46,63.34 56.8,62 58.46,62L62,62C67.52,62 72,57.52 72,52C72,43.16 63.94,36 54,36ZM43,54C41.34,54 40,52.66 40,51C40,49.34 41.34,48 43,48C44.66,48 46,49.34 46,51C46,52.66 44.66,54 43,54ZM49,46C47.34,46 46,44.66 46,43C46,41.34 47.34,40 49,40C50.66,40 52,41.34 52,43C52,44.66 50.66,46 49,46ZM59,46C57.34,46 56,44.66 56,43C56,41.34 57.34,40 59,40C60.66,40 62,41.34 62,43C62,44.66 60.66,46 59,46ZM65,54C63.34,54 62,52.66 62,51C62,49.34 63.34,48 65,48C66.66,48 68,49.34 68,51C68,52.66 66.66,54 65,54Z" />
+    <path
+        android:pathData="M0,0h108v108h-108z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:centerX="30"
+                android:centerY="30"
+                android:gradientRadius="72"
+                android:type="radial">
+                <item
+                    android:color="#19ffffff"
+                    android:offset="0" />
+                <item
+                    android:color="#00ffffff"
+                    android:offset="1" />
+            </gradient>
+        </aapt:attr>
+    </path>
+</vector>
