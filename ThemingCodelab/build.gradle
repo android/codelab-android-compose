@@ -15,8 +15,8 @@
  */
 
 buildscript {
-    ext.compose_version = '0.1.0-dev16'
-    ext.kotlin_version = "1.4.0-rc"
+    ext.compose_version = '0.1.0-dev17'
+    ext.kotlin_version = "1.4.0"
     repositories {
         google()
         jcenter()

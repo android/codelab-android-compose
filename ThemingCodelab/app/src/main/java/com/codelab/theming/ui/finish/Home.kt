@@ -190,7 +190,9 @@ fun PostItem(
     modifier: Modifier = Modifier
 ) {
     ListItem(
-        modifier = modifier.padding(vertical = 8.dp),
+        modifier = modifier
+            .clickable { /* todo */ }
+            .padding(vertical = 8.dp),
         icon = {
             Image(
                 asset = imageResource(post.imageThumbId),
@@ -202,8 +204,7 @@ fun PostItem(
         },
         secondaryText = {
             PostMetadata(post)
-        },
-        onClick = { /* TODO */ }
+        }
     )
 }
 
