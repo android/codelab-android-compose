@@ -29,7 +29,7 @@ import com.codelab.layouts.ui.LayoutsCodelabTheme
 @Composable
 fun MyOwnColumn(
     modifier: Modifier = Modifier,
-    content: @Composable() () -> Unit
+    content: @Composable () -> Unit
 ) {
     Layout(
         modifier = modifier,

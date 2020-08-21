@@ -92,7 +92,7 @@ fun BodyContent(modifier: Modifier = Modifier) {
 fun StaggeredGrid(
     modifier: Modifier = Modifier,
     rows: Int = 3,
-    content: @Composable() () -> Unit
+    content: @Composable () -> Unit
 ) {
     Layout(
         modifier = modifier,
