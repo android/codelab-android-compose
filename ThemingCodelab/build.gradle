@@ -15,7 +15,7 @@
  */
 
 buildscript {
-    ext.compose_version = '0.1.0-dev17'
+    ext.compose_version = '1.0.0-SNAPSHOT'
     ext.kotlin_version = "1.4.0"
     repositories {
         google()
@@ -31,6 +31,9 @@ subprojects {
     repositories {
         google()
         jcenter()
+        maven {
+            url "https://androidx.dev/snapshots/builds/6765009/artifacts/ui/repository/"
+        }
     }
     tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).configureEach {
         kotlinOptions {

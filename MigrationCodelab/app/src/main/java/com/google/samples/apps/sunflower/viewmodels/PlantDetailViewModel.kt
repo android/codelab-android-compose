@@ -18,9 +18,9 @@ package com.google.samples.apps.sunflower.viewmodels
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.google.samples.apps.sunflower.plantdetail.PlantDetailFragment
 import com.google.samples.apps.sunflower.data.GardenPlantingRepository
 import com.google.samples.apps.sunflower.data.PlantRepository
+import com.google.samples.apps.sunflower.plantdetail.PlantDetailFragment
 import kotlinx.coroutines.launch
 
 /**
