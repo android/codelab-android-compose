@@ -3,7 +3,7 @@
 This repository contains a set of Android Studio projects to help you learn about
 Compose in Android. Each sample contains the code for a specific Compose codelab.
 
-For more information about Compose, please [read the documentation](https://developer.android.com/jetpack/compose)
+For more information about Jetpack Compose, please [read the documentation](https://developer.android.com/jetpack/compose)
 
 ## 💻 Requirements
 
@@ -11,7 +11,9 @@ For more information about Compose, please [read the documentation](https://deve
 
 ## 🧬 Codelabs
 
-List of codelabs whose code you can find in this GitHub repo:
+### [Basics codelabs](https://codelabs.developers.google.com/codelabs/jetpack-compose-basics)
+
+Go hands-on and learn the fundamentals of declarative UI, working with state, layouts and theming.
 
 ### [Layouts codelabs](https://codelabs.developers.google.com/codelabs/jetpack-compose-layouts)
 
@@ -32,14 +34,6 @@ application’s colors, typography and shapes and support light and dark themes.
 
 Understand how Jetpack Compose and View-based UIs can co-exist and interact, making it easy to
 adopt Compose at your own pace.
-
-## 🧬 Other codelabs
-
-List of codelabs that start by creating a new project from scratch:
-
-### [Basics codelabs](https://codelabs.developers.google.com/codelabs/jetpack-compose-basics)
-
-Go hands-on and learn the fundamentals of declarative UI, working with state, layouts and theming.
 
 ## License
 
