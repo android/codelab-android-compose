@@ -1,3 +1,19 @@
+/*
+ * Copyright (C) 2020 The Android Open Source Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
@@ -16,7 +32,10 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
-
+    kotlinOptions {
+        jvmTarget = '1.8'
+        useIR = true
+    }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -29,10 +48,6 @@ android {
         kotlinCompilerExtensionVersion "$compose_version"
         kotlinCompilerVersion "$kotlin_version"
     }
-}
-
-configurations {
-    ktlint
 }
 
 dependencies {
@@ -58,50 +73,14 @@ dependencies {
     testImplementation "com.google.truth:truth:1.0.1"
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
-
-    ktlint 'com.pinterest:ktlint:0.37.2'
 }
 
-/*
- * Copyright (C) 2020 The Android Open Source Project
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-// This is required to work with libraries built with the pre-release 1.4 Kotlin compiler in Android
-// Studio
+// Compiler flag to use experimental Compose APIs
 tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).configureEach {
     kotlinOptions {
         jvmTarget = "1.8"
         freeCompilerArgs += [
-                "-Xallow-jvm-ir-dependencies",
                 "-Xopt-in=kotlin.RequiresOptIn"
         ]
     }
-}
-
-task ktlint(type: JavaExec, group: 'verification') {
-    description = 'Check Kotlin code style.'
-    main = 'com.pinterest.ktlint.Main'
-    classpath = configurations.ktlint
-    args 'src/**/*.kt'
-}
-
-check.dependsOn ktlint
-
-task ktlintFormat(type: JavaExec, group: 'formatting') {
-    description = 'Fix Kotlin code style deviations.'
-    main = 'com.pinterest.ktlint.Main'
-    classpath = configurations.ktlint
-    args '-F', 'src/**/*.kt'
 }
