@@ -15,14 +15,14 @@
  */
 
 buildscript {
-    ext.compose_version = '1.0.0-SNAPSHOT'
+    ext.compose_version = '1.0.0-alpha01'
     ext.kotlin_version = "1.4.0"
     repositories {
         google()
         jcenter()
     }
     dependencies {
-        classpath "com.android.tools.build:gradle:4.2.0-alpha07"
+        classpath "com.android.tools.build:gradle:4.2.0-alpha08"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
@@ -31,14 +31,9 @@ subprojects {
     repositories {
         google()
         jcenter()
-        maven {
-            url "https://androidx.dev/snapshots/builds/6765009/artifacts/ui/repository/"
-        }
     }
     tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).configureEach {
         kotlinOptions {
-            jvmTarget = '1.8'
-            freeCompilerArgs += '-Xallow-jvm-ir-dependencies'
             // Opt-in to experimental compose APIs
             freeCompilerArgs += '-Xopt-in=kotlin.RequiresOptIn'
         }
