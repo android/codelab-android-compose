@@ -32,6 +32,10 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
+    kotlinOptions {
+        jvmTarget = '1.8'
+        useIR = true
+    }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -43,10 +47,6 @@ android {
         kotlinCompilerExtensionVersion "$compose_version"
         kotlinCompilerVersion "$kotlin_version"
     }
-}
-
-configurations {
-    ktlint
 }
 
 dependencies {
@@ -71,34 +71,14 @@ dependencies {
     testImplementation "com.google.truth:truth:1.0.1"
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
-
-    ktlint 'com.pinterest:ktlint:0.37.2'
 }
 
-// This is required to work with libraries built with the pre-release 1.4 Kotlin compiler in Android
-// Studio
+// Compiler flag to use experimental Compose APIs
 tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).configureEach {
     kotlinOptions {
         jvmTarget = "1.8"
         freeCompilerArgs += [
-                "-Xallow-jvm-ir-dependencies",
                 "-Xopt-in=kotlin.RequiresOptIn"
         ]
     }
-}
-
-task ktlint(type: JavaExec, group: 'verification') {
-    description = 'Check Kotlin code style.'
-    main = 'com.pinterest.ktlint.Main'
-    classpath = configurations.ktlint
-    args 'src/**/*.kt'
-}
-
-check.dependsOn ktlint
-
-task ktlintFormat(type: JavaExec, group: 'formatting') {
-    description = 'Fix Kotlin code style deviations.'
-    main = 'com.pinterest.ktlint.Main'
-    classpath = configurations.ktlint
-    args '-F', 'src/**/*.kt'
 }
