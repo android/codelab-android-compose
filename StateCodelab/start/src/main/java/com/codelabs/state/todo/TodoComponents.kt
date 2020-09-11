@@ -51,6 +51,7 @@ import androidx.compose.ui.graphics.vector.VectorAsset
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.unit.dp
 import androidx.ui.tooling.preview.Preview
+import androidx.compose.ui.text.input.TextFieldValue
 
 /**
  * Draws a row of [TodoIcon] with visibility changes animated.
@@ -192,12 +193,12 @@ fun TodoItemInputBackground(
 @Composable
 fun TodoInputText(
     text: String,
-    onTextChange: (String) -> Unit,
+    onTextChange: (TextFieldValue) -> Unit,
     modifier: Modifier = Modifier,
     onImeAction: () -> Unit = {}
 ) = TextField(
     value = text,
-    onValueChange = { onTextChange(it) },
+    onValueChange = { onTextChange(TextFieldValue(it)) },
     label = { /* no label */ },
     backgroundColor = Color.Transparent,
     imeAction = ImeAction.Done,

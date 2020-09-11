@@ -50,6 +50,7 @@ import androidx.compose.ui.unit.dp
 import androidx.ui.tooling.preview.Preview
 import com.codelabs.state.util.generateRandomTodoItem
 import kotlin.random.Random
+import androidx.compose.ui.text.input.TextFieldValue
 
 /**
  * Stateless component that is responsible for the entire todo screen.
@@ -178,26 +179,26 @@ fun TodoItemInlineEditor(
 @Composable
 fun TodoItemEntryInput(onItemComplete: (TodoItem) -> Unit, buttonText: String = "Add") {
     onCommit(Unit) {}
-    val (text, onTextChange) = savedInstanceState { "" }
+    val (textFieldValue, onTextChange) = remember { mutableStateOf(TextFieldValue("")) }
     val (icon, onIconChange) = remember { mutableStateOf(TodoIcon.Default) }
 
     val submit = {
-        if (text.isNotBlank()) {
-            onItemComplete(TodoItem(text, icon))
-            onTextChange("")
+        if (textFieldValue.text.isNotBlank()) {
+            onItemComplete(TodoItem(textFieldValue.text, icon))
+            onTextChange(TextFieldValue(""))
             onIconChange(TodoIcon.Default)
         }
     }
 
     TodoItemInput(
-        text = text,
+        text = textFieldValue.text,
         onTextChange = onTextChange,
         icon = icon,
         onIconChange = onIconChange,
         submit = submit,
-        iconsVisible = text.isNotBlank()
+        iconsVisible = textFieldValue.text.isNotBlank()
     ) {
-        TodoEditButton(onClick = submit, text = buttonText, enabled = text.isNotBlank())
+        TodoEditButton(onClick = submit, text = buttonText, enabled = textFieldValue.text.isNotBlank())
     }
 }
 
@@ -216,7 +217,7 @@ fun TodoItemEntryInput(onItemComplete: (TodoItem) -> Unit, buttonText: String = 
 @Composable
 fun TodoItemInput(
     text: String,
-    onTextChange: (String) -> Unit,
+    onTextChange: (TextFieldValue) -> Unit,
     icon: TodoIcon,
     onIconChange: (TodoIcon) -> Unit,
     submit: () -> Unit,
