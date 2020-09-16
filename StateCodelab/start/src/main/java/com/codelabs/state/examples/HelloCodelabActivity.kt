@@ -282,7 +282,7 @@ fun ExpandingCard(
 @Composable
 fun PreviewExpandingCard() {
     Stack(Modifier.fillMaxSize()) {
-        Box(Modifier.gravity(Alignment.Center)) {
+        Box(Modifier.align(Alignment.Center)) {
             ExpandingCard(
                 title = "Title text",
                 body =

@@ -19,12 +19,7 @@ package com.codelabs.state.todo
 import androidx.compose.foundation.Icon
 import androidx.compose.foundation.Text
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.InnerPadding
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumnFor
 import androidx.compose.material.Button
 import androidx.compose.runtime.Composable
@@ -52,7 +47,7 @@ fun TodoScreen(
         LazyColumnFor(
             items = items,
             modifier = Modifier.weight(1f),
-            contentPadding = InnerPadding(top = 8.dp)
+            contentPadding = PaddingValues(top = 8.dp)
         ) { todo ->
             TodoRow(
                 todo = todo,

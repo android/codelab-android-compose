@@ -21,19 +21,8 @@ import androidx.compose.foundation.Icon
 import androidx.compose.foundation.Text
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.contentColor
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.ExperimentalLayout
-import androidx.compose.foundation.layout.InnerPadding
-import androidx.compose.foundation.layout.IntrinsicSize
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.preferredHeight
-import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.layout.widthIn
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.RowScope.align
 import androidx.compose.foundation.lazy.LazyColumnFor
 import androidx.compose.material.Button
 import androidx.compose.material.MaterialTheme
@@ -83,7 +72,7 @@ fun TodoScreen(
                     style = MaterialTheme.typography.h6,
                     textAlign = TextAlign.Center,
                     modifier = Modifier
-                        .gravity(Alignment.CenterVertically)
+                        .align(Alignment.CenterVertically)
                         .padding(16.dp)
                         .fillMaxWidth()
                 )
@@ -92,7 +81,7 @@ fun TodoScreen(
         LazyColumnFor(
             items = items,
             modifier = Modifier.weight(1f),
-            contentPadding = InnerPadding(top = 8.dp)
+            contentPadding = PaddingValues(top = 8.dp)
         ) { todo ->
             if (currentlyEditing?.id == todo.id) {
                 TodoItemInlineEditor(
@@ -237,7 +226,7 @@ fun TodoItemInput(
                 modifier = Modifier.weight(1f)
             )
             Spacer(modifier = Modifier.width(8.dp))
-            Box(Modifier.gravity(Alignment.CenterVertically), children = buttonSlot)
+            Box(Modifier.align(Alignment.CenterVertically), children = buttonSlot)
         }
         if (iconsVisible) {
             AnimatedIconRow(
