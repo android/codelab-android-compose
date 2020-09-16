@@ -152,7 +152,7 @@ fun Chip(modifier: Modifier = Modifier, text: String) {
     ) {
         Row(
             modifier = Modifier.padding(start = 8.dp, top = 4.dp, end = 8.dp, bottom = 4.dp),
-            verticalGravity = Alignment.CenterVertically
+            verticalAlignment = Alignment.CenterVertically
         ) {
             Box(
                 modifier = Modifier.preferredSize(16.dp, 16.dp)

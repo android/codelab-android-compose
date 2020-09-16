@@ -57,7 +57,7 @@ fun PhotographerCard(modifier: Modifier = Modifier) {
         Column(
             modifier = Modifier
                 .padding(start = 8.dp)
-                .gravity(Alignment.CenterVertically)
+                .align(Alignment.CenterVertically)
         ) {
             Text("Alfred Sisley", fontWeight = FontWeight.Bold)
             ProvideEmphasis(EmphasisAmbient.current.medium) {
