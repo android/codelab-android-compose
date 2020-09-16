@@ -127,7 +127,7 @@ fun FeaturedPost(
                 asset = imageResource(post.imageId),
                 contentScale = ContentScale.Crop,
                 modifier = Modifier
-                    .preferredHeightIn(minHeight = 180.dp)
+                    .preferredHeightIn(min = 180.dp)
                     .fillMaxWidth()
             )
             Spacer(Modifier.preferredHeight(16.dp))
