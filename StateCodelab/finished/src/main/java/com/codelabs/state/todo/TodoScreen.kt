@@ -24,8 +24,8 @@ import androidx.compose.foundation.contentColor
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ExperimentalLayout
-import androidx.compose.foundation.layout.InnerPadding
 import androidx.compose.foundation.layout.IntrinsicSize
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -83,7 +83,7 @@ fun TodoScreen(
                     style = MaterialTheme.typography.h6,
                     textAlign = TextAlign.Center,
                     modifier = Modifier
-                        .gravity(Alignment.CenterVertically)
+                        .align(Alignment.CenterVertically)
                         .padding(16.dp)
                         .fillMaxWidth()
                 )
@@ -92,7 +92,7 @@ fun TodoScreen(
         LazyColumnFor(
             items = items,
             modifier = Modifier.weight(1f),
-            contentPadding = InnerPadding(top = 8.dp)
+            contentPadding = PaddingValues(top = 8.dp)
         ) { todo ->
             if (currentlyEditing?.id == todo.id) {
                 TodoItemInlineEditor(
@@ -237,7 +237,7 @@ fun TodoItemInput(
                 modifier = Modifier.weight(1f)
             )
             Spacer(modifier = Modifier.width(8.dp))
-            Box(Modifier.gravity(Alignment.CenterVertically), children = buttonSlot)
+            Box(Modifier.align(Alignment.CenterVertically), children = buttonSlot)
         }
         if (iconsVisible) {
             AnimatedIconRow(
