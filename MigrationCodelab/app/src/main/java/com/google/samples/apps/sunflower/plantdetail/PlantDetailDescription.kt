@@ -85,7 +85,7 @@ private fun PlantWatering(wateringInterval: Int) {
         // Same modifier used by both Texts
         val centerWithPaddingModifier = Modifier
             .padding(horizontal = dimensionResource(R.dimen.margin_small))
-            .gravity(Alignment.CenterHorizontally)
+            .align(Alignment.CenterHorizontally)
 
         val normalPadding = dimensionResource(R.dimen.margin_normal)
 
