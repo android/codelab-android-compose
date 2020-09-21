@@ -31,8 +31,8 @@ import androidx.test.espresso.intent.matcher.IntentMatchers.hasType
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
-import androidx.ui.test.android.createAndroidComposeRule
 import androidx.ui.test.assertIsDisplayed
+import androidx.ui.test.createAndroidComposeRule
 import androidx.ui.test.onNodeWithText
 import com.google.samples.apps.sunflower.utilities.chooser
 import com.google.samples.apps.sunflower.utilities.testPlant
@@ -64,7 +64,7 @@ class PlantDetailFragmentTest {
 
     @Test
     fun testPlantName() {
-        onNodeWithText("Apple").assertIsDisplayed()
+        composeTestRule.onNodeWithText("Apple").assertIsDisplayed()
     }
 
     @Test
