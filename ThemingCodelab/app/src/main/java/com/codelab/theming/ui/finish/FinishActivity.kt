@@ -17,7 +17,7 @@
 package com.codelab.theming.ui.finish
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
+import androidx.activity.ComponentActivity
 import androidx.compose.material.Surface
 import androidx.compose.ui.platform.setContent
 
@@ -25,7 +25,7 @@ import androidx.compose.ui.platform.setContent
  * This activity demonstrates the final state of the codelab. You can run it from the included
  * run configuration.
  */
-class FinishActivity : AppCompatActivity() {
+class FinishActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
