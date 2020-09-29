@@ -21,7 +21,6 @@ plugins {
 
 android {
     compileSdkVersion 30
-    buildToolsVersion "29.0.3"
 
     defaultConfig {
         applicationId "com.codelab.basics"
@@ -42,7 +41,12 @@ android {
         allWarningsAsErrors = true
     }
     buildFeatures {
-        compose true
+        // We turn off the Compose feature for now, due to using Compose SNAPSHOTs where the
+        // Compose compiler artifact has changed artifact group/name.
+        // Instead we add the compiler manually below in the dependencies {}. Also see
+        // the root build.gradle for info on how to apply the plugin.
+        // TODO: remove this once we upgrade to an AGP version which uses the new artifact details
+        // compose true
     }
     composeOptions {
         kotlinCompilerVersion "${kotlin_version}"
@@ -51,14 +55,18 @@ android {
 }
 
 dependencies {
+    // Temporary workaround (see above)
+    // TODO: remove this once we upgrade to an AGP version which uses the new artifact details
+    kotlinCompilerPlugin "androidx.compose.compiler:compiler:$compose_version"
+
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation 'androidx.core:core-ktx:1.3.1'
     implementation 'androidx.appcompat:appcompat:1.2.0'
-    implementation 'com.google.android.material:material:1.2.0'
+    implementation 'com.google.android.material:material:1.2.1'
     implementation "androidx.compose.ui:ui:$compose_version"
     implementation "androidx.compose.material:material:$compose_version"
     implementation "androidx.ui:ui-tooling:$compose_version"
     testImplementation 'junit:junit:4.13'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 }
