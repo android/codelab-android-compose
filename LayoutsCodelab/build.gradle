@@ -17,7 +17,7 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
     ext {
-        compose_version = '1.0.0-SNAPSHOT'
+        compose_version = '1.0.0-alpha04'
     }
     ext.kotlin_version = "1.4.10"
     repositories {
@@ -25,7 +25,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:4.2.0-alpha12'
+        classpath 'com.android.tools.build:gradle:4.2.0-alpha13'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
 
         // NOTE: Do not place your application dependencies here; they belong
@@ -35,31 +35,9 @@ buildscript {
 
 allprojects {
     repositories {
-        maven {
-            url "https://androidx.dev/snapshots/builds/6860046/artifacts/ui/repository/"
-        }
         google()
         jcenter()
     }
-    // Create a configuration which allows us to intercept the JARs, and add them to
-    // Kotlin Compiler freeCompilerArgs. This is needed because we can't currently use the
-    // built-in `compose` feature in AGP, since it depends on the old Compose Compiler artifacts.
-    // TODO: Remove this once AGP uses the new Compose Compiler artifact name
-    def compilerPluginConfig = project.configurations.create("kotlinCompilerPlugin")
-
-    tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).configureEach { compile ->
-        compile.dependsOn(compilerPluginConfig)
-        compile.doFirst {
-            if (!compilerPluginConfig.isEmpty()) {
-                // Add the compiler plugin JARs using the -Xplugin flag
-                compile.kotlinOptions.freeCompilerArgs +=
-                        "-Xplugin=${compilerPluginConfig.files.first()}"
-                // Need to turn on the IR compiler too
-                compile.kotlinOptions.useIR = true
-            }
-        }
-    }
-
 }
 
 task clean(type: Delete) {
