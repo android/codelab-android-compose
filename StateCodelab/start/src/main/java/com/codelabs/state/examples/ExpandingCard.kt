@@ -1,0 +1,90 @@
+package com.codelabs.state.examples
+
+import androidx.compose.animation.animateContentSize
+import androidx.compose.foundation.Icon
+import androidx.compose.foundation.Text
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
+import androidx.compose.material.Card
+import androidx.compose.material.IconButton
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ExpandLess
+import androidx.compose.material.icons.filled.ExpandMore
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.savedinstancestate.savedInstanceState
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
+import androidx.ui.tooling.preview.Preview
+
+
+// An example of a stateful and stateless composable using unidirectional data flow. In this codelab
+// you will learn how to build composables following these patterns and how it helps you structure
+// your code.
+
+@Composable
+fun ExpandingCard(title: String, body: String, modifier: Modifier = Modifier) {
+    var expanded by savedInstanceState { false }
+    ExpandingCard(
+        title = title,
+        body = body,
+        expanded = expanded,
+        onExpand = { expanded = true },
+        onCollapse = { expanded = false },
+        modifier = modifier
+    )
+}
+
+@Composable
+fun ExpandingCard(
+    title: String,
+    body: String,
+    expanded: Boolean,
+    onExpand: () -> Unit,
+    onCollapse: () -> Unit,
+    modifier: Modifier = Modifier
+) {
+    Card(modifier) {
+        Column(
+            Modifier
+                .width(280.dp)
+                .animateContentSize() // automatically animate size when it changes
+                .padding(top = 16.dp, start = 16.dp, end = 16.dp)
+        ) {
+            Text(title)
+            if (expanded) {
+                Spacer(Modifier.height(8.dp))
+                Text(body)
+                IconButton(onClick = onCollapse, Modifier.fillMaxWidth()) {
+                    Icon(Icons.Default.ExpandLess)
+                }
+            } else {
+                IconButton(onClick = onExpand, Modifier.fillMaxWidth()) {
+                    Icon(Icons.Default.ExpandMore)
+                }
+            }
+        }
+    }
+}
+
+@Preview
+@Composable
+fun PreviewExpandingCard() {
+    Box(Modifier.fillMaxSize()) {
+        ExpandingCard(
+            title = "Title text",
+            body =
+            """Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eleifend, augue quis fermentum feugiat, neque lacus elementum velit, ut molestie quam ligula at magna. Etiam dictum in nulla a posuere. Integer nisl tortor, mollis id hendrerit quis, tincidunt eget dolor. Nulla tempor leo tellus, ac aliquam nunc ornare sed. Aliquam ut odio rutrum, convallis mi vel, fringilla nibh. Vivamus vel mi rutrum, vehicula metus nec, efficitur risus. Phasellus vel blandit libero. Proin leo mauris, iaculis a eleifend vitae, malesuada a dolor. Suspendisse euismod bibendum sapien tincidunt dapibus. Quisque elit dui, dictum in sem eget, ultricies condimentum ante. Praesent elementum tincidunt mi, at vulputate turpis volutpat non.
+""",
+            modifier = Modifier.align(Alignment.Center)
+        )
+    }
+}

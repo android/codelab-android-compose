@@ -19,6 +19,7 @@ package com.codelabs.state.todo
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.compose.material.Surface
 import androidx.compose.ui.platform.setContent
 import com.codelabs.state.ui.StateCodelabTheme
 
@@ -30,15 +31,17 @@ class TodoActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             StateCodelabTheme {
-                TodoScreen(
-                    todoViewModel.todoItems,
-                    todoViewModel.currentEditItem,
-                    todoViewModel::addItem,
-                    todoViewModel::removeItem,
-                    todoViewModel::onEditItemSelected,
-                    todoViewModel::onEditItemChange,
-                    todoViewModel::onEditDone
-                )
+                Surface {
+                    TodoScreen(
+                        todoViewModel.todoItems,
+                        todoViewModel.currentEditItem,
+                        todoViewModel::addItem,
+                        todoViewModel::removeItem,
+                        todoViewModel::onEditItemSelected,
+                        todoViewModel::onEditItemChange,
+                        todoViewModel::onEditDone
+                    )
+                }
             }
         }
     }
