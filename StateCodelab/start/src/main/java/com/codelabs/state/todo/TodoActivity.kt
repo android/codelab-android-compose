@@ -19,6 +19,7 @@ package com.codelabs.state.todo
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.compose.material.Surface
 import androidx.compose.ui.platform.setContent
 import com.codelabs.state.ui.StateCodelabTheme
 
@@ -30,7 +31,9 @@ class TodoActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             StateCodelabTheme {
-                // TODO: build the screen in compose
+                Surface {
+                    // TODO: build the screen in compose
+                }
             }
         }
     }

@@ -25,10 +25,10 @@ import androidx.compose.animation.core.FastOutSlowInEasing
 import androidx.compose.animation.core.TweenSpec
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
-import androidx.compose.foundation.Box
 import androidx.compose.foundation.Icon
 import androidx.compose.foundation.Text
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ExperimentalLayout
 import androidx.compose.foundation.layout.Row
@@ -61,7 +61,7 @@ import androidx.ui.tooling.preview.Preview
  * @param icon (state) the current selected icon
  * @param onIconChange (event) request the selected icon change
  * @param modifier modifier for this element
- * @param shouldAnimateIn (state) if the icon should be shown
+ * @param visible (state) if the icon should be shown
  */
 @OptIn(ExperimentalAnimationApi::class)
 @Composable
@@ -69,12 +69,13 @@ fun AnimatedIconRow(
     icon: TodoIcon,
     onIconChange: (TodoIcon) -> Unit,
     modifier: Modifier = Modifier,
-    shouldAnimateIn: Boolean = true
+    visible: Boolean = true,
+    initialVisibility: Boolean = false
 ) {
     Box(modifier.defaultMinSizeConstraints(minHeight = 16.dp)) {
         AnimatedVisibility(
-            visible = true,
-            initiallyVisible = !shouldAnimateIn,
+            visible = visible,
+            initiallyVisible = initialVisibility,
             enter = fadeIn(animSpec = TweenSpec(300, easing = FastOutLinearInEasing)),
             exit = fadeOut(animSpec = TweenSpec(100, easing = FastOutSlowInEasing)),
         ) {

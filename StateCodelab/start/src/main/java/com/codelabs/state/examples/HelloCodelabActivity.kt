@@ -19,41 +19,20 @@ package com.codelabs.state.examples
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.compose.animation.animateContentSize
-import androidx.compose.foundation.Box
-import androidx.compose.foundation.Icon
 import androidx.compose.foundation.Text
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.Stack
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
-import androidx.compose.material.Card
-import androidx.compose.material.IconButton
 import androidx.compose.material.TextField
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ExpandLess
-import androidx.compose.material.icons.filled.ExpandMore
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.savedinstancestate.savedInstanceState
-import androidx.compose.runtime.setValue
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.setContent
-import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.viewModel
 import androidx.core.widget.doAfterTextChanged
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.ui.tooling.preview.Preview
 import com.codelabs.state.databinding.ActivityHelloCodelabBinding
 
 /**
@@ -167,128 +146,5 @@ private fun HelloInput(
             onValueChange = onNameChange,
             label = { Text("Name") }
         )
-    }
-}
-
-@Composable
-fun ExpandingCard(title: String, body: String) {
-    var expanded by savedInstanceState { false }
-    ExpandingCard(
-        title = title,
-        body = body,
-        expanded = expanded,
-        onExpand = { expanded = true },
-        onCollapse = { expanded = false }
-    )
-}
-
-@Composable
-fun ExpandingCardFirstVersion(title: String, body: String) {
-    var expanded by remember { mutableStateOf(false) }
-
-    // describe the card for the current state of expanded
-    Card {
-        Column(
-            Modifier
-                .width(280.dp)
-                .animateContentSize() // automatically animate size when it changes
-                .padding(top = 16.dp, start = 16.dp, end = 16.dp)
-        ) {
-            Text(text = title)
-
-            // change the content of the card depending on the current value of expanded
-            if (expanded) {
-                Text(text = body, Modifier.padding(top = 8.dp))
-                IconButton(onClick = { expanded = false }, modifier = Modifier.fillMaxWidth()) {
-                    Icon(Icons.Default.ExpandLess)
-                }
-            } else {
-                IconButton(onClick = { expanded = true }, modifier = Modifier.fillMaxWidth()) {
-                    Icon(Icons.Default.ExpandMore)
-                }
-            }
-        }
-    }
-}
-
-class ExpandingViewModel : ViewModel() {
-    var expanded by mutableStateOf(false)
-        private set
-
-    var title by mutableStateOf("")
-        private set
-
-    var body by mutableStateOf("")
-        private set
-
-    init {
-        // load title and body from a database
-        // see the guide to app architecture for more information about how to load data in a
-        // ViewModel
-    }
-
-    fun expand() {
-        expanded = true
-    }
-
-    fun collapse() {
-        expanded = false
-    }
-}
-
-@Composable
-fun ExpandingCardWithViewModel(viewModel: ExpandingViewModel = viewModel()) {
-    ExpandingCard(
-        title = viewModel.title,
-        body = viewModel.body,
-        expanded = viewModel.expanded,
-        onExpand = { viewModel.expand() },
-        onCollapse = { viewModel.collapse() }
-    )
-}
-
-@Composable
-fun ExpandingCard(
-    title: String,
-    body: String,
-    expanded: Boolean,
-    onExpand: () -> Unit,
-    onCollapse: () -> Unit
-) {
-    Card {
-        Column(
-            Modifier
-                .width(280.dp)
-                .animateContentSize() // automatically animate size when it changes
-                .padding(top = 16.dp, start = 16.dp, end = 16.dp)
-        ) {
-            Text(title)
-            if (expanded) {
-                Spacer(Modifier.height(8.dp))
-                Text(body)
-                IconButton(onClick = onCollapse, Modifier.fillMaxWidth()) {
-                    Icon(Icons.Default.ExpandLess)
-                }
-            } else {
-                IconButton(onClick = onExpand, Modifier.fillMaxWidth()) {
-                    Icon(Icons.Default.ExpandMore)
-                }
-            }
-        }
-    }
-}
-
-@Preview
-@Composable
-fun PreviewExpandingCard() {
-    Stack(Modifier.fillMaxSize()) {
-        Box(Modifier.align(Alignment.Center)) {
-            ExpandingCard(
-                title = "Title text",
-                body =
-"""Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eleifend, augue quis fermentum feugiat, neque lacus elementum velit, ut molestie quam ligula at magna. Etiam dictum in nulla a posuere. Integer nisl tortor, mollis id hendrerit quis, tincidunt eget dolor. Nulla tempor leo tellus, ac aliquam nunc ornare sed. Aliquam ut odio rutrum, convallis mi vel, fringilla nibh. Vivamus vel mi rutrum, vehicula metus nec, efficitur risus. Phasellus vel blandit libero. Proin leo mauris, iaculis a eleifend vitae, malesuada a dolor. Suspendisse euismod bibendum sapien tincidunt dapibus. Quisque elit dui, dictum in sem eget, ultricies condimentum ante. Praesent elementum tincidunt mi, at vulputate turpis volutpat non.
-"""
-            )
-        }
     }
 }
