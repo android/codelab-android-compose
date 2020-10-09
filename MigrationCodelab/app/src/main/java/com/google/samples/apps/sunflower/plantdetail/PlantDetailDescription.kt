@@ -75,7 +75,7 @@ private fun PlantName(name: String) {
         modifier = Modifier
             .fillMaxWidth()
             .padding(horizontal = dimensionResource(R.dimen.margin_small))
-            .wrapContentWidth(Alignment.CenterHorizontally)
+            .wrapContentWidth(align = Alignment.CenterHorizontally)
     )
 }
 
