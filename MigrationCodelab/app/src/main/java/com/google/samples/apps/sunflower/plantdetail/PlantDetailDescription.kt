@@ -20,10 +20,10 @@ import android.content.res.Configuration
 import android.text.method.LinkMovementMethod
 import android.widget.TextView
 import androidx.compose.foundation.Text
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
@@ -69,15 +69,14 @@ fun PlantDetailContent(plant: Plant) {
 
 @Composable
 private fun PlantName(name: String) {
-    Box(Modifier.fillMaxWidth()) {
-        Text(
-            text = name,
-            style = MaterialTheme.typography.h5,
-            modifier = Modifier
-                .padding(horizontal = dimensionResource(R.dimen.margin_small))
-                .align(Alignment.Center)
-        )
-    }
+    Text(
+        text = name,
+        style = MaterialTheme.typography.h5,
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(horizontal = dimensionResource(R.dimen.margin_small))
+            .wrapContentWidth(Alignment.CenterHorizontally)
+    )
 }
 
 @Composable
