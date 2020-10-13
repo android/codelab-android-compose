@@ -16,6 +16,7 @@
 
 package com.codelabs.state.todo
 
+import androidx.compose.foundation.AmbientContentColor
 import androidx.compose.foundation.Icon
 import androidx.compose.foundation.Text
 import androidx.compose.foundation.clickable
@@ -274,7 +275,10 @@ fun TodoRow(
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
         Text(todo.task)
-        Icon(asset = todo.icon.vectorAsset, tint = contentColor().copy(alpha = iconAlpha))
+        Icon(
+            asset = todo.icon.vectorAsset,
+            tint = AmbientContentColor.current.copy(alpha = iconAlpha)
+        )
     }
 }
 
