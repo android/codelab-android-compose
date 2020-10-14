@@ -87,8 +87,7 @@ dependencies {
     implementation "androidx.compose.material:material:$rootProject.composeVersion"
     implementation "androidx.compose.runtime:runtime-livedata:$rootProject.composeVersion"
     implementation "androidx.ui:ui-tooling:$rootProject.composeVersion"
-    // TODO: Move to alpha05 with the rest of dependencies
-    implementation "com.google.android.material:compose-theme-adapter:1.0.0-alpha04"
+    implementation "com.google.android.material:compose-theme-adapter:$rootProject.composeVersion"
 
     // Testing dependencies
     androidTestImplementation "androidx.arch.core:core-testing:$rootProject.coreTestingVersion"
