@@ -27,9 +27,9 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.preferredHeight
 import androidx.compose.foundation.layout.preferredHeightIn
+import androidx.compose.material.AmbientEmphasisLevels
 import androidx.compose.material.Card
 import androidx.compose.material.Divider
-import androidx.compose.material.EmphasisAmbient
 import androidx.compose.material.ListItem
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.ProvideEmphasis
@@ -133,7 +133,7 @@ fun FeaturedPost(
             Spacer(Modifier.preferredHeight(16.dp))
 
             val padding = Modifier.padding(horizontal = 16.dp)
-            ProvideEmphasis(EmphasisAmbient.current.high) {
+            ProvideEmphasis(AmbientEmphasisLevels.current.high) {
                 Text(
                     text = post.title,
                     style = MaterialTheme.typography.h6,
@@ -175,7 +175,7 @@ private fun PostMetadata(
             }
         }
     }
-    ProvideEmphasis(EmphasisAmbient.current.medium) {
+    ProvideEmphasis(AmbientEmphasisLevels.current.medium) {
         Text(
             text = text,
             style = MaterialTheme.typography.body2,
