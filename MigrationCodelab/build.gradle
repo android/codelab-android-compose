@@ -70,7 +70,7 @@ plugins {
 allprojects {
     repositories {
         maven {
-            url "https://androidx.dev/snapshots/builds/6891475/artifacts/ui/repository/"
+            url "https://androidx.dev/snapshots/builds/6901934/artifacts/ui/repository/"
         }
         google()
         jcenter()
