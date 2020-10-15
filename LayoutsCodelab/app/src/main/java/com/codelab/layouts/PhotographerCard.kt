@@ -25,7 +25,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.preferredSize
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.EmphasisAmbient
+import androidx.compose.material.AmbientEmphasisLevels
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.ProvideEmphasis
 import androidx.compose.material.Surface
@@ -60,7 +60,7 @@ fun PhotographerCard(modifier: Modifier = Modifier) {
                 .align(Alignment.CenterVertically)
         ) {
             Text("Alfred Sisley", fontWeight = FontWeight.Bold)
-            ProvideEmphasis(EmphasisAmbient.current.medium) {
+            ProvideEmphasis(AmbientEmphasisLevels.current.medium) {
                 Text("3 minutes ago", style = MaterialTheme.typography.body2)
             }
         }
