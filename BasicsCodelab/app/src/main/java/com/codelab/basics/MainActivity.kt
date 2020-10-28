@@ -23,7 +23,6 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Button
-import androidx.compose.material.ButtonConstants
 import androidx.compose.material.Divider
 import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
@@ -85,9 +84,7 @@ fun Greeting(name: String) {
 fun Counter(count: Int, updateCount: (Int) -> Unit) {
     Button(
         onClick = { updateCount(count + 1) },
-        colors = ButtonConstants.defaultButtonColors(
-            backgroundColor = if (count > 5) Color.Green else Color.White
-        )
+        backgroundColor = if (count > 5) Color.Green else Color.White
     ) {
         Text("I've been clicked $count times")
     }
