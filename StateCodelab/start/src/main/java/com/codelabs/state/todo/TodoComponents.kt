@@ -25,7 +25,6 @@ import androidx.compose.animation.core.FastOutSlowInEasing
 import androidx.compose.animation.core.TweenSpec
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
-import androidx.compose.foundation.Icon
 import androidx.compose.foundation.Text
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -40,10 +39,14 @@ import androidx.compose.foundation.layout.preferredHeight
 import androidx.compose.foundation.layout.preferredWidth
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.Button
+import androidx.compose.material.ButtonConstants
+import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
+import androidx.compose.material.TextButton
 import androidx.compose.material.TextField
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
@@ -72,12 +75,16 @@ fun AnimatedIconRow(
     visible: Boolean = true,
     initialVisibility: Boolean = false
 ) {
+    // remember these specs so they don't restart if recomposing during the animation
+    // this is required since TweenSpec restarts on interruption
+    val enter = remember { fadeIn(animSpec = TweenSpec(300, easing = FastOutLinearInEasing)) }
+    val exit = remember { fadeOut(animSpec = TweenSpec(100, easing = FastOutSlowInEasing)) }
     Box(modifier.defaultMinSizeConstraints(minHeight = 16.dp)) {
         AnimatedVisibility(
             visible = visible,
             initiallyVisible = initialVisibility,
-            enter = fadeIn(animSpec = TweenSpec(300, easing = FastOutLinearInEasing)),
-            exit = fadeOut(animSpec = TweenSpec(100, easing = FastOutSlowInEasing)),
+            enter = enter,
+            exit = exit,
         ) {
             IconRow(icon, onIconChange)
         }
@@ -129,17 +136,14 @@ private fun SelectableIconButton(
     } else {
         MaterialTheme.colors.onSurface.copy(alpha = 0.6f)
     }
-    Button(
+    TextButton(
         onClick = { onIconSelected() },
         shape = CircleShape,
-        backgroundColor = Color.Transparent,
-        border = null,
-        elevation = 0.dp,
+        colors = ButtonConstants.defaultTextButtonColors(),
         modifier = modifier
     ) {
         Column {
             Icon(icon, tint = tint)
-
             if (isSelected) {
                 Box(
                     Modifier
@@ -183,7 +187,9 @@ fun TodoItemInputBackground(
 }
 
 /**
- * Styled [TextField] for inputting a [TodoItem]
+ * Styled [TextField] for inputting a [TodoItem].
+ *
+ * ImeActions are currently ignored due to https://issuetracker.google.com/issues/165676636
  *
  * @param text (state) current text to display
  * @param onTextChange (event) request the text change state
@@ -226,11 +232,10 @@ fun TodoEditButton(
     modifier: Modifier = Modifier,
     enabled: Boolean = true
 ) {
-    Button(
+    TextButton(
         onClick = onClick,
         shape = CircleShape,
         enabled = enabled,
-        elevation = 0.dp,
         modifier = modifier
     ) {
         Text(text)
