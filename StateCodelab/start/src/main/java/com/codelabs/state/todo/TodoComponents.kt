@@ -38,8 +38,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.preferredHeight
 import androidx.compose.foundation.layout.preferredWidth
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material.Button
-import androidx.compose.material.ButtonConstants
 import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
@@ -139,7 +137,6 @@ private fun SelectableIconButton(
     TextButton(
         onClick = { onIconSelected() },
         shape = CircleShape,
-        colors = ButtonConstants.defaultTextButtonColors(),
         modifier = modifier
     ) {
         Column {

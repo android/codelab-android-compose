@@ -23,7 +23,7 @@ import androidx.compose.material.icons.filled.Event
 import androidx.compose.material.icons.filled.PrivacyTip
 import androidx.compose.material.icons.filled.RestoreFromTrash
 import androidx.compose.ui.graphics.vector.VectorAsset
-import java.util.*
+import java.util.UUID
 
 data class TodoItem(
     val task: String,
