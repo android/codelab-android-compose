@@ -75,18 +75,6 @@ allprojects {
     }
 }
 
-subprojects {
-    configurations.configureEach {
-        resolutionStrategy.eachDependency { details ->
-            if (details.requested.group.startsWith('androidx.compose')
-                    || details.requested.group.startsWith('androidx.ui')) {
-                details.useVersion project.composeVersion
-            }
-        }
-    }
-}
-
-
 spotless {
     kotlin {
         target "**/*.kt"
