@@ -54,7 +54,7 @@ fun ConstraintLayoutContent() {
 @Composable
 fun DecoupledConstraintLayout() {
     WithConstraints {
-        val constraints = if (minWidth < 600.dp) {
+        val constraints = if (maxWidth < maxHeight) {
             decoupledConstraints(margin = 16.dp) // Portrait constraints
         } else {
             decoupledConstraints(margin = 32.dp) // Landscape constraints
