@@ -25,7 +25,6 @@ import androidx.compose.animation.core.FastOutSlowInEasing
 import androidx.compose.animation.core.TweenSpec
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
-import androidx.compose.foundation.Text
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -38,9 +37,11 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.preferredHeight
 import androidx.compose.foundation.layout.preferredWidth
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
+import androidx.compose.material.Text
 import androidx.compose.material.TextButton
 import androidx.compose.material.TextField
 import androidx.compose.runtime.Composable
@@ -186,8 +187,6 @@ fun TodoItemInputBackground(
 /**
  * Styled [TextField] for inputting a [TodoItem].
  *
- * ImeActions are currently ignored due to https://issuetracker.google.com/issues/165676636
- *
  * @param text (state) current text to display
  * @param onTextChange (event) request the text change state
  * @param modifier the modifier for this element
@@ -201,10 +200,10 @@ fun TodoInputText(
     onImeAction: () -> Unit = {}
 ) = TextField(
     value = text,
-    onValueChange = { onTextChange(it) },
-    label = { /* no label */ },
+    onValueChange = onTextChange,
     backgroundColor = Color.Transparent,
-    imeAction = ImeAction.Done,
+    maxLines = 1,
+    keyboardOptions = KeyboardOptions.Default.copy(imeAction = ImeAction.Done),
     onImeActionPerformed = { action, softKeyboardController ->
         if (action == ImeAction.Done) {
             onImeAction()
