@@ -3,7 +3,7 @@ name: MigrationCodelab
 on:
   push:
     branches:
-      - master
+      - main
       - end
     paths:
       - 'MigrationCodelab/**'
