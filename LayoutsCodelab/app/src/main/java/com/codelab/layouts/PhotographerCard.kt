@@ -62,7 +62,7 @@ fun PhotographerCard(modifier: Modifier = Modifier) {
                 .align(Alignment.CenterVertically)
         ) {
             Text("Alfred Sisley", fontWeight = FontWeight.Bold)
-            Providers(AmbientContentAlpha provides ContentAlpha.high) {
+            Providers(AmbientContentAlpha provides ContentAlpha.medium) {
                 Text("3 minutes ago", style = MaterialTheme.typography.body2)
             }
         }
