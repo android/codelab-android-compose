@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - master
-	  - end
+      - end
     paths:
       - 'MigrationCodelab/**'
   pull_request:
