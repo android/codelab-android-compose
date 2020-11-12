@@ -16,12 +16,12 @@
 
 package com.codelab.layouts
 
-import androidx.compose.foundation.Text
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Surface
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Layout
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.layout.Layout
 import androidx.compose.ui.unit.dp
 import androidx.ui.tooling.preview.Preview
 import com.codelab.layouts.ui.LayoutsCodelabTheme
