@@ -38,6 +38,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.preferredHeight
 import androidx.compose.foundation.layout.preferredWidth
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
@@ -201,10 +202,10 @@ fun TodoInputText(
     onImeAction: () -> Unit = {}
 ) = TextField(
     value = text,
-    onValueChange = { onTextChange(it) },
-    label = { /* no label */ },
+    onValueChange = onTextChange,
     backgroundColor = Color.Transparent,
-    imeAction = ImeAction.Done,
+    maxLines = 1,
+    keyboardOptions = KeyboardOptions.Default.copy(imeAction = ImeAction.Done),
     onImeActionPerformed = { action, softKeyboardController ->
         if (action == ImeAction.Done) {
             onImeAction()

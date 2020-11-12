@@ -53,6 +53,12 @@ android {
         kotlinCompilerVersion rootProject.kotlinVersion
         kotlinCompilerExtensionVersion rootProject.composeVersion
     }
+    packagingOptions {
+        // Multiple dependency bring these files in. Exclude them to enable
+        // our test APK to build (has no effect on our AARs)
+        excludes += "/META-INF/AL2.0"
+        excludes += "/META-INF/LGPL2.1"
+    }
 }
 
 dependencies {
@@ -87,7 +93,7 @@ dependencies {
     implementation "androidx.compose.material:material:$rootProject.composeVersion"
     implementation "androidx.compose.runtime:runtime-livedata:$rootProject.composeVersion"
     implementation "androidx.ui:ui-tooling:$rootProject.composeVersion"
-    implementation "com.google.android.material:compose-theme-adapter:1.0.0-alpha06"
+    implementation "com.google.android.material:compose-theme-adapter:$rootProject.composeVersion"
 
     // Testing dependencies
     androidTestImplementation "androidx.arch.core:core-testing:$rootProject.coreTestingVersion"
