@@ -16,8 +16,8 @@
 
 package com.google.samples.apps.sunflower.plantdetail
 
-import androidx.compose.foundation.Text
 import androidx.compose.material.Surface
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 
 @Composable

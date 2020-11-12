@@ -18,7 +18,6 @@ package com.codelab.theming.ui.finish
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.ScrollableColumn
-import androidx.compose.foundation.Text
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -26,20 +25,22 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.preferredHeight
 import androidx.compose.foundation.layout.preferredHeightIn
-import androidx.compose.material.AmbientEmphasisLevels
+import androidx.compose.material.AmbientContentAlpha
 import androidx.compose.material.Card
+import androidx.compose.material.ContentAlpha
 import androidx.compose.material.Divider
 import androidx.compose.material.Icon
 import androidx.compose.material.ListItem
 import androidx.compose.material.MaterialTheme
-import androidx.compose.material.ProvideEmphasis
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Surface
+import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Palette
 import androidx.compose.material.primarySurface
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.Providers
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -133,18 +134,16 @@ fun FeaturedPost(
             Spacer(Modifier.preferredHeight(16.dp))
 
             val padding = Modifier.padding(horizontal = 16.dp)
-            ProvideEmphasis(AmbientEmphasisLevels.current.high) {
-                Text(
-                    text = post.title,
-                    style = MaterialTheme.typography.h6,
-                    modifier = padding
-                )
-                Text(
-                    text = post.metadata.author.name,
-                    style = MaterialTheme.typography.body2,
-                    modifier = padding
-                )
-            }
+            Text(
+                text = post.title,
+                style = MaterialTheme.typography.h6,
+                modifier = padding
+            )
+            Text(
+                text = post.metadata.author.name,
+                style = MaterialTheme.typography.body2,
+                modifier = padding
+            )
             PostMetadata(post, padding)
             Spacer(Modifier.preferredHeight(16.dp))
         }
@@ -175,7 +174,7 @@ private fun PostMetadata(
             }
         }
     }
-    ProvideEmphasis(AmbientEmphasisLevels.current.medium) {
+    Providers(AmbientContentAlpha provides ContentAlpha.medium) {
         Text(
             text = text,
             style = MaterialTheme.typography.body2,
