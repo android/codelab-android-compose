@@ -20,6 +20,9 @@ import android.accessibilityservice.AccessibilityService
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
+import androidx.compose.ui.test.assertIsDisplayed
+import androidx.compose.ui.test.junit4.createAndroidComposeRule
+import androidx.compose.ui.test.onNodeWithText
 import androidx.navigation.Navigation.findNavController
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.click
@@ -31,9 +34,6 @@ import androidx.test.espresso.intent.matcher.IntentMatchers.hasType
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
-import androidx.ui.test.assertIsDisplayed
-import androidx.ui.test.createAndroidComposeRule
-import androidx.ui.test.onNodeWithText
 import com.google.samples.apps.sunflower.utilities.chooser
 import com.google.samples.apps.sunflower.utilities.testPlant
 import org.hamcrest.CoreMatchers.allOf
