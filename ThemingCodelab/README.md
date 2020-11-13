@@ -1,6 +1,6 @@
 # Jetpack Compose Theming Codelab
 
-This folder contains the source code for the [Jetpack Compose Theming codelab](https://codelabs.developers.google.com/codelabs/android-compose-theming).
+This folder contains the source code for the [Jetpack Compose Theming codelab](https://codelabs.developers.google.com/codelabs/jetpack-compose-theming).
 
 In this codelab you will learn how to use [Jetpack Compose](https://developer.android.com/jetpack/compose)’s theming APIs to style your application. We’ll see how to customize colors, shapes and typography so that they’re used consistently throughout your application, supporting multiple themes such as light & dark theme.
 

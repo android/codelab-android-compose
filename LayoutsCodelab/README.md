@@ -1,7 +1,7 @@
 # Jetpack Compose Layouts Codelab
 
 This folder contains the source code for the solution of the
-[Jetpack Compose Layouts codelab](https://codelabs.developers.google.com/codelabs/android-compose-layouts).
+[Jetpack Compose Layouts codelab](https://codelabs.developers.google.com/codelabs/jetpack-compose-layouts).
 
 In this codelab you will learn how layout works in
 [Jetpack Compose](https://developer.android.com/jetpack/compose), how to use the built-in layouts,
