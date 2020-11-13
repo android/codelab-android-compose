@@ -1,6 +1,6 @@
 # Migrating to Jetpack Compose
 
-This folder contains the source code for the "Migrating to Jetpack Compose" codelab.
+This folder contains the source code for the [Migrating to Jetpack Compose codelab](https://codelabs.developers.google.com/codelabs/jetpack-compose-migration).
 
 The codelab which migrates parts of [Sunflower](https://github.com/android/sunflower)'s Plant
 details screen to Jetpack Compose is built in multiple GitHub branches:
