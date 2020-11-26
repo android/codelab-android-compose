@@ -17,9 +17,9 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
     ext {
-        compose_version = '1.0.0-alpha07'
+        compose_version = '1.0.0-SNAPSHOT'
     }
-    ext.kotlin_version = "1.4.10"
+    ext.kotlin_version = "1.4.20"
     repositories {
         google()
         jcenter()
@@ -32,6 +32,10 @@ buildscript {
 
 allprojects {
     repositories {
+        maven {
+            def snapshot = "6994272"
+            url  "https://androidx.dev/snapshots/builds/$snapshot/artifacts/repository/"
+        }
         google()
         jcenter()
     }
