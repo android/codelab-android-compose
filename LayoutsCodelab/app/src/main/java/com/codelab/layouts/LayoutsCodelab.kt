@@ -41,9 +41,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.Layout
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import androidx.ui.tooling.preview.Preview
 import com.codelab.layouts.ui.LayoutsCodelabTheme
 import kotlin.math.max
 
@@ -79,7 +79,7 @@ fun BodyContent(modifier: Modifier = Modifier) {
         .background(color = Color.LightGray)
         .padding(16.dp)
         .size(200.dp),
-        children = {
+        content = {
             StaggeredGrid {
                 for (topic in topics) {
                     Chip(modifier = Modifier.padding(8.dp), text = topic)
@@ -96,7 +96,7 @@ fun StaggeredGrid(
 ) {
     Layout(
         modifier = modifier,
-        children = content
+        content = content
     ) { measurables, constraints ->
 
         val rowWidths = IntArray(rows) { 0 } // Keep track of the width of each row
