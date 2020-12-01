@@ -49,8 +49,8 @@ import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.annotatedString
 import androidx.compose.ui.text.withStyle
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.ui.tooling.preview.Preview
 import com.codelab.theming.R
 import com.codelab.theming.data.Post
 import com.codelab.theming.data.PostRepo
@@ -125,7 +125,7 @@ fun FeaturedPost(
                 .clickable { /* onClick */ }
         ) {
             Image(
-                asset = imageResource(post.imageId),
+                bitmap = imageResource(post.imageId),
                 contentScale = ContentScale.Crop,
                 modifier = Modifier
                     .preferredHeightIn(min = 180.dp)
@@ -194,7 +194,7 @@ fun PostItem(
             .padding(vertical = 8.dp),
         icon = {
             Image(
-                asset = imageResource(post.imageThumbId),
+                bitmap = imageResource(post.imageThumbId),
                 modifier = Modifier.clip(shape = MaterialTheme.shapes.small)
             )
         },
