@@ -17,7 +17,6 @@
 package com.codelabs.state.examples
 
 import androidx.compose.animation.animateContentSize
-import androidx.compose.foundation.Text
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -29,6 +28,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.material.Card
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
+import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ExpandLess
 import androidx.compose.material.icons.filled.ExpandMore
@@ -38,8 +38,8 @@ import androidx.compose.runtime.savedinstancestate.savedInstanceState
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.ui.tooling.preview.Preview
 
 
 // An example of a stateful and stateless composable using unidirectional data flow. In this codelab
