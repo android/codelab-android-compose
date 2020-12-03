@@ -49,10 +49,10 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
-import androidx.compose.ui.graphics.vector.VectorAsset
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.ui.tooling.preview.Preview
 
 /**
  * Draws a row of [TodoIcon] with visibility changes animated.
@@ -106,7 +106,7 @@ fun IconRow(
     Row(modifier) {
         for (todoIcon in TodoIcon.values()) {
             SelectableIconButton(
-                icon = todoIcon.vectorAsset,
+                icon = todoIcon.imageVector,
                 onIconSelected = { onIconChange(todoIcon) },
                 isSelected = todoIcon == icon
             )
@@ -125,7 +125,7 @@ fun IconRow(
 @OptIn(ExperimentalLayout::class)
 @Composable
 private fun SelectableIconButton(
-    icon: VectorAsset,
+    icon: ImageVector,
     onIconSelected: () -> Unit,
     isSelected: Boolean,
     modifier: Modifier = Modifier
@@ -179,7 +179,7 @@ fun TodoItemInputBackground(
     ) {
         Row(
             modifier = modifier.animateContentSize(animSpec = TweenSpec(300)),
-            children = content
+            content = content
         )
     }
 }

@@ -25,7 +25,6 @@ import androidx.compose.animation.core.FastOutSlowInEasing
 import androidx.compose.animation.core.TweenSpec
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
-import androidx.compose.foundation.Text
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -42,6 +41,7 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
+import androidx.compose.material.Text
 import androidx.compose.material.TextButton
 import androidx.compose.material.TextField
 import androidx.compose.runtime.Composable
@@ -49,10 +49,10 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
-import androidx.compose.ui.graphics.vector.VectorAsset
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.ui.tooling.preview.Preview
 
 /**
  * Draws a row of [TodoIcon] with visibility changes animated.
@@ -106,7 +106,7 @@ fun IconRow(
     Row(modifier) {
         for (todoIcon in TodoIcon.values()) {
             SelectableIconButton(
-                icon = todoIcon.vectorAsset,
+                icon = todoIcon.imageVector,
                 onIconSelected = { onIconChange(todoIcon) },
                 isSelected = todoIcon == icon
             )
@@ -125,7 +125,7 @@ fun IconRow(
 @OptIn(ExperimentalLayout::class)
 @Composable
 private fun SelectableIconButton(
-    icon: VectorAsset,
+    icon: ImageVector,
     onIconSelected: () -> Unit,
     isSelected: Boolean,
     modifier: Modifier = Modifier
@@ -179,15 +179,13 @@ fun TodoItemInputBackground(
     ) {
         Row(
             modifier = modifier.animateContentSize(animSpec = TweenSpec(300)),
-            children = content
+            content = content
         )
     }
 }
 
 /**
  * Styled [TextField] for inputting a [TodoItem].
- *
- * ImeActions are currently ignored due to https://issuetracker.google.com/issues/165676636
  *
  * @param text (state) current text to display
  * @param onTextChange (event) request the text change state
