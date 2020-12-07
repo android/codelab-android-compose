@@ -46,8 +46,8 @@ import androidx.compose.runtime.savedinstancestate.savedInstanceState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.ui.tooling.preview.Preview
 import com.codelabs.state.util.generateRandomTodoItem
 import kotlin.random.Random
 
@@ -274,7 +274,7 @@ fun TodoRow(
     ) {
         Text(todo.task)
         Icon(
-            asset = todo.icon.vectorAsset,
+            imageVector = todo.icon.imageVector,
             tint = AmbientContentColor.current.copy(alpha = iconAlpha)
         )
     }
