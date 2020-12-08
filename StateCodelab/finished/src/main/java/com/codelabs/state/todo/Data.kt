@@ -22,7 +22,7 @@ import androidx.compose.material.icons.filled.Done
 import androidx.compose.material.icons.filled.Event
 import androidx.compose.material.icons.filled.PrivacyTip
 import androidx.compose.material.icons.filled.RestoreFromTrash
-import androidx.compose.ui.graphics.vector.VectorAsset
+import androidx.compose.ui.graphics.vector.ImageVector
 import java.util.UUID
 
 data class TodoItem(
@@ -32,7 +32,7 @@ data class TodoItem(
     val id: UUID = UUID.randomUUID()
 )
 
-enum class TodoIcon(val vectorAsset: VectorAsset) {
+enum class TodoIcon(val imageVector: ImageVector) {
     Square(Icons.Default.CropSquare),
     Done(Icons.Default.Done),
     Event(Icons.Default.Event),
