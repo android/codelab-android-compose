@@ -19,8 +19,8 @@ package com.codelabs.state.examples
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.compose.foundation.Text
 import androidx.compose.foundation.layout.Column
+import androidx.compose.material.Text
 import androidx.compose.material.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
