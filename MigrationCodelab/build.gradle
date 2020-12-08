@@ -24,17 +24,17 @@ buildscript {
 
         // App dependencies
         appCompatVersion = '1.1.0'
-        composeVersion = '1.0.0-alpha08'
+        composeVersion = '1.0.0-alpha07'
         constraintLayoutVersion = '2.0.2'
         coreTestingVersion = '2.1.0'
         coroutinesVersion = "1.3.9"
         espressoVersion = '3.3.0'
         fragmentVersion = '1.2.5'
         glideVersion = '4.10.0'
-        gradleVersion = '7.0.0-alpha02'
+        gradleVersion = '4.2.0-alpha16'
         gsonVersion = '2.8.6'
         junitVersion = '4.13'
-        kotlinVersion = '1.4.20'
+        kotlinVersion = '1.4.10'
         ktlintVersion = '0.37.2'
         ktxVersion = '1.5.0-alpha02'
         lifecycleVersion = '2.2.0'
