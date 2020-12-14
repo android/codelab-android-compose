@@ -11,26 +11,26 @@ For more information about Jetpack Compose, please [read the documentation](http
 
 ## 🧬 Codelabs
 
-### [Basics codelabs](https://codelabs.developers.google.com/codelabs/jetpack-compose-basics)
+### [Basics codelabs](https://developer.android.com/codelabs/jetpack-compose-basics)
 
 Go hands-on and learn the fundamentals of declarative UI, working with state, layouts and theming.
 
-### [Layouts codelabs](https://codelabs.developers.google.com/codelabs/jetpack-compose-layouts)
+### [Layouts codelabs](https://developer.android.com/codelabs/jetpack-compose-layouts)
 
 Learn how layout works in Jetpack Compose, how to use the built-in layouts,
 [modifiers](https://developer.android.com/reference/kotlin/androidx/compose/ui/Modifier),
 and even building your own custom layout.
 
-### [State codelab](https://codelabs.developers.google.com/codelabs/jetpack-compose-state)
+### [State codelab](https://developer.android.com/codelabs/jetpack-compose-state)
 
 Understand patterns for working with state in a declarative world by building a Todo application.
 
-### [Theming codelab](https://codelabs.developers.google.com/codelabs/jetpack-compose-theming)
+### [Theming codelab](https://developer.android.com/codelabs/jetpack-compose-theming)
 
 Go hands on with Compose’s implementation of Material Design to understand how to theme an
 application’s colors, typography and shapes and support light and dark themes.
 
-### [Migration codelab](https://codelabs.developers.google.com/codelabs/jetpack-compose-migration)
+### [Migration codelab](https://developer.android.com/codelabs/jetpack-compose-migration)
 
 Understand how Jetpack Compose and View-based UIs can co-exist and interact, making it easy to
 adopt Compose at your own pace.
