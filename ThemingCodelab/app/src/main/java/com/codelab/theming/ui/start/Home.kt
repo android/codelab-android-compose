@@ -44,7 +44,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.annotatedString
+import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.codelab.theming.R
@@ -144,7 +144,7 @@ private fun PostMetadata(
 ) {
     val divider = "  •  "
     val tagDivider = "  "
-    val text = annotatedString {
+    val text = buildAnnotatedString {
         append(post.metadata.date)
         append(divider)
         append(stringResource(R.string.read_time, post.metadata.readTimeMinutes))
