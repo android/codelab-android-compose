@@ -31,7 +31,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.preferredHeight
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.widthIn
-import androidx.compose.foundation.lazy.LazyColumnFor
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.AmbientContentColor
 import androidx.compose.material.Button
 import androidx.compose.material.Icon
@@ -89,24 +89,26 @@ fun TodoScreen(
                 )
             }
         }
-        LazyColumnFor(
-            items = items,
+
+        LazyColumn(
             modifier = Modifier.weight(1f),
             contentPadding = PaddingValues(top = 8.dp)
-        ) { todo ->
-            if (currentlyEditing?.id == todo.id) {
-                TodoItemInlineEditor(
-                    item = currentlyEditing,
-                    onEditItemChange = onEditItemChange,
-                    onEditDone = onEditDone,
-                    onRemoveItem = { onRemoveItem(todo) }
-                )
-            } else {
-                TodoRow(
-                    todo = todo,
-                    onItemClicked = { onStartEdit(it) },
-                    modifier = Modifier.fillParentMaxWidth()
-                )
+        ) {
+            items(items) { todo ->
+                if (currentlyEditing?.id == todo.id) {
+                    TodoItemInlineEditor(
+                        item = currentlyEditing,
+                        onEditItemChange = onEditItemChange,
+                        onEditDone = onEditDone,
+                        onRemoveItem = { onRemoveItem(todo) }
+                    )
+                } else {
+                    TodoRow(
+                        todo = todo,
+                        onItemClicked = { onStartEdit(it) },
+                        modifier = Modifier.fillParentMaxWidth()
+                    )
+                }
             }
         }
 
