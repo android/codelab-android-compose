@@ -23,7 +23,7 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.LazyColumnFor
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.Button
 import androidx.compose.material.Icon
 import androidx.compose.material.Text
@@ -49,16 +49,18 @@ fun TodoScreen(
     onRemoveItem: (TodoItem) -> Unit
 ) {
     Column {
-        LazyColumnFor(
-            items = items,
+        LazyColumn(
             modifier = Modifier.weight(1f),
             contentPadding = PaddingValues(top = 8.dp)
-        ) { todo ->
-            TodoRow(
-                todo = todo,
-                onItemClicked = { onRemoveItem(it) },
-                modifier = Modifier.fillParentMaxWidth()
-            )
+        ) {
+            items(items = items,
+                itemContent = { todo ->
+                    TodoRow(
+                        todo = todo,
+                        onItemClicked = { onRemoveItem(it) },
+                        modifier = Modifier.fillParentMaxWidth()
+                    )
+                })
         }
 
         // For quick testing, a random item generator button
