@@ -78,7 +78,7 @@ fun MyScreenContent(names: List<String> = List(10) { "Hello Android #$it" }) {
 }
 
 @Composable
-fun NameList(modifier: Modifier, names: List<String>) {
+fun NameList(names: List<String>, modifier: Modifier = Modifier) {
     LazyColumn(modifier = modifier) {
         items(items = names) { name ->
             Greeting(name = name)
@@ -89,7 +89,7 @@ fun NameList(modifier: Modifier, names: List<String>) {
 
 @Composable
 fun Greeting(name: String) {
-    var isPressed by remember { mutableStateOf(false) }
+    var isSelected by remember { mutableStateOf(false) }
     val backgroundColor by animateAsState(if (isPressed) Color.Red else Color.Transparent)
 
     Text(
