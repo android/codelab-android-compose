@@ -69,10 +69,10 @@ fun MyScreenContent(names: List<String> = List(10) { "Hello Android #$it" }) {
     Column(modifier = Modifier.fillMaxHeight()) {
         NameList(modifier = Modifier.weight(1f), names = names)
         Counter(
-                count = counterState.value,
-                updateCount = { newCount ->
-                    counterState.value = newCount
-                }
+            count = counterState.value,
+            updateCount = { newCount ->
+                counterState.value = newCount
+            }
         )
     }
 }
@@ -93,22 +93,21 @@ fun Greeting(name: String) {
     val backgroundColor by animateAsState(if (activeState) Color.Red else Color.Transparent)
 
     Text(
-            text = "Hello $name!",
-            modifier = Modifier
-                    .padding(24.dp)
-                    .background(color = backgroundColor)
-                    .clickable(onClick = { activeState = !activeState })
+        text = "Hello $name!",
+        modifier = Modifier
+            .padding(24.dp)
+            .background(color = backgroundColor)
+            .clickable(onClick = { activeState = !activeState })
     )
 }
-
 
 @Composable
 fun Counter(count: Int, updateCount: (Int) -> Unit) {
     Button(
-            onClick = { updateCount(count + 1) },
-            colors = ButtonDefaults.buttonColors(
-                    backgroundColor = if (count > 5) Color.Green else Color.White
-            )
+        onClick = { updateCount(count + 1) },
+        colors = ButtonDefaults.buttonColors(
+            backgroundColor = if (count > 5) Color.Green else Color.White
+        )
     ) {
         Text("I've been clicked $count times")
     }
