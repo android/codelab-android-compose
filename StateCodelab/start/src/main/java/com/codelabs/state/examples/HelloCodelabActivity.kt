@@ -84,7 +84,7 @@ class HelloViewModel : ViewModel() {
  * An example showing unidirectional data flow in the View system using a ViewModel.
  */
 class HelloCodeLabActivityWithViewModel : AppCompatActivity() {
-    val helloViewModel by viewModels<HelloViewModel>()
+    private val helloViewModel by viewModels<HelloViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
