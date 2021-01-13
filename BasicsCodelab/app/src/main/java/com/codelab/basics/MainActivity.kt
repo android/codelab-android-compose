@@ -63,7 +63,7 @@ fun MyApp(content: @Composable () -> Unit) {
 }
 
 @Composable
-fun MyScreenContent(names: List<String> = List(10) { "Hello Android #$it" }) {
+fun MyScreenContent(names: List<String> = List(1000) { "Hello Android #$it" }) {
     val counterState = remember { mutableStateOf(0) }
 
     Column(modifier = Modifier.fillMaxHeight()) {
@@ -90,14 +90,14 @@ fun NameList(names: List<String>, modifier: Modifier = Modifier) {
 @Composable
 fun Greeting(name: String) {
     var isSelected by remember { mutableStateOf(false) }
-    val backgroundColor by animateAsState(if (isPressed) Color.Red else Color.Transparent)
+    val backgroundColor by animateAsState(if (isSelected) Color.Red else Color.Transparent)
 
     Text(
         text = "Hello $name!",
         modifier = Modifier
             .padding(24.dp)
             .background(color = backgroundColor)
-            .clickable(onClick = { isPressed = !isPressed })
+            .clickable(onClick = { isSelected = !isSelected })
     )
 }
 
