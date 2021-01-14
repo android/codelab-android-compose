@@ -92,7 +92,7 @@ dependencies {
     implementation "androidx.compose.foundation:foundation-layout:$rootProject.composeVersion"
     implementation "androidx.compose.material:material:$rootProject.composeVersion"
     implementation "androidx.compose.runtime:runtime-livedata:$rootProject.composeVersion"
-    implementation "androidx.ui:ui-tooling:$rootProject.composeVersion"
+    implementation "androidx.compose.ui:ui-tooling:$rootProject.composeVersion"
     implementation "com.google.android.material:compose-theme-adapter:$rootProject.composeVersion"
 
     // Testing dependencies
@@ -104,6 +104,6 @@ dependencies {
     androidTestImplementation "androidx.test.uiautomator:uiautomator:$rootProject.uiAutomatorVersion"
     androidTestImplementation "androidx.work:work-testing:$rootProject.workVersion"
     androidTestImplementation "com.google.truth:truth:$rootProject.truthVersion"
-    androidTestImplementation "androidx.ui:ui-test:$rootProject.composeVersion"
+    androidTestImplementation "androidx.compose.ui:ui-test-junit4:$rootProject.composeVersion"
     testImplementation "junit:junit:$rootProject.junitVersion"
 }

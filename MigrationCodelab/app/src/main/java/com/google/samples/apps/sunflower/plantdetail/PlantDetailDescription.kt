@@ -32,13 +32,13 @@ import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.ContextAmbient
+import androidx.compose.ui.platform.AmbientContext
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.core.text.HtmlCompat
-import androidx.ui.tooling.preview.Preview
 import com.google.android.material.composethemeadapter.MdcTheme
 import com.google.samples.apps.sunflower.R
 import com.google.samples.apps.sunflower.data.Plant
@@ -96,7 +96,7 @@ private fun PlantWatering(wateringInterval: Int) {
             modifier = centerWithPaddingModifier.padding(top = normalPadding)
         )
 
-        val wateringIntervalText = ContextAmbient.current.resources.getQuantityString(
+        val wateringIntervalText = AmbientContext.current.resources.getQuantityString(
             R.plurals.watering_needs_suffix, wateringInterval, wateringInterval
         )
         Text(
@@ -124,7 +124,7 @@ private fun PlantDescription(description: String) {
 
 @Composable
 private fun rememberTextView(): TextView {
-    val context = ContextAmbient.current
+    val context = AmbientContext.current
     return remember {
         TextView(context).apply {
             movementMethod = LinkMovementMethod.getInstance()
