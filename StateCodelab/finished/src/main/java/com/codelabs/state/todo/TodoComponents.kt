@@ -18,11 +18,11 @@ package com.codelabs.state.todo
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.ExperimentalAnimationApi
-import androidx.compose.animation.animate
 import androidx.compose.animation.animateContentSize
 import androidx.compose.animation.core.FastOutLinearInEasing
 import androidx.compose.animation.core.FastOutSlowInEasing
 import androidx.compose.animation.core.TweenSpec
+import androidx.compose.animation.core.animateAsState
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.foundation.background
@@ -45,6 +45,7 @@ import androidx.compose.material.Text
 import androidx.compose.material.TextButton
 import androidx.compose.material.TextField
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -171,7 +172,7 @@ fun TodoItemInputBackground(
     modifier: Modifier = Modifier,
     content: @Composable RowScope.() -> Unit
 ) {
-    val animatedElevation = animate(if (elevate) 1.dp else 0.dp, TweenSpec(500))
+    val animatedElevation by animateAsState(if (elevate) 1.dp else 0.dp, TweenSpec(500))
     Surface(
         color = MaterialTheme.colors.onSurface.copy(alpha = 0.05f),
         elevation = animatedElevation,
