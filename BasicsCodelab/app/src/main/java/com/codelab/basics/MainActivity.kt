@@ -67,7 +67,7 @@ fun MyScreenContent(names: List<String> = List(1000) { "Hello Android #$it" }) {
     val counterState = remember { mutableStateOf(0) }
 
     Column(modifier = Modifier.fillMaxHeight()) {
-        NameList(modifier = Modifier.weight(1f), names = names)
+        NameList(names, Modifier.weight(1f))
         Counter(
             count = counterState.value,
             updateCount = { newCount ->
