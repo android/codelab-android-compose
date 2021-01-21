@@ -17,7 +17,6 @@
 package com.codelab.theming.ui.start
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.ScrollableColumn
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
@@ -26,6 +25,8 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.preferredHeight
 import androidx.compose.foundation.layout.preferredHeightIn
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material.Card
 import androidx.compose.material.Divider
 import androidx.compose.material.Icon
@@ -59,14 +60,20 @@ fun Home() {
         Scaffold(
             topBar = { AppBar() }
         ) { innerPadding ->
-            ScrollableColumn(contentPadding = innerPadding) {
-                Header(stringResource(R.string.top))
-                FeaturedPost(
-                    post = featured,
-                    modifier = Modifier.padding(16.dp)
-                )
-                Header(stringResource(R.string.popular))
-                posts.forEach { post ->
+            LazyColumn(contentPadding = innerPadding) {
+                item {
+                    Header(stringResource(R.string.top))
+                }
+                item {
+                    FeaturedPost(
+                        post = featured,
+                        modifier = Modifier.padding(16.dp)
+                    )
+                }
+                item {
+                    Header(stringResource(R.string.popular))
+                }
+                items(posts) { post ->
                     PostItem(post = post)
                     Divider(startIndent = 72.dp)
                 }
@@ -79,7 +86,11 @@ fun Home() {
 private fun AppBar() {
     TopAppBar(
         navigationIcon = {
-            Icon(Icons.Rounded.Palette, Modifier.padding(horizontal = 12.dp))
+            Icon(
+                imageVector = Icons.Rounded.Palette,
+                contentDescription = stringResource(R.string.label_app_icon),
+                modifier = Modifier.padding(horizontal = 12.dp)
+            )
         },
         title = {
             Text(text = stringResource(R.string.app_title))
@@ -115,6 +126,7 @@ fun FeaturedPost(
         ) {
             Image(
                 bitmap = imageResource(post.imageId),
+                contentDescription = stringResource(R.string.label_post_image),
                 contentScale = ContentScale.Crop,
                 modifier = Modifier
                     .preferredHeightIn(min = 180.dp)
@@ -174,6 +186,7 @@ fun PostItem(
         icon = {
             Image(
                 bitmap = imageResource(post.imageThumbId),
+                contentDescription = stringResource(R.string.label_post_image)
             )
         },
         text = {

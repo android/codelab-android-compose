@@ -16,21 +16,24 @@
 
 buildscript {
     ext {
-        compose_version = '1.0.0-alpha10'
+        compose_version = '1.0.0-SNAPSHOT'
     }
-    ext.kotlin_version = "1.4.21"
+    ext.kotlin_version = "1.4.21-2"
     repositories {
         google()
         jcenter()
     }
     dependencies {
-        classpath "com.android.tools.build:gradle:7.0.0-alpha03"
+        classpath "com.android.tools.build:gradle:7.0.0-alpha04"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
 
 allprojects {
     repositories {
+        maven {
+            url "https://androidx.dev/snapshots/builds/7094152/artifacts/repository/"
+        }
         google()
         jcenter()
     }
