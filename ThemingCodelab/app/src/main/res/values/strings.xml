@@ -18,6 +18,4 @@
     <string name="top">Top Story</string>
     <string name="popular">Popular</string>
     <string name="read_time">%1$d min read</string>
-    <string name="label_app_icon">App icon</string>
-    <string name="label_post_image">Post image</string>
 </resources>
