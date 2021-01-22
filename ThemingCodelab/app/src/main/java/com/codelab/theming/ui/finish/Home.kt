@@ -93,7 +93,7 @@ private fun AppBar() {
         navigationIcon = {
             Icon(
                 imageVector = Icons.Rounded.Palette,
-                contentDescription = stringResource(R.string.label_app_icon),
+                contentDescription = null,
                 modifier = Modifier.padding(horizontal = 12.dp)
             )
         },
@@ -137,7 +137,7 @@ fun FeaturedPost(
         ) {
             Image(
                 bitmap = imageResource(post.imageId),
-                contentDescription = stringResource(R.string.label_post_image),
+                contentDescription = null,
                 contentScale = ContentScale.Crop,
                 modifier = Modifier
                     .preferredHeightIn(min = 180.dp)
@@ -207,7 +207,7 @@ fun PostItem(
         icon = {
             Image(
                 bitmap = imageResource(post.imageThumbId),
-                contentDescription = stringResource(R.string.label_post_image),
+                contentDescription = null,
                 modifier = Modifier.clip(shape = MaterialTheme.shapes.small)
             )
         },
