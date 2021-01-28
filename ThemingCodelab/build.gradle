@@ -24,7 +24,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath "com.android.tools.build:gradle:7.0.0-alpha04"
+        classpath "com.android.tools.build:gradle:7.0.0-alpha05"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
@@ -32,7 +32,7 @@ buildscript {
 allprojects {
     repositories {
         maven {
-            url "https://androidx.dev/snapshots/builds/7094152/artifacts/repository/"
+            url "https://androidx.dev/snapshots/builds/7107201/artifacts/repository/"
         }
         google()
         jcenter()
