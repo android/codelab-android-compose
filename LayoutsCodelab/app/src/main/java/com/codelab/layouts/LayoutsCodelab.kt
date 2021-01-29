@@ -16,9 +16,7 @@
 
 package com.codelab.layouts
 
-import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.ScrollableRow
-import androidx.compose.foundation.background
+import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -63,7 +61,7 @@ fun LayoutsCodelab() {
                 },
                 actions = {
                     IconButton(onClick = { /* doSomething() */ }) {
-                        Icon(Icons.Filled.Favorite)
+                        Icon(Icons.Filled.Favorite, contentDescription = null)
                     }
                 }
             )
@@ -75,10 +73,11 @@ fun LayoutsCodelab() {
 
 @Composable
 fun BodyContent(modifier: Modifier = Modifier) {
-    ScrollableRow(modifier = modifier
+    Row(modifier = modifier
         .background(color = Color.LightGray)
         .padding(16.dp)
-        .size(200.dp),
+        .size(200.dp)
+        .horizontalScroll(rememberScrollState()),
         content = {
             StaggeredGrid {
                 for (topic in topics) {
@@ -155,7 +154,8 @@ fun Chip(modifier: Modifier = Modifier, text: String) {
             verticalAlignment = Alignment.CenterVertically
         ) {
             Box(
-                modifier = Modifier.preferredSize(16.dp, 16.dp)
+                modifier = Modifier
+                    .preferredSize(16.dp, 16.dp)
                     .background(color = MaterialTheme.colors.secondary)
             )
             Spacer(Modifier.preferredWidth(4.dp))
