@@ -16,6 +16,7 @@
 
 package com.codelab.layouts
 
+import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.ConstraintLayout
 import androidx.compose.foundation.layout.ConstraintSet
 import androidx.compose.foundation.layout.Dimension
@@ -23,7 +24,6 @@ import androidx.compose.material.Button
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.layout.WithConstraints
 import androidx.compose.ui.layout.layoutId
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
@@ -53,7 +53,7 @@ fun ConstraintLayoutContent() {
 
 @Composable
 fun DecoupledConstraintLayout() {
-    WithConstraints {
+    BoxWithConstraints {
         val constraints = if (maxWidth < maxHeight) {
             decoupledConstraints(margin = 16.dp) // Portrait constraints
         } else {
