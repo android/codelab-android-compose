@@ -18,13 +18,14 @@ package com.codelab.basics
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.compose.animation.animateAsState
+import androidx.compose.animation.animateColorAsState
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material.Button
 import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.Divider
@@ -90,7 +91,7 @@ fun NameList(names: List<String>, modifier: Modifier = Modifier) {
 @Composable
 fun Greeting(name: String) {
     var isSelected by remember { mutableStateOf(false) }
-    val backgroundColor by animateAsState(if (isSelected) Color.Red else Color.Transparent)
+    val backgroundColor by animateColorAsState(if (isSelected) Color.Red else Color.Transparent)
 
     Text(
         text = "Hello $name!",
