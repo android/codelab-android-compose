@@ -24,12 +24,14 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material.Button
 import androidx.compose.material.Icon
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.codelabs.state.util.generateRandomTodoItem
@@ -38,13 +40,13 @@ import kotlin.random.Random
 /**
  * Stateless component that is responsible for the entire todo screen.
  *
- * @param items (state) list of [TodoItem] to display
+ * @param itemsList (state) list of [TodoItem] to display
  * @param onAddItem (event) request an item be added
  * @param onRemoveItem (event) request an item be removed
  */
 @Composable
 fun TodoScreen(
-    items: List<TodoItem>,
+    itemsList: List<TodoItem>,
     onAddItem: (TodoItem) -> Unit,
     onRemoveItem: (TodoItem) -> Unit
 ) {
@@ -53,20 +55,21 @@ fun TodoScreen(
             modifier = Modifier.weight(1f),
             contentPadding = PaddingValues(top = 8.dp)
         ) {
-            items(items = items,
-                itemContent = { todo ->
-                    TodoRow(
-                        todo = todo,
-                        onItemClicked = { onRemoveItem(it) },
-                        modifier = Modifier.fillParentMaxWidth()
-                    )
-                })
+            items(items = itemsList) {
+                TodoRow(
+                    todo = it,
+                    onItemClicked = { onRemoveItem(it) },
+                    modifier = Modifier.fillParentMaxWidth()
+                )
+            }
         }
 
         // For quick testing, a random item generator button
         Button(
             onClick = { onAddItem(generateRandomTodoItem()) },
-            modifier = Modifier.padding(16.dp).fillMaxWidth(),
+            modifier = Modifier
+                .padding(16.dp)
+                .fillMaxWidth(),
         ) {
             Text("Add random item")
         }
@@ -89,7 +92,10 @@ fun TodoRow(todo: TodoItem, onItemClicked: (TodoItem) -> Unit, modifier: Modifie
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
         Text(todo.task)
-        Icon(todo.icon.imageVector)
+        Icon(
+            imageVector = todo.icon.imageVector,
+            contentDescription = stringResource(id = todo.icon.contentDescription)
+        )
     }
 }
 
