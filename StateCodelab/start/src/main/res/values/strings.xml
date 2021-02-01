@@ -16,4 +16,11 @@
 
 <resources>
     <string name="app_name">StateCodelab</string>
+    <string name="cd_expand">Expand</string>
+    <string name="cd_collapse">Collapse</string>
+    <string name="cd_crop_square">Crop</string>
+    <string name="cd_done">Done</string>
+    <string name="cd_event">Event</string>
+    <string name="cd_privacy">Privacy</string>
+    <string name="cd_restore">Restore</string>
 </resources>
