@@ -18,27 +18,27 @@ package com.codelab.theming.ui.finish.theme
 
 import androidx.compose.material.Typography
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.font.font
-import androidx.compose.ui.text.font.fontFamily
 import androidx.compose.ui.unit.sp
 import com.codelab.theming.R
 
 /**
  * https://fonts.google.com/specimen/Montserrat
  */
-private val Montserrat = fontFamily(
-    font(R.font.montserrat_regular),
-    font(R.font.montserrat_medium, FontWeight.W500),
-    font(R.font.montserrat_semibold, FontWeight.W600)
+private val Montserrat = FontFamily(
+    Font(R.font.montserrat_regular),
+    Font(R.font.montserrat_medium, FontWeight.W500),
+    Font(R.font.montserrat_semibold, FontWeight.W600)
 )
 
 /**
  * https://fonts.google.com/specimen/Domine
  */
-private val Domine = fontFamily(
-    font(R.font.domine_regular),
-    font(R.font.domine_bold, FontWeight.Bold)
+private val Domine = FontFamily(
+    Font(R.font.domine_regular),
+    Font(R.font.domine_bold, FontWeight.Bold)
 )
 
 val JetnewsTypography = Typography(
