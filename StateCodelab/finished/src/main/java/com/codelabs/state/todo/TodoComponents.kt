@@ -16,6 +16,7 @@
 
 package com.codelabs.state.todo
 
+import androidx.annotation.StringRes
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.animation.animateContentSize
@@ -23,6 +24,7 @@ import androidx.compose.animation.core.FastOutLinearInEasing
 import androidx.compose.animation.core.FastOutSlowInEasing
 import androidx.compose.animation.core.TweenSpec
 import androidx.compose.animation.core.animateAsState
+import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.foundation.background
@@ -51,6 +53,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -108,6 +111,7 @@ fun IconRow(
         for (todoIcon in TodoIcon.values()) {
             SelectableIconButton(
                 icon = todoIcon.imageVector,
+                iconContentDescription = todoIcon.contentDescription,
                 onIconSelected = { onIconChange(todoIcon) },
                 isSelected = todoIcon == icon
             )
@@ -127,6 +131,7 @@ fun IconRow(
 @Composable
 private fun SelectableIconButton(
     icon: ImageVector,
+    @StringRes iconContentDescription: Int,
     onIconSelected: () -> Unit,
     isSelected: Boolean,
     modifier: Modifier = Modifier
@@ -142,7 +147,11 @@ private fun SelectableIconButton(
         modifier = modifier
     ) {
         Column {
-            Icon(icon, tint = tint)
+            Icon(
+                imageVector = icon,
+                tint = tint,
+                contentDescription = stringResource(id = iconContentDescription)
+            )
             if (isSelected) {
                 Box(
                     Modifier
@@ -172,7 +181,7 @@ fun TodoItemInputBackground(
     modifier: Modifier = Modifier,
     content: @Composable RowScope.() -> Unit
 ) {
-    val animatedElevation by animateAsState(if (elevate) 1.dp else 0.dp, TweenSpec(500))
+    val animatedElevation by animateDpAsState(if (elevate) 1.dp else 0.dp, TweenSpec(500))
     Surface(
         color = MaterialTheme.colors.onSurface.copy(alpha = 0.05f),
         elevation = animatedElevation,

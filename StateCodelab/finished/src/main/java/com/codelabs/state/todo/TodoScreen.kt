@@ -32,6 +32,7 @@ import androidx.compose.foundation.layout.preferredHeight
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material.AmbientContentColor
 import androidx.compose.material.Button
 import androidx.compose.material.Icon
@@ -40,11 +41,11 @@ import androidx.compose.material.Text
 import androidx.compose.material.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.onCommit
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.savedinstancestate.savedInstanceState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -94,7 +95,7 @@ fun TodoScreen(
             modifier = Modifier.weight(1f),
             contentPadding = PaddingValues(top = 8.dp)
         ) {
-            items(items) { todo ->
+            items(items = items) { todo ->
                 if (currentlyEditing?.id == todo.id) {
                     TodoItemInlineEditor(
                         item = currentlyEditing,
@@ -115,7 +116,9 @@ fun TodoScreen(
         // For quick testing, a random item generator button
         Button(
             onClick = { onAddItem(generateRandomTodoItem()) },
-            modifier = Modifier.padding(16.dp).fillMaxWidth(),
+            modifier = Modifier
+                .padding(16.dp)
+                .fillMaxWidth(),
         ) {
             Text("Add random item")
         }
@@ -179,7 +182,6 @@ fun TodoItemInlineEditor(
  */
 @Composable
 fun TodoItemEntryInput(onItemComplete: (TodoItem) -> Unit, buttonText: String = "Add") {
-    onCommit(Unit) {}
     val (text, onTextChange) = savedInstanceState { "" }
     val (icon, onIconChange) = remember { mutableStateOf(TodoIcon.Default) }
 
@@ -277,7 +279,8 @@ fun TodoRow(
         Text(todo.task)
         Icon(
             imageVector = todo.icon.imageVector,
-            tint = AmbientContentColor.current.copy(alpha = iconAlpha)
+            tint = AmbientContentColor.current.copy(alpha = iconAlpha),
+            contentDescription = stringResource(id = todo.icon.contentDescription)
         )
     }
 }
