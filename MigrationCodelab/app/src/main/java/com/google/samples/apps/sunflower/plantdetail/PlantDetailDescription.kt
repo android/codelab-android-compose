@@ -32,7 +32,7 @@ import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.AmbientContext
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -96,7 +96,7 @@ private fun PlantWatering(wateringInterval: Int) {
             modifier = centerWithPaddingModifier.padding(top = normalPadding)
         )
 
-        val wateringIntervalText = AmbientContext.current.resources.getQuantityString(
+        val wateringIntervalText = LocalContext.current.resources.getQuantityString(
             R.plurals.watering_needs_suffix, wateringInterval, wateringInterval
         )
         Text(
@@ -124,7 +124,7 @@ private fun PlantDescription(description: String) {
 
 @Composable
 private fun rememberTextView(): TextView {
-    val context = AmbientContext.current
+    val context = LocalContext.current
     return remember {
         TextView(context).apply {
             movementMethod = LinkMovementMethod.getInstance()
