@@ -33,7 +33,7 @@ buildscript {
 allprojects {
     repositories {
         maven {
-            url "https://androidx.dev/snapshots/builds/7123292/artifacts/repository/"
+            url "https://storage.googleapis.com/temp-androidx-snapshot.appspot.com/7123292/"
         }
         google()
         jcenter()
@@ -44,12 +44,10 @@ task clean(type: Delete) {
     delete rootProject.buildDir
 }
 
+// TODO: Temporary fix for Compose Alpha 12 snapshot, remove after release
 subprojects {
     configurations.configureEach {
         resolutionStrategy.eachDependency { details ->
-            if (details.requested.group.startsWith('androidx.compose')) {
-                details.useVersion project.composeVersion
-            }
             if (details.requested.group == 'androidx.lifecycle'
                     && details.requested.name != 'lifecycle-extensions'
             ) {
