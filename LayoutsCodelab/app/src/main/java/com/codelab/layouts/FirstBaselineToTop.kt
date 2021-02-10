@@ -38,7 +38,7 @@ fun Modifier.firstBaselineToTop(
     val firstBaseline = placeable[FirstBaseline]
 
     // Height of the composable with padding - first baseline
-    val placeableY = firstBaselineToTop.toIntPx() - firstBaseline
+    val placeableY = firstBaselineToTop.roundToPx() - firstBaseline
     val height = placeable.height + placeableY
     layout(placeable.width, height) {
         // Where the composable gets placed
