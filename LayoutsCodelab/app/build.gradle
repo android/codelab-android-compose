@@ -39,7 +39,6 @@ android {
         jvmTarget = '1.8'
         useIR = true
         allWarningsAsErrors = true
-//        freeCompilerArgs += ["-Xallow-unstable-dependencies"]
     }
     buildFeatures {
         compose true
