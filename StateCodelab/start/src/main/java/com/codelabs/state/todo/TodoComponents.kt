@@ -38,6 +38,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.preferredHeight
 import androidx.compose.foundation.layout.preferredWidth
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
@@ -53,6 +54,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.SoftwareKeyboardController
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -79,8 +81,8 @@ fun AnimatedIconRow(
 ) {
     // remember these specs so they don't restart if recomposing during the animation
     // this is required since TweenSpec restarts on interruption
-    val enter = remember { fadeIn(animSpec = TweenSpec(300, easing = FastOutLinearInEasing)) }
-    val exit = remember { fadeOut(animSpec = TweenSpec(100, easing = FastOutSlowInEasing)) }
+    val enter = remember { fadeIn(animationSpec = TweenSpec(300, easing = FastOutLinearInEasing)) }
+    val exit = remember { fadeOut(animationSpec = TweenSpec(100, easing = FastOutSlowInEasing)) }
     Box(modifier.defaultMinSizeConstraints(minHeight = 16.dp)) {
         AnimatedVisibility(
             visible = visible,
@@ -187,7 +189,7 @@ fun TodoItemInputBackground(
         shape = RectangleShape,
     ) {
         Row(
-            modifier = modifier.animateContentSize(animSpec = TweenSpec(300)),
+            modifier = modifier.animateContentSize(animationSpec = TweenSpec(300)),
             content = content
         )
     }
@@ -207,20 +209,22 @@ fun TodoInputText(
     onTextChange: (String) -> Unit,
     modifier: Modifier = Modifier,
     onImeAction: () -> Unit = {}
-) = TextField(
-    value = text,
-    onValueChange = onTextChange,
-    backgroundColor = Color.Transparent,
-    maxLines = 1,
-    keyboardOptions = KeyboardOptions.Default.copy(imeAction = ImeAction.Done),
-    onImeActionPerformed = { action, softKeyboardController ->
-        if (action == ImeAction.Done) {
+) {
+    lateinit var softwareKeyboardController: SoftwareKeyboardController
+    TextField(
+        value = text,
+        onValueChange = onTextChange,
+        backgroundColor = Color.Transparent,
+        maxLines = 1,
+        onTextInputStarted = { softwareKeyboardController = it },
+        keyboardOptions = KeyboardOptions.Default.copy(imeAction = ImeAction.Done),
+        keyboardActions = KeyboardActions(onDone = {
             onImeAction()
-            softKeyboardController?.hideSoftwareKeyboard()
-        }
-    },
-    modifier = modifier
-)
+            softwareKeyboardController.hideSoftwareKeyboard()
+        }),
+        modifier = modifier
+    )
+}
 
 /**
  * Styled button for [TodoScreen]
