@@ -26,12 +26,13 @@ import androidx.compose.foundation.layout.preferredHeight
 import androidx.compose.foundation.layout.preferredHeightIn
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material.AmbientContentAlpha
 import androidx.compose.material.Card
 import androidx.compose.material.ContentAlpha
 import androidx.compose.material.Divider
+import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.Icon
 import androidx.compose.material.ListItem
+import androidx.compose.material.LocalContentAlpha
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Surface
@@ -47,6 +48,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.imageResource
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.withStyle
@@ -136,7 +138,7 @@ fun FeaturedPost(
                 .clickable { /* onClick */ }
         ) {
             Image(
-                bitmap = imageResource(post.imageId),
+                painter = painterResource(post.imageId),
                 contentDescription = null,
                 contentScale = ContentScale.Crop,
                 modifier = Modifier
@@ -186,7 +188,7 @@ private fun PostMetadata(
             }
         }
     }
-    Providers(AmbientContentAlpha provides ContentAlpha.medium) {
+    Providers(LocalContentAlpha provides ContentAlpha.medium) {
         Text(
             text = text,
             style = MaterialTheme.typography.body2,
@@ -195,6 +197,7 @@ private fun PostMetadata(
     }
 }
 
+@OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun PostItem(
     post: Post,
@@ -206,7 +209,7 @@ fun PostItem(
             .padding(vertical = 8.dp),
         icon = {
             Image(
-                bitmap = imageResource(post.imageThumbId),
+                painter = painterResource(post.imageThumbId),
                 contentDescription = null,
                 modifier = Modifier.clip(shape = MaterialTheme.shapes.small)
             )
