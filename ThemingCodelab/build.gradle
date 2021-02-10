@@ -16,9 +16,9 @@
 
 buildscript {
     ext {
-        compose_version = '1.0.0-alpha11'
+        compose_version = '1.0.0-SNAPSHOT'
     }
-    ext.kotlin_version = "1.4.21-2"
+    ext.kotlin_version = "1.4.30"
     repositories {
         google()
         jcenter()
@@ -31,6 +31,8 @@ buildscript {
 
 allprojects {
     repositories {
+        // FIXME: Temporary Compose 1.0.0-alpha12 snapshot
+        maven { url 'https://storage.googleapis.com/temp-androidx-snapshot.appspot.com/7123292/' }
         google()
         jcenter()
     }
@@ -41,4 +43,24 @@ allprojects {
             freeCompilerArgs += '-Xopt-in=kotlin.RequiresOptIn'
         }
     }
+
+    // FIXME: Only needed for Compose 1.0.0-alpha12 snapshots
+    subprojects {
+        configurations.configureEach {
+            resolutionStrategy.eachDependency { details ->
+                if (details.requested.group.startsWith('androidx.compose')) {
+                    details.useVersion compose_version
+                }
+                if (details.requested.group == 'androidx.lifecycle'
+                        && details.requested.name != 'lifecycle-extensions'
+                ) {
+                    details.useVersion('2.3.0-rc01')
+                }
+                if (details.requested.group == 'androidx.savedstate') {
+                    details.useVersion('1.1.0-rc01')
+                }
+            }
+        }
+    }
+
 }

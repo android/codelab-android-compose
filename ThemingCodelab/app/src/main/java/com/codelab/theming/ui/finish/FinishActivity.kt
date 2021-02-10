@@ -18,8 +18,8 @@ package com.codelab.theming.ui.finish
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
 import androidx.compose.material.Surface
-import androidx.compose.ui.platform.setContent
 
 /**
  * This activity demonstrates the final state of the codelab. You can run it from the included
