@@ -211,7 +211,7 @@ fun TodoInputText(
     onImeAction: () -> Unit = {}
 ) {
     lateinit var softwareKeyboardController: SoftwareKeyboardController
-    return TextField(
+    TextField(
         value = text,
         onValueChange = onTextChange,
         backgroundColor = Color.Transparent,

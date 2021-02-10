@@ -42,6 +42,7 @@ import androidx.compose.material.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
@@ -181,7 +182,7 @@ fun TodoItemInlineEditor(
  */
 @Composable
 fun TodoItemEntryInput(onItemComplete: (TodoItem) -> Unit, buttonText: String = "Add") {
-    val (text, onTextChange) = remember { mutableStateOf("") }
+    val (text, onTextChange) = rememberSaveable { mutableStateOf("") }
     val (icon, onIconChange) = remember { mutableStateOf(TodoIcon.Default) }
 
     val submit = {
