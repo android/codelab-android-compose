@@ -34,7 +34,8 @@ import androidx.compose.material.icons.filled.ExpandLess
 import androidx.compose.material.icons.filled.ExpandMore
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.savedinstancestate.savedInstanceState
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -50,7 +51,7 @@ import com.codelabs.state.R
 
 @Composable
 fun ExpandingCard(title: String, body: String, modifier: Modifier = Modifier) {
-    var expanded by savedInstanceState { false }
+    var expanded by rememberSaveable { mutableStateOf(false) }
     ExpandingCard(
         title = title,
         body = body,
