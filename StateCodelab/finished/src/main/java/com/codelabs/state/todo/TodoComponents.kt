@@ -54,6 +54,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.SoftwareKeyboardController
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -208,18 +209,22 @@ fun TodoInputText(
     onTextChange: (String) -> Unit,
     modifier: Modifier = Modifier,
     onImeAction: () -> Unit = {}
-) = TextField(
-    value = text,
-    onValueChange = onTextChange,
-    backgroundColor = Color.Transparent,
-    maxLines = 1,
-    keyboardOptions = KeyboardOptions.Default.copy(imeAction = ImeAction.Done),
-    keyboardActions = KeyboardActions(onDone = {
-        onImeAction()
-//        softKeyboardController?.hideSoftwareKeyboard()
-    }),
-    modifier = modifier
-)
+) {
+    lateinit var softwareKeyboardController: SoftwareKeyboardController
+    return TextField(
+        value = text,
+        onValueChange = onTextChange,
+        backgroundColor = Color.Transparent,
+        maxLines = 1,
+        onTextInputStarted = {softwareKeyboardController = it},
+        keyboardOptions = KeyboardOptions.Default.copy(imeAction = ImeAction.Done),
+        keyboardActions = KeyboardActions(onDone = {
+            onImeAction()
+            softwareKeyboardController.hideSoftwareKeyboard()
+        }),
+        modifier = modifier
+    )
+}
 
 /**
  * Styled button for [TodoScreen]
