@@ -33,16 +33,15 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material.AmbientContentColor
 import androidx.compose.material.Button
 import androidx.compose.material.Icon
+import androidx.compose.material.LocalContentColor
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.material.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.savedinstancestate.savedInstanceState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
@@ -182,7 +181,7 @@ fun TodoItemInlineEditor(
  */
 @Composable
 fun TodoItemEntryInput(onItemComplete: (TodoItem) -> Unit, buttonText: String = "Add") {
-    val (text, onTextChange) = savedInstanceState { "" }
+    val (text, onTextChange) = remember { mutableStateOf("") }
     val (icon, onIconChange) = remember { mutableStateOf(TodoIcon.Default) }
 
     val submit = {
@@ -279,7 +278,7 @@ fun TodoRow(
         Text(todo.task)
         Icon(
             imageVector = todo.icon.imageVector,
-            tint = AmbientContentColor.current.copy(alpha = iconAlpha),
+            tint = LocalContentColor.current.copy(alpha = iconAlpha),
             contentDescription = stringResource(id = todo.icon.contentDescription)
         )
     }
