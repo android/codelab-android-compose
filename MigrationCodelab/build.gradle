@@ -24,7 +24,7 @@ buildscript {
 
         // App dependencies
         appCompatVersion = '1.1.0'
-        composeVersion = '1.0.0-SNAPSHOT'
+        composeVersion = '1.0.0-alpha12'
         constraintLayoutVersion = '2.0.2'
         coreTestingVersion = '2.1.0'
         coroutinesVersion = "1.4.2"
@@ -68,13 +68,8 @@ plugins {
 
 allprojects {
     repositories {
-        maven { // Compose alpha12 snapshot
-            url "https://androidx.dev/snapshots/builds/7123292/artifacts/repository/"
-        }
         google()
         jcenter()
-        // Compose's MDC Theme adapter snapshots
-        maven { url 'https://jitpack.io' }
     }
 }
 
@@ -84,24 +79,5 @@ spotless {
         targetExclude("$buildDir/**/*.kt")
         targetExclude('bin/**/*.kt')
         ktlint(ktlintVersion)
-    }
-}
-
-// FIXME: Only needed for Compose 1.0.0-alpha12 snapshots
-subprojects {
-    configurations.configureEach {
-        resolutionStrategy.eachDependency { details ->
-            if (details.requested.group.startsWith('androidx.compose')) {
-                details.useVersion project.composeVersion
-            }
-            if (details.requested.group == 'androidx.lifecycle'
-                    && details.requested.name != 'lifecycle-extensions'
-            ) {
-                details.useVersion('2.3.0-rc01')
-            }
-            if (details.requested.group == 'androidx.savedstate') {
-                details.useVersion('1.1.0-rc01')
-            }
-        }
     }
 }
