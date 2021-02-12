@@ -24,22 +24,22 @@ buildscript {
 
         // App dependencies
         appCompatVersion = '1.1.0'
-        composeVersion = '1.0.0-alpha11'
+        composeVersion = '1.0.0-alpha12'
         constraintLayoutVersion = '2.0.2'
         coreTestingVersion = '2.1.0'
         coroutinesVersion = "1.4.2"
         espressoVersion = '3.3.0'
         fragmentVersion = '1.2.5'
-        glideVersion = '4.10.0'
+        glideVersion = '4.11.0'
         gradleVersion = '7.0.0-alpha05'
         gsonVersion = '2.8.6'
-        junitVersion = '4.13'
-        kotlinVersion = '1.4.21-2'
+        junitVersion = '4.13.1'
+        kotlinVersion = '1.4.30'
         ktlintVersion = '0.37.2'
         ktxVersion = '1.5.0-alpha02'
         lifecycleVersion = '2.2.0'
         materialVersion = '1.2.1'
-        navigationVersion = '2.3.2'
+        navigationVersion = '2.3.3'
         recyclerViewVersion = '1.1.0-alpha05'
         roomVersion = '2.2.6'
         runnerVersion = '1.0.1'
@@ -47,7 +47,7 @@ buildscript {
         testExtJunit = '1.1.2-rc02'
         uiAutomatorVersion = '2.2.0'
         viewPagerVersion = '1.0.0'
-        workVersion = '2.4.0'
+        workVersion = '2.5.0'
     }
 
     repositories {
@@ -81,3 +81,4 @@ spotless {
         ktlint(ktlintVersion)
     }
 }
+
