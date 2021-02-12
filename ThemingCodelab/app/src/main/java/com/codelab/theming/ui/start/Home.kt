@@ -29,6 +29,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.Card
 import androidx.compose.material.Divider
+import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.Icon
 import androidx.compose.material.ListItem
 import androidx.compose.material.MaterialTheme
@@ -43,7 +44,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.imageResource
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.tooling.preview.Preview
@@ -125,7 +126,7 @@ fun FeaturedPost(
                 .clickable { /* onClick */ }
         ) {
             Image(
-                bitmap = imageResource(post.imageId),
+                painter = painterResource(post.imageId),
                 contentDescription = null,
                 contentScale = ContentScale.Crop,
                 modifier = Modifier
@@ -174,6 +175,7 @@ private fun PostMetadata(
     )
 }
 
+@OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun PostItem(
     post: Post,
@@ -185,7 +187,7 @@ fun PostItem(
             .padding(vertical = 8.dp),
         icon = {
             Image(
-                bitmap = imageResource(post.imageThumbId),
+                painter = painterResource(post.imageThumbId),
                 contentDescription = null
             )
         },
