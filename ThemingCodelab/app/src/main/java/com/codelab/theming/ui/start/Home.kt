@@ -22,9 +22,9 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.preferredHeight
-import androidx.compose.foundation.layout.preferredHeightIn
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.Card
@@ -130,10 +130,10 @@ fun FeaturedPost(
                 contentDescription = null,
                 contentScale = ContentScale.Crop,
                 modifier = Modifier
-                    .preferredHeightIn(min = 180.dp)
+                    .heightIn(min = 180.dp)
                     .fillMaxWidth()
             )
-            Spacer(Modifier.preferredHeight(16.dp))
+            Spacer(Modifier.height(16.dp))
 
             val padding = Modifier.padding(horizontal = 16.dp)
             Text(
@@ -145,7 +145,7 @@ fun FeaturedPost(
                 modifier = padding
             )
             PostMetadata(post, padding)
-            Spacer(Modifier.preferredHeight(16.dp))
+            Spacer(Modifier.height(16.dp))
         }
     }
 }
