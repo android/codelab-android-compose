@@ -17,15 +17,16 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
     ext {
-        compose_version = '1.0.0-alpha12'
+        compose_version = '1.0.0-SNAPSHOT'
     }
     ext.kotlin_version = "1.4.30"
     repositories {
+        maven { url "https://androidx.dev/snapshots/builds/7141639/artifacts/repository/" }
         google()
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:7.0.0-alpha05'
+        classpath 'com.android.tools.build:gradle:7.0.0-alpha06'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
@@ -39,4 +40,14 @@ allprojects {
 
 task clean(type: Delete) {
     delete rootProject.buildDir
+}
+
+subprojects {
+    configurations.configureEach {
+        resolutionStrategy.eachDependency { details ->
+            if (details.requested.group.startsWith('androidx.compose')) {
+                details.useVersion project.composeVersion
+            }
+        }
+    }
 }
