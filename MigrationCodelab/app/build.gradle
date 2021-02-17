@@ -68,7 +68,6 @@ dependencies {
     implementation "androidx.constraintlayout:constraintlayout:$rootProject.constraintLayoutVersion"
     implementation "androidx.core:core-ktx:$rootProject.ktxVersion"
     implementation "androidx.fragment:fragment-ktx:$rootProject.fragmentVersion"
-    implementation "androidx.lifecycle:lifecycle-extensions:$rootProject.lifecycleVersion"
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$rootProject.lifecycleVersion"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$rootProject.lifecycleVersion"
     implementation "androidx.navigation:navigation-fragment-ktx:$rootProject.navigationVersion"
@@ -93,7 +92,8 @@ dependencies {
     implementation "androidx.compose.material:material:$rootProject.composeVersion"
     implementation "androidx.compose.runtime:runtime-livedata:$rootProject.composeVersion"
     implementation "androidx.compose.ui:ui-tooling:$rootProject.composeVersion"
-    implementation "com.google.android.material:compose-theme-adapter:$rootProject.composeVersion"
+//    implementation "com.google.android.material:compose-theme-adapter:$rootProject.composeVersion"
+    implementation 'com.github.material-components:material-components-android-compose-theme-adapter:snapshot-SNAPSHOT'
 
     // Testing dependencies
     androidTestImplementation "androidx.arch.core:core-testing:$rootProject.coreTestingVersion"
