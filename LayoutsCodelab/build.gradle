@@ -36,6 +36,8 @@ allprojects {
         maven { url "http://androidx.dev/storage/repository/androidx/constraintlayout" }
         google()
         jcenter()
+
+        maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
     }
 }
 
