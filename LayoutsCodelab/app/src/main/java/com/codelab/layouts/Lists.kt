@@ -3,7 +3,6 @@ package com.codelab.layouts
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
@@ -110,7 +109,6 @@ fun ImageListPreview() {
     ImageList()
 }
 
-@Preview
 @Composable
 fun ScrollingList() {
     val listSize = 100
@@ -123,6 +121,7 @@ fun ScrollingList() {
         Row {
             Button(onClick = {
                 coroutineScope.launch {
+                    // 0 is the first item index
                     scrollState.animateScrollToItem(0)
                 }
             }) {
@@ -131,6 +130,7 @@ fun ScrollingList() {
 
             Button(onClick = {
                 coroutineScope.launch {
+                    // listSize - 1 is the last index of the list
                     scrollState.animateScrollToItem(listSize - 1)
                 }
             }) {
