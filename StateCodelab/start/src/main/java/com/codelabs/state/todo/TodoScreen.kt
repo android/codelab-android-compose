@@ -40,13 +40,13 @@ import kotlin.random.Random
 /**
  * Stateless component that is responsible for the entire todo screen.
  *
- * @param itemsList (state) list of [TodoItem] to display
+ * @param items (state) list of [TodoItem] to display
  * @param onAddItem (event) request an item be added
  * @param onRemoveItem (event) request an item be removed
  */
 @Composable
 fun TodoScreen(
-    itemsList: List<TodoItem>,
+    items: List<TodoItem>,
     onAddItem: (TodoItem) -> Unit,
     onRemoveItem: (TodoItem) -> Unit
 ) {
@@ -55,7 +55,7 @@ fun TodoScreen(
             modifier = Modifier.weight(1f),
             contentPadding = PaddingValues(top = 8.dp)
         ) {
-            items(items = itemsList) {
+            items(items = items) {
                 TodoRow(
                     todo = it,
                     onItemClicked = { onRemoveItem(it) },
