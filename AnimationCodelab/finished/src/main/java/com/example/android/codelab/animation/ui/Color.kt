@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 Google LLC
+ * Copyright 2021 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,10 +18,10 @@ package com.example.android.codelab.animation.ui
 
 import androidx.compose.ui.graphics.Color
 
-val purple100 = Color(0xFFE1BEE7)
-val purple500 = Color(0xFF6200EE)
-val purple700 = Color(0xFF3700B3)
-val teal200 = Color(0xFF03DAC5)
-val green300 = Color(0xFF81C784)
-val green800 = Color(0xFF2E7D32)
-val amber600 = Color(0xFFFFB300)
+val Purple100 = Color(0xFFE1BEE7)
+val Purple500 = Color(0xFF6200EE)
+val Purple700 = Color(0xFF3700B3)
+val Teal200 = Color(0xFF03DAC5)
+val Green300 = Color(0xFF81C784)
+val Green800 = Color(0xFF2E7D32)
+val Amber600 = Color(0xFFFFB300)

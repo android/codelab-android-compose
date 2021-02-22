@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 Google LLC
+ * Copyright 2021 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,7 +23,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:7.0.0-alpha06'
+        classpath 'com.android.tools.build:gradle:7.0.0-alpha07'
         classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.4.30'
     }
 }
@@ -32,17 +32,7 @@ allprojects {
     repositories {
         google()
         jcenter()
-        maven { url 'https://androidx.dev/snapshots/builds/7141639/artifacts/repository' }
-    }
-}
-
-subprojects {
-    configurations.configureEach {
-        resolutionStrategy.eachDependency { details ->
-            if (details.requested.group.startsWith('androidx.compose')) {
-                details.useVersion compose_version
-            }
-        }
+        maven { url 'https://androidx.dev/snapshots/builds/7154166/artifacts/repository' }
     }
 }
 

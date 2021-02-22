@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 Google LLC
+ * Copyright 2021 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -61,11 +61,13 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyListState
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.FloatingActionButton
 import androidx.compose.material.Icon
+import androidx.compose.material.IconButton
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Surface
@@ -101,18 +103,20 @@ import androidx.compose.ui.input.pointer.positionChange
 import androidx.compose.ui.input.pointer.util.VelocityTracker
 import androidx.compose.ui.res.stringArrayResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.heading
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.android.codelab.animation.R
+import com.example.android.codelab.animation.ui.Amber600
 import com.example.android.codelab.animation.ui.AnimationCodelabTheme
-import com.example.android.codelab.animation.ui.amber600
-import com.example.android.codelab.animation.ui.green300
-import com.example.android.codelab.animation.ui.green800
-import com.example.android.codelab.animation.ui.purple100
-import com.example.android.codelab.animation.ui.purple700
+import com.example.android.codelab.animation.ui.Green300
+import com.example.android.codelab.animation.ui.Green800
+import com.example.android.codelab.animation.ui.Purple100
+import com.example.android.codelab.animation.ui.Purple700
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -143,7 +147,7 @@ fun Home() {
     // True if the message about the edit feature is shown.
     var editMessageShown by remember { mutableStateOf(false) }
 
-    // Starts loading weather data. This takes 3 seconds.
+    // Simulates loading weather data. This takes 3 seconds.
     suspend fun loadWeather() {
         if (!weatherLoading) {
             weatherLoading = true
@@ -161,16 +165,18 @@ fun Home() {
         }
     }
 
+    // Load the weather at the initial composition.
     LaunchedEffect(Unit) {
         loadWeather()
     }
+
     val lazyListState = rememberLazyListState()
 
     // The background color. The value is changed by the current tab.
-    val backgroundColor by animateColorAsState(if (currentTab == 0) purple100 else green300)
+    val backgroundColor by animateColorAsState(if (currentTab == 0) Purple100 else Green300)
 
     // The coroutine scope for event handlers calling suspend functions.
-    val scope = rememberCoroutineScope()
+    val coroutineScope = rememberCoroutineScope()
     Scaffold(
         topBar = {
             HomeTabBar(
@@ -184,7 +190,7 @@ fun Home() {
             HomeFloatingActionButton(
                 extended = lazyListState.isScrollingUp(),
                 onClick = {
-                    scope.launch {
+                    coroutineScope.launch {
                         showEditMessage()
                     }
                 }
@@ -192,7 +198,7 @@ fun Home() {
         }
     ) {
         LazyColumn(
-            contentPadding = PaddingValues(start = 16.dp, top = 32.dp, end = 16.dp, bottom = 32.dp),
+            contentPadding = PaddingValues(horizontal = 16.dp, vertical = 32.dp),
             state = lazyListState
         ) {
             // Weather
@@ -207,7 +213,7 @@ fun Home() {
                         LoadingRow()
                     } else {
                         WeatherRow(onRefresh = {
-                            scope.launch {
+                            coroutineScope.launch {
                                 loadWeather()
                             }
                         })
@@ -219,8 +225,7 @@ fun Home() {
             // Topics
             item { Header(title = stringResource(R.string.topics)) }
             item { Spacer(modifier = Modifier.height(16.dp)) }
-            items(count = allTopics.size) { i ->
-                val topic = allTopics[i]
+            items(allTopics) { topic ->
                 TopicRow(
                     topic = topic,
                     expanded = expandedTopic == topic,
@@ -269,13 +274,15 @@ private fun HomeFloatingActionButton(
     extended: Boolean,
     onClick: () -> Unit
 ) {
+    // Use `FloatingActionButton` rather than `ExtendedFloatingActionButton` for full control on
+    // how it should animate.
     FloatingActionButton(onClick = onClick) {
         Row(
             modifier = Modifier.padding(horizontal = 16.dp)
         ) {
             Icon(
                 imageVector = Icons.Default.Edit,
-                contentDescription = stringResource(R.string.edit)
+                contentDescription = null
             )
             // Toggle the visibility of the content with animation.
             AnimatedVisibility(visible = extended) {
@@ -353,6 +360,7 @@ private fun Header(
 ) {
     Text(
         text = title,
+        modifier = Modifier.semantics { heading() },
         style = MaterialTheme.typography.h5
     )
 }
@@ -377,12 +385,13 @@ private fun TopicRow(topic: String, expanded: Boolean, onClick: () -> Unit) {
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(16.dp)
+                // This `Column` animates its size when its content changes.
                 .animateContentSize()
         ) {
             Row {
                 Icon(
                     imageVector = Icons.Default.Info,
-                    contentDescription = stringResource(R.string.info)
+                    contentDescription = null
                 )
                 Spacer(modifier = Modifier.width(16.dp))
                 Text(
@@ -434,13 +443,11 @@ private fun HomeTabBar(
     ) {
         HomeTab(
             icon = Icons.Default.Home,
-            contentDescription = stringResource(R.string.home),
             title = stringResource(R.string.home),
             onClick = { onTabSelected(0) }
         )
         HomeTab(
             icon = Icons.Default.AccountBox,
-            contentDescription = stringResource(R.string.work),
             title = stringResource(R.string.work),
             onClick = { onTabSelected(1) }
         )
@@ -490,7 +497,7 @@ private fun HomeTabIndicator(
         tabPositions[index].right
     }
     val color by transition.animateColor { index ->
-        if (index == 0) purple700 else green800
+        if (index == 0) Purple700 else Green800
     }
     Box(
         Modifier
@@ -518,7 +525,6 @@ private fun HomeTabIndicator(
 @Composable
 private fun HomeTab(
     icon: ImageVector,
-    contentDescription: String?,
     title: String,
     onClick: () -> Unit,
     modifier: Modifier = Modifier
@@ -532,7 +538,7 @@ private fun HomeTab(
     ) {
         Icon(
             imageVector = icon,
-            contentDescription = contentDescription
+            contentDescription = null
         )
         Spacer(modifier = Modifier.width(16.dp))
         Text(text = title)
@@ -558,19 +564,17 @@ private fun WeatherRow(
             modifier = Modifier
                 .size(48.dp)
                 .clip(CircleShape)
-                .background(amber600)
+                .background(Amber600)
         )
         Spacer(modifier = Modifier.width(16.dp))
         Text(text = stringResource(R.string.temperature), fontSize = 24.sp)
         Spacer(modifier = Modifier.weight(1f))
-        Icon(
-            imageVector = Icons.Default.Refresh,
-            contentDescription = stringResource(R.string.refresh),
-            modifier = Modifier
-                .clickable(onClick = onRefresh)
-                .padding(12.dp)
-                .size(24.dp)
-        )
+        IconButton(onClick = onRefresh) {
+            Icon(
+                imageVector = Icons.Default.Refresh,
+                contentDescription = stringResource(R.string.refresh)
+            )
+        }
     }
 }
 
@@ -579,15 +583,22 @@ private fun WeatherRow(
  */
 @Composable
 private fun LoadingRow() {
+    // Creates an `InfiniteTransition` that runs infinite child animation values.
     val infiniteTransition = rememberInfiniteTransition()
     val alpha by infiniteTransition.animateFloat(
         initialValue = 0f,
         targetValue = 1f,
+        // `infiniteRepeatable` repeats the specified duration-based `AnimationSpec` infinitely.
         animationSpec = infiniteRepeatable(
+            // The `keyframes` animates the value by specifying multiple timestamps.
             animation = keyframes {
+                // One iteration is 1000 milliseconds.
                 durationMillis = 1000
+                // 0.7f at the middle of an iteration.
                 0.7f at 500
             },
+            // When the value finishes animating from 0f to 1f, it repeats by reversing the
+            // animation direction.
             repeatMode = RepeatMode.Reverse
         )
     )
@@ -634,7 +645,7 @@ private fun TaskRow(task: String, onRemove: () -> Unit) {
         ) {
             Icon(
                 imageVector = Icons.Default.Check,
-                contentDescription = stringResource(R.string.task)
+                contentDescription = null
             )
             Spacer(modifier = Modifier.width(16.dp))
             Text(
@@ -653,23 +664,34 @@ private fun TaskRow(task: String, onRemove: () -> Unit) {
 private fun Modifier.swipeToDismiss(
     onDismissed: () -> Unit
 ): Modifier = composed {
+    // This `Animatable` stores the horizontal offset for the element.
     val offsetX = remember { Animatable(0f) }
     pointerInput(Unit) {
+        // Used to calculate a settling position of a fling animation.
         val decay = splineBasedDecay<Float>(this)
+        // Wrap in a coroutine scope to use suspend functions for touch events and animation.
         coroutineScope {
             while (true) {
+                // Wait for a touch down event.
                 val pointerId = awaitPointerEventScope { awaitFirstDown().id }
-                val velocityTracker = VelocityTracker()
+                // Interrupt any ongoing animation.
                 offsetX.stop()
+                // Prepare for drag events and record velocity of a fling.
+                val velocityTracker = VelocityTracker()
+                // Wait for drag events.
                 awaitPointerEventScope {
                     horizontalDrag(pointerId) { change ->
                         launch {
+                            // Overwrite the `Animatable` value while the element is dragged.
                             offsetX.snapTo(offsetX.value + change.positionChange().x)
                         }
+                        // Record the velocity of the drag.
                         velocityTracker.addPosition(change.uptimeMillis, change.position)
                     }
                 }
+                // Dragging finished. Calculate the velocity of the fling.
                 val velocity = velocityTracker.calculateVelocity().x
+                // Calculate where the element eventually settles after the fling animation.
                 val targetOffsetX = decay.calculateTargetValue(offsetX.value, velocity)
                 // The animation should end as soon as it reaches these bounds.
                 offsetX.updateBounds(
@@ -690,6 +712,7 @@ private fun Modifier.swipeToDismiss(
             }
         }
     }
+        // Apply the horizontal offset to the element.
         .offset { IntOffset(offsetX.value.roundToInt(), 0) }
 }
 
