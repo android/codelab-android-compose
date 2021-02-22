@@ -35,6 +35,10 @@ application’s colors, typography and shapes and support light and dark themes.
 Understand how Jetpack Compose and View-based UIs can co-exist and interact, making it easy to
 adopt Compose at your own pace.
 
+### [Animation codelab](https://developer.android.com/codelabs/jetpack-compose-animation)
+
+Learn how to use Jetpack Compose Animation APIs.
+
 ## License
 
 ```
