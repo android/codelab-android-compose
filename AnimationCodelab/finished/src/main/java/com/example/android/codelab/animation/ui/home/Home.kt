@@ -123,6 +123,10 @@ import kotlinx.coroutines.launch
 import kotlin.math.absoluteValue
 import kotlin.math.roundToInt
 
+private enum class TabPage {
+    Home, Work
+}
+
 /**
  * Shows the entire screen.
  */
@@ -132,8 +136,8 @@ fun Home() {
     val allTasks = stringArrayResource(R.array.tasks)
     val allTopics = stringArrayResource(R.array.topics).toList()
 
-    // The index of the selected tab.
-    var currentTab by remember { mutableStateOf(0) }
+    // The currently selected tab.
+    var tabPage by remember { mutableStateOf(TabPage.Home) }
 
     // True if the whether data is currently loading.
     var weatherLoading by remember { mutableStateOf(false) }
@@ -173,7 +177,7 @@ fun Home() {
     val lazyListState = rememberLazyListState()
 
     // The background color. The value is changed by the current tab.
-    val backgroundColor by animateColorAsState(if (currentTab == 0) Purple100 else Green300)
+    val backgroundColor by animateColorAsState(if (tabPage == TabPage.Home) Purple100 else Green300)
 
     // The coroutine scope for event handlers calling suspend functions.
     val coroutineScope = rememberCoroutineScope()
@@ -181,8 +185,8 @@ fun Home() {
         topBar = {
             HomeTabBar(
                 backgroundColor = backgroundColor,
-                currentTab = currentTab,
-                onTabSelected = { currentTab = it }
+                tabPage = tabPage,
+                onTabSelected = { tabPage = it }
             )
         },
         backgroundColor = backgroundColor,
@@ -426,30 +430,31 @@ fun TopicRowSpacer(visible: Boolean) {
  * Shows the bar that holds 2 tabs.
  *
  * @param backgroundColor The background color for the bar.
+ * @param tabPage The [TabPage] that is currently selected.
  * @param onTabSelected Called when the tab is switched.
  */
 @Composable
 private fun HomeTabBar(
     backgroundColor: Color,
-    currentTab: Int,
-    onTabSelected: (index: Int) -> Unit
+    tabPage: TabPage,
+    onTabSelected: (tabPage: TabPage) -> Unit
 ) {
     TabRow(
-        selectedTabIndex = currentTab,
+        selectedTabIndex = tabPage.ordinal,
         backgroundColor = backgroundColor,
         indicator = { tabPositions ->
-            HomeTabIndicator(tabPositions, currentTab)
+            HomeTabIndicator(tabPositions, tabPage)
         }
     ) {
         HomeTab(
             icon = Icons.Default.Home,
             title = stringResource(R.string.home),
-            onClick = { onTabSelected(0) }
+            onClick = { onTabSelected(TabPage.Home) }
         )
         HomeTab(
             icon = Icons.Default.AccountBox,
             title = stringResource(R.string.work),
-            onClick = { onTabSelected(1) }
+            onClick = { onTabSelected(TabPage.Work) }
         )
     }
 }
@@ -458,17 +463,20 @@ private fun HomeTabBar(
  * Shows an indicator for the tab.
  *
  * @param tabPositions The list of [TabPosition]s from a [TabRow].
- * @param selectedTabIndex The index of the currently selected tab.
+ * @param tabPage The [TabPage] that is currently selected.
  */
 @Composable
 private fun HomeTabIndicator(
     tabPositions: List<TabPosition>,
-    selectedTabIndex: Int
+    tabPage: TabPage
 ) {
-    val transition = updateTransition(selectedTabIndex)
+    val transition = updateTransition(
+        tabPage,
+        label = "Tab indicator"
+    )
     val indicatorLeft by transition.animateDp(
         transitionSpec = {
-            if (initialState < targetState) {
+            if (TabPage.Home isTransitioningTo TabPage.Work) {
                 // Indicator moves to the right.
                 // Low stiffness spring for the left edge so it moves slower than the right edge.
                 spring(stiffness = Spring.StiffnessVeryLow)
@@ -477,13 +485,14 @@ private fun HomeTabIndicator(
                 // Medium stiffness spring for the left edge so it moves faster than the right edge.
                 spring(stiffness = Spring.StiffnessMedium)
             }
-        }
-    ) { index ->
-        tabPositions[index].left
+        },
+        label = "Indicator left"
+    ) { page ->
+        tabPositions[page.ordinal].left
     }
     val indicatorRight by transition.animateDp(
         transitionSpec = {
-            if (initialState < targetState) {
+            if (TabPage.Home isTransitioningTo TabPage.Work) {
                 // Indicator moves to the right
                 // Medium stiffness spring for the right edge so it moves faster than the left edge.
                 spring(stiffness = Spring.StiffnessMedium)
@@ -492,12 +501,15 @@ private fun HomeTabIndicator(
                 // Low stiffness spring for the right edge so it moves slower than the left edge.
                 spring(stiffness = Spring.StiffnessVeryLow)
             }
-        }
-    ) { index ->
-        tabPositions[index].right
+        },
+        label = "Indicator right"
+    ) { page ->
+        tabPositions[page.ordinal].right
     }
-    val color by transition.animateColor { index ->
-        if (index == 0) Purple700 else Green800
+    val color by transition.animateColor(
+        label = "Border color"
+    ) { page ->
+        if (page == TabPage.Home) Purple700 else Green800
     }
     Box(
         Modifier
@@ -714,6 +726,16 @@ private fun Modifier.swipeToDismiss(
     }
         // Apply the horizontal offset to the element.
         .offset { IntOffset(offsetX.value.roundToInt(), 0) }
+}
+
+@Preview
+@Composable
+private fun PreviewHomeTabBar() {
+    HomeTabBar(
+        backgroundColor = Purple100,
+        tabPage = TabPage.Home,
+        onTabSelected = {}
+    )
 }
 
 @Preview
