@@ -24,14 +24,14 @@ buildscript {
 
         // App dependencies
         appCompatVersion = '1.1.0'
-        composeVersion = '1.0.0-SNAPSHOT'
+        composeVersion = '1.0.0-beta01'
         constraintLayoutVersion = '2.0.4'
         coreTestingVersion = '2.1.0'
         coroutinesVersion = "1.4.2"
         espressoVersion = '3.3.0'
         fragmentVersion = '1.2.5'
         glideVersion = '4.11.0'
-        gradleVersion = '7.0.0-alpha06'
+        gradleVersion = '7.0.0-alpha08'
         gsonVersion = '2.8.6'
         junitVersion = '4.13.1'
         kotlinVersion = '1.4.30'
@@ -68,13 +68,8 @@ plugins {
 
 allprojects {
     repositories {
-        maven { // Compose beta01 snapshot
-            url "https://androidx.dev/snapshots/builds/7141639/artifacts/repository/"
-        }
         google()
         jcenter()
-        // Compose's MDC Theme adapter snapshots
-        maven { url 'https://jitpack.io' }
     }
 }
 
