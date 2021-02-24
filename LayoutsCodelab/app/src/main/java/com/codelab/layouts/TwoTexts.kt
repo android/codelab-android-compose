@@ -16,13 +16,12 @@
 
 package com.codelab.layouts
 
-import androidx.compose.foundation.layout.ExperimentalLayout
 import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.preferredHeight
-import androidx.compose.foundation.layout.preferredWidth
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.material.Divider
 import androidx.compose.material.Surface
@@ -35,10 +34,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.codelab.layouts.ui.LayoutsCodelabTheme
 
-@ExperimentalLayout
 @Composable
 fun TwoTexts(modifier: Modifier = Modifier, text1: String, text2: String) {
-    Row(modifier = modifier.preferredHeight(IntrinsicSize.Min)) {
+    Row(modifier = modifier.height(IntrinsicSize.Min)) {
         Text(
             modifier = Modifier
                 .weight(1f)
@@ -46,7 +44,7 @@ fun TwoTexts(modifier: Modifier = Modifier, text1: String, text2: String) {
                 .wrapContentWidth(Alignment.Start),
             text = text1
         )
-        Divider(color = Color.Black, modifier = Modifier.fillMaxHeight().preferredWidth(1.dp))
+        Divider(color = Color.Black, modifier = Modifier.fillMaxHeight().width(1.dp))
         Text(
             modifier = Modifier
                 .weight(1f)
@@ -57,7 +55,6 @@ fun TwoTexts(modifier: Modifier = Modifier, text1: String, text2: String) {
     }
 }
 
-@ExperimentalLayout
 @Preview
 @Composable
 fun TwoTextsPreview() {

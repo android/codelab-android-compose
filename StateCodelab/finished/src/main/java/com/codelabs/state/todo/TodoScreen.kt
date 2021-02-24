@@ -20,7 +20,6 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.ExperimentalLayout
 import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
@@ -28,7 +27,6 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.preferredHeight
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.lazy.LazyColumn
@@ -135,7 +133,6 @@ fun TodoScreen(
  * @param onEditDone (event) request edit mode completion for this item
  * @param onRemoveItem (event) request this item be removed
  */
-@OptIn(ExperimentalLayout::class)
 @Composable
 fun TodoItemInlineEditor(
     item: TodoItem,
@@ -216,7 +213,6 @@ fun TodoItemEntryInput(onItemComplete: (TodoItem) -> Unit, buttonText: String = 
  * @param iconsVisible (state) display icons or hide them
  * @param buttonSlot (slot) slot for providing buttons next to the text
  */
-@OptIn(ExperimentalLayout::class)
 @Composable
 fun TodoItemInput(
     text: String,
@@ -225,14 +221,14 @@ fun TodoItemInput(
     onIconChange: (TodoIcon) -> Unit,
     submit: () -> Unit,
     iconsVisible: Boolean,
-    buttonSlot: @Composable() () -> Unit,
+    buttonSlot: @Composable () -> Unit,
 ) {
     Column {
         Row(
             Modifier
                 .padding(horizontal = 16.dp)
                 .padding(top = 16.dp)
-                .preferredHeight(IntrinsicSize.Min)
+                .height(IntrinsicSize.Min)
         ) {
             TodoInputText(
                 text = text,
