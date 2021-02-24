@@ -23,9 +23,8 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.preferredSize
-import androidx.compose.foundation.layout.preferredWidth
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
@@ -158,10 +157,10 @@ fun Chip(modifier: Modifier = Modifier, text: String) {
         ) {
             Box(
                 modifier = Modifier
-                    .preferredSize(16.dp, 16.dp)
+                    .size(16.dp, 16.dp)
                     .background(color = MaterialTheme.colors.secondary)
             )
-            Spacer(Modifier.preferredWidth(4.dp))
+            Spacer(Modifier.width(4.dp))
             Text(text = text)
         }
     }
