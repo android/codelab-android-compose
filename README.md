@@ -7,7 +7,7 @@ For more information about Jetpack Compose, please [read the documentation](http
 
 ## 💻 Requirements
 
-[Android Studio 4.2 Canary](https://developer.android.com/studio/preview/index.html) or newer.
+The latest [Canary version of Android Studio](https://developer.android.com/studio/preview/index.html).
 
 ## 🧬 Codelabs
 
