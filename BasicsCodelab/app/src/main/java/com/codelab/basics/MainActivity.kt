@@ -90,15 +90,15 @@ fun NameList(names: List<String>, modifier: Modifier = Modifier) {
 
 @Composable
 fun Greeting(name: String) {
-    var isSelected by remember { mutableStateOf(false) }
-    val backgroundColor by animateColorAsState(if (isSelected) Color.Red else Color.Transparent)
+    var isSelected = remember { mutableStateOf(false) }
+    val backgroundColor = animateColorAsState(if (isSelected.value) Color.Red else Color.Transparent)
 
     Text(
         text = "Hello $name!",
         modifier = Modifier
             .padding(24.dp)
-            .background(color = backgroundColor)
-            .clickable(onClick = { isSelected = !isSelected })
+            .background(color = backgroundColor.value)
+            .clickable(onClick = { isSelected.value = !isSelected.value })
     )
 }
 
