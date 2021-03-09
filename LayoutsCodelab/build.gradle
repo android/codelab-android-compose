@@ -35,6 +35,8 @@ allprojects {
         maven { url "https://androidx.dev/snapshots/builds/7184376/artifacts/repository/" }
         google()
         jcenter()
+
+        maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
     }
 }
 
