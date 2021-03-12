@@ -108,8 +108,6 @@ private fun PlantWatering(wateringInterval: Int) {
 
 @Composable
 private fun PlantDescription(description: String) {
-    val textView = rememberTextView() // Creates & remembers an instance of TextView
-
     // Remembers the HTML formatted description. Re-executes on a new description
     val htmlDescription = remember(description) {
         HtmlCompat.fromHtml(description, HtmlCompat.FROM_HTML_MODE_COMPACT)
@@ -117,19 +115,16 @@ private fun PlantDescription(description: String) {
 
     // Displays the TextView on the screen and updates with the HTML description when inflated
     // Updates to htmlDescription will make AndroidView recompose and update the text
-    AndroidView({ textView }) {
-        it.text = htmlDescription
-    }
-}
-
-@Composable
-private fun rememberTextView(): TextView {
-    val context = LocalContext.current
-    return remember {
-        TextView(context).apply {
-            movementMethod = LinkMovementMethod.getInstance()
+    AndroidView(
+        factory = { context ->
+            TextView(context).apply {
+                movementMethod = LinkMovementMethod.getInstance()
+            }
+        },
+        update = {
+            it.text = htmlDescription
         }
-    }
+    )
 }
 
 @Preview
