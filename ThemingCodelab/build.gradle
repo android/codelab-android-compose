@@ -42,4 +42,14 @@ allprojects {
             freeCompilerArgs += '-Xopt-in=kotlin.RequiresOptIn'
         }
     }
+
+    // Only needed for 1.0.0-beta03 snapshots
+    configurations.configureEach {
+        resolutionStrategy.eachDependency { DependencyResolveDetails details ->
+            if (details.requested.group == 'androidx.lifecycle'
+                    && details.requested.version == '2.3.1') {
+                details.useVersion('2.4.0-SNAPSHOT')
+            }
+        }
+    }
 }
