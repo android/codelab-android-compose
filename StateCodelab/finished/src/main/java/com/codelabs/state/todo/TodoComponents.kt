@@ -220,7 +220,7 @@ fun TodoInputText(
         keyboardOptions = KeyboardOptions.Default.copy(imeAction = ImeAction.Done),
         keyboardActions = KeyboardActions(onDone = {
             onImeAction()
-            keyboardController?.hideSoftwareKeyboard()
+            keyboardController?.hide()
         }),
         modifier = modifier
     )
