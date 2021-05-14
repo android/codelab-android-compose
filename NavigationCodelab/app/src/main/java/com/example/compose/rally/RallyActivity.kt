@@ -26,12 +26,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.NavType
-import androidx.navigation.compose.KEY_ROUTE
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.navArgument
-import androidx.navigation.compose.navigate
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navDeepLink
 import com.example.compose.rally.RallyScreen.Accounts
@@ -64,13 +62,7 @@ fun RallyApp() {
         val allScreens = RallyScreen.values().toList()
         val navController = rememberNavController()
         val backstackEntry = navController.currentBackStackEntryAsState()
-        val currentScreen = when (
-            backstackEntry.value?.arguments?.getString(KEY_ROUTE)?.substringBefore("/")
-        ) {
-            Accounts.name -> Accounts
-            Bills.name -> Bills
-            else -> Overview
-        }
+        val currentScreen = RallyScreen.fromRoute(backstackEntry.value?.destination?.route)
 
         Scaffold(
             topBar = {
@@ -83,31 +75,30 @@ fun RallyApp() {
                 )
             }
         ) { innerPadding ->
-            Box(Modifier.padding(innerPadding)) {
-                RallyNavHost(navController)
-            }
+            RallyNavHost(navController, modifier = Modifier.padding(innerPadding))
         }
     }
 }
 
 @Composable
-fun RallyNavHost(navController: NavHostController) {
+fun RallyNavHost(navController: NavHostController, modifier: Modifier = Modifier) {
     NavHost(
         navController = navController,
-        startDestination = Overview.name
+        startDestination = Overview.name,
+        modifier = modifier
     ) {
         composable(Overview.name) {
             OverviewBody(
                 onClickSeeAllAccounts = { navController.navigate(Accounts.name) },
                 onClickSeeAllBills = { navController.navigate(Bills.name) },
                 onAccountClick = { name ->
-                    navController.navigate("${Accounts.name}/$name")
+                    navigateToSingleAccount(navController, name)
                 },
             )
         }
         composable(Accounts.name) {
             AccountsBody(accounts = UserData.accounts) { name ->
-                navController.navigate("Accounts/$name")
+                navigateToSingleAccount(navController = navController, accountName = name)
             }
         }
         composable(Bills.name) {
@@ -130,4 +121,8 @@ fun RallyNavHost(navController: NavHostController) {
             SingleAccountBody(account = account)
         }
     }
+}
+
+private fun navigateToSingleAccount(navController: NavHostController, accountName: String) {
+    navController.navigate("${Accounts.name}/$accountName")
 }

@@ -15,15 +15,12 @@
  */
 package com.example.compose.rally
 
-import androidx.compose.ui.test.ExperimentalTestApi
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithContentDescription
 import androidx.compose.ui.test.performClick
 import androidx.compose.ui.test.performScrollTo
-import androidx.navigation.compose.navigate
 import androidx.navigation.NavHostController
-import androidx.navigation.compose.KEY_ROUTE
 import androidx.navigation.compose.rememberNavController
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.runBlocking
@@ -33,7 +30,6 @@ import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 
-@ExperimentalTestApi
 class RallyNavHostTest {
 
     @get:Rule
@@ -81,7 +77,7 @@ class RallyNavHostTest {
             performScrollTo()
             performClick()
         }
-        val route = navController.currentBackStackEntry?.arguments?.get(KEY_ROUTE)
+        val route = navController.currentDestination?.route
         assertEquals(route, "Bills")
     }
 }
