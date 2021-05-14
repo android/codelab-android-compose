@@ -51,4 +51,14 @@ enum class RallyScreen(
     fun content(onScreenChange: (String) -> Unit) {
         body(onScreenChange)
     }
+
+    companion object {
+        fun fromRoute(route: String?): RallyScreen =
+            when (route?.substringBefore("/")) {
+                Accounts.name -> Accounts
+                Bills.name -> Bills
+                Overview.name -> Overview
+                else -> throw IllegalArgumentException("Route $route is not recognized.")
+            }
+    }
 }

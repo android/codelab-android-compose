@@ -33,7 +33,7 @@ import com.example.compose.rally.ui.components.StatementBody
 @Composable
 fun AccountsBody(
     accounts: List<Account>,
-    onAccountNameClick: (String) -> Unit = {},
+    onAccountClick: (String) -> Unit = {},
 ) {
     StatementBody(
         modifier = Modifier.semantics { contentDescription = "Accounts Screen" },
@@ -45,7 +45,7 @@ fun AccountsBody(
         rows = { account ->
             AccountRow(
                 modifier = Modifier.clickable {
-                    onAccountNameClick(account.name)
+                    onAccountClick(account.name)
                 },
                 name = account.name,
                 number = account.number,
