@@ -37,6 +37,9 @@ data class Bill(
     val color: Color
 )
 
+/**
+ * Pretend repository for user's data.
+ */
 object UserData {
     val accounts: List<Account> = listOf(
         Account(
@@ -96,4 +99,8 @@ object UserData {
             Color(0xFFFFAC12)
         )
     )
+
+    fun getAccount(accountName: String?): Account {
+        return accounts.first { it.name == accountName }
+    }
 }
