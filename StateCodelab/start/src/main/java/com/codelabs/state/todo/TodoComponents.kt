@@ -78,7 +78,6 @@ fun AnimatedIconRow(
     onIconChange: (TodoIcon) -> Unit,
     modifier: Modifier = Modifier,
     visible: Boolean = true,
-    initialVisibility: Boolean = false
 ) {
     // remember these specs so they don't restart if recomposing during the animation
     // this is required since TweenSpec restarts on interruption
@@ -87,7 +86,6 @@ fun AnimatedIconRow(
     Box(modifier.defaultMinSize(minHeight = 16.dp)) {
         AnimatedVisibility(
             visible = visible,
-            initiallyVisible = initialVisibility,
             enter = enter,
             exit = exit,
         ) {
