@@ -100,15 +100,23 @@ fun StaggeredGrid(
         content = content
     ) { measurables, constraints ->
 
-        val rowWidths = IntArray(rows) { 0 } // Keep track of the width of each row
-        val rowHeights = IntArray(rows) { 0 } // Keep track of the height of each row
+        // Keep track of the width of each row
+        val rowWidths = IntArray(rows) { 0 }
+
+        // Keep track of the max height of each row
+        val rowHeights = IntArray(rows) { 0 }
+
         // Don't constrain child views further, measure them with given constraints
+        // List of measured children
         val placeables = measurables.mapIndexed { index, measurable ->
+            // Measure each child
             val placeable = measurable.measure(constraints)
+
             // Track the width and max height of each row
             val row = index % rows
             rowWidths[row] += placeable.width
             rowHeights[row] = max(rowHeights[row], placeable.height)
+
             placeable
         }
 
