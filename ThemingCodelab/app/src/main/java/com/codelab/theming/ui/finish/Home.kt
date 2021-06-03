@@ -59,6 +59,7 @@ import com.codelab.theming.R
 import com.codelab.theming.data.Post
 import com.codelab.theming.data.PostRepo
 import com.codelab.theming.ui.finish.theme.JetnewsTheme
+import java.util.Locale
 
 @Composable
 fun Home() {
@@ -185,7 +186,7 @@ private fun PostMetadata(
                 append(tagDivider)
             }
             withStyle(tagStyle) {
-                append(" ${tag.toUpperCase()} ")
+                append(" ${tag.uppercase(Locale.getDefault())} ")
             }
         }
     }

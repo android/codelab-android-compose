@@ -16,15 +16,15 @@
 
 buildscript {
     ext {
-        compose_version = '1.0.0-beta07'
+        compose_version = '1.0.0-beta08'
     }
-    ext.kotlin_version = "1.4.32"
+    ext.kotlin_version = "1.5.10"
     repositories {
         google()
         jcenter()
     }
     dependencies {
-        classpath "com.android.tools.build:gradle:7.0.0-beta01"
+        classpath "com.android.tools.build:gradle:7.0.0-beta03"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
