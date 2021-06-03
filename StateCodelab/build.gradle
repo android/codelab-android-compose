@@ -17,17 +17,17 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
     ext {
-        compose_version = '1.0.0-beta07'
-        activity_compose_version = '1.3.0-alpha08'
-        viewmodel_compose_version = '1.0.0-alpha05'
+        compose_version = '1.0.0-beta08'
+        activity_compose_version = '1.3.0-beta01'
+        viewmodel_compose_version = '1.0.0-alpha06'
     }
-    ext.kotlin_version = "1.4.32"
+    ext.kotlin_version = "1.5.10"
     repositories {
         google()
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:7.0.0-beta01'
+        classpath 'com.android.tools.build:gradle:7.0.0-beta03'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
