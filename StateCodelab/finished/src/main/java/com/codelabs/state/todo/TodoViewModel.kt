@@ -17,6 +17,7 @@
 package com.codelabs.state.todo
 
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
@@ -25,21 +26,18 @@ class TodoViewModel : ViewModel() {
 
     private var currentEditPosition by mutableStateOf(-1)
 
-    var todoItems by mutableStateOf(listOf<TodoItem>())
+    var todoItems = mutableStateListOf<TodoItem>()
         private set
-
-    // TODO (b/163069767): mutableStateListOf crashes LazyColumnFor when removing items
-    // val todoItems = mutableStateListOf<TodoItem>()
 
     val currentEditItem: TodoItem?
         get() = todoItems.getOrNull(currentEditPosition)
 
     fun addItem(item: TodoItem) {
-        todoItems = todoItems + listOf(item)
+        todoItems.add(item)
     }
 
     fun removeItem(item: TodoItem) {
-        todoItems = todoItems.toMutableList().also { it.remove(item) }
+        todoItems.remove(item)
         onEditDone() // don't keep the editor open when removing items
     }
 
@@ -57,8 +55,6 @@ class TodoViewModel : ViewModel() {
             "You can only change an item with the same id as currentEditItem"
         }
 
-        todoItems = todoItems.toMutableList().also {
-            it[currentEditPosition] = item
-        }
+        todoItems[currentEditPosition] = item
     }
 }
