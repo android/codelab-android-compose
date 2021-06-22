@@ -239,7 +239,7 @@ fun TodoEditButton(
     modifier: Modifier = Modifier,
     enabled: Boolean = true
 ) {
-    TextButton(
+    Button(
         onClick = onClick,
         shape = CircleShape,
         enabled = enabled,
