@@ -99,6 +99,7 @@ import androidx.compose.ui.composed
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.input.pointer.consumePositionChange
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.input.pointer.positionChange
 import androidx.compose.ui.input.pointer.util.VelocityTracker
@@ -669,7 +670,6 @@ private fun TaskRow(task: String, onRemove: () -> Unit) {
         }
     }
 }
-
 /**
  * The modified element can be horizontally swiped away.
  *
@@ -695,12 +695,16 @@ private fun Modifier.swipeToDismiss(
                 // Wait for drag events.
                 awaitPointerEventScope {
                     horizontalDrag(pointerId) { change ->
+                        // Record the position after offset
+                        val horizontalDragOffset = offsetX.value + change.positionChange().x
                         launch {
                             // Overwrite the `Animatable` value while the element is dragged.
-                            offsetX.snapTo(offsetX.value + change.positionChange().x)
+                            offsetX.snapTo(horizontalDragOffset)
                         }
                         // Record the velocity of the drag.
                         velocityTracker.addPosition(change.uptimeMillis, change.position)
+                        // Consume the gesture event, not passed to external
+                        change.consumePositionChange()
                     }
                 }
                 // Dragging finished. Calculate the velocity of the fling.
