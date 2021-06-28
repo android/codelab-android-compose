@@ -16,14 +16,14 @@
 
 buildscript {
     ext {
-        compose_version = '1.0.0-beta09'
+        compose_version = '1.0.0-SNAPSHOT'
     }
     repositories {
         google()
-        jcenter()
+        mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:7.0.0-beta03'
+        classpath 'com.android.tools.build:gradle:7.0.0-beta04'
         classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.10'
     }
 }
@@ -31,7 +31,9 @@ buildscript {
 allprojects {
     repositories {
         google()
-        jcenter()
+        mavenCentral()
+        // Compose snapshot
+        maven { url 'https://androidx.dev/snapshots/builds/7495019/artifacts/repository/' }
     }
 }
 
