@@ -17,15 +17,15 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
     ext {
-        compose_version = '1.0.0-beta09'
+        compose_version = '1.0.0-SNAPSHOT'
     }
     ext.kotlin_version = "1.5.10"
     repositories {
         google()
-        jcenter()
+        mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:7.0.0-beta03'
+        classpath 'com.android.tools.build:gradle:7.0.0-beta04'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
@@ -33,7 +33,9 @@ buildscript {
 allprojects {
     repositories {
         google()
-        jcenter()
+        mavenCentral()
+        // Compose snapshot
+        maven { url 'https://androidx.dev/snapshots/builds/7495019/artifacts/repository/' }
     }
 }
 
