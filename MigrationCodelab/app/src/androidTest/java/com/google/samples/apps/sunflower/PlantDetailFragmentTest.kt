@@ -34,8 +34,11 @@ import androidx.test.espresso.intent.matcher.IntentMatchers.hasType
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
+import androidx.work.testing.TestListenableWorkerBuilder
 import com.google.samples.apps.sunflower.utilities.chooser
 import com.google.samples.apps.sunflower.utilities.testPlant
+import com.google.samples.apps.sunflower.workers.SeedDatabaseWorker
+import kotlinx.coroutines.runBlocking
 import org.hamcrest.CoreMatchers.allOf
 import org.junit.Before
 import org.junit.Rule
@@ -54,6 +57,8 @@ class PlantDetailFragmentTest {
 
     @Before
     fun jumpToPlantDetailFragment() {
+        populateDatabase()
+
         composeTestRule.activityRule.scenario.onActivity { gardenActivity ->
             activity = gardenActivity
 
@@ -88,5 +93,18 @@ class PlantDetailFragmentTest {
         InstrumentationRegistry.getInstrumentation()
             .uiAutomation
             .performGlobalAction(AccessibilityService.GLOBAL_ACTION_BACK)
+    }
+
+    // TODO: This workaround is needed due to the real database being used in tests.
+    //  A fake database created with a Room.inMemoryDatabaseBuilder should be used instead.
+    //  That's difficult to do in the current state of the project since there are no
+    //  dependency injection best practices in place.
+    private fun populateDatabase() {
+        val request = TestListenableWorkerBuilder<SeedDatabaseWorker>(
+            InstrumentationRegistry.getInstrumentation().targetContext.applicationContext
+        ).build()
+        runBlocking {
+            request.doWork()
+        }
     }
 }
