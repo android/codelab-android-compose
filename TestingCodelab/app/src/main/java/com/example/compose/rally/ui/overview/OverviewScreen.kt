@@ -95,7 +95,7 @@ private fun AlertCard() {
         )
     }
 
-    var currentTargetElevation by remember {  mutableStateOf(1.dp) }
+    var currentTargetElevation by remember { mutableStateOf(1.dp) }
     LaunchedEffect(Unit) {
         // Start the animation
         currentTargetElevation = 8.dp
