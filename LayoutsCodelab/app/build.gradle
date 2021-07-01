@@ -58,7 +58,7 @@ dependencies {
     implementation "androidx.constraintlayout:constraintlayout-compose:1.0.0-alpha08"
     implementation "androidx.compose.material:material:$compose_version"
     implementation "androidx.compose.ui:ui-tooling:$compose_version"
-    implementation "com.google.accompanist:accompanist-coil:0.13.0.compose-7489673-SNAPSHOT"
+    implementation "com.google.accompanist:accompanist-coil:0.13.0.compose-7506689-SNAPSHOT"
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
