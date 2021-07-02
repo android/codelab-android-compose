@@ -19,7 +19,6 @@ package com.example.compose.rally
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
@@ -112,9 +111,11 @@ fun RallyNavHost(navController: NavHostController, modifier: Modifier = Modifier
                     type = NavType.StringType
                 }
             ),
-            deepLinks = listOf(navDeepLink {
-                uriPattern = "rally://$accountsName/{name}"
-            }),
+            deepLinks = listOf(
+                navDeepLink {
+                    uriPattern = "rally://$accountsName/{name}"
+                }
+            ),
         ) { entry ->
             val accountName = entry.arguments?.getString("name")
             val account = UserData.getAccount(accountName)
