@@ -35,7 +35,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.google.accompanist.coil.rememberCoilPainter
+import coil.compose.rememberImagePainter
 import kotlinx.coroutines.launch
 
 @Composable
@@ -93,8 +93,8 @@ fun LazyListPreview() {
 fun ImageListItem(index: Int) {
     Row(verticalAlignment = Alignment.CenterVertically) {
         Image(
-            painter = rememberCoilPainter(
-                request = "https://developer.android.com/images/brand/Android_Robot.png"
+            painter = rememberImagePainter(
+                data = "https://developer.android.com/images/brand/Android_Robot.png"
             ),
             contentDescription = "Android Logo",
             modifier = Modifier.size(50.dp)
