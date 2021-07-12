@@ -16,7 +16,7 @@
 
 buildscript {
     ext {
-        compose_version = '1.0.0-rc01'
+        compose_version = '1.0.0-SNAPSHOT'
     }
     ext.kotlin_version = "1.5.10"
     repositories {
@@ -33,6 +33,7 @@ allprojects {
     repositories {
         google()
         mavenCentral()
+        maven { url 'https://androidx.dev/snapshots/builds/7535721/artifacts/repository/' }
     }
 
     tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).configureEach {

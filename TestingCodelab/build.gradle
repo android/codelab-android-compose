@@ -24,8 +24,8 @@ buildscript {
 
         // App dependencies
         appCompatVersion = '1.3.0'
-        activityComposeVersion = '1.3.0-rc01'
-        composeVersion = '1.0.0-rc01'
+        activityComposeVersion = '1.3.0-SNAPSHOT'
+        composeVersion = '1.0.0-SNAPSHOT'
         coreTestingVersion = '2.1.0'
         coroutinesVersion = "1.4.2"
         espressoVersion = '3.3.0'
@@ -63,6 +63,7 @@ subprojects {
     repositories {
         google()
         mavenCentral()
+        maven { url 'https://androidx.dev/snapshots/builds/7535721/artifacts/repository/' }
     }
 
     apply plugin: 'com.diffplug.spotless'
