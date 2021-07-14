@@ -63,7 +63,7 @@ subprojects {
     repositories {
         google()
         mavenCentral()
-        maven { url 'https://androidx.dev/snapshots/builds/7535721/artifacts/repository/' }
+        maven { url 'https://androidx.dev/snapshots/builds/7546572/artifacts/repository/' }
     }
 
     apply plugin: 'com.diffplug.spotless'
