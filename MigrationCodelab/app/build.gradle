@@ -50,7 +50,6 @@ android {
         compose true
     }
     composeOptions {
-        kotlinCompilerVersion rootProject.kotlinVersion
         kotlinCompilerExtensionVersion rootProject.composeVersion
     }
     packagingOptions {
