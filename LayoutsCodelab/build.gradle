@@ -35,7 +35,7 @@ allprojects {
         google()
         mavenCentral()
         // Compose snapshot
-        maven { url 'https://androidx.dev/snapshots/builds/7535721/artifacts/repository/' }
+        maven { url 'https://androidx.dev/snapshots/builds/7546572/artifacts/repository/' }
         // Accompanist snapshot
         maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
     }
