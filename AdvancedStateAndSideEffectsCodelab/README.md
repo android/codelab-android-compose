@@ -8,9 +8,10 @@ The project is built in multiple git branches:
 * `main` – the starter code for this project, you will make changes to this to complete the codelab
 * `end` – contains the solution to this codelab
 
-## Google Maps SDK
+## [Optional] Google Maps SDK setup
 
-To get the MapView working, you need to get an API key as
+Seeing the city on the MapView is not necessary to complete the codelab. However, if you want
+to get the MapView to render on the screen, you need to get an API key as
 the [documentation says](https://developers.google.com/maps/documentation/android-sdk/get-api-key),
 and include it in the `local.properties` file as follows:
 
