@@ -25,23 +25,23 @@ buildscript {
 
         // App dependencies
         appCompatVersion = '1.2.0'
-        activityComposeVersion = '1.3.0-rc02'
-        composeVersion = '1.0.0-rc02'
+        activityComposeVersion = '1.3.0'
+        composeVersion = '1.0.0'
         coreTestingVersion = '2.1.0'
         coroutinesVersion = "1.4.2"
         espressoVersion = '3.3.0'
         fragmentVersion = '1.3.3'
-        gradleVersion = '7.0.1'
+        gradleVersion = '7.0.0'
         junitVersion = '4.13.1'
         kotlinVersion = '1.5.10'
         ktlintVersion = '0.41.0'
-        ktxVersion = '1.6.0-beta02'
+        ktxVersion = '1.6.0'
         lifecycleVersion = '2.3.0'
         materialVersion = '1.3.0'
         roomVersion = '2.3.0'
         runnerVersion = '1.0.1'
         truthVersion = '1.0.1'
-        testExtJunit = '1.1.2-rc02'
+        testExtJunit = '1.1.2'
         uiAutomatorVersion = '2.2.0'
         viewPagerVersion = '1.0.0'
         workVersion = '2.5.0'
@@ -53,7 +53,7 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:7.0.0-beta04'
+        classpath "com.android.tools.build:gradle:$gradleVersion"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
     }
 }
