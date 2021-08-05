@@ -38,18 +38,18 @@ object Libs {
     }
 
     object Accompanist {
-        const val version = "0.14.0"
+        const val version = "0.16.0"
         const val insets = "com.google.accompanist:accompanist-insets:$version"
     }
 
     object Kotlin {
-        private const val version = "1.5.10"
+        private const val version = "1.5.21"
         const val stdlib = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$version"
         const val gradlePlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:$version"
         const val extensions = "org.jetbrains.kotlin:kotlin-android-extensions:$version"
 
         object Coroutines {
-            private const val version = "1.4.2"
+            private const val version = "1.5.0"
             const val android = "org.jetbrains.kotlinx:kotlinx-coroutines-android:$version"
             const val test = "org.jetbrains.kotlinx:kotlinx-coroutines-test:$version"
         }
@@ -57,14 +57,14 @@ object Libs {
 
     object AndroidX {
         object Activity {
-            const val activityCompose = "androidx.activity:activity-compose:1.3.0"
+            const val activityCompose = "androidx.activity:activity-compose:1.3.1"
         }
 
         const val appcompat = "androidx.appcompat:appcompat:1.3.0"
 
         object Compose {
             const val snapshot = ""
-            const val version = "1.0.0"
+            const val version = "1.0.1"
 
             const val runtime = "androidx.compose.runtime:runtime:$version"
             const val material = "androidx.compose.material:material:$version"
@@ -94,7 +94,7 @@ object Libs {
     }
 
     object Hilt {
-        private const val version = "2.37"
+        private const val version = "2.38.1"
 
         const val gradlePlugin = "com.google.dagger:hilt-android-gradle-plugin:$version"
         const val android = "com.google.dagger:hilt-android:$version"
