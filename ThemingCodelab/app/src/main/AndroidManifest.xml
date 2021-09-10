@@ -23,6 +23,7 @@
         android:theme="@style/Theme.ComposeTheming">
         <activity
             android:name=".ui.start.MainActivity"
+            android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.ComposeTheming">
             <intent-filter>
