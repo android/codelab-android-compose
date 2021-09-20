@@ -7,7 +7,7 @@ For more information about Jetpack Compose, please [read the documentation](http
 
 ## 💻 Requirements
 
-The latest [Canary version of Android Studio](https://developer.android.com/studio/preview/index.html).
+[Android Studio Arctic Fox](https://developer.android.com/studio).
 
 ## 🧬 Codelabs
 
@@ -39,6 +39,16 @@ adopt Compose at your own pace.
 
 Learn how to use Jetpack Compose Animation APIs.
 
+### [Navigation codelab](https://developer.android.com/codelabs/jetpack-compose-navigation)
+
+Learn how to use the Jetpack Navigation library in Compose, navigate within your application,
+navigate with arguments, support deep-links, and test your navigation.
+
+### [Testing codelab](https://developer.android.com/codelabs/jetpack-compose-testing)
+
+Learn about testing Jetpack Compose UIs. Write your first tests, and learn about testing in
+isolation, debugging tests, the semantics tree, and test synchronization.
+
 ### [Accessibility codelab]
 
 Learn about the various ways to improve an app’s accessibility. Increase touch target sizes, add
@@ -47,7 +57,7 @@ content descriptions, create custom actions, and more.
 ## License
 
 ```
-Copyright 2020 The Android Open Source Project
+Copyright 2021 The Android Open Source Project
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.

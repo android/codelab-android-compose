@@ -50,7 +50,6 @@ android {
         compose true
     }
     composeOptions {
-        kotlinCompilerVersion rootProject.kotlinVersion
         kotlinCompilerExtensionVersion rootProject.composeVersion
     }
     packagingOptions {
@@ -92,7 +91,8 @@ dependencies {
     implementation "androidx.compose.material:material:$rootProject.composeVersion"
     implementation "androidx.compose.runtime:runtime-livedata:$rootProject.composeVersion"
     implementation "androidx.compose.ui:ui-tooling:$rootProject.composeVersion"
-    implementation "com.google.android.material:compose-theme-adapter:$rootProject.composeVersion"
+
+    implementation "com.google.android.material:compose-theme-adapter:$rootProject.materialComposeAdapterVersion"
 
     // Testing dependencies
     androidTestImplementation "androidx.arch.core:core-testing:$rootProject.coreTestingVersion"

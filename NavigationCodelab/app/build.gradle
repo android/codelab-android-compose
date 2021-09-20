@@ -99,12 +99,11 @@ dependencies {
     implementation "androidx.compose.foundation:foundation:$rootProject.composeVersion"
     implementation "androidx.compose.foundation:foundation-layout:$rootProject.composeVersion"
     implementation "androidx.compose.material:material:$rootProject.composeVersion"
-    implementation "androidx.compose.material:material:$rootProject.composeVersion"
     implementation "androidx.compose.runtime:runtime-livedata:$rootProject.composeVersion"
     implementation "androidx.compose.ui:ui-tooling:$rootProject.composeVersion"
     implementation "androidx.compose.material:material-icons-extended:$rootProject.composeVersion"
     implementation "androidx.activity:activity-compose:$rootProject.activityComposeVersion"
-    implementation "androidx.navigation:navigation-compose:1.0.0-alpha10"
+    implementation "androidx.navigation:navigation-compose:2.4.0-alpha06"
 
     // Testing dependencies
     androidTestImplementation "androidx.arch.core:core-testing:$rootProject.coreTestingVersion"
