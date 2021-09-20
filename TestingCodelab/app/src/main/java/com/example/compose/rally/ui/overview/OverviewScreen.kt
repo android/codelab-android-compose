@@ -60,6 +60,7 @@ import com.example.compose.rally.ui.components.RallyAlertDialog
 import com.example.compose.rally.ui.components.RallyDivider
 import com.example.compose.rally.ui.components.formatAmount
 import com.example.compose.rally.ui.theme.RallyTheme
+import java.util.Locale
 
 @Composable
 fun OverviewBody(onScreenChange: (RallyScreen) -> Unit = {}) {
@@ -90,11 +91,11 @@ private fun AlertCard() {
                 showDialog = false
             },
             bodyText = alertMessage,
-            buttonText = "Dismiss".toUpperCase()
+            buttonText = "Dismiss".uppercase(Locale.getDefault())
         )
     }
 
-    var currentTargetElevation by remember {  mutableStateOf(1.dp) }
+    var currentTargetElevation by remember { mutableStateOf(1.dp) }
     LaunchedEffect(Unit) {
         // Start the animation
         currentTargetElevation = 8.dp

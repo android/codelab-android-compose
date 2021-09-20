@@ -146,6 +146,7 @@ fun TodoItemInlineEditor(
         icon = item.icon,
         onIconChange = { onEditItemChange(item.copy(icon = it)) },
         submit = onEditDone,
+        iconsVisible = true,
         buttonSlot = {
             Row {
                 val shrinkButtons = Modifier.widthIn(20.dp)
@@ -164,8 +165,7 @@ fun TodoItemInlineEditor(
                     )
                 }
             }
-        },
-        iconsVisible = true
+        }
     )
 }
 
@@ -233,8 +233,10 @@ fun TodoItemInput(
             TodoInputText(
                 text = text,
                 onTextChange = onTextChange,
-                onImeAction = submit,
-                modifier = Modifier.weight(1f)
+                modifier = Modifier
+                    .weight(1f)
+                    .padding(end = 8.dp),
+                onImeAction = submit
             )
             Spacer(modifier = Modifier.width(8.dp))
             Box(Modifier.align(Alignment.CenterVertically)) { buttonSlot() }

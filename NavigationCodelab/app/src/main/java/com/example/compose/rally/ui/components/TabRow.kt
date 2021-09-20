@@ -46,6 +46,7 @@ import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.example.compose.rally.RallyScreen
+import java.util.Locale
 
 @Composable
 fun RallyTabRow(
@@ -112,7 +113,7 @@ private fun RallyTab(
         Icon(imageVector = icon, contentDescription = text, tint = tabTintColor)
         if (selected) {
             Spacer(Modifier.width(12.dp))
-            Text(text.toUpperCase(), color = tabTintColor)
+            Text(text.uppercase(Locale.getDefault()), color = tabTintColor)
         }
     }
 }

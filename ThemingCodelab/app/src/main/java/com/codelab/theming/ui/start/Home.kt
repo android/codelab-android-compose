@@ -54,6 +54,7 @@ import androidx.compose.ui.unit.dp
 import com.codelab.theming.R
 import com.codelab.theming.data.Post
 import com.codelab.theming.data.PostRepo
+import java.util.Locale
 
 @Composable
 fun Home() {
@@ -169,7 +170,7 @@ private fun PostMetadata(
             if (index != 0) {
                 append(tagDivider)
             }
-            append(" ${tag.toUpperCase()} ")
+            append(" ${tag.uppercase(Locale.getDefault())} ")
         }
     }
     Text(
