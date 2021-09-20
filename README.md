@@ -39,6 +39,11 @@ adopt Compose at your own pace.
 
 Learn how to use Jetpack Compose Animation APIs.
 
+### [Accessibility codelab]
+
+Learn about the various ways to improve an app’s accessibility. Increase touch target sizes, add
+content descriptions, create custom actions, and more.
+
 ## License
 
 ```
