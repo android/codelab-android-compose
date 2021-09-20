@@ -49,6 +49,11 @@ navigate with arguments, support deep-links, and test your navigation.
 Learn about testing Jetpack Compose UIs. Write your first tests, and learn about testing in
 isolation, debugging tests, the semantics tree, and test synchronization.
 
+### [Accessibility codelab]
+
+Learn about the various ways to improve an app’s accessibility. Increase touch target sizes, add
+content descriptions, create custom actions, and more.
+
 ## License
 
 ```
