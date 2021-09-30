@@ -24,13 +24,9 @@ object Libs {
     const val androidGradlePlugin = "com.android.tools.build:gradle:7.0.2"
     const val ktLint = "com.pinterest:ktlint:${Versions.ktLint}"
 
-    object Coil {
-        const val compose = "io.coil-kt:coil-compose:1.3.2"
-    }
-
     object GoogleMaps {
         const val maps = "com.google.android.libraries.maps:maps:3.1.0-beta"
-        const val mapsKtx = "com.google.maps.android:maps-v3-ktx:3.1.0"
+        const val mapsKtx = "com.google.maps.android:maps-v3-ktx:2.2.0"
     }
 
     object Volley {
@@ -67,12 +63,14 @@ object Libs {
             const val version = "1.0.3"
 
             const val runtime = "androidx.compose.runtime:runtime:$version"
+            const val runtimeLivedata = "androidx.compose.runtime:runtime-livedata:$version"
             const val material = "androidx.compose.material:material:$version"
             const val foundation = "androidx.compose.foundation:foundation:$version"
             const val layout = "androidx.compose.foundation:foundation-layout:$version"
             const val tooling = "androidx.compose.ui:ui-tooling:$version"
             const val animation = "androidx.compose.animation:animation:$version"
             const val uiTest = "androidx.compose.ui:ui-test-junit4:$version"
+            const val uiTestManifest = "androidx.compose.ui:ui-test-manifest:$version"
         }
 
         object Lifecycle {
@@ -82,7 +80,8 @@ object Libs {
         }
 
         object Test {
-            private const val version = "1.3.0"
+            private const val version = "1.4.0"
+            const val core = "androidx.test:core:$version"
             const val runner = "androidx.test:runner:$version"
             const val rules = "androidx.test:rules:$version"
             object Ext {
@@ -106,10 +105,14 @@ object Libs {
         private const val version = "4.13"
         const val junit = "junit:junit:$version"
     }
+
+    object Coil {
+        const val coilCompose = "io.coil-kt:coil-compose:1.3.2"
+    }
 }
 
 object Urls {
     const val mavenCentralSnapshotRepo = "https://oss.sonatype.org/content/repositories/snapshots/"
     const val composeSnapshotRepo = "https://androidx.dev/snapshots/builds/" +
-        "${Libs.AndroidX.Compose.snapshot}/artifacts/repository/"
+            "${Libs.AndroidX.Compose.snapshot}/artifacts/repository/"
 }
