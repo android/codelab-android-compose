@@ -35,6 +35,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import coil.annotation.ExperimentalCoilApi
 import coil.compose.rememberImagePainter
 import kotlinx.coroutines.launch
 
@@ -89,6 +90,7 @@ fun LazyListPreview() {
     LazyList()
 }
 
+@OptIn(ExperimentalCoilApi::class)
 @Composable
 fun ImageListItem(index: Int) {
     Row(verticalAlignment = Alignment.CenterVertically) {
