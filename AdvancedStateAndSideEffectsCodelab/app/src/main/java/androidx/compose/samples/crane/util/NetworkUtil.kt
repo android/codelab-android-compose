@@ -28,6 +28,7 @@ import coil.request.ImageResult
 import coil.size.PixelSize
 import okhttp3.HttpUrl
 
+@OptIn(ExperimentalCoilApi::class)
 @Composable
 fun ProvideImageLoader(content: @Composable () -> Unit) {
     val context = LocalContext.current
