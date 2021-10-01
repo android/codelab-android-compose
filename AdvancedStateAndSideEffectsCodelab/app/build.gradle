@@ -40,12 +40,6 @@ android {
         vectorDrawables.useSupportLibrary = true
         testInstrumentationRunner "androidx.compose.samples.crane.CustomTestRunner"
 
-        javaCompileOptions {
-            annotationProcessorOptions {
-                arguments["dagger.hilt.disableModulesHaveInstallInCheck"] = "true"
-            }
-        }
-
         manifestPlaceholders = [ googleMapsKey : properties.getProperty("google.maps.key", "") ]
     }
 
@@ -118,7 +112,6 @@ dependencies {
     implementation Libs.AndroidX.Activity.activityCompose
     implementation Libs.AndroidX.appcompat
     implementation Libs.AndroidX.Compose.runtime
-    implementation Libs.AndroidX.Compose.runtimeLivedata
     implementation Libs.AndroidX.Compose.foundation
     implementation Libs.AndroidX.Compose.material
     implementation Libs.AndroidX.Compose.layout
