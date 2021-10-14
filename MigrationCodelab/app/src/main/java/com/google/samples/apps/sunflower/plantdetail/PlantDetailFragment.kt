@@ -110,7 +110,12 @@ class PlantDetailFragment : Fragment() {
             }
 
             composeView.apply {
-                // Dispose the Composition when the Fragment's LifecycleOwner is destroyed
+                // By default, the Composition is disposed when ComposeView is detached
+                // from the Window. This default behavior is undesirable for fragments that
+                // can be created multiple times within the same Window. To dispose
+                // the Composition when the Fragment's LifecycleOwner is destroyed, we set the
+                // DisposeOnViewTreeLifecycleDestroyed strategy as the ViewCompositionStrategy
+                // for this ComposeView
                 setViewCompositionStrategy(
                     ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed
                 )
