@@ -24,23 +24,23 @@ buildscript {
 
         // App dependencies
         appCompatVersion = '1.3.1'
-        composeVersion = '1.0.3'
-        constraintLayoutVersion = '2.0.4'
+        composeVersion = '1.0.4'
+        constraintLayoutVersion = '2.1.1'
         coreTestingVersion = '2.1.0'
-        coroutinesVersion = "1.4.2"
+        coroutinesVersion = "1.5.2"
         // TODO: Updating to 3.4.0 leads to dependency conflicts
         espressoVersion = '3.3.0'
-        fragmentVersion = '1.3.5'
+        fragmentVersion = '1.3.6'
         glideVersion = '4.12.0'
         gradleVersion = '7.0.2'
         gsonVersion = '2.8.6'
         junitVersion = '4.13.2'
-        kotlinVersion = '1.5.30'
+        kotlinVersion = '1.5.31'
         ktlintVersion = '0.37.2'
         ktxVersion = '1.6.0'
         lifecycleVersion = '2.3.1'
-        materialVersion = '1.3.0'
-        materialComposeAdapterVersion = '1.0.3'
+        materialVersion = '1.4.0'
+        materialComposeAdapterVersion = '1.0.4'
         navigationVersion = '2.3.5'
         recyclerViewVersion = '1.2.1'
         roomVersion = '2.3.0'
@@ -49,7 +49,7 @@ buildscript {
         testExtJunit = '1.1.3'
         uiAutomatorVersion = '2.2.0'
         viewPagerVersion = '1.0.0'
-        workVersion = '2.5.0'
+        workVersion = '2.7.0'
     }
 
     repositories {
