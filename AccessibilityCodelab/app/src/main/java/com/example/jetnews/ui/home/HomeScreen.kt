@@ -65,10 +65,6 @@ fun HomeScreen(
     openDrawer: () -> Unit,
     scaffoldState: ScaffoldState = rememberScaffoldState()
 ) {
-    // Returns a [CoroutineScope] that is scoped to the lifecycle of [HomeScreen]. When this
-    // screen is removed from composition, the scope will be cancelled.
-    val coroutineScope = rememberCoroutineScope()
-
     HomeScreen(
         posts = postsRepository.getPosts(),
         navigateToArticle = navigateToArticle,
