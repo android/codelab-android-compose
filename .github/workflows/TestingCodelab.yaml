@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - end
     paths:
       - 'TestingCodelab/**'
   pull_request:
