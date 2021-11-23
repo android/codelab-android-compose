@@ -60,7 +60,7 @@ class TopAppBarTest {
 
         composeTestRule
             .onNode(
-                hasText(RallyScreen.Accounts.name.toUpperCase()) and
+                hasText(RallyScreen.Accounts.name.uppercase()) and
                     hasParent(
                         hasContentDescription(RallyScreen.Accounts.name)
                     ),
