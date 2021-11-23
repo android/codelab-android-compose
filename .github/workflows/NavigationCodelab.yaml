@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - end
     paths:
       - 'NavigationCodelab/**'
   pull_request:
