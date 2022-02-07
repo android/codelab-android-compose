@@ -16,7 +16,6 @@
 
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'androidx.navigation.safeargs.kotlin'
 
@@ -43,6 +42,7 @@ android {
     }
     kotlinOptions {
         jvmTarget = "1.8"
+        freeCompilerArgs = ['-Xjvm-default=compatibility']
         useIR = true
     }
     buildFeatures {
@@ -91,8 +91,10 @@ dependencies {
     implementation "androidx.compose.material:material:$rootProject.composeVersion"
     implementation "androidx.compose.runtime:runtime-livedata:$rootProject.composeVersion"
     implementation "androidx.compose.ui:ui-tooling-preview:$rootProject.composeVersion"
-    implementation "com.google.android.material:compose-theme-adapter:$rootProject.materialComposeAdapterVersion"
     debugImplementation "androidx.compose.ui:ui-tooling:$rootProject.composeVersion"
+
+//    implementation "com.google.android.material:compose-theme-adapter:$rootProject.materialComposeAdapterVersion"
+    implementation "com.github.material-components.material-components-android-compose-theme-adapter:compose-theme-adapter:$rootProject.materialComposeAdapterVersion"
 
     // Testing dependencies
     androidTestImplementation "androidx.arch.core:core-testing:$rootProject.coreTestingVersion"
