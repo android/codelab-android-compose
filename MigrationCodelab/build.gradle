@@ -23,33 +23,33 @@ buildscript {
         targetSdkVersion = 31
 
         // App dependencies
-        appCompatVersion = '1.3.1'
-        composeVersion = '1.0.5'
-        constraintLayoutVersion = '2.1.1'
+        appCompatVersion = '1.4.1'
+        composeVersion = '1.1.0-SNAPSHOT'
+        constraintLayoutVersion = '2.1.3'
         coreTestingVersion = '2.1.0'
-        coroutinesVersion = "1.5.2"
+        coroutinesVersion = "1.6.0"
         // TODO: Updating to 3.4.0 leads to dependency conflicts
         espressoVersion = '3.3.0'
-        fragmentVersion = '1.3.6'
+        fragmentVersion = '1.4.1'
         glideVersion = '4.12.0'
-        gradleVersion = '7.0.3'
+        gradleVersion = '7.1.0'
         gsonVersion = '2.8.6'
         junitVersion = '4.13.2'
-        kotlinVersion = '1.5.31'
+        kotlinVersion = '1.6.10'
         ktlintVersion = '0.37.2'
         ktxVersion = '1.7.0'
-        lifecycleVersion = '2.3.1'
-        materialVersion = '1.4.0'
-        materialComposeAdapterVersion = '1.0.5'
-        navigationVersion = '2.3.5'
+        lifecycleVersion = '2.4.0'
+        materialVersion = '1.5.0'
+        materialComposeAdapterVersion = 'compose-1.1.0-snapshot-SNAPSHOT'
+        navigationVersion = '2.5.0-alpha01'
         recyclerViewVersion = '1.2.1'
-        roomVersion = '2.3.0'
+        roomVersion = '2.4.1'
         runnerVersion = '1.0.1'
         truthVersion = '1.1.2'
         testExtJunit = '1.1.3'
         uiAutomatorVersion = '2.2.0'
         viewPagerVersion = '1.0.0'
-        workVersion = '2.7.0'
+        workVersion = '2.7.1'
     }
 
     repositories {
@@ -72,6 +72,8 @@ allprojects {
     repositories {
         google()
         mavenCentral()
+        maven { url 'https://androidx.dev/snapshots/builds/8131182/artifacts/repository' }
+        maven { url 'https://jitpack.io' }
     }
 }
 
