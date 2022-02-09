@@ -22,7 +22,7 @@ buildscript {
         activity_compose_version = '1.4.0'
         material_version = '1.4.0'
         coroutines_version = '1.5.2'
-        accompanist_version = '0.22.2'
+        accompanist_version = '0.23.0'
     }
 
     repositories {
