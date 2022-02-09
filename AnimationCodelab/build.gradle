@@ -16,7 +16,7 @@
 
 buildscript {
     ext {
-        compose_version = '1.1.0-SNAPSHOT'
+        compose_version = '1.1.0'
         kotlin_version = '1.6.10'
     }
     repositories {
@@ -33,6 +33,5 @@ allprojects {
     repositories {
         google()
         mavenCentral()
-        maven { url 'https://androidx.dev/snapshots/builds/8131182/artifacts/repository' }
     }
 }
