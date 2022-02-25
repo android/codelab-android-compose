@@ -17,12 +17,12 @@
 buildscript {
     ext {
         kotlin_version = '1.6.10'
-        compose_version = '1.1.0'
+        compose_version = '1.1.1'
         navigation_compose_version = '2.4.0-beta02'
         activity_compose_version = '1.4.0'
         material_version = '1.4.0'
         coroutines_version = '1.5.2'
-        accompanist_version = '0.23.0'
+        accompanist_version = '0.23.1'
     }
 
     repositories {
@@ -31,7 +31,7 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:7.1.0'
+        classpath 'com.android.tools.build:gradle:7.1.2'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
