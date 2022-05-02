@@ -1,6 +1,5 @@
-package com.example.reply.ui.finish
+package com.example.reply.ui
 
-import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -24,14 +23,12 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.ModalNavigationDrawer
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.NavigationDrawerItem
 import androidx.compose.material3.NavigationDrawerItemDefaults
 import androidx.compose.material3.NavigationRail
 import androidx.compose.material3.NavigationRailItem
-import androidx.compose.material3.PermanentNavigationDrawer
 import androidx.compose.material3.Text
 import androidx.compose.material3.rememberDrawerState
 import androidx.compose.runtime.Composable
@@ -43,116 +40,33 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.reply.R
-import com.example.reply.ui.DevicePosture
-import com.example.reply.ui.ReplyContentType
-import com.example.reply.ui.ReplyDestinations
-import com.example.reply.ui.ReplyHomeUIState
-import com.example.reply.ui.ReplyNavigationType
-import com.example.reply.ui.WindowSize
-import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ReplyApp(
-    windowSize: WindowSize,
-    foldingDevicePosture: DevicePosture,
     replyHomeUIState: ReplyHomeUIState
 ) {
-    /**
-     * This will help us select type of navigation and content type depending on window size and
-     * fold state of the device.
-     *
-     * In the state of folding device If it's half fold in BookPosture we want to avoid content
-     * at the crease/hinge
-     */
-    val navigationType: ReplyNavigationType
-    val contentType: ReplyContentType
-    when (windowSize) {
-        WindowSize.COMPACT -> {
-            navigationType = ReplyNavigationType.BOTTOM_NAVIGATION
-            contentType = ReplyContentType.LIST_ONLY
-        }
-        WindowSize.MEDIUM -> {
-            navigationType = ReplyNavigationType.NAVIGATION_RAIL
-            contentType = if (foldingDevicePosture != DevicePosture.NormalPosture) {
-                ReplyContentType.LIST_AND_DETAIL
-            } else {
-                ReplyContentType.LIST_ONLY
-            }
-        }
-        WindowSize.EXPANDED -> {
-            navigationType = if (foldingDevicePosture is DevicePosture.BookPosture) {
-                ReplyNavigationType.NAVIGATION_RAIL
-            } else {
-                ReplyNavigationType.PERMANENT_NAVIGATION_DRAWER
-            }
-            contentType = ReplyContentType.LIST_AND_DETAIL
-        }
-    }
-
     val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
     val scope = rememberCoroutineScope()
-
     val selectedDestination = ReplyDestinations.INBOX
 
-    if (navigationType == ReplyNavigationType.PERMANENT_NAVIGATION_DRAWER) {
-        PermanentNavigationDrawer(drawerContent = { NavigationDrawerContent(selectedDestination) }) {
-            ReplyAppContent(navigationType, contentType, replyHomeUIState)
-        }
-    } else {
-        ModalNavigationDrawer(
-            drawerContent = {
-                NavigationDrawerContent(
-                    selectedDestination,
-                    onDrawerClicked = {
-                        scope.launch {
-                            drawerState.close()
-                        }
-                    }
-                )
-            },
-            drawerState = drawerState
-        ) {
-            ReplyAppContent(navigationType, contentType, replyHomeUIState,
-                onDrawerClicked = {
-                    scope.launch {
-                        drawerState.open()
-                    }
-                }
-            )
-        }
-    }
+    ReplyAppContent(replyHomeUIState)
+
 }
 
 @Composable
 fun ReplyAppContent(
-    navigationType: ReplyNavigationType,
-    contentType: ReplyContentType,
     replyHomeUIState: ReplyHomeUIState,
     onDrawerClicked: () -> Unit = {}
 ) {
-    Row(modifier = Modifier.fillMaxSize()) {
-        AnimatedVisibility(visible = navigationType == ReplyNavigationType.NAVIGATION_RAIL) {
-            ReplyNavigationRail(
-                onDrawerClicked = onDrawerClicked
-            )
-        }
+    Row(modifier = Modifier
+        .fillMaxSize()) {
         Column(modifier = Modifier
             .fillMaxSize()
             .background(MaterialTheme.colorScheme.inverseOnSurface)
         ) {
-            if (contentType == ReplyContentType.LIST_AND_DETAIL) {
-                ReplyListAndDetailContent(
-                    replyHomeUIState = replyHomeUIState,
-                    modifier = Modifier.weight(1f),
-                )
-            } else {
-                ReplyListOnlyContent(replyHomeUIState = replyHomeUIState, modifier = Modifier.weight(1f))
-            }
-
-            AnimatedVisibility(visible = navigationType == ReplyNavigationType.BOTTOM_NAVIGATION) {
-                ReplyBottomNavigationBar()
-            }
+            ReplyListOnlyContent(replyHomeUIState = replyHomeUIState, modifier = Modifier.weight(1f))
+            ReplyBottomNavigationBar()
         }
     }
 }

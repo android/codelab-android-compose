@@ -1,4 +1,4 @@
-package com.example.reply.ui.finish
+package com.example.reply.ui
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -30,7 +30,6 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.example.reply.R
 import com.example.reply.data.Email
-import com.example.reply.ui.ReplyHomeUIState
 
 @Composable
 fun ReplyListOnlyContent(
@@ -76,7 +75,7 @@ fun ReplyEmailListItem(
                 .padding(20.dp)
         ) {
             Row(modifier = Modifier.fillMaxWidth()) {
-                com.example.reply.ui.start.ReplyProfileImage(
+                ReplyProfileImage(
                     drawableResource = email.sender.avatar,
                     description = email.sender.fullName,
                 )
@@ -139,7 +138,7 @@ fun ReplyEmailThreadItem(
                 .padding(20.dp)
         ) {
             Row(modifier = Modifier.fillMaxWidth()) {
-                com.example.reply.ui.start.ReplyProfileImage(
+                ReplyProfileImage(
                     drawableResource = email.sender.avatar,
                     description = email.sender.fullName,
                 )
