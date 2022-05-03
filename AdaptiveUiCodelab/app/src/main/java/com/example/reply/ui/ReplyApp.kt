@@ -93,9 +93,18 @@ fun ReplyApp(
         }
     }
 
+    ReplyNavigationWrapperUI(navigationType, contentType, replyHomeUIState)
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+private fun ReplyNavigationWrapperUI(
+    navigationType: ReplyNavigationType,
+    contentType: ReplyContentType,
+    replyHomeUIState: ReplyHomeUIState
+) {
     val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
     val scope = rememberCoroutineScope()
-
     val selectedDestination = ReplyDestinations.INBOX
 
     if (navigationType == ReplyNavigationType.PERMANENT_NAVIGATION_DRAWER) {
@@ -116,7 +125,8 @@ fun ReplyApp(
             },
             drawerState = drawerState
         ) {
-            ReplyAppContent(navigationType, contentType, replyHomeUIState,
+            ReplyAppContent(
+                navigationType, contentType, replyHomeUIState,
                 onDrawerClicked = {
                     scope.launch {
                         drawerState.open()
