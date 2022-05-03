@@ -16,6 +16,7 @@ import androidx.compose.material.icons.filled.StarBorder
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -131,7 +132,7 @@ fun ReplyEmailListItem(
 fun ReplyEmailThreadItem(
     email: Email,
     modifier: Modifier = Modifier.padding(horizontal = 16.dp, vertical = 4.dp)) {
-    Card(modifier = modifier, containerColor = MaterialTheme.colorScheme.surface) {
+    Card(modifier = modifier,  colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface)) {
         Column(
             modifier = Modifier
                 .fillMaxWidth()
@@ -153,7 +154,7 @@ fun ReplyEmailThreadItem(
                         style = MaterialTheme.typography.labelMedium
                     )
                     Text(
-                        text = "20 mins ago",
+                        text = email.createAt,
                         style = MaterialTheme.typography.labelMedium,
                         color = MaterialTheme.colorScheme.outline
                     )

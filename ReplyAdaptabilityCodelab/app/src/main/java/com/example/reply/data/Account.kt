@@ -33,5 +33,4 @@ data class Account(
     var isCurrentAccount: Boolean = false
 ) {
     val fullName: String = "$firstName $lastName"
-
 }

@@ -8,18 +8,15 @@ import kotlinx.coroutines.flow.flow
 class AccountsRepositoryImpl : AccountsRepository {
 
     override fun getDefaultUserAccount(): Flow<Account> = flow {
-        delay(1500)
         emit(LocalAccountsDataProvider.getDefaultUserAccount())
     }
 
     override fun getAllUserAccounts(): Flow<List<Account>> = flow {
-        delay(1500)
         emit(LocalAccountsDataProvider.allUserAccounts)
     }
 
 
     override fun getContactAccountByUid(uid: Long): Flow<Account> = flow {
-        delay(1500)
         emit(LocalAccountsDataProvider.getContactAccountByUid(uid))
     }
 }
