@@ -20,11 +20,9 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
-import androidx.compose.material3.windowsizeclass.WindowWidthSizeClass
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.reply.data.EmailsRepositoryImpl
 import com.example.reply.data.local.LocalEmailsDataProvider
 import com.example.reply.ui.theme.ReplyTheme
 
