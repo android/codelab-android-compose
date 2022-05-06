@@ -35,7 +35,6 @@ import com.example.reply.ui.theme.ReplyTheme
 import com.example.reply.ui.utils.DevicePosture
 import com.example.reply.ui.utils.isBookPosture
 import com.example.reply.ui.utils.isSeparating
-import com.example.reply.ui.utils.isTableTopPosture
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
@@ -55,14 +54,16 @@ class MainActivity : ComponentActivity() {
             .flowWithLifecycle(this.lifecycle)
             .map { layoutInfo ->
                 val foldingFeature =
-                    layoutInfo.displayFeatures.filterIsInstance<FoldingFeature>().firstOrNull()
+                    layoutInfo.displayFeatures
+                        .filterIsInstance<FoldingFeature>()
+                        .firstOrNull()
                 when {
-                    isTableTopPosture(foldingFeature) ->
-                        DevicePosture.TableTopPosture(foldingFeature.bounds)
                     isBookPosture(foldingFeature) ->
                         DevicePosture.BookPosture(foldingFeature.bounds)
+
                     isSeparating(foldingFeature) ->
                         DevicePosture.Separating(foldingFeature.bounds, foldingFeature.orientation)
+
                     else -> DevicePosture.NormalPosture
                 }
             }
