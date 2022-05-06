@@ -59,7 +59,14 @@ import com.example.reply.R
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ReplyApp(
+fun ReplyApp(replyHomeUIState: ReplyHomeUIState) {
+    // You will add navigation info here
+    ReplyNavigationWrapperUI(replyHomeUIState)
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+private fun ReplyNavigationWrapperUI(
     replyHomeUIState: ReplyHomeUIState
 ) {
     val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
@@ -67,8 +74,8 @@ fun ReplyApp(
     val selectedDestination = ReplyDestinations.INBOX
 
     ReplyAppContent(replyHomeUIState)
-
 }
+
 
 @Composable
 fun ReplyAppContent(
