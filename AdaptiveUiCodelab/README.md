@@ -1,7 +1,7 @@
-# Adaptive and accessible apps in Jetpack Compose Codelab
+# Build adaptive apps with Jetpack Compose codelab
 
-This folder contains the source code for
-the [Adaptive and accessible apps in Jetpack Compose Codelab](https://codelabs.developers.google.com/jetpack-compose-adaptability)
+This folder contains the solution source code for
+the [Build adaptive apps with Jetpack Compose codelab](https://codelabs.developers.google.com/jetpack-compose-adaptability)
 
 ## License
 
