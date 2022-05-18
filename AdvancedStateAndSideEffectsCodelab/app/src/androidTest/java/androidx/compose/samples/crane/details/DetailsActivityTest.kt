@@ -47,7 +47,7 @@ class DetailsActivityTest {
 
     @Inject
     lateinit var destinationsRepository: DestinationsRepository
-    lateinit var cityDetails: ExploreModel
+    private lateinit var cityDetails: ExploreModel
 
     private val city = MADRID
     private val testExploreModel = ExploreModel(city, "description", "imageUrl")
