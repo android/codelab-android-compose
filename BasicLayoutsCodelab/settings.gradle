@@ -27,7 +27,7 @@ dependencyResolutionManagement {
         google()
         mavenCentral()
         maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
-        maven { url 'https://androidx.dev/snapshots/builds/8245134/artifacts/repository' }
+        maven { url 'https://androidx.dev/snapshots/builds/8698880/artifacts/repository' }
     }
 }
 rootProject.name = "MySoothe"

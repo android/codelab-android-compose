@@ -21,9 +21,10 @@ buildscript {
         ktlint = "0.45.2"
         appCompatVersion = '1.4.2'
         activityComposeVersion = '1.6.0-alpha03'
-        composeVersion = '1.2.0-beta03'
-        gradleVersion = '7.2.0'
-        kotlinVersion = '1.6.21'
+        composeCompilerVersion = "1.2.0"
+        composeVersion = '1.2.0-SNAPSHOT'
+        gradleVersion = '7.2.1'
+        kotlinVersion = '1.7.0'
         ktxVersion = '1.8.0'
         materialVersion = '1.6.1'
     }
@@ -31,6 +32,7 @@ buildscript {
     repositories {
         google()
         mavenCentral()
+        maven { url 'https://androidx.dev/snapshots/builds/8698880/artifacts/repository' }
     }
 
     dependencies {
@@ -40,13 +42,14 @@ buildscript {
 }
 
 plugins {
-    id 'com.diffplug.spotless' version '6.5.2'
+    id 'com.diffplug.spotless' version '6.7.0'
 }
 
 subprojects {
     repositories {
         google()
         mavenCentral()
+        maven { url 'https://androidx.dev/snapshots/builds/8698880/artifacts/repository' }
     }
 
     apply plugin: 'com.diffplug.spotless'
