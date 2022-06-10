@@ -17,11 +17,11 @@
 package com.example.crane.buildsrc
 
 object Versions {
-    const val ktLint = "0.42.1"
+    const val ktLint = "0.45.2"
 }
 
 object Libs {
-    const val androidGradlePlugin = "com.android.tools.build:gradle:7.2.0"
+    const val androidGradlePlugin = "com.android.tools.build:gradle:7.2.1"
     const val ktLint = "com.pinterest:ktlint:${Versions.ktLint}"
 
     object GoogleMaps {
@@ -39,7 +39,7 @@ object Libs {
     }
 
     object Kotlin {
-        private const val version = "1.6.10"
+        private const val version = "1.6.21"
         const val stdlib = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$version"
         const val gradlePlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:$version"
         const val extensions = "org.jetbrains.kotlin:kotlin-android-extensions:$version"
@@ -59,8 +59,8 @@ object Libs {
         const val appcompat = "androidx.appcompat:appcompat:1.3.1"
 
         object Compose {
-            const val snapshot = ""
-            const val version = "1.1.1"
+            const val snapshot = "8698880"
+            const val version = "1.2.0-SNAPSHOT"
 
             const val runtime = "androidx.compose.runtime:runtime:$version"
             const val material = "androidx.compose.material:material:$version"
