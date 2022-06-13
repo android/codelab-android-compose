@@ -18,6 +18,7 @@ package androidx.compose.samples.crane.home
 
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
+import androidx.compose.ui.test.onAllNodesWithText
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
 import dagger.hilt.android.testing.HiltAndroidRule
@@ -35,15 +36,15 @@ class HomeTest {
     @get:Rule(order = 1)
     val composeTestRule = createAndroidComposeRule<MainActivity>()
 
-    @Before
-    fun setUp() {
-        composeTestRule.setContent {
-            CraneHome({ })
-        }
-    }
-
     @Test
     fun home_navigatesToAllScreens() {
+        // Waits until loading is finished
+        composeTestRule.waitUntil(timeoutMillis = 4000L) {
+            composeTestRule
+                .onAllNodesWithText("Explore Flights by Destination")
+                .fetchSemanticsNodes().size == 1
+        }
+
         composeTestRule.onNodeWithText("Explore Flights by Destination").assertIsDisplayed()
         composeTestRule.onNodeWithText("SLEEP").performClick()
         composeTestRule.onNodeWithText("Explore Properties by Destination").assertIsDisplayed()

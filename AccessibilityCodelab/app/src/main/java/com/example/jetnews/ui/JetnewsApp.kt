@@ -16,6 +16,7 @@
 
 package com.example.jetnews.ui
 
+import android.annotation.SuppressLint
 import androidx.compose.material.Scaffold
 import androidx.compose.material.rememberScaffoldState
 import androidx.compose.runtime.Composable
@@ -31,6 +32,7 @@ import com.google.accompanist.insets.ProvideWindowInsets
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import kotlinx.coroutines.launch
 
+@SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun JetnewsApp(
     appContainer: AppContainer
