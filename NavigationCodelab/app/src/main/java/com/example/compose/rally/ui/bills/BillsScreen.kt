@@ -23,6 +23,7 @@ import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.semantics.contentDescription
 import com.example.compose.rally.R
 import com.example.compose.rally.data.Bill
+import com.example.compose.rally.data.UserData
 import com.example.compose.rally.ui.components.BillRow
 import com.example.compose.rally.ui.components.StatementBody
 
@@ -30,7 +31,9 @@ import com.example.compose.rally.ui.components.StatementBody
  * The Bills screen.
  */
 @Composable
-fun BillsBody(bills: List<Bill>) {
+fun BillsScreen(
+    bills: List<Bill> = UserData.bills
+) {
     StatementBody(
         modifier = Modifier.clearAndSetSemantics { contentDescription = "Bills" },
         items = bills,

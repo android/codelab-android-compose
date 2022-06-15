@@ -23,7 +23,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import com.example.compose.rally.R
-import com.example.compose.rally.data.Account
+import com.example.compose.rally.data.UserData
 import com.example.compose.rally.ui.components.AccountRow
 import com.example.compose.rally.ui.components.StatementBody
 
@@ -31,16 +31,15 @@ import com.example.compose.rally.ui.components.StatementBody
  * The Accounts screen.
  */
 @Composable
-fun AccountsBody(
-    accounts: List<Account>,
+fun AccountsScreen(
     onAccountClick: (String) -> Unit = {},
 ) {
     StatementBody(
         modifier = Modifier.semantics { contentDescription = "Accounts Screen" },
-        items = accounts,
+        items = UserData.accounts,
         amounts = { account -> account.balance },
         colors = { account -> account.color },
-        amountsTotal = accounts.map { account -> account.balance }.sum(),
+        amountsTotal = UserData.accounts.map { account -> account.balance }.sum(),
         circleLabel = stringResource(R.string.total),
         rows = { account ->
             AccountRow(
@@ -60,7 +59,10 @@ fun AccountsBody(
  * Detail screen for a single account.
  */
 @Composable
-fun SingleAccountBody(account: Account) {
+fun SingleAccountScreen(
+    accountType: String? = UserData.accounts.first().name
+) {
+    val account = UserData.getAccount(accountType)
     StatementBody(
         items = listOf(account),
         colors = { account.color },

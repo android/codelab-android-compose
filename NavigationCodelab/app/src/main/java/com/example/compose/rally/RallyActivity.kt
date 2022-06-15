@@ -25,7 +25,7 @@ import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import com.example.compose.rally.ui.components.RallyTabRow
@@ -47,23 +47,18 @@ class RallyActivity : ComponentActivity() {
 @Composable
 fun RallyApp() {
     RallyTheme {
-        val allScreens = RallyScreen.values().toList()
-        var currentScreen by rememberSaveable { mutableStateOf(RallyScreen.Overview) }
+        var currentScreen: RallyDestination by remember { mutableStateOf(Overview) }
         Scaffold(
             topBar = {
                 RallyTabRow(
-                    allScreens = allScreens,
+                    allScreens = rallyTabRowScreens,
                     onTabSelected = { screen -> currentScreen = screen },
                     currentScreen = currentScreen
                 )
             }
         ) { innerPadding ->
             Box(Modifier.padding(innerPadding)) {
-                currentScreen.content(
-                    onScreenChange = { screen ->
-                        currentScreen = RallyScreen.valueOf(screen)
-                    }
-                )
+                currentScreen.screen()
             }
         }
     }
