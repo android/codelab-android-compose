@@ -20,12 +20,12 @@ plugins {
 }
 
 android {
-    compileSdkVersion 31
+    compileSdkVersion 32
 
     defaultConfig {
         applicationId "com.example.compose.rally"
         minSdkVersion 21
-        targetSdkVersion 31
+        targetSdkVersion 32
         versionCode 1
         versionName '1.0'
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
@@ -65,13 +65,6 @@ android {
 
     buildFeatures {
         compose true
-
-        // Disable unused AGP features
-        buildConfig false
-        aidl false
-        renderScript false
-        resValues false
-        shaders false
     }
 
     composeOptions {
@@ -90,30 +83,29 @@ dependencies {
     implementation "androidx.appcompat:appcompat:$rootProject.appCompatVersion"
     implementation "androidx.core:core-ktx:$rootProject.ktxVersion"
     implementation "com.google.android.material:material:$rootProject.materialVersion"
-    implementation "androidx.fragment:fragment-ktx:$rootProject.fragmentVersion"
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$rootProject.kotlinVersion"
 
     // Compose
     implementation "androidx.compose.runtime:runtime:$rootProject.composeVersion"
     implementation "androidx.compose.ui:ui:$rootProject.composeVersion"
     implementation "androidx.compose.foundation:foundation:$rootProject.composeVersion"
-    implementation "androidx.compose.foundation:foundation-layout:$rootProject.composeVersion"
     implementation "androidx.compose.material:material:$rootProject.composeVersion"
-    implementation "androidx.compose.runtime:runtime-livedata:$rootProject.composeVersion"
-    implementation "androidx.compose.ui:ui-tooling-preview:$rootProject.composeVersion"
     implementation "androidx.compose.material:material-icons-extended:$rootProject.composeVersion"
     implementation "androidx.activity:activity-compose:$rootProject.activityComposeVersion"
-    implementation "androidx.navigation:navigation-compose:2.4.0-beta02"
-    debugImplementation "androidx.compose.ui:ui-tooling:$rootProject.composeVersion"
-
-    // Testing dependencies
-    androidTestImplementation "androidx.arch.core:core-testing:$rootProject.coreTestingVersion"
-    androidTestImplementation "androidx.test.espresso:espresso-contrib:$rootProject.espressoVersion"
-    androidTestImplementation "androidx.test.espresso:espresso-core:$rootProject.espressoVersion"
-    androidTestImplementation 'org.jetbrains.kotlinx:kotlinx-coroutines-test:1.5.2'
+    implementation "androidx.navigation:navigation-compose:$rootProject.composeNavigationVersion"
 
     // Compose testing dependencies
-    androidTestImplementation "androidx.compose.ui:ui-test:$rootProject.composeVersion"
     androidTestImplementation "androidx.compose.ui:ui-test-junit4:$rootProject.composeVersion"
     debugImplementation "androidx.compose.ui:ui-test-manifest:$rootProject.composeVersion"
+}
+
+tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).configureEach {
+    kotlinOptions {
+        // Treat all Kotlin warnings as errors
+        allWarningsAsErrors = true
+
+        freeCompilerArgs += '-opt-in=kotlin.RequiresOptIn'
+
+        // Set JVM target to 1.8
+        jvmTarget = "1.8"
+    }
 }
