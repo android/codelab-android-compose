@@ -15,11 +15,9 @@ For more information about Jetpack Compose, please [read the documentation](http
 
 Go hands-on and learn the fundamentals of declarative UI, working with state, layouts and theming.
 
-### [Layouts codelabs](https://developer.android.com/codelabs/jetpack-compose-layouts)
+### [Basic layouts codelab](https://developer.android.com/codelabs/jetpack-compose-layouts)
 
-Learn how layout works in Jetpack Compose, how to use the built-in layouts,
-[modifiers](https://developer.android.com/reference/kotlin/androidx/compose/ui/Modifier),
-and even building your own custom layout.
+Learn how to implement real-world designs with the composables and modifiers that Compose provides out of the box.
 
 ### [State codelab](https://developer.android.com/codelabs/jetpack-compose-state)
 
