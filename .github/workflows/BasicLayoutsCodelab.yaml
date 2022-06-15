@@ -1,17 +1,17 @@
-name: LayoutsCodelab
+name: BasicLayoutsCodelab
 
 on:
   push:
     branches:
       - main
     paths:
-      - 'LayoutsCodelab/**'
+      - 'BasicLayoutsCodelab/**'
   pull_request:
     paths:
-      - 'LayoutsCodelab/**'
+      - 'BasicLayoutsCodelab/**'
 
 env:
-  SAMPLE_PATH: LayoutsCodelab
+  SAMPLE_PATH: BasicLayoutsCodelab
 
 jobs:
   build:
