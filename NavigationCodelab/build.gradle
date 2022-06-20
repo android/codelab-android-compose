@@ -26,8 +26,6 @@ buildscript {
         kotlinVersion = '1.6.21'
         ktxVersion = '1.8.0'
         materialVersion = '1.6.1'
-        espressoVersion = '3.4.0'
-        coreTestingVersion = '2.1.0'
     }
 
     repositories {
