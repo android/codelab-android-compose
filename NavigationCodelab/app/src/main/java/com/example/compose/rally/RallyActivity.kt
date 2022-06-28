@@ -22,6 +22,7 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
@@ -45,8 +46,8 @@ class RallyActivity : ComponentActivity() {
 fun RallyApp() {
     RallyTheme {
         val navController = rememberNavController()
-        val currentBackStack = navController.currentBackStackEntryAsState()
-        val currentDestination = currentBackStack.value?.destination
+        val currentBackStack by navController.currentBackStackEntryAsState()
+        val currentDestination = currentBackStack?.destination
         val currentScreen =
             rallyTabRowScreens.find { it.route == currentDestination?.route } ?: Overview
 

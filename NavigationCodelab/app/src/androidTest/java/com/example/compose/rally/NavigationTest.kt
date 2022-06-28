@@ -16,13 +16,14 @@
 
 package com.example.compose.rally
 
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithContentDescription
 import androidx.compose.ui.test.performClick
 import androidx.compose.ui.test.performScrollTo
-import androidx.navigation.NavHostController
-import androidx.navigation.compose.rememberNavController
+import androidx.navigation.compose.ComposeNavigator
+import androidx.navigation.testing.TestNavHostController
 import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Rule
@@ -32,12 +33,15 @@ class NavigationTest {
 
     @get:Rule
     val composeTestRule = createComposeRule()
-    lateinit var navController: NavHostController
+    lateinit var navController: TestNavHostController
 
     @Before
     fun setupRallyNavHost() {
         composeTestRule.setContent {
-            navController = rememberNavController()
+            // Creates a TestNavHostController
+            navController = TestNavHostController(LocalContext.current)
+            // Sets a ComposeNavigator to the navController so it can navigate through composables
+            navController.navigatorProvider.addNavigator(ComposeNavigator())
             RallyNavHost(navController = navController)
         }
     }
@@ -62,10 +66,9 @@ class NavigationTest {
 
     @Test
     fun rallyNavHost_clickAllBills_navigateToBills() {
-        composeTestRule.onNodeWithContentDescription("All Bills").apply {
-            performScrollTo()
-            performClick()
-        }
+        composeTestRule.onNodeWithContentDescription("All Bills")
+            .performScrollTo()
+            .performClick()
         val route = navController.currentBackStackEntry?.destination?.route
         assertEquals(route, "bills")
     }
