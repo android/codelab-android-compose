@@ -66,7 +66,7 @@ fun RallyNavHost(
         ) { navBackStackEntry ->
             val accountType =
                 navBackStackEntry.arguments?.getString(SingleAccount.accountTypeArg)
-            SingleAccountScreen(accountType = accountType)
+            SingleAccountScreen(accountType)
         }
     }
 }
