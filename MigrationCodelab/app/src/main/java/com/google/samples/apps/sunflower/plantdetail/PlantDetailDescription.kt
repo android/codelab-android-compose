@@ -92,7 +92,7 @@ fun PlantWatering(wateringInterval: Int) {
             R.plurals.watering_needs_suffix,
             wateringInterval, wateringInterval
         )
-        Text(text = "Every x days")
+        Text(text = quantityString)
     }
 }
 
