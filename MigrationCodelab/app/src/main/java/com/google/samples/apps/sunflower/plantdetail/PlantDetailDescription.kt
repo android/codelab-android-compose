@@ -28,6 +28,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -53,7 +54,7 @@ fun PlantDetailDescription(plant: Plant) {
                 .padding(dimensionResource(id = R.dimen.margin_normal))
         ) {
             PlantName(name = plant.name)
-            PlantWatering()
+            PlantWatering(plant.wateringInterval)
             // PlantDescription
         }
     }
@@ -72,9 +73,10 @@ fun PlantName(name: String) {
 }
 
 @Composable
-fun PlantWatering() {
+fun PlantWatering(wateringInterval: Int) {
     Column(
         modifier = Modifier
+            .fillMaxWidth()
             .padding(horizontal = dimensionResource(id = R.dimen.margin_small)),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
@@ -84,6 +86,11 @@ fun PlantWatering() {
                 .padding(top = dimensionResource(id = R.dimen.margin_normal)),
             color = MaterialTheme.colors.primaryVariant,
             fontWeight = FontWeight.Bold
+        )
+        val resources = LocalContext.current.resources
+        val quantityString = resources.getQuantityString(
+            R.plurals.watering_needs_suffix,
+            wateringInterval, wateringInterval
         )
         Text(text = "Every x days")
     }
