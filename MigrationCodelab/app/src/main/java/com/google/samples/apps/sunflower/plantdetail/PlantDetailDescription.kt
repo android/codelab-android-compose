@@ -16,6 +16,7 @@
 
 package com.google.samples.apps.sunflower.plantdetail
 
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentWidth
@@ -44,7 +45,15 @@ fun PlantDetailDescription(plantDetailViewModel: PlantDetailViewModel) {
 @Composable // Stateless : Preview + reusable
 fun PlantDetailDescription(plant: Plant) {
     Surface {
-        PlantName(name = plant.name)
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(dimensionResource(id = R.dimen.margin_normal))
+        ) {
+            PlantName(name = plant.name)
+            // Watering
+            // PlantDescription
+        }
     }
 }
 
