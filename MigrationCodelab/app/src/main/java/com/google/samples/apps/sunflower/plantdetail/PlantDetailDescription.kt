@@ -29,6 +29,8 @@ import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import com.google.samples.apps.sunflower.R
 import com.google.samples.apps.sunflower.data.Plant
@@ -51,7 +53,7 @@ fun PlantDetailDescription(plant: Plant) {
                 .padding(dimensionResource(id = R.dimen.margin_normal))
         ) {
             PlantName(name = plant.name)
-            // Watering
+            PlantWatering()
             // PlantDescription
         }
     }
@@ -67,6 +69,24 @@ fun PlantName(name: String) {
             .wrapContentWidth(Alignment.CenterHorizontally),
         style = MaterialTheme.typography.h5
     )
+}
+
+@Composable
+fun PlantWatering() {
+    Column(
+        modifier = Modifier
+            .padding(horizontal = dimensionResource(id = R.dimen.margin_small)),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Text(
+            text = stringResource(id = R.string.watering_needs_prefix),
+            modifier = Modifier
+                .padding(top = dimensionResource(id = R.dimen.margin_normal)),
+            color = MaterialTheme.colors.primaryVariant,
+            fontWeight = FontWeight.Bold
+        )
+        Text(text = "Every x days")
+    }
 }
 
 @Preview
