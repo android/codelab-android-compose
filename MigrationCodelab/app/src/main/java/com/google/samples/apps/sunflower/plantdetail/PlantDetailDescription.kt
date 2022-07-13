@@ -16,10 +16,9 @@
 
 package com.google.samples.apps.sunflower.plantdetail
 
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.wrapContentWidth
+import android.text.method.LinkMovementMethod
+import android.widget.TextView
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
@@ -33,6 +32,9 @@ import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.viewinterop.AndroidView
+import androidx.core.text.HtmlCompat
+import androidx.core.widget.TextViewCompat
 import com.google.samples.apps.sunflower.R
 import com.google.samples.apps.sunflower.data.Plant
 import com.google.samples.apps.sunflower.viewmodels.PlantDetailViewModel
@@ -55,7 +57,7 @@ fun PlantDetailDescription(plant: Plant) {
         ) {
             PlantName(name = plant.name)
             PlantWatering(plant.wateringInterval)
-            // PlantDescription
+            PlantDescription(plant.description)
         }
     }
 }
@@ -94,6 +96,25 @@ fun PlantWatering(wateringInterval: Int) {
         )
         Text(text = quantityString)
     }
+}
+
+@Composable
+fun PlantDescription(description: String) {
+    AndroidView(
+        factory = { context ->
+            TextView(context).apply { 
+                movementMethod = LinkMovementMethod.getInstance()
+                TextViewCompat.setTextAppearance(this, android.R.style.TextAppearance_Medium)
+            }
+        },
+        update = { tv ->
+            tv.text = HtmlCompat.fromHtml(description, HtmlCompat.FROM_HTML_MODE_COMPACT)
+        },
+        modifier = Modifier
+            .padding(horizontal = dimensionResource(id = R.dimen.margin_small))
+            .padding(top = dimensionResource(id = R.dimen.margin_small))
+            .heightIn(min = dimensionResource(id = R.dimen.plant_description_min_height))
+    )
 }
 
 @Preview
