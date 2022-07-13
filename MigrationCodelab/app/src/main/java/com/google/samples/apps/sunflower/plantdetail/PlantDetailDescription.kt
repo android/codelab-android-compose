@@ -33,7 +33,7 @@ import com.google.samples.apps.sunflower.R
 import com.google.samples.apps.sunflower.data.Plant
 import com.google.samples.apps.sunflower.viewmodels.PlantDetailViewModel
 
-@Composable
+@Composable // Stateful
 fun PlantDetailDescription(plantDetailViewModel: PlantDetailViewModel) {
     val currentPlant by plantDetailViewModel.plant.observeAsState()
     currentPlant?.let { plant ->
@@ -41,7 +41,7 @@ fun PlantDetailDescription(plantDetailViewModel: PlantDetailViewModel) {
     }
 }
 
-@Composable
+@Composable // Stateless : Preview + reusable
 fun PlantDetailDescription(plant: Plant) {
     Surface {
         PlantName(name = plant.name)
@@ -58,6 +58,15 @@ fun PlantName(name: String) {
             .wrapContentWidth(Alignment.CenterHorizontally),
         style = MaterialTheme.typography.h5
     )
+}
+
+@Preview
+@Composable
+fun PlantDetailDescriptionPreview() {
+    MaterialTheme {
+        val fakePlant = Plant("id","Avocado","HTML<br><br>description",3,7,"")
+        PlantDetailDescription(plant = fakePlant)
+    }
 }
 
 @Preview
