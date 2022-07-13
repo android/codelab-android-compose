@@ -36,6 +36,16 @@ import com.google.samples.apps.sunflower.viewmodels.PlantDetailViewModel
 @Composable
 fun PlantDetailDescription(plantDetailViewModel: PlantDetailViewModel) {
     val currentPlant by plantDetailViewModel.plant.observeAsState()
+    currentPlant?.let { plant ->
+        PlantDetailDescription(plant)
+    }
+}
+
+@Composable
+fun PlantDetailDescription(plant: Plant) {
+    Surface {
+        PlantName(name = plant.name)
+    }
 }
 
 @Composable
