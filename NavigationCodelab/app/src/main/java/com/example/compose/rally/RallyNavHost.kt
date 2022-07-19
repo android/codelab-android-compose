@@ -18,6 +18,7 @@ package com.example.compose.rally
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -72,7 +73,15 @@ fun RallyNavHost(
 }
 
 fun NavHostController.navigateSingleTopTo(route: String) =
-    this.navigate(route) { launchSingleTop = true }
+    this.navigate(route) {
+        popUpTo(
+            this@navigateSingleTopTo.graph.findStartDestination().id
+        ) {
+            saveState = true
+        }
+        launchSingleTop = true
+        restoreState = true
+    }
 
 private fun NavHostController.navigateToSingleAccount(accountType: String) {
     this.navigateSingleTopTo("${SingleAccount.route}/$accountType")
