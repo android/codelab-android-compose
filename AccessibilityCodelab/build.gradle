@@ -16,18 +16,20 @@
 
 buildscript {
     ext {
-        kotlin_version = '1.6.21'
-        compose_version = '1.2.0-rc01'
-        navigation_compose_version = '2.5.0-rc01'
-        activity_compose_version = '1.4.0'
+        kotlin_version = '1.7.0'
+        compose_compiler_version = '1.2.0'
+        compose_version = '1.2.0-SNAPSHOT'
+        navigation_compose_version = '2.5.0'
+        activity_compose_version = '1.5.0'
         material_version = '1.6.1'
-        coroutines_version = '1.6.1'
-        accompanist_version = '0.23.1'
+        coroutines_version = '1.6.3'
+        accompanist_version = '0.24.12-rc'
     }
 
     repositories {
         google()
         mavenCentral()
+        maven { url 'https://androidx.dev/snapshots/builds/8843244/artifacts/repository' }
     }
 
     dependencies {
@@ -44,6 +46,7 @@ subprojects {
     repositories {
         google()
         mavenCentral()
+        maven { url 'https://androidx.dev/snapshots/builds/8843244/artifacts/repository' }
     }
 
     apply plugin: 'com.diffplug.spotless'

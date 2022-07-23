@@ -24,6 +24,7 @@ import com.google.samples.apps.sunflower.utilities.getValue
 import kotlinx.coroutines.runBlocking
 import org.hamcrest.Matchers.equalTo
 import org.junit.After
+import org.junit.Assert.assertEquals
 import org.junit.Assert.assertThat
 import org.junit.Before
 import org.junit.Rule
@@ -56,26 +57,26 @@ class PlantDaoTest {
 
     @Test fun testGetPlants() {
         val plantList = getValue(plantDao.getPlants())
-        assertThat(plantList.size, equalTo(3))
+        assertEquals(3, plantList.size)
 
         // Ensure plant list is sorted by name
-        assertThat(plantList[0], equalTo(plantA))
-        assertThat(plantList[1], equalTo(plantB))
-        assertThat(plantList[2], equalTo(plantC))
+        assertEquals(plantA, plantList[0])
+        assertEquals(plantB, plantList[1])
+        assertEquals(plantC, plantList[2])
     }
 
     @Test fun testGetPlantsWithGrowZoneNumber() {
         val plantList = getValue(plantDao.getPlantsWithGrowZoneNumber(1))
-        assertThat(plantList.size, equalTo(2))
-        assertThat(getValue(plantDao.getPlantsWithGrowZoneNumber(2)).size, equalTo(1))
-        assertThat(getValue(plantDao.getPlantsWithGrowZoneNumber(3)).size, equalTo(0))
+        assertEquals(2, plantList.size)
+        assertEquals(1, getValue(plantDao.getPlantsWithGrowZoneNumber(2)).size)
+        assertEquals(0, getValue(plantDao.getPlantsWithGrowZoneNumber(3)).size)
 
         // Ensure plant list is sorted by name
-        assertThat(plantList[0], equalTo(plantA))
-        assertThat(plantList[1], equalTo(plantB))
+        assertEquals(plantA, plantList[0])
+        assertEquals(plantB, plantList[1])
     }
 
     @Test fun testGetPlant() {
-        assertThat(getValue(plantDao.getPlant(plantA.plantId)), equalTo(plantA))
+        assertEquals(plantA, getValue(plantDao.getPlant(plantA.plantId)))
     }
 }
