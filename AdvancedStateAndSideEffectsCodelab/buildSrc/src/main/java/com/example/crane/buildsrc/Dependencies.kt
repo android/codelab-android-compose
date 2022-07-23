@@ -26,7 +26,7 @@ object Libs {
 
     object GoogleMaps {
         const val maps = "com.google.android.libraries.maps:maps:3.1.0-beta"
-        const val mapsKtx = "com.google.maps.android:maps-v3-ktx:2.2.0"
+        const val mapsKtx = "com.google.maps.android:maps-v3-ktx:3.4.0"
     }
 
     object Volley {
@@ -39,13 +39,13 @@ object Libs {
     }
 
     object Kotlin {
-        private const val version = "1.6.21"
+        private const val version = "1.7.0"
         const val stdlib = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$version"
         const val gradlePlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:$version"
         const val extensions = "org.jetbrains.kotlin:kotlin-android-extensions:$version"
 
         object Coroutines {
-            private const val version = "1.5.2"
+            private const val version = "1.6.3"
             const val android = "org.jetbrains.kotlinx:kotlinx-coroutines-android:$version"
             const val test = "org.jetbrains.kotlinx:kotlinx-coroutines-test:$version"
         }
@@ -53,14 +53,15 @@ object Libs {
 
     object AndroidX {
         object Activity {
-            const val activityCompose = "androidx.activity:activity-compose:1.3.1"
+            const val activityCompose = "androidx.activity:activity-compose:1.5.0"
         }
 
-        const val appcompat = "androidx.appcompat:appcompat:1.3.1"
+        const val appcompat = "androidx.appcompat:appcompat:1.4.2"
 
         object Compose {
-            const val snapshot = ""
-            const val version = "1.2.0-rc01"
+            const val compilerVersion = "1.2.0"
+            const val snapshot = "8843244"
+            const val version = "1.2.0-SNAPSHOT"
 
             const val runtime = "androidx.compose.runtime:runtime:$version"
             const val material = "androidx.compose.material:material:$version"
@@ -74,7 +75,7 @@ object Libs {
         }
 
         object Lifecycle {
-            private const val version = "2.4.0-rc01"
+            private const val version = "2.5.0"
             const val viewModelCompose = "androidx.lifecycle:lifecycle-viewmodel-compose:$version"
             const val viewModelKtx = "androidx.lifecycle:lifecycle-viewmodel-ktx:$version"
         }
@@ -93,7 +94,7 @@ object Libs {
     }
 
     object Hilt {
-        private const val version = "2.42"
+        private const val version = "2.43"
 
         const val gradlePlugin = "com.google.dagger:hilt-android-gradle-plugin:$version"
         const val android = "com.google.dagger:hilt-android:$version"
@@ -107,7 +108,7 @@ object Libs {
     }
 
     object Coil {
-        const val coilCompose = "io.coil-kt:coil-compose:1.3.2"
+        const val coilCompose = "io.coil-kt:coil-compose:2.1.0"
     }
 }
 

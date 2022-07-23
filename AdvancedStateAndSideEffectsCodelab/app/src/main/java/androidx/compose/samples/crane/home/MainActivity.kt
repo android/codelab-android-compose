@@ -24,7 +24,6 @@ import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.samples.crane.details.launchDetailsActivity
 import androidx.compose.samples.crane.ui.CraneTheme
-import androidx.compose.samples.crane.util.ProvideImageLoader
 import androidx.core.view.WindowCompat
 import com.google.accompanist.insets.ProvideWindowInsets
 import dagger.hilt.android.AndroidEntryPoint
@@ -39,12 +38,10 @@ class MainActivity : ComponentActivity() {
 
         setContent {
             ProvideWindowInsets {
-                ProvideImageLoader {
-                    CraneTheme {
-                        MainScreen(
-                            onExploreItemClicked = { launchDetailsActivity(context = this, item = it) }
-                        )
-                    }
+                CraneTheme {
+                    MainScreen(
+                        onExploreItemClicked = { launchDetailsActivity(context = this, item = it) }
+                    )
                 }
             }
         }
