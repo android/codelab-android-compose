@@ -16,6 +16,7 @@
 
 package com.example.jetnews.ui.interests
 
+import android.annotation.SuppressLint
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Row
@@ -66,6 +67,7 @@ import kotlinx.coroutines.launch
 fun InterestsScreen(
     interestsRepository: InterestsRepository,
     openDrawer: () -> Unit,
+    modifier: Modifier = Modifier,
     scaffoldState: ScaffoldState = rememberScaffoldState()
 ) {
     // Returns a [CoroutineScope] that is scoped to the lifecycle of [InterestsScreen]. When this
@@ -82,6 +84,7 @@ fun InterestsScreen(
         selectedTopics = selectedTopics,
         onTopicSelect = onTopicSelect,
         openDrawer = openDrawer,
+        modifier = modifier,
         scaffoldState = scaffoldState
     )
 }
@@ -102,6 +105,7 @@ fun InterestsScreen(
     onTopicSelect: (TopicSelection) -> Unit,
     openDrawer: () -> Unit,
     scaffoldState: ScaffoldState,
+    modifier: Modifier = Modifier
 ) {
     Scaffold(
         scaffoldState = scaffoldState,
@@ -118,8 +122,12 @@ fun InterestsScreen(
                 }
             )
         }
-    ) {
-        LazyColumn(Modifier.navigationBarsPadding()) {
+    ) { padding ->
+        LazyColumn(
+            modifier = modifier
+                .navigationBarsPadding()
+                .padding(padding)
+        ) {
             topics.forEach { (section, topics) ->
                 item {
                     Text(

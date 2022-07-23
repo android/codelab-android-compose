@@ -138,9 +138,11 @@ fun PostCardPopular(
     modifier: Modifier = Modifier
 ) {
     Card(
+        onClick = { navigateToArticle(post.id) },
         shape = MaterialTheme.shapes.medium,
-        modifier = modifier.size(280.dp, 240.dp),
-        onClick = { navigateToArticle(post.id) }
+        // Step 2: Click labels
+//        onClickLabel = stringResource(id = R.string.action_read_article),
+        modifier = modifier.size(280.dp, 240.dp)
     ) {
         Column {
 
