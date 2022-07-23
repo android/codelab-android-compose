@@ -24,26 +24,26 @@ buildscript {
 
         // App dependencies
         appCompatVersion = '1.4.2'
-        composeVersion = '1.2.0-rc01'
+        composeCompilerVersion = '1.2.0'
+        composeVersion = '1.2.0-SNAPSHOT'
         constraintLayoutVersion = '2.1.4'
         coreTestingVersion = '2.1.0'
-        coroutinesVersion = "1.6.1"
-        // TODO: Updating to 3.4.0 leads to dependency conflicts
-        espressoVersion = '3.3.0'
-        fragmentVersion = '1.4.1'
+        coroutinesVersion = "1.6.3"
+        espressoVersion = '3.4.0'
+        fragmentVersion = '1.5.0'
         glideVersion = '4.12.0'
         gradleVersion = '7.2.1'
         gsonVersion = '2.9.0'
         junitVersion = '4.13.2'
-        kotlinVersion = '1.6.21'
+        kotlinVersion = '1.7.0'
         ktlintVersion = '0.45.2'
         ktxVersion = '1.8.0'
-        lifecycleVersion = '2.4.1'
+        lifecycleVersion = '2.5.0'
         materialVersion = '1.6.1'
-        materialComposeAdapterVersion = '1.1.5'
-        navigationVersion = '2.5.0-rc01'
+        materialComposeAdapterVersion = '1.1.14'
+        navigationVersion = '2.5.0'
         recyclerViewVersion = '1.2.1'
-        roomVersion = '2.4.2'
+        roomVersion = '2.5.0-alpha02'
         runnerVersion = '1.0.1'
         truthVersion = '1.1.2'
         testExtJunit = '1.1.3'
@@ -55,6 +55,7 @@ buildscript {
     repositories {
         google()
         mavenCentral()
+        maven { url 'https://androidx.dev/snapshots/builds/8843244/artifacts/repository' }
     }
 
     dependencies {
@@ -65,13 +66,14 @@ buildscript {
 }
 
 plugins {
-    id "com.diffplug.spotless" version '6.7.0'
+    id 'com.diffplug.spotless' version '6.7.0'
 }
 
 allprojects {
     repositories {
         google()
         mavenCentral()
+        maven { url 'https://androidx.dev/snapshots/builds/8843244/artifacts/repository' }
     }
 }
 

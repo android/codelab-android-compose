@@ -51,6 +51,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.CustomAccessibilityAction
 import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.semantics.customActions
+import androidx.compose.ui.semantics.onClick
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
@@ -164,12 +165,14 @@ fun PostCardPopular(
     navigateToArticle: (String) -> Unit,
     modifier: Modifier = Modifier
 ) {
+    // Step 2: Click labels
+    val readArticleLabel = stringResource(id = R.string.action_read_article)
     Card(
-        onClick = { navigateToArticle(post.id) },
         shape = MaterialTheme.shapes.medium,
-        // Step 2: Click labels
-//        onClickLabel = stringResource(id = R.string.action_read_article),
-        modifier = modifier.size(280.dp, 240.dp)
+        modifier = modifier
+            .size(280.dp, 240.dp)
+            .semantics { onClick(label = readArticleLabel, action = null) },
+        onClick = { navigateToArticle(post.id) }
     ) {
         Column {
 
