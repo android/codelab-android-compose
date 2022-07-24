@@ -29,7 +29,8 @@ buildscript {
         constraintLayoutVersion = '2.1.4'
         coreTestingVersion = '2.1.0'
         coroutinesVersion = "1.6.3"
-        espressoVersion = '3.4.0'
+        // TODO: Updating to 3.4.0 leads to dependency conflicts
+        espressoVersion = '3.3.0'
         fragmentVersion = '1.5.0'
         glideVersion = '4.12.0'
         gradleVersion = '7.2.1'
