@@ -119,9 +119,10 @@ private fun ExploreItem(
         ExploreImageContainer {
             Box {
                 val painter = rememberAsyncImagePainter(
-                    Builder(LocalContext.current).data(data = item.imageUrl).apply(block = fun Builder.() {
-                        crossfade(true)
-                    }).build()
+                    model = Builder(LocalContext.current)
+                        .data(item.imageUrl)
+                        .crossfade(true)
+                        .build()
                 )
                 Image(
                     painter = painter,
