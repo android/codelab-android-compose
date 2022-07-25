@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 The Android Open Source Project
+ * Copyright 2022 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -45,14 +45,14 @@ import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import com.example.compose.rally.RallyScreen
+import com.example.compose.rally.RallyDestination
 import java.util.Locale
 
 @Composable
 fun RallyTabRow(
-    allScreens: List<RallyScreen>,
-    onTabSelected: (RallyScreen) -> Unit,
-    currentScreen: RallyScreen
+    allScreens: List<RallyDestination>,
+    onTabSelected: (RallyDestination) -> Unit,
+    currentScreen: RallyDestination
 ) {
     Surface(
         Modifier
@@ -62,7 +62,7 @@ fun RallyTabRow(
         Row(Modifier.selectableGroup()) {
             allScreens.forEach { screen ->
                 RallyTab(
-                    text = screen.name,
+                    text = screen.route,
                     icon = screen.icon,
                     onSelected = { onTabSelected(screen) },
                     selected = currentScreen == screen
