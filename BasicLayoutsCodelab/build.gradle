@@ -15,8 +15,8 @@
  */
 buildscript {
     ext {
-        ext.composeCompiler_version = '1.2.0'
-        ext.compose_version = '1.2.0-SNAPSHOT'
+        composeCompiler_version = '1.2.0'
+        compose_version = '1.2.0-SNAPSHOT'
     }
 }// Top-level build file where you can add configuration options common to all sub-projects/modules.
 plugins {
