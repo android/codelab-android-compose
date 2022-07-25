@@ -23,7 +23,6 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.annotation.VisibleForTesting
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -33,7 +32,6 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Button
 import androidx.compose.material.ButtonDefaults
-import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
@@ -41,7 +39,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.produceState
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveable
@@ -49,7 +46,6 @@ import androidx.compose.runtime.setValue
 import androidx.compose.samples.crane.base.Result
 import androidx.compose.samples.crane.data.ExploreModel
 import androidx.compose.samples.crane.ui.CraneTheme
-import androidx.compose.samples.crane.util.ProvideImageLoader
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
@@ -91,16 +87,14 @@ class DetailsActivity : ComponentActivity() {
 
         setContent {
             ProvideWindowInsets {
-                ProvideImageLoader {
-                    CraneTheme {
-                        Surface {
-                            DetailsScreen(
-                                onErrorLoading = { finish() },
-                                modifier = Modifier
-                                    .statusBarsPadding()
-                                    .navigationBarsPadding()
-                            )
-                        }
+                CraneTheme {
+                    Surface {
+                        DetailsScreen(
+                            onErrorLoading = { finish() },
+                            modifier = Modifier
+                                .statusBarsPadding()
+                                .navigationBarsPadding()
+                        )
                     }
                 }
             }
@@ -108,40 +102,18 @@ class DetailsActivity : ComponentActivity() {
     }
 }
 
-data class DetailsUiState(
-    val cityDetails: ExploreModel? = null,
-    val isLoading: Boolean = false,
-    val throwError: Boolean = false
-)
-
 @Composable
 fun DetailsScreen(
     onErrorLoading: () -> Unit,
     modifier: Modifier = Modifier,
     viewModel: DetailsViewModel = viewModel()
 ) {
-    val uiState by produceState(initialValue = DetailsUiState(isLoading = true)) {
-        val cityDetailsResult = viewModel.cityDetails
-        value = if (cityDetailsResult is Result.Success<ExploreModel>) {
-            DetailsUiState(cityDetailsResult.data)
-        } else {
-            DetailsUiState(throwError = true)
-        }
-    }
-
-    when {
-        uiState.cityDetails != null -> {
-            DetailsContent(uiState.cityDetails!!, modifier.fillMaxSize())
-        }
-        uiState.isLoading -> {
-            Box(modifier.fillMaxSize()) {
-                CircularProgressIndicator(
-                    color = MaterialTheme.colors.onSurface,
-                    modifier = Modifier.align(Alignment.Center)
-                )
-            }
-        }
-        else -> { onErrorLoading() }
+    // TODO Codelab: produceState step - Show loading screen while fetching city details
+    val cityDetails = remember(viewModel) { viewModel.cityDetails }
+    if (cityDetails is Result.Success<ExploreModel>) {
+        DetailsContent(cityDetails.data, modifier.fillMaxSize())
+    } else {
+        onErrorLoading()
     }
 }
 
