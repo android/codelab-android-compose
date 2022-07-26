@@ -123,9 +123,7 @@ fun InterestsScreen(
         }
     ) { padding ->
         LazyColumn(
-            modifier = modifier
-                .navigationBarsPadding()
-                .padding(padding)
+            modifier = modifier.padding(padding)
         ) {
             topics.forEach { (section, topics) ->
                 item {
