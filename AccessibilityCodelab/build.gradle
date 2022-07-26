@@ -23,7 +23,7 @@ buildscript {
         activity_compose_version = '1.5.0'
         material_version = '1.6.1'
         coroutines_version = '1.6.3'
-        accompanist_version = '0.24.12-rc'
+        accompanist_version = '0.25.0.compose-8843244-SNAPSHOT'
     }
 
     repositories {
