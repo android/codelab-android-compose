@@ -19,7 +19,13 @@ package com.example.jetnews.ui.home
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.WindowInsetsSides
+import androidx.compose.foundation.layout.add
+import androidx.compose.foundation.layout.asPaddingValues
+import androidx.compose.foundation.layout.only
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.systemBars
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
@@ -40,6 +46,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.example.jetnews.R
 import com.example.jetnews.data.posts.PostsRepository
@@ -134,13 +141,11 @@ private fun PostList(
 ) {
     val postsHistory = posts.subList(0, 3)
     val postsPopular = posts.subList(3, 5)
+    val contentPadding = rememberContentPaddingForScreen(additionalTop = 8.dp)
 
     LazyColumn(
         modifier = modifier,
-        contentPadding = rememberInsetsPaddingValues(
-            insets = LocalWindowInsets.current.systemBars,
-            applyTop = false
-        )
+        contentPadding = contentPadding
     ) {
         items(postsHistory) { post ->
             PostCardHistory(post, navigateToArticle)
@@ -194,6 +199,15 @@ private fun PostListDivider() {
     )
 }
 
+/**
+ * Determine the content padding to apply to the different screens of the app
+ */
+@Composable
+fun rememberContentPaddingForScreen(additionalTop: Dp = 0.dp) =
+    WindowInsets.systemBars
+        .only(WindowInsetsSides.Bottom)
+        .add(WindowInsets(top = additionalTop))
+        .asPaddingValues()
 @Preview("Home screen")
 @Preview("Home screen (dark)", uiMode = UI_MODE_NIGHT_YES)
 @Preview("Home screen (big font)", fontScale = 1.5f)
