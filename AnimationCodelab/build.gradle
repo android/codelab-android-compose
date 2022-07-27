@@ -17,13 +17,12 @@
 buildscript {
     ext {
         composeCompiler_version = '1.2.0'
-        compose_version = '1.2.0-SNAPSHOT'
+        compose_version = '1.2.0'
         kotlin_version = '1.7.0'
     }
     repositories {
         google()
         mavenCentral()
-        maven { url 'https://androidx.dev/snapshots/builds/8843244/artifacts/repository' }
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:7.2.1'
@@ -35,6 +34,5 @@ allprojects {
     repositories {
         google()
         mavenCentral()
-        maven { url 'https://androidx.dev/snapshots/builds/8843244/artifacts/repository' }
     }
 }
