@@ -44,7 +44,6 @@ import com.example.jetnews.model.Post
 import com.example.jetnews.ui.components.InsetAwareTopAppBar
 import com.example.jetnews.ui.theme.JetnewsTheme
 import com.example.jetnews.utils.supportWideScreen
-import com.google.accompanist.insets.navigationBarsPadding
 
 /**
  * Stateful Article Screen that manages state using [produceUiState]
@@ -114,8 +113,6 @@ fun ArticleScreen(
             modifier = Modifier
                 // innerPadding takes into account the top and bottom bar
                 .padding(innerPadding)
-                // offset content in landscape mode to account for the navigation bar
-                .navigationBarsPadding(bottom = false)
                 // center content in landscape mode
                 .supportWideScreen()
         )

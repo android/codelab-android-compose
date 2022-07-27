@@ -16,34 +16,39 @@
 
 buildscript {
     ext {
-        kotlin_version = '1.6.10'
-        compose_version = '1.1.1'
-        navigation_compose_version = '2.4.0-beta02'
-        activity_compose_version = '1.4.0'
-        material_version = '1.4.0'
-        coroutines_version = '1.5.2'
-        accompanist_version = '0.23.1'
+        kotlin_version = '1.7.0'
+        compose_compiler_version = '1.2.0'
+        compose_version = '1.2.0-SNAPSHOT'
+        navigation_compose_version = '2.5.0'
+        activity_compose_version = '1.5.0'
+        material_version = '1.6.1'
+        coroutines_version = '1.6.3'
+        accompanist_version = '0.25.0.compose-8843244-SNAPSHOT'
     }
 
     repositories {
         google()
         mavenCentral()
+        maven { url 'https://androidx.dev/snapshots/builds/8843244/artifacts/repository' }
+        maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:7.2.0'
+        classpath 'com.android.tools.build:gradle:7.2.1'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
 
 plugins {
-    id 'com.diffplug.spotless' version '5.11.1'
+    id 'com.diffplug.spotless' version '6.7.0'
 }
 
 subprojects {
     repositories {
         google()
         mavenCentral()
+        maven { url 'https://androidx.dev/snapshots/builds/8843244/artifacts/repository' }
+        maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
     }
 
     apply plugin: 'com.diffplug.spotless'
@@ -53,7 +58,7 @@ subprojects {
             targetExclude("$buildDir/**/*.kt")
             targetExclude('bin/**/*.kt')
 
-            ktlint("0.41.0")
+            ktlint("0.45.2").userData([android: "true"])
             licenseHeaderFile rootProject.file('spotless/copyright.kt')
         }
     }
