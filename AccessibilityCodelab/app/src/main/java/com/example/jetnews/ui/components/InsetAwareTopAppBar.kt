@@ -17,6 +17,8 @@
 package com.example.jetnews.ui.components
 
 import androidx.compose.foundation.layout.RowScope
+import androidx.compose.foundation.layout.navigationBarsPadding
+import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.TopAppBar
@@ -27,8 +29,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import com.google.accompanist.insets.navigationBarsPadding
-import com.google.accompanist.insets.statusBarsPadding
 
 /**
  * A wrapper around [TopAppBar] which uses [Modifier.statusBarsPadding] to shift the app bar's
@@ -56,9 +56,7 @@ fun InsetAwareTopAppBar(
             backgroundColor = Color.Transparent,
             contentColor = contentColor,
             elevation = 0.dp,
-            modifier = Modifier
-                .statusBarsPadding()
-                .navigationBarsPadding(bottom = false)
+            modifier = Modifier.statusBarsPadding()
         )
     }
 }

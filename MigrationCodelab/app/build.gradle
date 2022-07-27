@@ -42,15 +42,14 @@ android {
     }
     kotlinOptions {
         jvmTarget = "1.8"
-        freeCompilerArgs = ['-Xjvm-default=compatibility']
-        useIR = true
+        freeCompilerArgs = ['-Xjvm-default=all-compatibility']
     }
     buildFeatures {
         dataBinding true
         compose true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion rootProject.composeVersion
+        kotlinCompilerExtensionVersion rootProject.composeCompilerVersion
     }
     packagingOptions {
         // Multiple dependency bring these files in. Exclude them to enable

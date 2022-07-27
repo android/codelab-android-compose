@@ -17,20 +17,30 @@
 buildscript {
     // Define versions in a single place
     ext {
+        // Sdk and tools
+        compileSdkVersion = 32
+        minSdkVersion = 21
+        targetSdkVersion = 32
+
         // App dependencies
-        ktlint = "0.45.2"
         appCompatVersion = '1.4.2'
         activityComposeVersion = '1.6.0-alpha03'
-        composeVersion = '1.2.0-beta03'
-        gradleVersion = '7.2.0'
-        kotlinVersion = '1.6.21'
+        composeCompilerVersion = "1.2.0"
+        composeVersion = '1.2.0-SNAPSHOT'
+        coreTestingVersion = '2.1.0'
+        espressoVersion = '3.4.0'
+        gradleVersion = '7.2.1'
+        kotlinVersion = '1.7.0'
+        ktlintVersion = '0.45.2'
         ktxVersion = '1.8.0'
         materialVersion = '1.6.1'
+        navigationComposeVersion = '2.5.0'
     }
 
     repositories {
         google()
         mavenCentral()
+        maven { url 'https://androidx.dev/snapshots/builds/8843244/artifacts/repository' }
     }
 
     dependencies {
@@ -40,13 +50,14 @@ buildscript {
 }
 
 plugins {
-    id 'com.diffplug.spotless' version '6.5.2'
+    id 'com.diffplug.spotless' version '6.7.0'
 }
 
 subprojects {
     repositories {
         google()
         mavenCentral()
+        maven { url 'https://androidx.dev/snapshots/builds/8843244/artifacts/repository' }
     }
 
     apply plugin: 'com.diffplug.spotless'
@@ -56,7 +67,7 @@ subprojects {
             targetExclude("$buildDir/**/*.kt")
             targetExclude('bin/**/*.kt')
 
-            ktlint(rootProject.ktlint)
+            ktlint(rootProject.ktlintVersion)
             licenseHeaderFile rootProject.file('spotless/copyright.kt')
         }
     }

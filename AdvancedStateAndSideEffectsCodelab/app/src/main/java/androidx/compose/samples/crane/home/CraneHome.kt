@@ -16,6 +16,7 @@
 
 package androidx.compose.samples.crane.home
 
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material.BackdropScaffold
 import androidx.compose.material.BackdropValue
 import androidx.compose.material.ExperimentalMaterialApi
@@ -55,9 +56,9 @@ fun CraneHome(
         drawerContent = {
             CraneDrawer()
         }
-    ) {
+    ) { padding ->
         CraneHomeContent(
-            modifier = modifier,
+            modifier = modifier.padding(padding),
             onExploreItemClicked = onExploreItemClicked,
             openDrawer = {
                 // TODO Codelab: rememberCoroutineScope step - open the navigation drawer
