@@ -22,7 +22,7 @@ buildscript {
         appCompatVersion = '1.4.2'
         activityComposeVersion = '1.6.0-alpha05'
         composeCompilerVersion = '1.2.0'
-        composeVersion = '1.2.0-SNAPSHOT'
+        composeVersion = '1.2.0'
         gradleVersion = '7.2.1'
         kotlinVersion = '1.7.0'
         ktxVersion = '1.8.0'
@@ -33,7 +33,6 @@ buildscript {
     repositories {
         google()
         mavenCentral()
-        maven { url 'https://androidx.dev/snapshots/builds/8843244/artifacts/repository' }
     }
 
     dependencies {
@@ -50,7 +49,6 @@ subprojects {
     repositories {
         google()
         mavenCentral()
-        maven { url 'https://androidx.dev/snapshots/builds/8843244/artifacts/repository' }
     }
 
     apply plugin: 'com.diffplug.spotless'

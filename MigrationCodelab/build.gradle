@@ -25,7 +25,7 @@ buildscript {
         // App dependencies
         appCompatVersion = '1.4.2'
         composeCompilerVersion = '1.2.0'
-        composeVersion = '1.2.0-SNAPSHOT'
+        composeVersion = '1.2.0'
         constraintLayoutVersion = '2.1.4'
         coreTestingVersion = '2.1.0'
         coroutinesVersion = "1.6.3"
@@ -56,7 +56,6 @@ buildscript {
     repositories {
         google()
         mavenCentral()
-        maven { url 'https://androidx.dev/snapshots/builds/8843244/artifacts/repository' }
     }
 
     dependencies {
@@ -74,7 +73,6 @@ allprojects {
     repositories {
         google()
         mavenCentral()
-        maven { url 'https://androidx.dev/snapshots/builds/8843244/artifacts/repository' }
     }
 }
 
