@@ -17,26 +17,6 @@
 package com.example.android.codelab.animation.ui.home
 
 import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.animation.ExperimentalAnimationApi
-import androidx.compose.animation.animateColor
-import androidx.compose.animation.animateColorAsState
-import androidx.compose.animation.animateContentSize
-import androidx.compose.animation.core.Animatable
-import androidx.compose.animation.core.FastOutLinearInEasing
-import androidx.compose.animation.core.LinearOutSlowInEasing
-import androidx.compose.animation.core.RepeatMode
-import androidx.compose.animation.core.Spring
-import androidx.compose.animation.core.animateDp
-import androidx.compose.animation.core.animateFloat
-import androidx.compose.animation.core.calculateTargetValue
-import androidx.compose.animation.core.infiniteRepeatable
-import androidx.compose.animation.core.keyframes
-import androidx.compose.animation.core.rememberInfiniteTransition
-import androidx.compose.animation.core.spring
-import androidx.compose.animation.core.tween
-import androidx.compose.animation.core.updateTransition
-import androidx.compose.animation.slideInVertically
-import androidx.compose.animation.slideOutVertically
 import androidx.compose.animation.splineBasedDecay
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
@@ -97,9 +77,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.composed
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.input.pointer.consumePositionChange
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.input.pointer.positionChange
 import androidx.compose.ui.input.pointer.util.VelocityTracker
@@ -122,8 +102,6 @@ import com.example.android.codelab.animation.ui.Purple700
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import kotlin.math.absoluteValue
-import kotlin.math.roundToInt
 
 private enum class TabPage {
     Home, Work
@@ -203,10 +181,11 @@ fun Home() {
                 }
             )
         }
-    ) {
+    ) { padding ->
         LazyColumn(
             contentPadding = PaddingValues(horizontal = 16.dp, vertical = 32.dp),
-            state = lazyListState
+            state = lazyListState,
+            modifier = Modifier.padding(padding)
         ) {
             // Weather
             item { Header(title = stringResource(R.string.weather)) }
@@ -275,7 +254,6 @@ fun Home() {
  * @param extended Whether the tab should be shown in its expanded state.
  */
 // AnimatedVisibility is currently an experimental API in Compose Animation.
-@OptIn(ExperimentalAnimationApi::class)
 @Composable
 private fun HomeFloatingActionButton(
     extended: Boolean,
@@ -307,7 +285,6 @@ private fun HomeFloatingActionButton(
 /**
  * Shows a message that the edit feature is not available.
  */
-@OptIn(ExperimentalAnimationApi::class)
 @Composable
 private fun EditMessage(shown: Boolean) {
     // TODO 2-2: The message should slide down from the top on appearance and slide up on
@@ -414,7 +391,6 @@ private fun TopicRow(topic: String, expanded: Boolean, onClick: () -> Unit) {
 /**
  * Shows a separator for topics.
  */
-@OptIn(ExperimentalAnimationApi::class)
 @Composable
 fun TopicRowSpacer(visible: Boolean) {
     AnimatedVisibility(visible = visible) {
@@ -637,7 +613,7 @@ private fun Modifier.swipeToDismiss(
                         // Record the velocity of the drag.
                         velocityTracker.addPosition(change.uptimeMillis, change.position)
                         // Consume the gesture event, not passed to external
-                        change.consumePositionChange()
+                        if (change.positionChange() != Offset.Zero) change.consume()
                     }
                 }
                 // Dragging finished. Calculate the velocity of the fling.

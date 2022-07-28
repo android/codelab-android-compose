@@ -47,11 +47,15 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import coil.annotation.ExperimentalCoilApi
-import coil.compose.ImagePainter
+import coil.compose.AsyncImagePainter
+import coil.compose.rememberAsyncImagePainter
 import coil.compose.rememberImagePainter
+import coil.request.ImageRequest
+import coil.request.ImageRequest.Builder
 import com.google.accompanist.insets.navigationBarsHeight
 
 @Composable
@@ -114,11 +118,11 @@ private fun ExploreItem(
     ) {
         ExploreImageContainer {
             Box {
-                val painter = rememberImagePainter(
-                    data = item.imageUrl,
-                    builder = {
-                        crossfade(true)
-                    }
+                val painter = rememberAsyncImagePainter(
+                    model = Builder(LocalContext.current)
+                        .data(item.imageUrl)
+                        .crossfade(true)
+                        .build()
                 )
                 Image(
                     painter = painter,
@@ -127,7 +131,7 @@ private fun ExploreItem(
                     modifier = Modifier.fillMaxSize(),
                 )
 
-                if (painter.state is ImagePainter.State.Loading) {
+                if (painter.state is AsyncImagePainter.State.Loading) {
                     Image(
                         painter = painterResource(id = R.drawable.ic_crane_logo),
                         contentDescription = null,
