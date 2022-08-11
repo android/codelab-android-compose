@@ -25,12 +25,12 @@ buildscript {
         // App dependencies
         appCompatVersion = '1.4.2'
         activityComposeVersion = '1.6.0-alpha03'
-        composeCompilerVersion = "1.2.0"
-        composeVersion = '1.2.0'
+        composeCompilerVersion = "1.3.0"
+        composeVersion = '1.2.1'
         coreTestingVersion = '2.1.0'
         espressoVersion = '3.4.0'
-        gradleVersion = '7.2.1'
-        kotlinVersion = '1.7.0'
+        gradleVersion = '7.2.2'
+        kotlinVersion = '1.7.10'
         ktlintVersion = '0.45.2'
         ktxVersion = '1.8.0'
         materialVersion = '1.6.1'
