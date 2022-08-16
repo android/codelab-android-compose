@@ -5,5 +5,8 @@
   ],
   "ignoreDeps": [
     "spotless", "ktlint"
+  ],
+  "baseBranches": [
+    "main", "end"
   ]
 }
