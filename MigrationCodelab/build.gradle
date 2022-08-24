@@ -42,7 +42,7 @@ buildscript {
         lifecycleVersion = '2.5.0'
         materialVersion = '1.6.1'
         materialComposeAdapterVersion = '1.1.14'
-        navigationVersion = '2.5.0'
+        navigationVersion = '2.5.1'
         recyclerViewVersion = '1.2.1'
         roomVersion = '2.5.0-alpha02'
         runnerVersion = '1.0.1'
