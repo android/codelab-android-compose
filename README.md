@@ -21,7 +21,7 @@ Learn how to implement real-world designs with the composables and modifiers tha
 
 ### [State codelab](https://developer.android.com/codelabs/jetpack-compose-state)
 
-Understand patterns for working with state in a declarative world by building a Todo application.
+Understand patterns for working with state in a declarative world by building a Wellness application.
 
 ### [Theming codelab](https://developer.android.com/codelabs/jetpack-compose-theming)
 
