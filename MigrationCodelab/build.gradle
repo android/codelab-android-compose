@@ -33,7 +33,7 @@ buildscript {
         espressoVersion = '3.3.0'
         fragmentVersion = '1.5.0'
         glideVersion = '4.12.0'
-        gradleVersion = '7.2.2'
+        gradleVersion = '7.3.0'
         gsonVersion = '2.9.0'
         junitVersion = '4.13.2'
         kotlinVersion = '1.7.10'
@@ -42,7 +42,7 @@ buildscript {
         lifecycleVersion = '2.5.0'
         materialVersion = '1.6.1'
         materialComposeAdapterVersion = '1.1.14'
-        navigationVersion = '2.5.1'
+        navigationVersion = '2.5.2'
         recyclerViewVersion = '1.2.1'
         roomVersion = '2.5.0-alpha02'
         runnerVersion = '1.0.1'
@@ -66,7 +66,7 @@ buildscript {
 }
 
 plugins {
-    id 'com.diffplug.spotless' version '6.7.0'
+    id 'com.diffplug.spotless' version '6.11.0'
 }
 
 allprojects {
