@@ -29,7 +29,7 @@ buildscript {
         composeVersion = '1.2.1'
         coreTestingVersion = '2.1.0'
         espressoVersion = '3.4.0'
-        gradleVersion = '7.2.2'
+        gradleVersion = '7.3.0'
         kotlinVersion = '1.7.10'
         ktlintVersion = '0.45.2'
         ktxVersion = '1.8.0'
@@ -49,7 +49,7 @@ buildscript {
 }
 
 plugins {
-    id 'com.diffplug.spotless' version '6.7.0'
+    id 'com.diffplug.spotless' version '6.11.0'
 }
 
 subprojects {
