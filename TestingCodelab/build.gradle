@@ -18,9 +18,9 @@ buildscript {
     // Define versions in a single place
     ext {
         // Sdk and tools
-        compileSdkVersion = 32
+        compileSdkVersion = 33
         minSdkVersion = 21
-        targetSdkVersion = 32
+        targetSdkVersion = 33
 
         // App dependencies
         appCompatVersion = '1.4.2'
