@@ -35,6 +35,7 @@ allprojects {
     repositories {
         google()
         mavenCentral()
+        maven { url "https://androidx.dev/snapshots/builds/9153353/artifacts/repository/" }
     }
 
     tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).configureEach {
