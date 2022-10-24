@@ -11,7 +11,16 @@
   or implied. See the License for the specific language governing permissions and limitations under
   the License.
   -->
-<resources>
-
-    <style name="Theme.BasicsCodelab" parent="android:Theme.Material.Light.NoActionBar" />
-</resources>
+<!--
+   Sample backup rules file; uncomment and customize as necessary.
+   See https://developer.android.com/guide/topics/data/autobackup
+   for details.
+   Note: This file is ignored for devices older that API 31
+   See https://developer.android.com/about/versions/12/backup-restore
+-->
+<full-backup-content>
+    <!--
+   <include domain="sharedpref" path="."/>
+   <exclude domain="sharedpref" path="device.xml"/>
+-->
+</full-backup-content>
