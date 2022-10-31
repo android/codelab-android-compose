@@ -14,18 +14,14 @@
  * limitations under the License.
  */
 
-import com.example.crane.buildsrc.Libs
-import com.example.crane.buildsrc.Urls
-import com.example.crane.buildsrc.Versions
-
 buildscript {
     repositories {
         google()
     }
     dependencies {
-        classpath Libs.androidGradlePlugin
-        classpath Libs.Kotlin.gradlePlugin
-        classpath Libs.Hilt.gradlePlugin
+        classpath "com.android.tools.build:gradle:7.2.2"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.7.20"
+        classpath "com.google.dagger:hilt-android-gradle-plugin:2.44"
     }
 }
 
@@ -37,14 +33,6 @@ subprojects {
     repositories {
         google()
         mavenCentral()
-
-        if (!Libs.AndroidX.Compose.snapshot.isEmpty()) {
-            maven { url Urls.composeSnapshotRepo }
-        }
-
-        if (Libs.Accompanist.version.endsWith('SNAPSHOT')) {
-            maven { url Urls.mavenCentralSnapshotRepo }
-        }
     }
 
     apply plugin: 'com.diffplug.spotless'
@@ -53,7 +41,7 @@ subprojects {
             target '**/*.kt'
             targetExclude("$buildDir/**/*.kt")
             targetExclude('bin/**/*.kt')
-            ktlint(Versions.ktLint)
+            ktlint("0.45.2")
             licenseHeaderFile rootProject.file('spotless/copyright.kt')
         }
     }
@@ -69,7 +57,7 @@ subprojects {
     // androidx.test and hilt are forcing JUnit, 4.12. This forces them to use 4.13
     configurations.configureEach {
         resolutionStrategy {
-            force Libs.JUnit.junit
+            force "junit:junit:4.13"
         }
     }
 }
