@@ -17,17 +17,23 @@
 buildscript {
     // Define versions in a single place
     ext {
+        // Sdk and tools
+        compileSdkVersion = 33
+        minSdkVersion = 21
+        targetSdkVersion = 33
+
         // App dependencies
-        ktlint = "0.45.2"
         appCompatVersion = '1.4.2'
         activityComposeVersion = '1.6.0'
-        composeCompilerVersion = '1.3.2'
-        composeVersion = '1.2.1'
+        composeCompilerVersion = "1.3.2"
+        coreTestingVersion = '2.1.0'
+        espressoVersion = '3.4.0'
         gradleVersion = '7.3.1'
         kotlinVersion = '1.7.20'
+        ktlintVersion = '0.45.2'
         ktxVersion = '1.8.0'
         materialVersion = '1.6.1'
-        composeNavigationVersion = '2.5.0'
+        navigationComposeVersion = '2.5.0'
     }
 
     repositories {
