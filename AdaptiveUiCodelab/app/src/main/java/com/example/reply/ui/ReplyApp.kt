@@ -40,6 +40,7 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.ModalDrawerSheet
 import androidx.compose.material3.ModalNavigationDrawer
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
@@ -130,14 +131,16 @@ private fun ReplyNavigationWrapperUI(
     } else {
         ModalNavigationDrawer(
             drawerContent = {
-                NavigationDrawerContent(
-                    selectedDestination,
-                    onDrawerClicked = {
-                        scope.launch {
-                            drawerState.close()
+                ModalDrawerSheet {
+                    NavigationDrawerContent(
+                        selectedDestination,
+                        onDrawerClicked = {
+                            scope.launch {
+                                drawerState.close()
+                            }
                         }
-                    }
-                )
+                    )
+                }
             },
             drawerState = drawerState
         ) {
