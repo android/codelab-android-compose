@@ -48,6 +48,7 @@ import androidx.compose.material3.NavigationDrawerItem
 import androidx.compose.material3.NavigationDrawerItemDefaults
 import androidx.compose.material3.NavigationRail
 import androidx.compose.material3.NavigationRailItem
+import androidx.compose.material3.PermanentDrawerSheet
 import androidx.compose.material3.PermanentNavigationDrawer
 import androidx.compose.material3.Text
 import androidx.compose.material3.rememberDrawerState
@@ -125,7 +126,13 @@ private fun ReplyNavigationWrapperUI(
     val selectedDestination = ReplyDestinations.INBOX
 
     if (navigationType == ReplyNavigationType.PERMANENT_NAVIGATION_DRAWER) {
-        PermanentNavigationDrawer(drawerContent = { NavigationDrawerContent(selectedDestination) }) {
+        PermanentNavigationDrawer(
+            drawerContent = {
+                PermanentDrawerSheet {
+                    NavigationDrawerContent(selectedDestination)
+                }
+            }
+        ) {
             ReplyAppContent(navigationType, contentType, replyHomeUIState)
         }
     } else {
