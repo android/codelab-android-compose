@@ -31,9 +31,10 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.dimensionResource
+import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -79,6 +80,7 @@ private fun PlantName(name: String) {
     )
 }
 
+@OptIn(ExperimentalComposeUiApi::class)
 @Composable
 private fun PlantWatering(wateringInterval: Int) {
     Column(Modifier.fillMaxWidth()) {
@@ -96,7 +98,7 @@ private fun PlantWatering(wateringInterval: Int) {
             modifier = centerWithPaddingModifier.padding(top = normalPadding)
         )
 
-        val wateringIntervalText = LocalContext.current.resources.getQuantityString(
+        val wateringIntervalText = pluralStringResource(
             R.plurals.watering_needs_suffix, wateringInterval, wateringInterval
         )
         Text(
