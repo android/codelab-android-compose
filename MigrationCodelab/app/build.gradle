@@ -20,11 +20,11 @@ apply plugin: 'kotlin-kapt'
 apply plugin: 'androidx.navigation.safeargs.kotlin'
 
 android {
-    compileSdkVersion rootProject.compileSdkVersion
+    compileSdkVersion 33
     defaultConfig {
         applicationId "com.google.samples.apps.sunflower"
-        minSdkVersion rootProject.minSdkVersion
-        targetSdkVersion rootProject.targetSdkVersion
+        minSdkVersion 21
+        targetSdkVersion 33
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         versionCode 1
         versionName "0.1.6"
@@ -49,7 +49,7 @@ android {
         compose true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion rootProject.composeCompilerVersion
+        kotlinCompilerExtensionVersion '1.3.2'
     }
     packagingOptions {
         // Multiple dependency bring these files in. Exclude them to enable
@@ -64,27 +64,27 @@ dependencies {
     implementation(composeBom)
     androidTestImplementation(composeBom)
 
-    kapt "androidx.room:room-compiler:$rootProject.roomVersion"
-    kapt "com.github.bumptech.glide:compiler:$rootProject.glideVersion"
-    implementation "androidx.appcompat:appcompat:$rootProject.appCompatVersion"
-    implementation "androidx.constraintlayout:constraintlayout:$rootProject.constraintLayoutVersion"
-    implementation "androidx.core:core-ktx:$rootProject.ktxVersion"
-    implementation "androidx.fragment:fragment-ktx:$rootProject.fragmentVersion"
-    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$rootProject.lifecycleVersion"
-    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$rootProject.lifecycleVersion"
-    implementation "androidx.navigation:navigation-fragment-ktx:$rootProject.navigationVersion"
-    implementation "androidx.navigation:navigation-ui-ktx:$rootProject.navigationVersion"
-    implementation "androidx.recyclerview:recyclerview:$rootProject.recyclerViewVersion"
-    implementation "androidx.room:room-runtime:$rootProject.roomVersion"
-    implementation "androidx.room:room-ktx:$rootProject.roomVersion"
-    implementation "androidx.viewpager2:viewpager2:$rootProject.viewPagerVersion"
-    implementation "androidx.work:work-runtime-ktx:$rootProject.workVersion"
-    implementation "com.github.bumptech.glide:glide:$rootProject.glideVersion"
-    implementation "com.google.android.material:material:$rootProject.materialVersion"
-    implementation "com.google.code.gson:gson:$rootProject.gsonVersion"
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$rootProject.kotlinVersion"
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$rootProject.coroutinesVersion"
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$rootProject.coroutinesVersion"
+    kapt "androidx.room:room-compiler:2.5.0-beta01"
+    kapt "com.github.bumptech.glide:compiler:4.12.0"
+    implementation "androidx.appcompat:appcompat:1.5.1"
+    implementation "androidx.constraintlayout:constraintlayout:2.1.4"
+    implementation "androidx.core:core-ktx:1.9.0"
+    implementation "androidx.fragment:fragment-ktx:1.5.4"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.5.1"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1"
+    implementation "androidx.navigation:navigation-fragment-ktx:2.5.3"
+    implementation "androidx.navigation:navigation-ui-ktx:2.5.3"
+    implementation "androidx.recyclerview:recyclerview:1.2.1"
+    implementation "androidx.room:room-runtime:2.5.0-beta01"
+    implementation "androidx.room:room-ktx:2.5.0-beta01"
+    implementation "androidx.viewpager2:viewpager2:1.0.0"
+    implementation "androidx.work:work-runtime-ktx:2.7.1"
+    implementation "com.github.bumptech.glide:glide:4.12.0"
+    implementation "com.google.android.material:material:1.7.0"
+    implementation "com.google.code.gson:gson:2.9.0"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.7.20"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4"
 
     // Compose
     implementation "androidx.compose.runtime:runtime"
@@ -96,17 +96,17 @@ dependencies {
     implementation "androidx.compose.ui:ui-tooling-preview"
     debugImplementation "androidx.compose.ui:ui-tooling"
 
-    implementation "com.google.android.material:compose-theme-adapter:$rootProject.materialComposeAdapterVersion"
+    implementation "com.google.android.material:compose-theme-adapter:1.1.21"
 
     // Testing dependencies
-    androidTestImplementation "androidx.arch.core:core-testing:$rootProject.coreTestingVersion"
-    androidTestImplementation "androidx.test.espresso:espresso-contrib:$rootProject.espressoVersion"
-    androidTestImplementation "androidx.test.espresso:espresso-core:$rootProject.espressoVersion"
-    androidTestImplementation "androidx.test.espresso:espresso-intents:$rootProject.espressoVersion"
-    androidTestImplementation "androidx.test.ext:junit:$rootProject.testExtJunit"
-    androidTestImplementation "androidx.test.uiautomator:uiautomator:$rootProject.uiAutomatorVersion"
-    androidTestImplementation "androidx.work:work-testing:$rootProject.workVersion"
-    androidTestImplementation "com.google.truth:truth:$rootProject.truthVersion"
+    androidTestImplementation "androidx.arch.core:core-testing:2.1.0"
+    androidTestImplementation "androidx.test.espresso:espresso-contrib:3.3.0"
+    androidTestImplementation "androidx.test.espresso:espresso-core:3.3.0"
+    androidTestImplementation "androidx.test.espresso:espresso-intents:3.3.0"
+    androidTestImplementation "androidx.test.ext:junit:1.1.3"
+    androidTestImplementation "androidx.test.uiautomator:uiautomator:2.2.0"
+    androidTestImplementation "androidx.work:work-testing:2.7.1"
+    androidTestImplementation "com.google.truth:truth:1.1.3"
     androidTestImplementation "androidx.compose.ui:ui-test-junit4"
-    testImplementation "junit:junit:$rootProject.junitVersion"
+    testImplementation "junit:junit:4.13.2"
 }
