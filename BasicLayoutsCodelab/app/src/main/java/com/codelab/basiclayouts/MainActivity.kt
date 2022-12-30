@@ -31,7 +31,10 @@ import com.codelab.basiclayouts.ui.theme.MySootheTheme
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContent { MySootheApp() }
+        setContent { MySootheTheme {
+        MySootheApp()
+            }
+        }
     }
 }
 
@@ -183,5 +186,7 @@ fun BottomNavigationPreview() {
 @Preview(widthDp = 360, heightDp = 640)
 @Composable
 fun MySoothePreview() {
-    MySootheApp()
+   MySootheTheme {
+        MySootheApp()
+    }
 }
