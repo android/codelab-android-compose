@@ -45,7 +45,7 @@ android {
 }
 
 dependencies {
-    def composeBom = platform('androidx.compose:compose-bom:2022.10.00')
+    def composeBom = platform('androidx.compose:compose-bom:2022.12.00')
     implementation(composeBom)
 
     implementation 'androidx.core:core-ktx:1.9.0'
