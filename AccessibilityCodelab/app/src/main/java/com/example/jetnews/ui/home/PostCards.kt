@@ -123,7 +123,7 @@ fun PostCardHistory(post: Post, navigateToArticle: (String) -> Unit) {
             ) {
                 Icon(
                     imageVector = Icons.Default.Close,
-                    contentDescription = stringResource(R.string.cd_show_fewer)
+                    contentDescription = showFewerLabel
                 )
             }
         }
