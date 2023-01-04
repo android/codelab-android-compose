@@ -20,14 +20,14 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath "com.android.tools.build:gradle:7.2.2"
+        classpath "com.android.tools.build:gradle:7.3.1"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.7.20"
         classpath "com.google.dagger:hilt-android-gradle-plugin:2.44.2"
     }
 }
 
 plugins {
-    id 'com.diffplug.spotless' version '6.11.0'
+    id 'com.diffplug.spotless' version '6.12.1'
 }
 
 subprojects {
@@ -58,7 +58,7 @@ subprojects {
     // androidx.test and hilt are forcing JUnit, 4.12. This forces them to use 4.13
     configurations.configureEach {
         resolutionStrategy {
-            force "junit:junit:4.13"
+            force "junit:junit:4.13.2"
         }
     }
 }
