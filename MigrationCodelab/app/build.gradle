@@ -64,7 +64,7 @@ dependencies {
     implementation(composeBom)
     androidTestImplementation(composeBom)
 
-    kapt "androidx.room:room-compiler:2.5.0-SNAPSHOT"
+    kapt "androidx.room:room-compiler:2.5.0-rc01"
     kapt "com.github.bumptech.glide:compiler:4.14.2"
     implementation "androidx.appcompat:appcompat:1.5.1"
     implementation "androidx.constraintlayout:constraintlayout:2.1.4"
@@ -75,8 +75,8 @@ dependencies {
     implementation "androidx.navigation:navigation-fragment-ktx:2.5.3"
     implementation "androidx.navigation:navigation-ui-ktx:2.5.3"
     implementation "androidx.recyclerview:recyclerview:1.2.1"
-    implementation "androidx.room:room-runtime:2.5.0-SNAPSHOT"
-    implementation "androidx.room:room-ktx:2.5.0-SNAPSHOT"
+    implementation "androidx.room:room-runtime:2.5.0-rc01"
+    implementation "androidx.room:room-ktx:2.5.0-rc01"
     implementation "androidx.viewpager2:viewpager2:1.0.0"
     implementation "androidx.work:work-runtime-ktx:2.7.1"
     implementation "com.github.bumptech.glide:glide:4.14.2"
