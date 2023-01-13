@@ -57,13 +57,6 @@ android {
         excludes += "/META-INF/AL2.0"
         excludes += "/META-INF/LGPL2.1"
     }
-    lintOptions {
-//        Temporary workaround for unresolved issues:
-//        https://github.com/firebase/firebase-android-sdk/issues/3950
-//        https://github.com/bumptech/glide/issues/4850
-//        https://github.com/bumptech/glide/issues/4940
-        disable 'NotificationPermission'
-    }
 }
 
 dependencies {
