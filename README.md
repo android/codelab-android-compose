@@ -52,6 +52,11 @@ isolation, debugging tests, the semantics tree, and test synchronization.
 Learn about the various ways to improve an app’s accessibility. Increase touch target sizes, add
 content descriptions, create custom actions, and more.
 
+### [Adaptive codelab](https://developer.android.com/codelabs/jetpack-compose-adaptability)
+ 
+Learn about how to build adaptive apps for phones, tablets, and foldables. How to improve 
+reachability and ergonomics of app with Jetpack Compose and Material navigation components. 
+
 ## License
 
 ```
