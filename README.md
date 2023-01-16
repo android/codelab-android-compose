@@ -54,8 +54,8 @@ content descriptions, create custom actions, and more.
 
 ### [Adaptive codelab](https://developer.android.com/codelabs/jetpack-compose-adaptability)
  
-Learn about how to build adaptive apps for phones, tablets, and foldables. How to improve 
-reachability and ergonomics of app with Jetpack Compose and Material navigation components. 
+Learn how to build adaptive apps for phones, tablets and foldables with Jetpack Compose. Improve 
+reachability and ergonomics of your app with Material navigation components. 
 
 ## License
 
