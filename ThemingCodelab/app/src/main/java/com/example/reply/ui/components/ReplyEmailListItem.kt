@@ -59,10 +59,6 @@ fun ReplyEmailListItem(
         else modifier.padding(horizontal = 16.dp, vertical = 4.dp)
     Card(
         modifier = semanticsModifier.clickable { navigateToDetail(email.id) },
-        colors = CardDefaults.cardColors(
-            containerColor = if (isSelected) MaterialTheme.colorScheme.primaryContainer
-            else MaterialTheme.colorScheme.surfaceVariant
-        )
     ) {
         Column(
             modifier = Modifier
@@ -82,40 +78,31 @@ fun ReplyEmailListItem(
                 ) {
                     Text(
                         text = email.sender.firstName,
-                        style = MaterialTheme.typography.labelMedium
                     )
                     Text(
                         text = email.createdAt,
-                        style = MaterialTheme.typography.labelMedium,
-                        color = MaterialTheme.colorScheme.outline
                     )
                 }
                 IconButton(
                     onClick = { /*TODO*/ },
                     modifier = Modifier
                         .clip(CircleShape)
-                        .background(MaterialTheme.colorScheme.surface)
+
                 ) {
                     Icon(
                         imageVector = Icons.Default.StarBorder,
                         contentDescription = "Favorite",
-                        tint = MaterialTheme.colorScheme.outline
                     )
                 }
             }
 
             Text(
                 text = email.subject,
-                style = MaterialTheme.typography.bodyLarge,
-                color = if (isSelected) MaterialTheme.colorScheme.onPrimaryContainer
-                else MaterialTheme.colorScheme.onSurface,
                 modifier = Modifier.padding(top = 12.dp, bottom = 8.dp),
             )
             Text(
                 text = email.body,
-                style = MaterialTheme.typography.bodyMedium,
                 maxLines = 2,
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
                 overflow = TextOverflow.Ellipsis
             )
         }

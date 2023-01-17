@@ -51,7 +51,6 @@ fun ReplyEmailThreadItem(
 ) {
     Card(
         modifier = modifier.padding(horizontal = 16.dp, vertical = 4.dp),
-        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface)
     ) {
         Column(
             modifier = Modifier
@@ -71,19 +70,15 @@ fun ReplyEmailThreadItem(
                 ) {
                     Text(
                         text = email.sender.firstName,
-                        style = MaterialTheme.typography.labelMedium
                     )
                     Text(
                         text = "20 mins ago",
-                        style = MaterialTheme.typography.labelMedium,
-                        color = MaterialTheme.colorScheme.outline
                     )
                 }
                 IconButton(
                     onClick = { /*TODO*/ },
                     modifier = Modifier
                         .clip(CircleShape)
-                        .background(MaterialTheme.colorScheme.surface)
                 ) {
                     Icon(
                         imageVector = if (email.isStarred) Icons.Default.Star else Icons.Default.StarBorder,
@@ -95,15 +90,11 @@ fun ReplyEmailThreadItem(
 
             Text(
                 text = email.subject,
-                style = MaterialTheme.typography.bodyMedium,
-                color = MaterialTheme.colorScheme.outline,
                 modifier = Modifier.padding(top = 12.dp, bottom = 8.dp),
             )
 
             Text(
                 text = email.body,
-                style = MaterialTheme.typography.bodyLarge,
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
             )
             Row(
                 modifier = Modifier
@@ -114,25 +105,17 @@ fun ReplyEmailThreadItem(
                 Button(
                     onClick = { /*TODO*/ },
                     modifier = Modifier.weight(1f),
-                    colors = ButtonDefaults.buttonColors(
-                        containerColor = MaterialTheme.colorScheme.inverseOnSurface
-                    )
                 ) {
                     Text(
                         text = stringResource(id = R.string.reply),
-                        color = MaterialTheme.colorScheme.onSurfaceVariant
                     )
                 }
                 Button(
                     onClick = { /*TODO*/ },
                     modifier = Modifier.weight(1f),
-                    colors = ButtonDefaults.buttonColors(
-                        containerColor = MaterialTheme.colorScheme.inverseOnSurface
-                    )
                 ) {
                     Text(
                         text = stringResource(id = R.string.reply_all),
-                        color = MaterialTheme.colorScheme.onSurfaceVariant
                     )
                 }
             }

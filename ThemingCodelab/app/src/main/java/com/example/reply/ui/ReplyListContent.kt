@@ -106,8 +106,6 @@ fun ReplyInboxScreen(
                     modifier = Modifier
                         .align(Alignment.BottomEnd)
                         .padding(16.dp),
-                    containerColor = MaterialTheme.colorScheme.tertiaryContainer,
-                    contentColor = MaterialTheme.colorScheme.onTertiaryContainer
                 ) {
                     Icon(
                         imageVector = Icons.Default.Edit,
@@ -177,7 +175,6 @@ fun ReplyEmailDetail(
 ) {
     LazyColumn(
         modifier = modifier
-            .background(MaterialTheme.colorScheme.inverseOnSurface)
             .padding(top = 16.dp)
     ) {
         item {
