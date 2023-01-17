@@ -252,7 +252,6 @@ fun ReplyAppContent(
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .background(MaterialTheme.colorScheme.inverseOnSurface)
         ) {
             ReplyNavHost(
                 navController = navController,

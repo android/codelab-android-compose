@@ -20,6 +20,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
+import androidx.compose.material3.Surface
 import androidx.compose.material3.windowsizeclass.ExperimentalMaterial3WindowSizeClassApi
 import androidx.compose.material3.windowsizeclass.WindowSizeClass
 import androidx.compose.material3.windowsizeclass.calculateWindowSizeClass
@@ -46,18 +47,19 @@ class MainActivity : ComponentActivity() {
                 val windowSize = calculateWindowSizeClass(this)
                 val displayFeatures = calculateDisplayFeatures(this)
                 val uiState by viewModel.uiState.collectAsStateWithLifecycle()
-
-                ReplyApp(
-                    windowSize = windowSize,
-                    displayFeatures = displayFeatures,
-                    replyHomeUIState = uiState,
-                    closeDetailScreen = {
-                        viewModel.closeDetailScreen()
-                    },
-                    navigateToDetail = { emailId, pane ->
-                        viewModel.setSelectedEmail(emailId, pane)
-                    }
-                )
+                Surface(tonalElevation = 5.dp) {
+                    ReplyApp(
+                        windowSize = windowSize,
+                        displayFeatures = displayFeatures,
+                        replyHomeUIState = uiState,
+                        closeDetailScreen = {
+                            viewModel.closeDetailScreen()
+                        },
+                        navigateToDetail = { emailId, pane ->
+                            viewModel.setSelectedEmail(emailId, pane)
+                        }
+                    )
+                }
             }
         }
     }

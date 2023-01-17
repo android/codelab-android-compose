@@ -32,7 +32,7 @@ import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
 
 // Material 3 color schemes
-private val replyDarkColorScheme = darkColorScheme(
+private val DarkColorScheme = darkColorScheme(
     primary = replyDarkPrimary,
     onPrimary = replyDarkOnPrimary,
     primaryContainer = replyDarkPrimaryContainer,
@@ -61,7 +61,7 @@ private val replyDarkColorScheme = darkColorScheme(
     outline = replyDarkOutline
 )
 
-private val replyLightColorScheme = lightColorScheme(
+private val LightColorScheme = lightColorScheme(
     primary = replyLightPrimary,
     onPrimary = replyLightOnPrimary,
     primaryContainer = replyLightPrimaryContainer,
@@ -102,8 +102,8 @@ fun ReplyTheme(
             val context = LocalContext.current
             if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
         }
-        darkTheme -> replyDarkColorScheme
-        else -> replyLightColorScheme
+        darkTheme -> DarkColorScheme
+        else -> LightColorScheme
     }
     val view = LocalView.current
     if (!view.isInEditMode) {
@@ -116,7 +116,7 @@ fun ReplyTheme(
 
     MaterialTheme(
         colorScheme = replyColorScheme,
-        typography = replyTypography,
+        typography = typography,
         shapes = shapes,
         content = content
     )

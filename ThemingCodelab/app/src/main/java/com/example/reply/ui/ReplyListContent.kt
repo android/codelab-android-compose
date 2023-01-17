@@ -177,7 +177,6 @@ fun ReplyEmailDetail(
 ) {
     LazyColumn(
         modifier = modifier
-            .background(MaterialTheme.colorScheme.inverseOnSurface)
             .padding(top = 16.dp)
     ) {
         item {

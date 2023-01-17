@@ -88,9 +88,6 @@ fun EmailDetailAppBar(
 ) {
     TopAppBar(
         modifier = modifier,
-        colors = TopAppBarDefaults.smallTopAppBarColors(
-            containerColor = MaterialTheme.colorScheme.inverseOnSurface
-        ),
         title = {
             Column(
                 modifier = Modifier.fillMaxWidth(),
