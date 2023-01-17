@@ -72,7 +72,6 @@ fun ReplyNavigationRail(
 ) {
     NavigationRail(
         modifier = Modifier.fillMaxHeight(),
-        containerColor = MaterialTheme.colorScheme.inverseOnSurface
     ) {
         // TODO remove custom nav rail positioning when NavRail component supports it. ticket : b/232495216
         Layout(
@@ -96,8 +95,6 @@ fun ReplyNavigationRail(
                     FloatingActionButton(
                         onClick = { /*TODO*/ },
                         modifier = Modifier.padding(top = 8.dp, bottom = 32.dp),
-                        containerColor = MaterialTheme.colorScheme.tertiaryContainer,
-                        contentColor = MaterialTheme.colorScheme.onTertiaryContainer
                     ) {
                         Icon(
                             imageVector = Icons.Default.Edit,
@@ -200,7 +197,6 @@ fun PermanentNavigationDrawerContent(
         // TODO remove custom nav drawer content positioning when NavDrawer component supports it. ticket : b/232495216
         Layout(
             modifier = Modifier
-                .background(MaterialTheme.colorScheme.inverseOnSurface)
                 .padding(16.dp),
             content = {
                 Column(
@@ -220,8 +216,6 @@ fun PermanentNavigationDrawerContent(
                         modifier = Modifier
                             .fillMaxWidth()
                             .padding(top = 8.dp, bottom = 40.dp),
-                        containerColor = MaterialTheme.colorScheme.tertiaryContainer,
-                        contentColor = MaterialTheme.colorScheme.onTertiaryContainer
                     ) {
                         Icon(
                             imageVector = Icons.Default.Edit,
@@ -317,7 +311,6 @@ fun ModalNavigationDrawerContent(
         // TODO remove custom nav drawer content positioning when NavDrawer component supports it. ticket : b/232495216
         Layout(
             modifier = Modifier
-                .background(MaterialTheme.colorScheme.inverseOnSurface)
                 .padding(16.dp),
             content = {
                 Column(
@@ -349,9 +342,7 @@ fun ModalNavigationDrawerContent(
                         onClick = { /*TODO*/ },
                         modifier = Modifier
                             .fillMaxWidth()
-                            .padding(top = 8.dp, bottom = 40.dp),
-                        containerColor = MaterialTheme.colorScheme.tertiaryContainer,
-                        contentColor = MaterialTheme.colorScheme.onTertiaryContainer
+                            .padding(top = 8.dp, bottom = 40.dp)
                     ) {
                         Icon(
                             imageVector = Icons.Default.Edit,
