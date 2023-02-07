@@ -56,7 +56,7 @@ object LocalEmailsDataProvider {
             recipients = listOf(LocalAccountsDataProvider.getDefaultUserAccount()),
             subject = "Recipe to try",
             "Raspberry Pie: We should make this pie recipe tonight! The filling is " +
-                "very quick to put together.",
+                    "very quick to put together.",
             createdAt = "2 hours ago",
             isStarred = true,
             mailbox = MailboxType.SENT
@@ -219,7 +219,7 @@ object LocalEmailsDataProvider {
             recipients = listOf(LocalAccountsDataProvider.getDefaultUserAccount()),
             subject = "Recipe to try",
             "Raspberry Pie: We should make this pie recipe tonight! The filling is " +
-                "very quick to put together.",
+                    "very quick to put together.",
             createdAt = "2 hours ago",
             mailbox = MailboxType.SENT,
             threads = threads.shuffled()

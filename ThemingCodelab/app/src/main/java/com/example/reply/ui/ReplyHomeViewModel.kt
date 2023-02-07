@@ -21,7 +21,6 @@ import androidx.lifecycle.viewModelScope
 import com.example.reply.data.Email
 import com.example.reply.data.EmailsRepository
 import com.example.reply.data.EmailsRepositoryImpl
-import com.example.reply.ui.utils.ReplyContentType
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.catch
@@ -56,14 +55,14 @@ class ReplyHomeViewModel(private val emailsRepository: EmailsRepository = Emails
         }
     }
 
-    fun setSelectedEmail(emailId: Long, contentType: ReplyContentType) {
+    fun setSelectedEmail(emailId: Long) {
         /**
          * We only set isDetailOnlyOpen to true when it's only single pane layout
          */
         val email = uiState.value.emails.find { it.id == emailId }
         _uiState.value = _uiState.value.copy(
             selectedEmail = email,
-            isDetailOnlyOpen = contentType == ReplyContentType.SINGLE_PANE
+            isDetailOnlyOpen = true
         )
     }
 
