@@ -60,7 +60,7 @@ fun ReplyEmailListItem(
     Card(
         modifier = semanticsModifier.clickable { navigateToDetail(email.id) },
         colors = CardDefaults.cardColors(
-            containerColor = if (isSelected) MaterialTheme.colorScheme.primaryContainer
+            containerColor = if (email.isImportant) MaterialTheme.colorScheme.secondaryContainer
             else MaterialTheme.colorScheme.surfaceVariant
         )
     ) {
@@ -82,41 +82,37 @@ fun ReplyEmailListItem(
                 ) {
                     Text(
                         text = email.sender.firstName,
-                        style = MaterialTheme.typography.labelMedium
+                        style = MaterialTheme.typography.labelMedium,
                     )
                     Text(
                         text = email.createdAt,
                         style = MaterialTheme.typography.labelMedium,
-                        color = MaterialTheme.colorScheme.outline
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
                     )
                 }
                 IconButton(
                     onClick = { /*TODO*/ },
                     modifier = Modifier
                         .clip(CircleShape)
-                        .background(MaterialTheme.colorScheme.surface)
                 ) {
                     Icon(
                         imageVector = Icons.Default.StarBorder,
                         contentDescription = "Favorite",
-                        tint = MaterialTheme.colorScheme.outline
                     )
                 }
             }
 
             Text(
                 text = email.subject,
-                style = MaterialTheme.typography.bodyLarge,
-                color = if (isSelected) MaterialTheme.colorScheme.onPrimaryContainer
-                else MaterialTheme.colorScheme.onSurface,
+                style = MaterialTheme.typography.titleLarge,
                 modifier = Modifier.padding(top = 12.dp, bottom = 8.dp),
             )
             Text(
                 text = email.body,
                 style = MaterialTheme.typography.bodyMedium,
                 maxLines = 2,
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
-                overflow = TextOverflow.Ellipsis
+                overflow = TextOverflow.Ellipsis,
+                color = MaterialTheme.colorScheme.onSurfaceVariant
             )
         }
     }

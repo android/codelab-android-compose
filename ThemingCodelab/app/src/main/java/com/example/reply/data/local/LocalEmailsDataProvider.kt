@@ -132,6 +132,7 @@ object LocalEmailsDataProvider {
                 As always, thank you for shopping with us and we hope you love our specially formulated Cucumber Mask!
             """.trimIndent(),
             createdAt = "20 mins ago",
+            isImportant = true,
             isStarred = true,
             threads = threads,
         ),
@@ -164,7 +165,6 @@ object LocalEmailsDataProvider {
                 EmailAttachment(R.drawable.paris_3, "City street in Paris"),
                 EmailAttachment(R.drawable.paris_4, "Street with bike in Paris")
             ),
-            true,
             createdAt = "1 hour ago",
             threads = threads.shuffled(),
         ),

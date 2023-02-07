@@ -29,9 +29,6 @@ import androidx.compose.material.icons.filled.StarBorder
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
-import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.CardElevation
-import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -78,7 +75,6 @@ fun ReplyEmailThreadItem(
                     Text(
                         text = "20 mins ago",
                         style = MaterialTheme.typography.labelMedium,
-                        color = MaterialTheme.colorScheme.outline
                     )
                 }
                 IconButton(
@@ -90,7 +86,6 @@ fun ReplyEmailThreadItem(
                     Icon(
                         imageVector = if (email.isStarred) Icons.Default.Star else Icons.Default.StarBorder,
                         contentDescription = "Favorite",
-                        tint = if (email.isStarred) MaterialTheme.colorScheme.secondary else MaterialTheme.colorScheme.outline
                     )
                 }
             }
@@ -98,7 +93,6 @@ fun ReplyEmailThreadItem(
             Text(
                 text = email.subject,
                 style = MaterialTheme.typography.bodyMedium,
-                color = MaterialTheme.colorScheme.outline,
                 modifier = Modifier.padding(top = 12.dp, bottom = 8.dp),
             )
 
@@ -116,25 +110,17 @@ fun ReplyEmailThreadItem(
                 Button(
                     onClick = { /*TODO*/ },
                     modifier = Modifier.weight(1f),
-                    colors = ButtonDefaults.buttonColors(
-                        containerColor = MaterialTheme.colorScheme.inverseOnSurface
-                    )
                 ) {
                     Text(
                         text = stringResource(id = R.string.reply),
-                        color = MaterialTheme.colorScheme.onSurfaceVariant
                     )
                 }
                 Button(
                     onClick = { /*TODO*/ },
                     modifier = Modifier.weight(1f),
-                    colors = ButtonDefaults.buttonColors(
-                        containerColor = MaterialTheme.colorScheme.inverseOnSurface
-                    )
                 ) {
                     Text(
                         text = stringResource(id = R.string.reply_all),
-                        color = MaterialTheme.colorScheme.onSurfaceVariant
                     )
                 }
             }

@@ -35,7 +35,6 @@ import androidx.compose.material3.IconButtonDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
-import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -50,8 +49,8 @@ fun ReplySearchBar(modifier: Modifier = Modifier) {
     Row(
         modifier = modifier
             .fillMaxWidth()
-            .padding(top = 24.dp, bottom = 16.dp, start = 16.dp, end = 16.dp)
-            .background(MaterialTheme.colorScheme.surface, CircleShape),
+            .padding(16.dp)
+            .background(MaterialTheme.colorScheme.background, CircleShape),
         verticalAlignment = Alignment.CenterVertically
     ) {
         Icon(
