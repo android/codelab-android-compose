@@ -41,7 +41,6 @@ import androidx.compose.ui.unit.dp
 import com.example.reply.R
 import com.example.reply.data.Email
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ReplySearchBar(modifier: Modifier = Modifier) {
     Row(
