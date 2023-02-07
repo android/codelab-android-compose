@@ -18,7 +18,6 @@ package com.example.reply.ui
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
@@ -33,7 +32,6 @@ import com.example.reply.ui.navigation.ReplyNavigationActions
 import com.example.reply.ui.navigation.ReplyRoute
 import com.example.reply.ui.navigation.ReplyTopLevelDestination
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ReplyApp(
     replyHomeUIState: ReplyHomeUIState,

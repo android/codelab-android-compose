@@ -55,7 +55,6 @@ class MainActivity : ComponentActivity() {
 fun ReplyAppPreview() {
     ReplyApp(
         replyHomeUIState = ReplyHomeUIState(emails = LocalEmailsDataProvider.allEmails),
-        {},
-        {}
+        {}, {}
     )
 }
