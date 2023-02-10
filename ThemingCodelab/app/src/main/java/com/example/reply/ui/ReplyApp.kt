@@ -18,19 +18,24 @@ package com.example.reply.ui
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.material3.Icon
+import androidx.compose.material3.NavigationBar
+import androidx.compose.material3.NavigationBarItem
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import com.example.reply.ui.navigation.ReplyBottomNavigationBar
 import com.example.reply.ui.navigation.ReplyNavigationActions
 import com.example.reply.ui.navigation.ReplyRoute
 import com.example.reply.ui.navigation.ReplyTopLevelDestination
+import com.example.reply.ui.navigation.TOP_LEVEL_DESTINATIONS
 
 @Composable
 fun ReplyApp(
@@ -78,10 +83,20 @@ fun ReplyAppContent(
             navigateToDetail = navigateToDetail,
             modifier = Modifier.weight(1f),
         )
-        ReplyBottomNavigationBar(
-            selectedDestination = selectedDestination,
-            navigateToTopLevelDestination = navigateToTopLevelDestination
-        )
+        NavigationBar(modifier = Modifier.fillMaxWidth()) {
+            TOP_LEVEL_DESTINATIONS.forEach { replyDestination ->
+                NavigationBarItem(
+                    selected = selectedDestination == replyDestination.route,
+                    onClick = { navigateToTopLevelDestination(replyDestination) },
+                    icon = {
+                        Icon(
+                            imageVector = replyDestination.selectedIcon,
+                            contentDescription = stringResource(id = replyDestination.iconTextId)
+                        )
+                    }
+                )
+            }
+        }
     }
 }
 

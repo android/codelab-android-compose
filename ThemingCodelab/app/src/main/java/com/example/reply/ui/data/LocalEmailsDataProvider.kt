@@ -14,12 +14,9 @@
  * limitations under the License.
  */
 
-package com.example.reply.data.local
+package com.example.reply.data
 
 import com.example.reply.R
-import com.example.reply.data.Email
-import com.example.reply.data.EmailAttachment
-import com.example.reply.data.MailboxType
 
 /**
  * A static data store of [Email]s.
@@ -56,7 +53,7 @@ object LocalEmailsDataProvider {
             recipients = listOf(LocalAccountsDataProvider.getDefaultUserAccount()),
             subject = "Recipe to try",
             "Raspberry Pie: We should make this pie recipe tonight! The filling is " +
-                    "very quick to put together.",
+                "very quick to put together.",
             createdAt = "2 hours ago",
             isStarred = true,
             mailbox = MailboxType.SENT
@@ -132,6 +129,7 @@ object LocalEmailsDataProvider {
                 As always, thank you for shopping with us and we hope you love our specially formulated Cucumber Mask!
             """.trimIndent(),
             createdAt = "20 mins ago",
+            isImportant = true,
             isStarred = true,
             threads = threads,
         ),
@@ -164,7 +162,6 @@ object LocalEmailsDataProvider {
                 EmailAttachment(R.drawable.paris_3, "City street in Paris"),
                 EmailAttachment(R.drawable.paris_4, "Street with bike in Paris")
             ),
-            true,
             createdAt = "1 hour ago",
             threads = threads.shuffled(),
         ),
@@ -219,7 +216,7 @@ object LocalEmailsDataProvider {
             recipients = listOf(LocalAccountsDataProvider.getDefaultUserAccount()),
             subject = "Recipe to try",
             "Raspberry Pie: We should make this pie recipe tonight! The filling is " +
-                    "very quick to put together.",
+                "very quick to put together.",
             createdAt = "2 hours ago",
             mailbox = MailboxType.SENT,
             threads = threads.shuffled()
