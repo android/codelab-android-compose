@@ -14,10 +14,9 @@
  * limitations under the License.
  */
 
-package com.example.reply.data.local
+package com.example.reply.data
 
 import com.example.reply.R
-import com.example.reply.data.Account
 
 /**
  * An static data store of [Account]s. This includes both [Account]s owned by the current user and

@@ -14,12 +14,9 @@
  * limitations under the License.
  */
 
-package com.example.reply.data.local
+package com.example.reply.data
 
 import com.example.reply.R
-import com.example.reply.data.Email
-import com.example.reply.data.EmailAttachment
-import com.example.reply.data.MailboxType
 
 /**
  * A static data store of [Email]s.

@@ -16,6 +16,8 @@
 
 package com.example.reply.data
 
+import androidx.annotation.DrawableRes
+
 /**
  * A simple data class to represent an Email.
  */
@@ -31,4 +33,13 @@ data class Email(
     var mailbox: MailboxType = MailboxType.INBOX,
     val createdAt: String,
     val threads: List<Email> = emptyList()
+)
+
+enum class MailboxType {
+    INBOX, DRAFTS, SENT, SPAM, TRASH
+}
+
+data class EmailAttachment(
+    @DrawableRes val resId: Int,
+    val contentDesc: String
 )
