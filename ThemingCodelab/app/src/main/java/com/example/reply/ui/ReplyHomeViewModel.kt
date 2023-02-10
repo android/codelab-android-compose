@@ -19,14 +19,13 @@ package com.example.reply.ui
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.reply.data.Email
-import com.example.reply.data.EmailsRepository
-import com.example.reply.data.EmailsRepositoryImpl
+import com.example.reply.data.LocalEmailsDataProvider
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.launch
 
-class ReplyHomeViewModel(private val emailsRepository: EmailsRepository = EmailsRepositoryImpl()) :
+class ReplyHomeViewModel :
     ViewModel() {
 
     // UI state exposed to the UI
@@ -34,25 +33,15 @@ class ReplyHomeViewModel(private val emailsRepository: EmailsRepository = Emails
     val uiState: StateFlow<ReplyHomeUIState> = _uiState
 
     init {
-        observeEmails()
+        initEmailList()
     }
 
-    private fun observeEmails() {
-        viewModelScope.launch {
-            emailsRepository.getAllEmails()
-                .catch { ex ->
-                    _uiState.value = ReplyHomeUIState(error = ex.message)
-                }
-                .collect { emails ->
-                    /**
-                     * We set first email selected by default for first App launch in large-screens
-                     */
-                    _uiState.value = ReplyHomeUIState(
-                        emails = emails,
-                        selectedEmail = emails.first()
-                    )
-                }
-        }
+    private fun initEmailList() {
+        val emails = LocalEmailsDataProvider.allEmails
+        _uiState.value = ReplyHomeUIState(
+            emails = emails,
+            selectedEmail = emails.first()
+        )
     }
 
     fun setSelectedEmail(emailId: Long) {

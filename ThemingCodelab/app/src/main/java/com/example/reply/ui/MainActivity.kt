@@ -24,7 +24,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.reply.data.local.LocalEmailsDataProvider
+import com.example.reply.data.LocalEmailsDataProvider
 
 
 class MainActivity : ComponentActivity() {
