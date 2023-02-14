@@ -1,142 +1,142 @@
 [
-  {
-    "merged": "com.example.reply.app-merged_res-54:/mipmap-xhdpi_ic_launcher_round.png.flat",
-    "source": "com.example.reply.app-main-56:/mipmap-xhdpi/ic_launcher_round.png"
-  },
-  {
-    "merged": "com.example.reply.app-merged_res-54:/drawable_avatar_express.png.flat",
-    "source": "com.example.reply.app-main-56:/drawable/avatar_express.png"
-  },
-  {
-    "merged": "com.example.reply.app-merged_res-54:/drawable_avatar_1.jpg.flat",
-    "source": "com.example.reply.app-main-56:/drawable/avatar_1.jpg"
-  },
-  {
-    "merged": "com.example.reply.app-merged_res-54:/drawable_avatar_3.jpg.flat",
-    "source": "com.example.reply.app-main-56:/drawable/avatar_3.jpg"
-  },
-  {
-    "merged": "com.example.reply.app-merged_res-54:/drawable_paris_2.jpg.flat",
-    "source": "com.example.reply.app-main-56:/drawable/paris_2.jpg"
-  },
-  {
-    "merged": "com.example.reply.app-merged_res-54:/drawable_avatar_8.jpg.flat",
-    "source": "com.example.reply.app-main-56:/drawable/avatar_8.jpg"
-  },
-  {
-    "merged": "com.example.reply.app-merged_res-54:/mipmap-xxxhdpi_ic_launcher.png.flat",
-    "source": "com.example.reply.app-main-56:/mipmap-xxxhdpi/ic_launcher.png"
-  },
-  {
-    "merged": "com.example.reply.app-merged_res-54:/mipmap-xxhdpi_ic_launcher_foreground.png.flat",
-    "source": "com.example.reply.app-main-56:/mipmap-xxhdpi/ic_launcher_foreground.png"
-  },
-  {
-    "merged": "com.example.reply.app-merged_res-54:/mipmap-hdpi_ic_launcher_foreground.png.flat",
-    "source": "com.example.reply.app-main-56:/mipmap-hdpi/ic_launcher_foreground.png"
-  },
-  {
-    "merged": "com.example.reply.app-merged_res-54:/mipmap-xhdpi_ic_launcher.png.flat",
-    "source": "com.example.reply.app-main-56:/mipmap-xhdpi/ic_launcher.png"
-  },
-  {
-    "merged": "com.example.reply.app-merged_res-54:/drawable-v24_ic_launcher_foreground.xml.flat",
-    "source": "com.example.reply.app-main-56:/drawable-v24/ic_launcher_foreground.xml"
-  },
-  {
-    "merged": "com.example.reply.app-merged_res-54:/mipmap-xxhdpi_ic_launcher_round.png.flat",
-    "source": "com.example.reply.app-main-56:/mipmap-xxhdpi/ic_launcher_round.png"
-  },
-  {
-    "merged": "com.example.reply.app-merged_res-54:/drawable_avatar_0.jpg.flat",
-    "source": "com.example.reply.app-main-56:/drawable/avatar_0.jpg"
-  },
-  {
-    "merged": "com.example.reply.app-merged_res-54:/drawable_avatar_5.jpg.flat",
-    "source": "com.example.reply.app-main-56:/drawable/avatar_5.jpg"
-  },
-  {
-    "merged": "com.example.reply.app-merged_res-54:/drawable_paris_3.jpg.flat",
-    "source": "com.example.reply.app-main-56:/drawable/paris_3.jpg"
-  },
-  {
-    "merged": "com.example.reply.app-merged_res-54:/mipmap-hdpi_ic_launcher.png.flat",
-    "source": "com.example.reply.app-main-56:/mipmap-hdpi/ic_launcher.png"
-  },
-  {
-    "merged": "com.example.reply.app-merged_res-54:/mipmap-xxxhdpi_ic_launcher_foreground.png.flat",
-    "source": "com.example.reply.app-main-56:/mipmap-xxxhdpi/ic_launcher_foreground.png"
-  },
-  {
-    "merged": "com.example.reply.app-merged_res-54:/mipmap-xxxhdpi_ic_launcher_round.png.flat",
-    "source": "com.example.reply.app-main-56:/mipmap-xxxhdpi/ic_launcher_round.png"
-  },
-  {
-    "merged": "com.example.reply.app-merged_res-54:/drawable_avatar_9.jpg.flat",
-    "source": "com.example.reply.app-main-56:/drawable/avatar_9.jpg"
-  },
-  {
-    "merged": "com.example.reply.app-merged_res-54:/drawable_ic_launcher_background.xml.flat",
-    "source": "com.example.reply.app-main-56:/drawable/ic_launcher_background.xml"
-  },
-  {
-    "merged": "com.example.reply.app-merged_res-54:/drawable_paris_1.jpg.flat",
-    "source": "com.example.reply.app-main-56:/drawable/paris_1.jpg"
-  },
-  {
-    "merged": "com.example.reply.app-merged_res-54:/mipmap-anydpi-v26_ic_launcher.xml.flat",
-    "source": "com.example.reply.app-main-56:/mipmap-anydpi-v26/ic_launcher.xml"
-  },
-  {
-    "merged": "com.example.reply.app-merged_res-54:/drawable_avatar_7.jpg.flat",
-    "source": "com.example.reply.app-main-56:/drawable/avatar_7.jpg"
-  },
-  {
-    "merged": "com.example.reply.app-merged_res-54:/mipmap-mdpi_ic_launcher_foreground.png.flat",
-    "source": "com.example.reply.app-main-56:/mipmap-mdpi/ic_launcher_foreground.png"
-  },
-  {
-    "merged": "com.example.reply.app-merged_res-54:/drawable_avatar_10.jpg.flat",
-    "source": "com.example.reply.app-main-56:/drawable/avatar_10.jpg"
-  },
-  {
-    "merged": "com.example.reply.app-merged_res-54:/drawable_avatar_2.jpg.flat",
-    "source": "com.example.reply.app-main-56:/drawable/avatar_2.jpg"
-  },
-  {
-    "merged": "com.example.reply.app-merged_res-54:/drawable_avatar_6.jpg.flat",
-    "source": "com.example.reply.app-main-56:/drawable/avatar_6.jpg"
-  },
-  {
-    "merged": "com.example.reply.app-merged_res-54:/mipmap-xhdpi_ic_launcher_foreground.png.flat",
-    "source": "com.example.reply.app-main-56:/mipmap-xhdpi/ic_launcher_foreground.png"
-  },
-  {
-    "merged": "com.example.reply.app-merged_res-54:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
-    "source": "com.example.reply.app-main-56:/mipmap-anydpi-v26/ic_launcher_round.xml"
-  },
-  {
-    "merged": "com.example.reply.app-merged_res-54:/mipmap-mdpi_ic_launcher_round.png.flat",
-    "source": "com.example.reply.app-main-56:/mipmap-mdpi/ic_launcher_round.png"
-  },
-  {
-    "merged": "com.example.reply.app-merged_res-54:/mipmap-hdpi_ic_launcher_round.png.flat",
-    "source": "com.example.reply.app-main-56:/mipmap-hdpi/ic_launcher_round.png"
-  },
-  {
-    "merged": "com.example.reply.app-merged_res-54:/drawable_paris_4.jpg.flat",
-    "source": "com.example.reply.app-main-56:/drawable/paris_4.jpg"
-  },
-  {
-    "merged": "com.example.reply.app-merged_res-54:/drawable_avatar_4.jpg.flat",
-    "source": "com.example.reply.app-main-56:/drawable/avatar_4.jpg"
-  },
-  {
-    "merged": "com.example.reply.app-merged_res-54:/mipmap-xxhdpi_ic_launcher.png.flat",
-    "source": "com.example.reply.app-main-56:/mipmap-xxhdpi/ic_launcher.png"
-  },
-  {
-    "merged": "com.example.reply.app-merged_res-54:/mipmap-mdpi_ic_launcher.png.flat",
-    "source": "com.example.reply.app-main-56:/mipmap-mdpi/ic_launcher.png"
-  }
+    {
+        "merged": "com.example.reply.app-merged_res-54:/mipmap-xhdpi_ic_launcher_round.png.flat",
+        "source": "com.example.reply.app-main-56:/mipmap-xhdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "com.example.reply.app-merged_res-54:/drawable_avatar_express.png.flat",
+        "source": "com.example.reply.app-main-56:/drawable/avatar_express.png"
+    },
+    {
+        "merged": "com.example.reply.app-merged_res-54:/drawable_avatar_1.jpg.flat",
+        "source": "com.example.reply.app-main-56:/drawable/avatar_1.jpg"
+    },
+    {
+        "merged": "com.example.reply.app-merged_res-54:/drawable_avatar_3.jpg.flat",
+        "source": "com.example.reply.app-main-56:/drawable/avatar_3.jpg"
+    },
+    {
+        "merged": "com.example.reply.app-merged_res-54:/drawable_paris_2.jpg.flat",
+        "source": "com.example.reply.app-main-56:/drawable/paris_2.jpg"
+    },
+    {
+        "merged": "com.example.reply.app-merged_res-54:/drawable_avatar_8.jpg.flat",
+        "source": "com.example.reply.app-main-56:/drawable/avatar_8.jpg"
+    },
+    {
+        "merged": "com.example.reply.app-merged_res-54:/mipmap-xxxhdpi_ic_launcher.png.flat",
+        "source": "com.example.reply.app-main-56:/mipmap-xxxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.example.reply.app-merged_res-54:/mipmap-xxhdpi_ic_launcher_foreground.png.flat",
+        "source": "com.example.reply.app-main-56:/mipmap-xxhdpi/ic_launcher_foreground.png"
+    },
+    {
+        "merged": "com.example.reply.app-merged_res-54:/mipmap-hdpi_ic_launcher_foreground.png.flat",
+        "source": "com.example.reply.app-main-56:/mipmap-hdpi/ic_launcher_foreground.png"
+    },
+    {
+        "merged": "com.example.reply.app-merged_res-54:/mipmap-xhdpi_ic_launcher.png.flat",
+        "source": "com.example.reply.app-main-56:/mipmap-xhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.example.reply.app-merged_res-54:/drawable-v24_ic_launcher_foreground.xml.flat",
+        "source": "com.example.reply.app-main-56:/drawable-v24/ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "com.example.reply.app-merged_res-54:/mipmap-xxhdpi_ic_launcher_round.png.flat",
+        "source": "com.example.reply.app-main-56:/mipmap-xxhdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "com.example.reply.app-merged_res-54:/drawable_avatar_0.jpg.flat",
+        "source": "com.example.reply.app-main-56:/drawable/avatar_0.jpg"
+    },
+    {
+        "merged": "com.example.reply.app-merged_res-54:/drawable_avatar_5.jpg.flat",
+        "source": "com.example.reply.app-main-56:/drawable/avatar_5.jpg"
+    },
+    {
+        "merged": "com.example.reply.app-merged_res-54:/drawable_paris_3.jpg.flat",
+        "source": "com.example.reply.app-main-56:/drawable/paris_3.jpg"
+    },
+    {
+        "merged": "com.example.reply.app-merged_res-54:/mipmap-hdpi_ic_launcher.png.flat",
+        "source": "com.example.reply.app-main-56:/mipmap-hdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.example.reply.app-merged_res-54:/mipmap-xxxhdpi_ic_launcher_foreground.png.flat",
+        "source": "com.example.reply.app-main-56:/mipmap-xxxhdpi/ic_launcher_foreground.png"
+    },
+    {
+        "merged": "com.example.reply.app-merged_res-54:/mipmap-xxxhdpi_ic_launcher_round.png.flat",
+        "source": "com.example.reply.app-main-56:/mipmap-xxxhdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "com.example.reply.app-merged_res-54:/drawable_avatar_9.jpg.flat",
+        "source": "com.example.reply.app-main-56:/drawable/avatar_9.jpg"
+    },
+    {
+        "merged": "com.example.reply.app-merged_res-54:/drawable_ic_launcher_background.xml.flat",
+        "source": "com.example.reply.app-main-56:/drawable/ic_launcher_background.xml"
+    },
+    {
+        "merged": "com.example.reply.app-merged_res-54:/drawable_paris_1.jpg.flat",
+        "source": "com.example.reply.app-main-56:/drawable/paris_1.jpg"
+    },
+    {
+        "merged": "com.example.reply.app-merged_res-54:/mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "com.example.reply.app-main-56:/mipmap-anydpi-v26/ic_launcher.xml"
+    },
+    {
+        "merged": "com.example.reply.app-merged_res-54:/drawable_avatar_7.jpg.flat",
+        "source": "com.example.reply.app-main-56:/drawable/avatar_7.jpg"
+    },
+    {
+        "merged": "com.example.reply.app-merged_res-54:/mipmap-mdpi_ic_launcher_foreground.png.flat",
+        "source": "com.example.reply.app-main-56:/mipmap-mdpi/ic_launcher_foreground.png"
+    },
+    {
+        "merged": "com.example.reply.app-merged_res-54:/drawable_avatar_10.jpg.flat",
+        "source": "com.example.reply.app-main-56:/drawable/avatar_10.jpg"
+    },
+    {
+        "merged": "com.example.reply.app-merged_res-54:/drawable_avatar_2.jpg.flat",
+        "source": "com.example.reply.app-main-56:/drawable/avatar_2.jpg"
+    },
+    {
+        "merged": "com.example.reply.app-merged_res-54:/drawable_avatar_6.jpg.flat",
+        "source": "com.example.reply.app-main-56:/drawable/avatar_6.jpg"
+    },
+    {
+        "merged": "com.example.reply.app-merged_res-54:/mipmap-xhdpi_ic_launcher_foreground.png.flat",
+        "source": "com.example.reply.app-main-56:/mipmap-xhdpi/ic_launcher_foreground.png"
+    },
+    {
+        "merged": "com.example.reply.app-merged_res-54:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "com.example.reply.app-main-56:/mipmap-anydpi-v26/ic_launcher_round.xml"
+    },
+    {
+        "merged": "com.example.reply.app-merged_res-54:/mipmap-mdpi_ic_launcher_round.png.flat",
+        "source": "com.example.reply.app-main-56:/mipmap-mdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "com.example.reply.app-merged_res-54:/mipmap-hdpi_ic_launcher_round.png.flat",
+        "source": "com.example.reply.app-main-56:/mipmap-hdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "com.example.reply.app-merged_res-54:/drawable_paris_4.jpg.flat",
+        "source": "com.example.reply.app-main-56:/drawable/paris_4.jpg"
+    },
+    {
+        "merged": "com.example.reply.app-merged_res-54:/drawable_avatar_4.jpg.flat",
+        "source": "com.example.reply.app-main-56:/drawable/avatar_4.jpg"
+    },
+    {
+        "merged": "com.example.reply.app-merged_res-54:/mipmap-xxhdpi_ic_launcher.png.flat",
+        "source": "com.example.reply.app-main-56:/mipmap-xxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.example.reply.app-merged_res-54:/mipmap-mdpi_ic_launcher.png.flat",
+        "source": "com.example.reply.app-main-56:/mipmap-mdpi/ic_launcher.png"
+    }
 ]

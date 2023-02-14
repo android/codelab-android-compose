@@ -56,8 +56,7 @@
         <item name="android:paddingEnd">12dp</item>
     </style>
     <style name="RtlUnderlay.Widget.AppCompat.ActionButton.Overflow" parent="Base.Widget.AppCompat.ActionButton">
-        <item name="android:paddingStart">@dimen/abc_action_bar_overflow_padding_start_material
-        </item>
+        <item name="android:paddingStart">@dimen/abc_action_bar_overflow_padding_start_material</item>
         <item name="android:paddingEnd">@dimen/abc_action_bar_overflow_padding_end_material</item>
     </style>
 </resources>
