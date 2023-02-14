@@ -1,20 +1,20 @@
 {
-  "logs": [
-    {
-      "outputFile": "com.example.reply.app-mergeDebugResources-52:/values-watch-v21/values-watch-v21.xml",
-      "map": [
+    "logs": [
         {
-          "source": "/Users/gurusingh/.gradle/caches/transforms-3/23363f72854a97237eb7a937d25f651f/transformed/appcompat-1.6.0/res/values-watch-v21/values-watch-v21.xml",
-          "from": {
-            "startLines": "2,6,10",
-            "startColumns": "4,4,4",
-            "startOffsets": "55,271,499",
-            "endLines": "5,9,13",
-            "endColumns": "12,12,12",
-            "endOffsets": "266,494,724"
-          }
+            "outputFile": "com.example.reply.app-mergeDebugResources-52:/values-watch-v21/values-watch-v21.xml",
+            "map": [
+                {
+                    "source": "/Users/gurusingh/.gradle/caches/transforms-3/23363f72854a97237eb7a937d25f651f/transformed/appcompat-1.6.0/res/values-watch-v21/values-watch-v21.xml",
+                    "from": {
+                        "startLines": "2,6,10",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "55,271,499",
+                        "endLines": "5,9,13",
+                        "endColumns": "12,12,12",
+                        "endOffsets": "266,494,724"
+                    }
+                }
+            ]
         }
-      ]
-    }
-  ]
+    ]
 }
