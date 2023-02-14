@@ -56,7 +56,7 @@ fun ReplyAppContent(
     navigateToDetail: (Long) -> Unit,
 ) {
 
-    val selectedDestination = remember { mutableStateOf( ReplyRoute.INBOX) }
+    val selectedDestination = remember { mutableStateOf(ReplyRoute.INBOX) }
 
     Column(
         modifier = modifier
