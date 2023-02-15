@@ -16,7 +16,8 @@ fun StatefulWaterCounter(modifier: Modifier = Modifier) {
     var count by rememberSaveable { mutableStateOf(0) }
     StatelessWaterCounter(
         count = count,
-        onIncrement = { count++ }
+        onIncrement = { count++ },
+        modifier = modifier
     )
 }
 
@@ -25,7 +26,7 @@ fun StatelessWaterCounter(
     count: Int,
     onIncrement: () -> Unit,
     modifier: Modifier = Modifier
-){
+) {
     Column(modifier.padding(16.dp)) {
 
         if (count > 0) {
