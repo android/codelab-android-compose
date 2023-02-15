@@ -2,4 +2,5 @@
 <resources>
     <string name="app_name">StateCodelab</string>
     <string name="water_counter_text">You\'ve had %1$d glasses.</string>
+    <string name="counter_btn_text">Add one</string>
 </resources>
