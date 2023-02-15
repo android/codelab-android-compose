@@ -3,4 +3,6 @@
     <string name="app_name">StateCodelab</string>
     <string name="water_counter_text">You\'ve had %1$d glasses.</string>
     <string name="counter_btn_text">Add one</string>
+    <string name="clear_btn_text">Clear water count</string>
+    <string name="close_btn_text">Close</string>
 </resources>
