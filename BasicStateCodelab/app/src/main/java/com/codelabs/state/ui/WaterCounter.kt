@@ -12,9 +12,21 @@ import androidx.compose.ui.unit.dp
 import com.codelabs.state.R
 
 @Composable
-fun WaterCounter(modifier: Modifier = Modifier) {
+fun StatefulWaterCounter(modifier: Modifier = Modifier) {
+    var count by rememberSaveable { mutableStateOf(0) }
+    StatelessWaterCounter(
+        count = count,
+        onIncrement = { count++ }
+    )
+}
+
+@Composable
+fun StatelessWaterCounter(
+    count: Int,
+    onIncrement: () -> Unit,
+    modifier: Modifier = Modifier
+){
     Column(modifier.padding(16.dp)) {
-        var count by rememberSaveable { mutableStateOf(0) }
 
         if (count > 0) {
             Text(
@@ -24,7 +36,7 @@ fun WaterCounter(modifier: Modifier = Modifier) {
         }
 
         Button(
-            onClick = { count++ },
+            onClick = onIncrement,
             enabled = count < 10,
             modifier = Modifier.padding(top = 8.dp)
         ) {

@@ -7,7 +7,7 @@ import com.codelabs.state.ui.theme.BasicStateCodelabTheme
 
 @Composable
 fun WellnessScreen(modifier: Modifier = Modifier) {
-    WaterCounter(modifier)
+    StatefulWaterCounter(modifier)
 }
 
 @Preview(showBackground = true)
