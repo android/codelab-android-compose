@@ -13,16 +13,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.codelabs.state
+package com.codelabs.state.ui
 
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.setValue
+import android.os.Bundle
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
+import com.codelabs.state.ui.theme.BasicStateCodelabTheme
 
-class WellnessTask(
-    val id: Int,
-    val label: String,
-    initialChecked: Boolean = false
-) {
-    var checked: Boolean by mutableStateOf(initialChecked)
+class MainActivity : ComponentActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContent {
+            BasicStateCodelabTheme {
+            }
+        }
+    }
 }
