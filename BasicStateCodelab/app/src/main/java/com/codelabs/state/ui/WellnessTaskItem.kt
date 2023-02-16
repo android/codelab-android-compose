@@ -50,6 +50,7 @@ fun WellnessTaskItem(
 @Composable
 fun WellnessTaskItem(
     taskName: String,
+    onClose: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     var checkedState by rememberSaveable {
@@ -58,7 +59,7 @@ fun WellnessTaskItem(
 
     WellnessTaskItem(
         taskName = taskName,
-        onClose = { },
+        onClose = onClose,
         checked = checkedState,
         onCheckedChange = { isChecked -> checkedState = isChecked },
         modifier = modifier
