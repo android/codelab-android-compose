@@ -24,7 +24,7 @@ import com.example.reply.R
  */
 object LocalAccountsDataProvider {
 
-    val allUserAccounts = listOf(
+    private val allUserAccounts = listOf(
         Account(
             id = 1L,
             uid = 0L,

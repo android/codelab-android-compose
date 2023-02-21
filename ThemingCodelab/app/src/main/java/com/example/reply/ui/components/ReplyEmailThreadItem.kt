@@ -73,12 +73,12 @@ fun ReplyEmailThreadItem(
                         style = MaterialTheme.typography.labelMedium
                     )
                     Text(
-                        text = "20 mins ago",
+                        text = stringResource(id = R.string.twenty_mins_ago),
                         style = MaterialTheme.typography.labelMedium,
                     )
                 }
                 IconButton(
-                    onClick = { /*TODO*/ },
+                    onClick = { /*Click Implementation*/ },
                     modifier = Modifier
                         .clip(CircleShape)
                         .background(MaterialTheme.colorScheme.surface)
@@ -108,7 +108,7 @@ fun ReplyEmailThreadItem(
                 horizontalArrangement = Arrangement.spacedBy(4.dp),
             ) {
                 Button(
-                    onClick = { /*TODO*/ },
+                    onClick = { /*Click Implementation*/ },
                     modifier = Modifier.weight(1f),
                 ) {
                     Text(
@@ -116,7 +116,7 @@ fun ReplyEmailThreadItem(
                     )
                 }
                 Button(
-                    onClick = { /*TODO*/ },
+                    onClick = { /*Click Implementation*/ },
                     modifier = Modifier.weight(1f),
                 ) {
                     Text(

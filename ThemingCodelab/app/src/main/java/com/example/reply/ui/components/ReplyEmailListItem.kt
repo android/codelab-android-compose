@@ -42,23 +42,18 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.example.reply.data.Email
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ReplyEmailListItem(
     email: Email,
-    isSelectable: Boolean = false,
     isSelected: Boolean = false,
     modifier: Modifier = Modifier,
     navigateToDetail: (Long) -> Unit
 ) {
-    val semanticsModifier =
-        if (isSelectable)
-            modifier
-                .padding(horizontal = 16.dp, vertical = 4.dp)
-                .semantics { selected = isSelected }
-        else modifier.padding(horizontal = 16.dp, vertical = 4.dp)
     Card(
-        modifier = semanticsModifier.clickable { navigateToDetail(email.id) },
+        modifier =  modifier
+            .padding(horizontal = 16.dp, vertical = 4.dp)
+            .semantics { selected = isSelected }
+            .clickable { navigateToDetail(email.id) },
         colors = CardDefaults.cardColors(
             containerColor = if (email.isImportant) MaterialTheme.colorScheme.secondaryContainer
             else MaterialTheme.colorScheme.surfaceVariant
@@ -91,7 +86,7 @@ fun ReplyEmailListItem(
                     )
                 }
                 IconButton(
-                    onClick = { /*TODO*/ },
+                    onClick = { /*Click Implementation*/ },
                     modifier = Modifier
                         .clip(CircleShape)
                 ) {
