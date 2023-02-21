@@ -25,8 +25,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.launch
 
-class ReplyHomeViewModel :
-    ViewModel() {
+class ReplyHomeViewModel : ViewModel() {
 
     // UI state exposed to the UI
     private val _uiState = MutableStateFlow(ReplyHomeUIState(loading = true))

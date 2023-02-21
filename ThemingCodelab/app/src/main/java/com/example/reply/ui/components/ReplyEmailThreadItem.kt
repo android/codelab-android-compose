@@ -67,17 +67,17 @@ fun ReplyEmailThreadItem(
                         text = email.sender.firstName,
                     )
                     Text(
-                        text = "20 mins ago",
+                        text = stringResource(id = R.string.twenty_mins_ago),
                     )
                 }
                 IconButton(
-                    onClick = { /*TODO*/ },
+                    onClick = { /*Click Implementation*/ },
                     modifier = Modifier
                         .clip(CircleShape)
                 ) {
                     Icon(
                         imageVector = if (email.isStarred) Icons.Default.Star else Icons.Default.StarBorder,
-                        contentDescription = "Favorite",
+                        contentDescription = stringResource(id = R.string.description_favorite),
                         tint = if (email.isStarred) MaterialTheme.colorScheme.secondary else MaterialTheme.colorScheme.outline
                     )
                 }
@@ -98,7 +98,7 @@ fun ReplyEmailThreadItem(
                 horizontalArrangement = Arrangement.spacedBy(4.dp),
             ) {
                 Button(
-                    onClick = { /*TODO*/ },
+                    onClick = { /*Click Implementation*/ },
                     modifier = Modifier.weight(1f),
                 ) {
                     Text(
@@ -106,7 +106,7 @@ fun ReplyEmailThreadItem(
                     )
                 }
                 Button(
-                    onClick = { /*TODO*/ },
+                    onClick = { /*Click Implementation*/ },
                     modifier = Modifier.weight(1f),
                 ) {
                     Text(

@@ -120,7 +120,7 @@ fun EmailDetailAppBar(
         },
         actions = {
             IconButton(
-                onClick = { /*TODO*/ },
+                onClick = { /*Click Implementation*/ },
             ) {
                 Icon(
                     imageVector = Icons.Default.MoreVert,
