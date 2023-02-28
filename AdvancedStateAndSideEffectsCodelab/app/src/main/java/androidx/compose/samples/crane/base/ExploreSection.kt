@@ -50,11 +50,8 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
-import coil.annotation.ExperimentalCoilApi
 import coil.compose.AsyncImagePainter
 import coil.compose.rememberAsyncImagePainter
-import coil.compose.rememberImagePainter
-import coil.request.ImageRequest
 import coil.request.ImageRequest.Builder
 import com.google.accompanist.insets.navigationBarsHeight
 
@@ -104,7 +101,6 @@ private fun ExploreList(
     }
 }
 
-@OptIn(ExperimentalCoilApi::class)
 @Composable
 private fun ExploreItem(
     modifier: Modifier = Modifier,
