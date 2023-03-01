@@ -17,6 +17,7 @@
 package androidx.compose.samples.crane.home
 
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.material.BackdropScaffold
 import androidx.compose.material.BackdropValue
 import androidx.compose.material.ExperimentalMaterialApi
@@ -36,7 +37,6 @@ import androidx.compose.samples.crane.data.ExploreModel
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.google.accompanist.insets.statusBarsPadding
 
 typealias OnExploreItemClicked = (ExploreModel) -> Unit
 
@@ -76,7 +76,7 @@ fun CraneHomeContent(
     modifier: Modifier = Modifier,
     viewModel: MainViewModel = viewModel(),
 ) {
-    // TODO Codelab: collectAsState step - consume stream of data from the ViewModel
+    // TODO Codelab: collectAsStateWithLifecycle step - consume stream of data from the ViewModel
     val suggestedDestinations: List<ExploreModel> = remember { emptyList() }
 
     val onPeopleChanged: (Int) -> Unit = { viewModel.updatePeople(it) }
