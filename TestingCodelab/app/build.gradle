@@ -94,7 +94,7 @@ dependencies {
     implementation "androidx.core:core-ktx:1.9.0"
     implementation "com.google.android.material:material:1.7.0"
     implementation "androidx.fragment:fragment-ktx:1.5.5"
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.7.20"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.10"
 
     // Compose
     implementation "androidx.compose.runtime:runtime"
