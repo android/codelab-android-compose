@@ -28,7 +28,7 @@ import androidx.compose.ui.res.painterResource
 private const val SplashWaitTime: Long = 2000
 
 @Composable
-fun LandingScreen(modifier: Modifier = Modifier, onTimeout: () -> Unit) {
+fun LandingScreen(onTimeout: () -> Unit, modifier: Modifier = Modifier) {
     Box(modifier = modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
         // TODO Codelab: LaunchedEffect and rememberUpdatedState step
         // TODO: Make LandingScreen disappear after loading data
