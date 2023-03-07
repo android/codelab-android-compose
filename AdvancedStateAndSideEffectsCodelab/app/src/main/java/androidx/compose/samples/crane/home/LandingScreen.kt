@@ -32,7 +32,7 @@ import kotlinx.coroutines.delay
 private const val SplashWaitTime: Long = 2000
 
 @Composable
-fun LandingScreen(modifier: Modifier = Modifier, onTimeout: () -> Unit) {
+fun LandingScreen(onTimeout: () -> Unit, modifier: Modifier = Modifier) {
     Box(modifier = modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
         // Adds composition consistency. Use the value when LaunchedEffect is first called
         val currentOnTimeout by rememberUpdatedState(onTimeout)
