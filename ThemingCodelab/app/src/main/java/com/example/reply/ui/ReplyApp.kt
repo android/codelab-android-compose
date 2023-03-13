@@ -39,7 +39,7 @@ import com.example.reply.R
 fun ReplyApp(
     replyHomeUIState: ReplyHomeUIState,
     closeDetailScreen: () -> Unit = {},
-    navigateToDetail: (Long) -> Unit
+    navigateToDetail: (Long) -> Unit = {}
 ) {
     ReplyAppContent(
         replyHomeUIState = replyHomeUIState,

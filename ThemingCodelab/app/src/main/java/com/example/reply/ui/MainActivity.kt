@@ -25,7 +25,6 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.reply.data.LocalEmailsDataProvider
-import com.example.reply.ui.theme.AppTheme
 
 
 class MainActivity : ComponentActivity() {
@@ -37,17 +36,15 @@ class MainActivity : ComponentActivity() {
 
         setContent {
             val uiState by viewModel.uiState.collectAsState()
-            AppTheme() {
-                ReplyApp(
-                    replyHomeUIState = uiState,
-                    closeDetailScreen = {
-                        viewModel.closeDetailScreen()
-                    },
-                    navigateToDetail = { emailId ->
-                        viewModel.setSelectedEmail(emailId)
-                    }
-                )
-            }
+            ReplyApp(
+                replyHomeUIState = uiState,
+                closeDetailScreen = {
+                    viewModel.closeDetailScreen()
+                },
+                navigateToDetail = { emailId ->
+                    viewModel.setSelectedEmail(emailId)
+                }
+            )
         }
     }
 }
@@ -55,23 +52,19 @@ class MainActivity : ComponentActivity() {
 @Preview()
 @Composable
 fun ReplyAppPreviewLight() {
-    AppTheme(useDarkTheme = false) {
-        ReplyApp(
-            replyHomeUIState = ReplyHomeUIState(
-                emails = LocalEmailsDataProvider.allEmails
-            )
+    ReplyApp(
+        replyHomeUIState = ReplyHomeUIState(
+            emails = LocalEmailsDataProvider.allEmails
         )
-    }
+    )
 }
 
 @Preview()
 @Composable
 fun ReplyAppPreviewDark() {
-    AppTheme(useDarkTheme = true) {
-        ReplyApp(
-            replyHomeUIState = ReplyHomeUIState(
-                emails = LocalEmailsDataProvider.allEmails
-            )
+    ReplyApp(
+        replyHomeUIState = ReplyHomeUIState(
+            emails = LocalEmailsDataProvider.allEmails
         )
-    }
+    )
 }
