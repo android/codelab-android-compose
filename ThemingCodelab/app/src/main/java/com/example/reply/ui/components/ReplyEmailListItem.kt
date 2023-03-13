@@ -55,7 +55,8 @@ fun ReplyEmailListItem(
             .semantics { selected = isSelected }
             .clickable { navigateToDetail(email.id) },
         colors = CardDefaults.cardColors(
-            containerColor = if (email.isImportant) MaterialTheme.colorScheme.secondaryContainer
+            containerColor = if (email.isImportant)
+                MaterialTheme.colorScheme.secondaryContainer
             else MaterialTheme.colorScheme.surfaceVariant
         )
     ) {

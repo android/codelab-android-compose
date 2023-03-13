@@ -56,11 +56,26 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-@Preview(showBackground = true)
+@Preview()
 @Composable
-fun ReplyAppPreview() {
-    ReplyApp(
-        replyHomeUIState = ReplyHomeUIState(emails = LocalEmailsDataProvider.allEmails),
-        {}, {}
-    )
+fun ReplyAppPreviewLight() {
+    AppTheme(useDarkTheme = true) {
+        ReplyApp(
+            replyHomeUIState = ReplyHomeUIState(
+                emails = LocalEmailsDataProvider.allEmails
+            )
+        )
+    }
+}
+
+@Preview()
+@Composable
+fun ReplyAppPreviewDark() {
+    AppTheme(useDarkTheme = false) {
+        ReplyApp(
+            replyHomeUIState = ReplyHomeUIState(
+                emails = LocalEmailsDataProvider.allEmails
+            )
+        )
+    }
 }
