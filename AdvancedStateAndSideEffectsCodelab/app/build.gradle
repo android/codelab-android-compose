@@ -38,7 +38,7 @@ android {
         vectorDrawables.useSupportLibrary = true
         testInstrumentationRunner "androidx.compose.samples.crane.CustomTestRunner"
 
-        manifestPlaceholders = [googleMapsKey: properties.getProperty("google.maps.key", "")]
+        manifestPlaceholders = [MAPS_API_KEY: properties.getProperty("MAPS_API_KEY", "")]
     }
 
     signingConfigs {
