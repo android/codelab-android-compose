@@ -39,8 +39,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Crane">
 
-        <meta-data android:name="com.google.android.geo.API_KEY"
-            android:value="${googleMapsKey}"/>
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="${MAPS_API_KEY}"/>
 
         <activity
             android:name=".home.MainActivity"
