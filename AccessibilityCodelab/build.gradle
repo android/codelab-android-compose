@@ -21,13 +21,13 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:7.4.0'
+        classpath 'com.android.tools.build:gradle:7.4.2'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.7.20"
     }
 }
 
 plugins {
-    id 'com.diffplug.spotless' version '6.12.1'
+    id 'com.diffplug.spotless' version '6.17.0'
 }
 
 subprojects {
