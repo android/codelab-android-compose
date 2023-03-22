@@ -99,7 +99,9 @@ private fun PlantWatering(wateringInterval: Int) {
         )
 
         val wateringIntervalText = pluralStringResource(
-            R.plurals.watering_needs_suffix, wateringInterval, wateringInterval
+            R.plurals.watering_needs_suffix,
+            wateringInterval,
+            wateringInterval
         )
         Text(
             text = wateringIntervalText,
