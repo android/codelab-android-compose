@@ -58,7 +58,7 @@ fun RallyTheme(content: @Composable () -> Unit) {
         defaultFontFamily = RobotoCondensed,
         h1 = TextStyle(
             fontWeight = FontWeight.W100,
-            fontSize = 96.sp,
+            fontSize = 96.sp
         ),
         h2 = TextStyle(
             fontWeight = FontWeight.SemiBold,
