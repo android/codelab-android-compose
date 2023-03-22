@@ -21,6 +21,7 @@ apply plugin: 'androidx.navigation.safeargs.kotlin'
 
 android {
     compileSdkVersion 33
+    namespace "com.google.samples.apps.sunflower"
     defaultConfig {
         applicationId "com.google.samples.apps.sunflower"
         minSdkVersion 21
