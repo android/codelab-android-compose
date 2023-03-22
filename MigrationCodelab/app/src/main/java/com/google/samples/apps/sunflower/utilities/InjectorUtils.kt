@@ -58,7 +58,8 @@ object InjectorUtils {
     ): PlantDetailViewModelFactory {
         return PlantDetailViewModelFactory(
             getPlantRepository(context),
-            getGardenPlantingRepository(context), plantId
+            getGardenPlantingRepository(context),
+            plantId
         )
     }
 }

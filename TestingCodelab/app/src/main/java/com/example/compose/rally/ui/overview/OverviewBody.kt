@@ -152,7 +152,7 @@ private fun AlertHeader(onClickSeeAll: () -> Unit) {
         ) {
             Text(
                 text = "SEE ALL",
-                style = MaterialTheme.typography.button,
+                style = MaterialTheme.typography.button
             )
         }
     }
