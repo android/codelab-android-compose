@@ -41,7 +41,6 @@ import androidx.compose.samples.crane.home.PeopleUserInputAnimationState.Valid
 import androidx.compose.samples.crane.ui.CraneTheme
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.filter
 
 enum class PeopleUserInputAnimationState { Valid, Invalid }

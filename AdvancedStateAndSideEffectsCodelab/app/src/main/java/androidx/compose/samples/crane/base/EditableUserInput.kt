@@ -39,6 +39,11 @@ fun rememberEditableUserInputState(hint: String): EditableUserInputState =
 class EditableUserInputState(private val hint: String, initialText: String) {
 
     var text by mutableStateOf(initialText)
+        private set
+
+    fun updateText(newText: String) {
+        text = newText
+    }
 
     val isHint: Boolean
         get() = text == hint
@@ -70,7 +75,7 @@ fun CraneEditableUserInput(
     ) {
         BasicTextField(
             value = state.text,
-            onValueChange = { state.text = it },
+            onValueChange = { state.updateText(it) },
             textStyle = if (state.isHint) {
                 captionTextStyle.copy(color = LocalContentColor.current)
             } else {
