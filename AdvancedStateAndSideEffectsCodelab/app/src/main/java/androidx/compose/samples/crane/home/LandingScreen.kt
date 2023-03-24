@@ -37,7 +37,7 @@ fun LandingScreen(onTimeout: () -> Unit, modifier: Modifier = Modifier) {
         // Adds composition consistency. Use the value when LaunchedEffect is first called
         val currentOnTimeout by rememberUpdatedState(onTimeout)
 
-        LaunchedEffect(true) {
+        LaunchedEffect(Unit) {
             delay(SplashWaitTime)
             currentOnTimeout()
         }
