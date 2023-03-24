@@ -49,7 +49,6 @@ class MainViewModel @Inject constructor(
         _suggestedDestinations.value = destinationsRepository.destinations
     }
 
-
     fun updatePeople(people: Int) {
         viewModelScope.launch {
             if (people > MAX_PEOPLE) {
