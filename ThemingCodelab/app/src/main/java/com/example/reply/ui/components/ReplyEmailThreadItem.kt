@@ -51,7 +51,7 @@ fun ReplyEmailThreadItem(
     Column(
         modifier = modifier
             .fillMaxWidth()
-            .padding(8.dp)
+            .padding(16.dp)
             .background(MaterialTheme.colorScheme.surface, shape = MaterialTheme.shapes.medium)
             .padding(20.dp)
     ) {
