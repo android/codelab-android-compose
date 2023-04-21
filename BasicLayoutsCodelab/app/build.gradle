@@ -21,6 +21,7 @@ plugins {
 
 android {
     compileSdk 33
+    namespace "com.codelab.basiclayouts"
 
     defaultConfig {
         applicationId "com.codelab.basiclayouts"

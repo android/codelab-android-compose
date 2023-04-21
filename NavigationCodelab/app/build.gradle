@@ -21,6 +21,7 @@ plugins {
 
 android {
     compileSdkVersion 33
+    namespace "com.example.compose.rally"
 
     defaultConfig {
         applicationId "com.example.compose.rally"

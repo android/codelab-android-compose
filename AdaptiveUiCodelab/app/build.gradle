@@ -21,6 +21,7 @@ plugins {
 
 android {
     compileSdk 33
+    namespace "com.example.reply"
 
     defaultConfig {
         applicationId "com.example.reply"
