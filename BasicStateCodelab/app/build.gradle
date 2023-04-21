@@ -19,6 +19,7 @@ plugins {
 }
 
 android {
+    namespace "com.codelabs.state"
     compileSdk 33
 
     defaultConfig {

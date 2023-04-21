@@ -20,6 +20,7 @@ plugins {
 }
 
 android {
+    namespace "com.codelab.basiclayouts"
     compileSdk 33
 
     defaultConfig {
