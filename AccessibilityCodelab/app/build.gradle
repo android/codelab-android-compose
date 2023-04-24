@@ -20,6 +20,7 @@ plugins {
 }
 
 android {
+    namespace 'com.example.jetnews'
     compileSdkVersion 33
     defaultConfig {
         applicationId 'com.example.jetnews'
@@ -79,7 +80,7 @@ android {
     }
 
     composeOptions {
-        kotlinCompilerExtensionVersion '1.4.4'
+        kotlinCompilerExtensionVersion '1.4.6'
     }
 
     packagingOptions {
@@ -89,7 +90,7 @@ android {
 }
 
 dependencies {
-    def composeBom = platform('androidx.compose:compose-bom:2023.03.00')
+    def composeBom = platform('androidx.compose:compose-bom:2023.04.01')
     implementation(composeBom)
     testImplementation(composeBom)
     androidTestImplementation(composeBom)
@@ -109,7 +110,7 @@ dependencies {
     androidTestImplementation "androidx.compose.ui:ui-test"
     androidTestImplementation "androidx.compose.ui:ui-test-junit4"
 
-    def accompanist_version = '0.28.0'
+    def accompanist_version = '0.30.1'
     implementation "com.google.accompanist:accompanist-swiperefresh:$accompanist_version"
     implementation "com.google.accompanist:accompanist-insets:$accompanist_version"
     implementation "com.google.accompanist:accompanist-systemuicontroller:$accompanist_version"
@@ -117,9 +118,9 @@ dependencies {
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4"
 
     implementation 'androidx.appcompat:appcompat:1.6.1'
-    implementation 'androidx.activity:activity-ktx:1.7.0'
-    implementation 'androidx.core:core-ktx:1.9.0'
-    implementation "androidx.activity:activity-compose:1.7.0"
+    implementation 'androidx.activity:activity-ktx:1.7.1'
+    implementation 'androidx.core:core-ktx:1.10.0'
+    implementation "androidx.activity:activity-compose:1.7.1"
 
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1"
     implementation "androidx.lifecycle:lifecycle-viewmodel-savedstate:2.6.1"
@@ -133,7 +134,7 @@ dependencies {
 
     // TODO: Bump to latest after Espresso 3.5.0 goes stable
     //  (due to https://github.com/robolectric/robolectric/issues/6593)
-    testImplementation 'org.robolectric:robolectric:4.9.2'
+    testImplementation 'org.robolectric:robolectric:4.10'
 }
 
 tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).configureEach {
