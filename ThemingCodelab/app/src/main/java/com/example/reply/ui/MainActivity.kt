@@ -16,6 +16,7 @@
 
 package com.example.reply.ui
 
+import android.content.res.Configuration
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -56,22 +57,17 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-@Preview()
+@Preview(
+    uiMode = Configuration.UI_MODE_NIGHT_YES,
+    name = "DefaultPreviewDark"
+)
+@Preview(
+    uiMode = Configuration.UI_MODE_NIGHT_NO,
+    name = "DefaultPreviewLight"
+)
 @Composable
-fun ReplyAppPreviewLight() {
-    AppTheme(useDarkTheme = true) {
-        ReplyApp(
-            replyHomeUIState = ReplyHomeUIState(
-                emails = LocalEmailsDataProvider.allEmails
-            )
-        )
-    }
-}
-
-@Preview()
-@Composable
-fun ReplyAppPreviewDark() {
-    AppTheme(useDarkTheme = false) {
+fun ReplyAppPreview() {
+    AppTheme {
         ReplyApp(
             replyHomeUIState = ReplyHomeUIState(
                 emails = LocalEmailsDataProvider.allEmails
