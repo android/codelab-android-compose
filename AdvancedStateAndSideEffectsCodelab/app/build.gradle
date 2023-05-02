@@ -126,8 +126,8 @@ dependencies {
     def lifecycle_version = "2.6.1"
     implementation "androidx.lifecycle:lifecycle-viewmodel-compose:$lifecycle_version"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
-    implementation "com.google.dagger:hilt-android:2.45"
-    kapt "com.google.dagger:hilt-compiler:2.45"
+    implementation "com.google.dagger:hilt-android:2.46"
+    kapt "com.google.dagger:hilt-compiler:2.46"
 
     implementation "io.coil-kt:coil-compose:2.3.0"
 
@@ -138,7 +138,7 @@ dependencies {
     androidTestImplementation "androidx.test.espresso:espresso-core:3.5.1"
     androidTestImplementation "androidx.test.ext:junit-ktx:1.1.5"
     androidTestImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.4"
-    androidTestImplementation "com.google.dagger:hilt-android:2.45"
-    androidTestImplementation "com.google.dagger:hilt-android-testing:2.45"
-    kaptAndroidTest "com.google.dagger:hilt-compiler:2.45"
+    androidTestImplementation "com.google.dagger:hilt-android:2.46"
+    androidTestImplementation "com.google.dagger:hilt-android-testing:2.46"
+    kaptAndroidTest "com.google.dagger:hilt-compiler:2.46"
 }
