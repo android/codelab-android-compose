@@ -16,20 +16,11 @@
 
 package com.codelab.basiclayouts.ui.theme
 
-import android.app.Activity
-import android.os.Build
-import android.view.View
-import android.view.WindowManager
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.SideEffect
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.toArgb
-import androidx.compose.ui.platform.LocalView
-import androidx.core.view.WindowCompat
 
 private val LightColors = lightColorScheme(
     primary = md_theme_light_primary,
@@ -85,19 +76,17 @@ private val DarkColors = darkColorScheme(
 )
 
 @Composable
-fun MySootheTheme(darkTheme: Boolean = isSystemInDarkTheme(), content: @Composable() () -> Unit) {
+fun MySootheTheme(
+    darkTheme: Boolean = isSystemInDarkTheme(),
+    content: @Composable() () -> Unit
+) {
     val colors = if (darkTheme) {
         DarkColors
     } else {
         LightColors
     }
 
-    val view = LocalView.current
-    if (!view.isInEditMode) {
-        SideEffect {
-            setUpEdgeToEdge(view, darkTheme)
-        }
-    }
+    // TODO set status bar color here instead of XML
 
     MaterialTheme(
         colorScheme = colors,
@@ -105,29 +94,4 @@ fun MySootheTheme(darkTheme: Boolean = isSystemInDarkTheme(), content: @Composab
         shapes = shapes,
         content = content
     )
-}
-
-private fun setUpEdgeToEdge(view: View, darkTheme: Boolean) {
-    val window = (view.context as Activity).window
-    WindowCompat.setDecorFitsSystemWindows(window, false)
-    window.statusBarColor = Color.Transparent.toArgb()
-    if (Build.VERSION.SDK_INT >= 29) {
-        window.statusBarColor = Color.Transparent.toArgb()
-        window.navigationBarColor = Color.Transparent.toArgb()
-    } else if (Build.VERSION.SDK_INT >= 26) {
-        window.statusBarColor = Color.Transparent.toArgb()
-        window.navigationBarColor = Color(0xFF, 0xFF, 0xFF, 0x63).toArgb()
-    } else if (Build.VERSION.SDK_INT >= 23) {
-        window.statusBarColor = Color.Transparent.toArgb()
-        @Suppress("DEPRECATION")
-        window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION)
-    } else {
-        @Suppress("DEPRECATION")
-        window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
-        @Suppress("DEPRECATION")
-        window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION)
-    }
-    val controller = WindowCompat.getInsetsController(window, view)
-    controller.isAppearanceLightStatusBars = !darkTheme
-    controller.isAppearanceLightNavigationBars = !darkTheme
 }

@@ -74,6 +74,18 @@ val typography = Typography(
         lineHeight = 24.sp,
         letterSpacing = (0.15).sp
     ),
+    bodySmall = TextStyle(
+        fontFamily = fontFamilyLato,
+        fontSize = 12.sp,
+        lineHeight = 16.sp,
+        letterSpacing = (0.4).sp
+    ),
+    bodyMedium = TextStyle(
+        fontFamily = fontFamilyLato,
+        fontSize = 14.sp,
+        lineHeight = 20.sp,
+        letterSpacing = (0.25).sp
+    ),
     bodyLarge = TextStyle(
         fontFamily = fontFamilyLato,
         fontSize = 16.sp,
@@ -93,17 +105,5 @@ val typography = Typography(
         fontSize = 14.sp,
         lineHeight = 20.sp,
         letterSpacing = (0.1).sp
-    ),
-    bodySmall = TextStyle(
-        fontFamily = fontFamilyLato,
-        fontSize = 12.sp,
-        lineHeight = 16.sp,
-        letterSpacing = (0.4).sp
-    ),
-    bodyMedium = TextStyle(
-        fontFamily = fontFamilyLato,
-        fontSize = 14.sp,
-        lineHeight = 16.sp,
-        fontWeight = FontWeight(700)
-    ),
+    )
 )
