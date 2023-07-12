@@ -86,8 +86,6 @@ fun MySootheTheme(
         LightColors
     }
 
-    // TODO set status bar color here instead of XML
-
     MaterialTheme(
         colorScheme = colors,
         typography = typography,

@@ -125,6 +125,7 @@ fun AlignYourBodyElement(
         Spacer(Modifier.height(8.dp))
         Text(
             text = stringResource(text),
+            modifier = Modifier.paddingFromBaseline(top = 8.dp),
             style = MaterialTheme.typography.bodyMedium,
             color = MaterialTheme.colorScheme.onSurface
         )
@@ -211,8 +212,8 @@ fun HomeSection(
             style = MaterialTheme.typography.titleMedium,
             modifier = Modifier
                 .padding(horizontal = 16.dp)
+                .paddingFromBaseline(top = 32.dp, bottom = 16.dp)
         )
-        Spacer(Modifier.height(8.dp))
         content()
     }
 }
@@ -234,8 +235,6 @@ fun HomeScreen(modifier: Modifier = Modifier) {
         HomeSection(title = R.string.favorite_collections) {
             FavoriteCollectionsGrid()
         }
-
-        Spacer(Modifier.height(16.dp))
     }
 }
 
