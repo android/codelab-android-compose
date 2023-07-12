@@ -151,7 +151,7 @@ fun FavoriteCollectionCard(
             Image(
                 painter = painterResource(drawable),
                 contentDescription = null,
-                contentScale = ContentScale.FillBounds,
+                contentScale = ContentScale.Crop,
                 modifier = Modifier.size(80.dp)
             )
             Text(
