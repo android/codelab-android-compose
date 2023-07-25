@@ -107,10 +107,10 @@ dependencies {
         }
     }
 
-    implementation "androidx.activity:activity-compose:1.7.1"
+    implementation "androidx.activity:activity-compose:1.7.2"
     implementation "androidx.appcompat:appcompat:1.6.1"
 
-    def composeBom = platform('androidx.compose:compose-bom:2023.05.01')
+    def composeBom = platform('androidx.compose:compose-bom:2023.06.00')
     implementation(composeBom)
     androidTestImplementation(composeBom)
     implementation "androidx.compose.runtime:runtime"
@@ -128,10 +128,10 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-viewmodel-compose:$lifecycle_version"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
     implementation "androidx.lifecycle:lifecycle-runtime-compose:$lifecycle_version"
-    implementation "com.google.dagger:hilt-android:2.46"
-    kapt "com.google.dagger:hilt-compiler:2.46"
+    implementation "com.google.dagger:hilt-android:2.46.1"
+    kapt "com.google.dagger:hilt-compiler:2.46.1"
 
-    implementation "io.coil-kt:coil-compose:2.3.0"
+    implementation "io.coil-kt:coil-compose:2.4.0"
 
     androidTestImplementation "junit:junit:4.13.2"
     androidTestImplementation "androidx.test:core:1.5.0"
@@ -140,7 +140,7 @@ dependencies {
     androidTestImplementation "androidx.test.espresso:espresso-core:3.5.1"
     androidTestImplementation "androidx.test.ext:junit-ktx:1.1.5"
     androidTestImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.1"
-    androidTestImplementation "com.google.dagger:hilt-android:2.46"
-    androidTestImplementation "com.google.dagger:hilt-android-testing:2.46"
-    kaptAndroidTest "com.google.dagger:hilt-compiler:2.46"
+    androidTestImplementation "com.google.dagger:hilt-android:2.46.1"
+    androidTestImplementation "com.google.dagger:hilt-android-testing:2.46.1"
+    kaptAndroidTest "com.google.dagger:hilt-compiler:2.46.1"
 }
