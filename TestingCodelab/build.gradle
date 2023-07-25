@@ -25,13 +25,13 @@ buildscript {
         // App dependencies
         appCompatVersion = '1.6.1'
         activityComposeVersion = '1.7.1'
-        composeCompilerVersion = '1.4.6'
+        composeCompilerVersion = '1.4.8'
         coreTestingVersion = '2.2.0'
         coroutinesVersion = "1.5.2"
         espressoVersion = '3.5.1'
         fragmentVersion = '1.5.7'
         junitVersion = '4.13.1'
-        kotlinVersion = '1.8.20'
+        kotlinVersion = '1.8.22'
         ktlintVersion = '0.48.2'
         ktxVersion = '1.10.1'
         lifecycleVersion = '2.3.0'

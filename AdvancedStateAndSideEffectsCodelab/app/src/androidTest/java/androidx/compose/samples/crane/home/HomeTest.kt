@@ -39,7 +39,7 @@ class HomeTest {
     @Test
     fun home_navigatesToAllScreens() {
         // Waits until loading is finished
-        composeTestRule.waitUntil(timeoutMillis = 4000L) {
+        composeTestRule.waitUntil(timeoutMillis = 10_000L) {
             composeTestRule
                 .onAllNodesWithText("Explore Flights by Destination")
                 .fetchSemanticsNodes().size == 1
