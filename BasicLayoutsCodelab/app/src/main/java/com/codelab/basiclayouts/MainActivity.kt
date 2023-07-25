@@ -94,7 +94,6 @@ fun SearchBar(
         placeholder = {
             Text(
                 text = stringResource(R.string.placeholder_search),
-                style = MaterialTheme.typography.bodyLarge
             )
         },
         modifier = modifier
@@ -122,12 +121,10 @@ fun AlignYourBodyElement(
                 .size(88.dp)
                 .clip(CircleShape)
         )
-        Spacer(Modifier.height(8.dp))
         Text(
             text = stringResource(text),
-            modifier = Modifier.paddingFromBaseline(top = 8.dp),
+            modifier = Modifier.paddingFromBaseline(top = 24.dp, bottom = 8.dp),
             style = MaterialTheme.typography.bodyMedium,
-            color = MaterialTheme.colorScheme.onSurface
         )
     }
 }
@@ -158,7 +155,6 @@ fun FavoriteCollectionCard(
                 text = stringResource(text),
                 style = MaterialTheme.typography.titleMedium,
                 modifier = Modifier.padding(horizontal = 16.dp),
-                color = MaterialTheme.colorScheme.onSurface
             )
         }
     }
@@ -212,7 +208,7 @@ fun HomeSection(
             style = MaterialTheme.typography.titleMedium,
             modifier = Modifier
                 .padding(horizontal = 16.dp)
-                .paddingFromBaseline(top = 32.dp, bottom = 16.dp)
+                .paddingFromBaseline(top = 32.dp, bottom = 8.dp)
         )
         content()
     }
@@ -255,7 +251,6 @@ private fun SootheBottomNavigation(modifier: Modifier = Modifier) {
             label = {
                 Text(
                     text = stringResource(R.string.bottom_navigation_home),
-                    style = MaterialTheme.typography.labelMedium
                 )
             },
             selected = true,
@@ -271,7 +266,6 @@ private fun SootheBottomNavigation(modifier: Modifier = Modifier) {
             label = {
                 Text(
                     text = stringResource(R.string.bottom_navigation_profile),
-                    style = MaterialTheme.typography.labelMedium
                 )
             },
             selected = false,
