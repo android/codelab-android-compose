@@ -84,7 +84,7 @@ android {
     }
 
     composeOptions {
-        kotlinCompilerExtensionVersion "1.4.7"
+        kotlinCompilerExtensionVersion '1.4.8'
     }
 
     packagingOptions {
@@ -96,8 +96,8 @@ android {
 }
 
 dependencies {
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.20"
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.22"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.1"
     implementation "com.google.android.libraries.maps:maps:3.1.0-beta"
     implementation "com.google.maps.android:maps-v3-ktx:3.4.0"
     constraints {
@@ -137,7 +137,7 @@ dependencies {
     androidTestImplementation "androidx.test:rules:1.5.0"
     androidTestImplementation "androidx.test.espresso:espresso-core:3.5.1"
     androidTestImplementation "androidx.test.ext:junit-ktx:1.1.5"
-    androidTestImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.4"
+    androidTestImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.1"
     androidTestImplementation "com.google.dagger:hilt-android:2.46.1"
     androidTestImplementation "com.google.dagger:hilt-android-testing:2.46.1"
     kaptAndroidTest "com.google.dagger:hilt-compiler:2.46.1"
