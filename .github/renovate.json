@@ -9,7 +9,10 @@
   "packageRules": [
     {
       "groupName": "Kotlin Dependencies",
-      "matchPackagePrefixes": ["org.jetbrains.kotlin"]
+      "matchPackagePrefixes": [
+        "org.jetbrains.kotlin",
+        "^androidx.compose.compiler"
+      ]
     }
   ]
 }
