@@ -92,9 +92,7 @@ fun SearchBar(
             focusedContainerColor = MaterialTheme.colorScheme.surface
         ),
         placeholder = {
-            Text(
-                text = stringResource(R.string.placeholder_search),
-            )
+            Text(stringResource(R.string.placeholder_search))
         },
         modifier = modifier
             .fillMaxWidth()
@@ -143,7 +141,7 @@ fun FavoriteCollectionCard(
     ) {
         Row(
             verticalAlignment = Alignment.CenterVertically,
-            modifier = modifier.width(255.dp)
+            modifier = Modifier.width(255.dp)
         ) {
             Image(
                 painter = painterResource(drawable),
@@ -204,11 +202,10 @@ fun HomeSection(
     Column(modifier) {
         Text(
             text = stringResource(title),
-            color = MaterialTheme.colorScheme.onSurface,
             style = MaterialTheme.typography.titleMedium,
             modifier = Modifier
                 .padding(horizontal = 16.dp)
-                .paddingFromBaseline(top = 32.dp, bottom = 8.dp)
+                .paddingFromBaseline(top = 40.dp, bottom = 16.dp)
         )
         content()
     }
@@ -223,11 +220,9 @@ fun HomeScreen(modifier: Modifier = Modifier) {
     ) {
         Spacer(Modifier.height(16.dp))
         SearchBar(Modifier.padding(horizontal = 16.dp))
-        Spacer(Modifier.height(32.dp))
         HomeSection(title = R.string.align_your_body) {
             AlignYourBodyRow()
         }
-        Spacer(Modifier.height(32.dp))
         HomeSection(title = R.string.favorite_collections) {
             FavoriteCollectionsGrid()
         }
@@ -249,9 +244,7 @@ private fun SootheBottomNavigation(modifier: Modifier = Modifier) {
                 )
             },
             label = {
-                Text(
-                    text = stringResource(R.string.bottom_navigation_home),
-                )
+                Text(stringResource(R.string.bottom_navigation_home))
             },
             selected = true,
             onClick = {}
@@ -264,9 +257,7 @@ private fun SootheBottomNavigation(modifier: Modifier = Modifier) {
                 )
             },
             label = {
-                Text(
-                    text = stringResource(R.string.bottom_navigation_profile),
-                )
+                Text(stringResource(R.string.bottom_navigation_profile))
             },
             selected = false,
             onClick = {}
