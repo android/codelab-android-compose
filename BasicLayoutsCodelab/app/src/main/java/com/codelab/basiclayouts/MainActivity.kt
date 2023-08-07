@@ -228,7 +228,7 @@ fun HomeSection(
 fun HomeScreen(modifier: Modifier = Modifier) {
     Column(
         modifier
-            .verticalScroll(rememberScrollState()).background(MaterialTheme.colorScheme.surface)
+            .verticalScroll(rememberScrollState())
     ) {
         Spacer(Modifier.height(16.dp))
         SearchBar(Modifier.padding(horizontal = 16.dp))
@@ -282,7 +282,8 @@ private fun SootheBottomNavigation(modifier: Modifier = Modifier) {
 @Composable
 private fun SootheNavigationRail(modifier: Modifier = Modifier) {
     NavigationRail(
-        containerColor = MaterialTheme.colorScheme.secondaryContainer,
+        modifier = modifier.padding(start = 8.dp, end = 8.dp),
+        containerColor = MaterialTheme.colorScheme.background,
     ) {
         Column(
             modifier = modifier.fillMaxHeight(),
@@ -300,9 +301,9 @@ private fun SootheNavigationRail(modifier: Modifier = Modifier) {
                     Text(stringResource(R.string.bottom_navigation_home))
                 },
                 selected = true,
-                onClick = {},
-                modifier = Modifier.padding(bottom = 8.dp)
+                onClick = {}
             )
+            Spacer(modifier = Modifier.height(8.dp))
             NavigationRailItem(
                 icon = {
                     Icon(
@@ -314,8 +315,7 @@ private fun SootheNavigationRail(modifier: Modifier = Modifier) {
                     Text(stringResource(R.string.bottom_navigation_profile))
                 },
                 selected = false,
-                onClick = {},
-                modifier = Modifier.padding(top = 8.dp)
+                onClick = {}
             )
         }
     }
@@ -351,7 +351,7 @@ fun MySootheAppPortrait() {
 @Composable
 fun MySootheAppLandscape() {
     MySootheTheme {
-        Surface {
+        Surface(color = MaterialTheme.colorScheme.background) {
             Row {
                 SootheNavigationRail()
                 HomeScreen()
