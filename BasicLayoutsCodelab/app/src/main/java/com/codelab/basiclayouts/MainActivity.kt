@@ -97,6 +97,24 @@ private fun SootheBottomNavigation(modifier: Modifier = Modifier) {
 
 // Step: MySoothe App - Scaffold
 @Composable
+fun MySootheAppPortrait() {
+    // Implement composable here
+}
+
+// Step: Bottom navigation - Material
+@Composable
+private fun SootheNavigationRail(modifier: Modifier = Modifier) {
+    // Implement composable here
+}
+
+// Step: Landscape Mode
+@Composable
+fun MySootheAppLandscape(){
+    // Implement composable here
+}
+
+// Step: MySoothe App
+@Composable
 fun MySootheApp() {
     // Implement composable here
 }
@@ -180,8 +198,20 @@ fun BottomNavigationPreview() {
     MySootheTheme { SootheBottomNavigation(Modifier.padding(top = 24.dp)) }
 }
 
+@Preview(showBackground = true, backgroundColor = 0xFFF0EAE2)
+@Composable
+fun NavigationRailPreview() {
+    MySootheTheme { SootheNavigationRail() }
+}
+
 @Preview(widthDp = 360, heightDp = 640)
 @Composable
-fun MySoothePreview() {
-    MySootheApp()
+fun MySoothePortraitPreview() {
+    MySootheAppPortrait()
+}
+
+@Preview(widthDp = 640, heightDp = 360)
+@Composable
+fun MySootheLandscapePreview() {
+    MySootheAppLandscape()
 }
