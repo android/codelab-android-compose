@@ -20,7 +20,7 @@ apply plugin: 'kotlin-kapt'
 apply plugin: 'androidx.navigation.safeargs.kotlin'
 
 android {
-    compileSdkVersion 33
+    compileSdkVersion 34
     namespace "com.google.samples.apps.sunflower"
     defaultConfig {
         applicationId "com.google.samples.apps.sunflower"

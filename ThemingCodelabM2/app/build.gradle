@@ -21,7 +21,7 @@ plugins {
 
 android {
     namespace "com.codelab.theming"
-    compileSdkVersion 33
+    compileSdkVersion 34
     defaultConfig {
         applicationId 'com.codelab.theming'
         minSdkVersion 21

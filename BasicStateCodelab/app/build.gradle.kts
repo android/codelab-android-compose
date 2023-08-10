@@ -21,7 +21,7 @@ plugins {
 
 android {
     namespace = "com.codelabs.state"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.codelabs.state"
