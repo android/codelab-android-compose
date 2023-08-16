@@ -12,5 +12,5 @@
   the License.
   -->
 <resources>
-    <color name="status_bar_color">#F0EAE2</color>
+    <color name="status_bar_color">#F5F0EE</color>
 </resources>

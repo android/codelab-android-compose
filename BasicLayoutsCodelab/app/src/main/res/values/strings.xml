@@ -14,7 +14,7 @@
 <resources>
     <string name="app_name">MySoothe</string>
     <string name="favorite_collections">Favorite Collections</string>
-    <string name="align_your_body">Align your body</string>
+    <string name="align_your_body">Align your Body</string>
     <string name="ab1_inversions">Inversions</string>
     <string name="ab2_quick_yoga">Quick yoga</string>
     <string name="ab3_stretching">Stretching</string>
@@ -28,7 +28,7 @@
     <string name="fc5_overwhelmed">Overwhelmed</string>
     <string name="fc6_nightly_wind_down">Nightly wind down</string>
     <string name="cd_fab_start">start</string>
-    <string name="bottom_navigation_home">HOME</string>
-    <string name="bottom_navigation_profile">PROFILE</string>
+    <string name="bottom_navigation_home">Home</string>
+    <string name="bottom_navigation_profile">Profile</string>
     <string name="placeholder_search">Search</string>
 </resources>
