@@ -95,7 +95,6 @@ dependencies {
 
     def accompanist_version = '0.32.0'
     implementation "com.google.accompanist:accompanist-swiperefresh:$accompanist_version"
-    implementation "com.google.accompanist:accompanist-insets:$accompanist_version"
     implementation "com.google.accompanist:accompanist-systemuicontroller:$accompanist_version"
 
     implementation "com.google.android.material:material:1.9.0"
