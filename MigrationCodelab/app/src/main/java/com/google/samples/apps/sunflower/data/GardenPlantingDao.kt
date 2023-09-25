@@ -43,8 +43,8 @@ interface GardenPlantingDao {
     fun getPlantedGardens(): LiveData<List<PlantAndGardenPlantings>>
 
     @Insert
-    suspend fun insertGardenPlanting(gardenPlanting: GardenPlanting): Long
+    fun insertGardenPlanting(gardenPlanting: GardenPlanting): Long
 
     @Delete
-    suspend fun deleteGardenPlanting(gardenPlanting: GardenPlanting)
+    fun deleteGardenPlanting(gardenPlanting: GardenPlanting)
 }

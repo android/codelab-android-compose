@@ -53,8 +53,6 @@ import com.example.jetnews.data.posts.PostsRepository
 import com.example.jetnews.model.Post
 import com.example.jetnews.ui.components.InsetAwareTopAppBar
 import com.example.jetnews.ui.theme.JetnewsTheme
-import com.google.accompanist.insets.LocalWindowInsets
-import com.google.accompanist.insets.rememberInsetsPaddingValues
 import kotlinx.coroutines.launch
 
 /**
