@@ -52,7 +52,6 @@ import com.example.jetnews.data.interests.TopicSelection
 import com.example.jetnews.data.interests.TopicsMap
 import com.example.jetnews.ui.components.InsetAwareTopAppBar
 import com.example.jetnews.ui.theme.JetnewsTheme
-import com.google.accompanist.insets.navigationBarsPadding
 import kotlinx.coroutines.launch
 
 /**

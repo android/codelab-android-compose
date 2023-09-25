@@ -27,5 +27,6 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
+
 rootProject.name = "BasicsCodelab"
 include ':app'

@@ -37,5 +37,5 @@ interface PlantDao {
     fun getPlant(plantId: String): LiveData<Plant>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertAll(plants: List<Plant>)
+    fun insertAll(plants: List<Plant>)
 }
