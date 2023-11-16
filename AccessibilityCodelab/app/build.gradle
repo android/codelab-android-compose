@@ -80,7 +80,7 @@ android {
     }
 
     composeOptions {
-        kotlinCompilerExtensionVersion '1.5.3'
+        kotlinCompilerExtensionVersion '1.5.4'
     }
 
     packagingOptions {
@@ -90,7 +90,7 @@ android {
 }
 
 dependencies {
-    def composeBom = platform('androidx.compose:compose-bom:2023.10.00')
+    def composeBom = platform('androidx.compose:compose-bom:2023.10.01')
     implementation(composeBom)
     testImplementation(composeBom)
     androidTestImplementation(composeBom)
@@ -117,23 +117,23 @@ dependencies {
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3"
 
     implementation 'androidx.appcompat:appcompat:1.6.1'
-    implementation 'androidx.activity:activity-ktx:1.8.0'
+    implementation 'androidx.activity:activity-ktx:1.8.1'
     implementation 'androidx.core:core-ktx:1.12.0'
-    implementation "androidx.activity:activity-compose:1.8.0"
+    implementation "androidx.activity:activity-compose:1.8.1"
 
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2"
     implementation "androidx.lifecycle:lifecycle-viewmodel-savedstate:2.6.2"
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.6.2"
     implementation "androidx.lifecycle:lifecycle-viewmodel-compose:2.6.2"
 
-    implementation 'androidx.navigation:navigation-compose:2.7.4'
+    implementation 'androidx.navigation:navigation-compose:2.7.5'
 
     androidTestImplementation 'androidx.test:rules:1.5.0'
     androidTestImplementation 'androidx.test:runner:1.5.2'
 
     // TODO: Bump to latest after Espresso 3.5.0 goes stable
     //  (due to https://github.com/robolectric/robolectric/issues/6593)
-    testImplementation 'org.robolectric:robolectric:4.10.3'
+    testImplementation 'org.robolectric:robolectric:4.11.1'
 }
 
 tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).configureEach {
