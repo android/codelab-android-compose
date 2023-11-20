@@ -17,6 +17,23 @@
 package com.example.android.codelab.animation.ui.home
 
 import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.animateColor
+import androidx.compose.animation.animateColorAsState
+import androidx.compose.animation.animateContentSize
+import androidx.compose.animation.core.FastOutLinearInEasing
+import androidx.compose.animation.core.LinearOutSlowInEasing
+import androidx.compose.animation.core.RepeatMode
+import androidx.compose.animation.core.Spring
+import androidx.compose.animation.core.animateDp
+import androidx.compose.animation.core.animateFloat
+import androidx.compose.animation.core.infiniteRepeatable
+import androidx.compose.animation.core.keyframes
+import androidx.compose.animation.core.rememberInfiniteTransition
+import androidx.compose.animation.core.spring
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.core.updateTransition
+import androidx.compose.animation.slideInVertically
+import androidx.compose.animation.slideOutVertically
 import androidx.compose.animation.splineBasedDecay
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
@@ -85,6 +102,7 @@ import androidx.compose.ui.composed
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Color.Companion.White
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.input.pointer.positionChange
@@ -243,16 +261,11 @@ fun Home() {
                         }
                     }
                 }
-                items(count = tasks.size) { i ->
-                    val task = tasks.getOrNull(i)
-                    if (task != null) {
-                        key(task) {
-                            TaskRow(
-                                task = task,
-                                onRemove = { tasks.remove(task) }
-                            )
-                        }
-                    }
+                items(tasks, key = { it }) { task ->
+                    TaskRow(
+                        task = task,
+                        onRemove = { tasks.remove(task) }
+                    )
                 }
             }
             EditMessage(editMessageShown)
@@ -653,11 +666,13 @@ private fun Modifier.swipeToDismiss(
 @Preview
 @Composable
 private fun PreviewHomeTabBar() {
-    HomeTabBar(
-        backgroundColor = PaleDogwood,
-        tabPage = TabPage.Home,
-        onTabSelected = {}
-    )
+    AnimationCodelabTheme {
+        HomeTabBar(
+            backgroundColor = White,
+            tabPage = TabPage.Home,
+            onTabSelected = {}
+        )
+    }
 }
 
 @Preview

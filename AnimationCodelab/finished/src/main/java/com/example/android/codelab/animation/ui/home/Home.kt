@@ -184,7 +184,10 @@ fun Home() {
     val lazyListState = rememberLazyListState()
 
     // The background color. The value is changed by the current tab.
-    val backgroundColor by animateColorAsState(if (tabPage == TabPage.Home) Seashell else GreenLight)
+    val backgroundColor by animateColorAsState(
+        if (tabPage == TabPage.Home) Seashell else GreenLight,
+        label = "background color"
+    )
 
     // The coroutine scope for event handlers calling suspend functions.
     val coroutineScope = rememberCoroutineScope()
@@ -263,16 +266,11 @@ fun Home() {
                         }
                     }
                 }
-                items(count = tasks.size) { i ->
-                    val task = tasks.getOrNull(i)
-                    if (task != null) {
-                        key(task) {
-                            TaskRow(
-                                task = task,
-                                onRemove = { tasks.remove(task) }
-                            )
-                        }
-                    }
+                items(tasks, key = { it }) { task ->
+                    TaskRow(
+                        task = task,
+                        onRemove = { tasks.remove(task) }
+                    )
                 }
             }
             EditMessage(editMessageShown)
@@ -611,7 +609,7 @@ private fun WeatherRow(
 @Composable
 private fun LoadingRow() {
     // Creates an `InfiniteTransition` that runs infinite child animation values.
-    val infiniteTransition = rememberInfiniteTransition()
+    val infiniteTransition = rememberInfiniteTransition(label = "infinite loading")
     val alpha by infiniteTransition.animateFloat(
         initialValue = 0f,
         targetValue = 1f,
@@ -627,7 +625,8 @@ private fun LoadingRow() {
             // When the value finishes animating from 0f to 1f, it repeats by reversing the
             // animation direction.
             repeatMode = RepeatMode.Reverse
-        )
+        ),
+        label = "alpha"
     )
     Row(
         modifier = Modifier
@@ -750,11 +749,13 @@ private fun Modifier.swipeToDismiss(
 @Preview
 @Composable
 private fun PreviewHomeTabBar() {
-    HomeTabBar(
-        backgroundColor = PaleDogwood,
-        tabPage = TabPage.Home,
-        onTabSelected = {}
-    )
+    AnimationCodelabTheme {
+        HomeTabBar(
+            backgroundColor = Color.White,
+            tabPage = TabPage.Home,
+            onTabSelected = {}
+        )
+    }
 }
 
 @Preview
