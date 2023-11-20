@@ -7,7 +7,7 @@ For more information about Jetpack Compose, please [read the documentation](http
 
 ## 💻 Requirements
 
-[Android Studio Chipmunk](https://developer.android.com/studio).
+[Latest version of Android Studio](https://developer.android.com/studio).
 
 ## 🧬 Codelabs
 
