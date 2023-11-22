@@ -49,6 +49,9 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.WindowInsetsSides
+import androidx.compose.foundation.layout.WindowInsetsSides.Companion.Horizontal
+import androidx.compose.foundation.layout.WindowInsetsSides.Companion.Top
+import androidx.compose.foundation.layout.asPaddingValues
 import androidx.compose.foundation.layout.consumeWindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -59,7 +62,9 @@ import androidx.compose.foundation.layout.only
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.systemBars
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.layout.windowInsetsTopHeight
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.lazy.LazyColumn
@@ -114,6 +119,7 @@ import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.IntOffset
+import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.android.codelab.animation.R
@@ -206,70 +212,68 @@ fun Home() {
             )
         }
     ) { padding ->
-        Box(Modifier
-            .consumeWindowInsets(
-                WindowInsets.safeDrawing.only(WindowInsetsSides.Top)
-            )
-            .padding(padding)) {
-
-            LazyColumn(
-                contentPadding = PaddingValues(horizontal = 16.dp, vertical = 32.dp),
-                state = lazyListState
-            ) {
-                // Weather
-                item { Header(title = stringResource(R.string.weather)) }
-                item { Spacer(modifier = Modifier.height(16.dp)) }
-                item {
-                    Surface(
-                        modifier = Modifier.fillMaxWidth(),
-                        shadowElevation = 2.dp
-                    ) {
-                        if (weatherLoading) {
-                            LoadingRow()
-                        } else {
-                            WeatherRow(onRefresh = {
-                                coroutineScope.launch {
-                                    loadWeather()
-                                }
-                            })
-                        }
+        LazyColumn(
+            contentPadding = WindowInsets(
+                padding.calculateLeftPadding(LayoutDirection.Ltr) + 16.dp,
+                padding.calculateTopPadding() + 32.dp,
+                padding.calculateRightPadding(LayoutDirection.Ltr) + 16.dp,
+                padding.calculateBottomPadding() + 32.dp
+            ).asPaddingValues(),
+            state = lazyListState
+        ) {
+            // Weather
+            item { Header(title = stringResource(R.string.weather)) }
+            item { Spacer(modifier = Modifier.height(16.dp)) }
+            item {
+                Surface(
+                    modifier = Modifier.fillMaxWidth(),
+                    shadowElevation = 2.dp
+                ) {
+                    if (weatherLoading) {
+                        LoadingRow()
+                    } else {
+                        WeatherRow(onRefresh = {
+                            coroutineScope.launch {
+                                loadWeather()
+                            }
+                        })
                     }
-                }
-                item { Spacer(modifier = Modifier.height(32.dp)) }
-
-                // Topics
-                item { Header(title = stringResource(R.string.topics)) }
-                item { Spacer(modifier = Modifier.height(16.dp)) }
-                items(allTopics) { topic ->
-                    TopicRow(
-                        topic = topic,
-                        expanded = expandedTopic == topic,
-                        onClick = {
-                            expandedTopic = if (expandedTopic == topic) null else topic
-                        }
-                    )
-                }
-                item { Spacer(modifier = Modifier.height(32.dp)) }
-
-                // Tasks
-                item { Header(title = stringResource(R.string.tasks)) }
-                item { Spacer(modifier = Modifier.height(16.dp)) }
-                if (tasks.isEmpty()) {
-                    item {
-                        TextButton(onClick = { tasks.clear(); tasks.addAll(allTasks) }) {
-                            Text(stringResource(R.string.add_tasks))
-                        }
-                    }
-                }
-                items(tasks, key = { it }) { task ->
-                    TaskRow(
-                        task = task,
-                        onRemove = { tasks.remove(task) }
-                    )
                 }
             }
-            EditMessage(editMessageShown)
+            item { Spacer(modifier = Modifier.height(32.dp)) }
+
+            // Topics
+            item { Header(title = stringResource(R.string.topics)) }
+            item { Spacer(modifier = Modifier.height(16.dp)) }
+            items(allTopics) { topic ->
+                TopicRow(
+                    topic = topic,
+                    expanded = expandedTopic == topic,
+                    onClick = {
+                        expandedTopic = if (expandedTopic == topic) null else topic
+                    }
+                )
+            }
+            item { Spacer(modifier = Modifier.height(32.dp)) }
+
+            // Tasks
+            item { Header(title = stringResource(R.string.tasks)) }
+            item { Spacer(modifier = Modifier.height(16.dp)) }
+            if (tasks.isEmpty()) {
+                item {
+                    TextButton(onClick = { tasks.clear(); tasks.addAll(allTasks) }) {
+                        Text(stringResource(R.string.add_tasks))
+                    }
+                }
+            }
+            items(tasks, key = { it }) { task ->
+                TaskRow(
+                    task = task,
+                    onRemove = { tasks.remove(task) }
+                )
+            }
         }
+        EditMessage(editMessageShown)
     }
 }
 
@@ -435,16 +439,15 @@ private fun HomeTabBar(
     tabPage: TabPage,
     onTabSelected: (tabPage: TabPage) -> Unit
 ) {
-    Column {
-        Spacer(Modifier.windowInsetsTopHeight(WindowInsets.safeDrawing))
+    Column(modifier = Modifier.windowInsetsPadding(WindowInsets.safeDrawing.only(Horizontal + Top)),) {
         TabRow(
             selectedTabIndex = tabPage.ordinal,
-            containerColor = backgroundColor,
+            containerColor = Color.Transparent,
             contentColor = MaterialTheme.colorScheme.onPrimary,
             indicator = { tabPositions ->
                 HomeTabIndicator(tabPositions, tabPage)
             }
-        ) {
+        ){
             HomeTab(
                 icon = Icons.Default.Home,
                 title = stringResource(R.string.home),
