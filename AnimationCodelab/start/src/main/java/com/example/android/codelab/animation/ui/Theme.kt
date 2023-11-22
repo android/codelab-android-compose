@@ -27,7 +27,8 @@ fun AnimationCodelabTheme(content: @Composable () -> Unit) {
         primary = Melon,
         primaryContainer = PaleDogwood,
         onPrimary = Color.Black,
-        secondary = Peach
+        secondary = Peach,
+        onSecondary = Color.Black
     )
     MaterialTheme(
         colorScheme = colors,
