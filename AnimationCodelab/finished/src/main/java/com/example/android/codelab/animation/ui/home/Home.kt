@@ -454,7 +454,8 @@ private fun HomeTabBar(
     tabPage: TabPage,
     onTabSelected: (tabPage: TabPage) -> Unit
 ) {
-    Column(modifier = Modifier.windowInsetsPadding(WindowInsets.safeDrawing.only(WindowInsetsSides.Horizontal + WindowInsetsSides.Top))) {
+    Column(modifier = Modifier.windowInsetsPadding(WindowInsets.safeDrawing.only(WindowInsetsSides.Horizontal))) {
+        Spacer(Modifier.windowInsetsTopHeight(WindowInsets.safeDrawing))
         TabRow(
             selectedTabIndex = tabPage.ordinal,
             containerColor = backgroundColor,
