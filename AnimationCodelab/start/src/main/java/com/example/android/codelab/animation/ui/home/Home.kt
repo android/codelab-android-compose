@@ -17,6 +17,23 @@
 package com.example.android.codelab.animation.ui.home
 
 import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.animateColor
+import androidx.compose.animation.animateColorAsState
+import androidx.compose.animation.animateContentSize
+import androidx.compose.animation.core.FastOutLinearInEasing
+import androidx.compose.animation.core.LinearOutSlowInEasing
+import androidx.compose.animation.core.RepeatMode
+import androidx.compose.animation.core.Spring
+import androidx.compose.animation.core.animateDp
+import androidx.compose.animation.core.animateFloat
+import androidx.compose.animation.core.infiniteRepeatable
+import androidx.compose.animation.core.keyframes
+import androidx.compose.animation.core.rememberInfiniteTransition
+import androidx.compose.animation.core.spring
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.core.updateTransition
+import androidx.compose.animation.slideInVertically
+import androidx.compose.animation.slideOutVertically
 import androidx.compose.animation.splineBasedDecay
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
@@ -30,14 +47,26 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.WindowInsetsSides
+import androidx.compose.foundation.layout.WindowInsetsSides.Companion.Horizontal
+import androidx.compose.foundation.layout.WindowInsetsSides.Companion.Top
+import androidx.compose.foundation.layout.asPaddingValues
+import androidx.compose.foundation.layout.calculateEndPadding
+import androidx.compose.foundation.layout.consumeWindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.offset
+import androidx.compose.foundation.layout.only
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.systemBars
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.windowInsetsPadding
+import androidx.compose.foundation.layout.windowInsetsTopHeight
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyListState
@@ -45,17 +74,6 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.ExperimentalMaterialApi
-import androidx.compose.material.FloatingActionButton
-import androidx.compose.material.Icon
-import androidx.compose.material.IconButton
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Scaffold
-import androidx.compose.material.Surface
-import androidx.compose.material.TabPosition
-import androidx.compose.material.TabRow
-import androidx.compose.material.Text
-import androidx.compose.material.TextButton
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountBox
 import androidx.compose.material.icons.filled.Check
@@ -63,11 +81,22 @@ import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.Refresh
+import androidx.compose.material3.FloatingActionButton
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Surface
+import androidx.compose.material3.TabPosition
+import androidx.compose.material3.TabRow
+import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.key
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -79,6 +108,7 @@ import androidx.compose.ui.composed
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Color.Companion.White
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.input.pointer.positionChange
@@ -90,15 +120,16 @@ import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.IntOffset
+import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.android.codelab.animation.R
 import com.example.android.codelab.animation.ui.Amber600
 import com.example.android.codelab.animation.ui.AnimationCodelabTheme
-import com.example.android.codelab.animation.ui.Green300
-import com.example.android.codelab.animation.ui.Green800
-import com.example.android.codelab.animation.ui.Purple100
-import com.example.android.codelab.animation.ui.Purple700
+import com.example.android.codelab.animation.ui.Green
+import com.example.android.codelab.animation.ui.GreenLight
+import com.example.android.codelab.animation.ui.PaleDogwood
+import com.example.android.codelab.animation.ui.Seashell
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -158,7 +189,7 @@ fun Home() {
 
     // The background color. The value is changed by the current tab.
     // TODO 1: Animate this color change.
-    val backgroundColor = if (tabPage == TabPage.Home) Purple100 else Green300
+    val backgroundColor = if (tabPage == TabPage.Home) Seashell else GreenLight
 
     // The coroutine scope for event handlers calling suspend functions.
     val coroutineScope = rememberCoroutineScope()
@@ -170,7 +201,7 @@ fun Home() {
                 onTabSelected = { tabPage = it }
             )
         },
-        backgroundColor = backgroundColor,
+        containerColor = backgroundColor,
         floatingActionButton = {
             HomeFloatingActionButton(
                 extended = lazyListState.isScrollingUp(),
@@ -182,69 +213,74 @@ fun Home() {
             )
         }
     ) { padding ->
-        LazyColumn(
-            contentPadding = PaddingValues(horizontal = 16.dp, vertical = 32.dp),
-            state = lazyListState,
-            modifier = Modifier.padding(padding)
-        ) {
-            // Weather
-            item { Header(title = stringResource(R.string.weather)) }
-            item { Spacer(modifier = Modifier.height(16.dp)) }
-            item {
-                Surface(
-                    modifier = Modifier.fillMaxWidth(),
-                    elevation = 2.dp
-                ) {
-                    if (weatherLoading) {
-                        LoadingRow()
-                    } else {
-                        WeatherRow(onRefresh = {
-                            coroutineScope.launch {
-                                loadWeather()
-                            }
-                        })
-                    }
-                }
-            }
-            item { Spacer(modifier = Modifier.height(32.dp)) }
-
-            // Topics
-            item { Header(title = stringResource(R.string.topics)) }
-            item { Spacer(modifier = Modifier.height(16.dp)) }
-            items(allTopics) { topic ->
-                TopicRow(
-                    topic = topic,
-                    expanded = expandedTopic == topic,
-                    onClick = {
-                        expandedTopic = if (expandedTopic == topic) null else topic
-                    }
-                )
-            }
-            item { Spacer(modifier = Modifier.height(32.dp)) }
-
-            // Tasks
-            item { Header(title = stringResource(R.string.tasks)) }
-            item { Spacer(modifier = Modifier.height(16.dp)) }
-            if (tasks.isEmpty()) {
+        Box(modifier = Modifier.padding(
+            top = padding.calculateTopPadding(),
+            start = padding.calculateLeftPadding(LayoutDirection.Ltr),
+            end = padding.calculateEndPadding(LayoutDirection.Ltr)
+        )) {
+            LazyColumn(
+                contentPadding = WindowInsets(
+                    16.dp,
+                     32.dp,
+                    16.dp,
+                    padding.calculateBottomPadding() + 32.dp
+                ).asPaddingValues(),
+                state = lazyListState
+            ) {
+                // Weather
+                item { Header(title = stringResource(R.string.weather)) }
+                item { Spacer(modifier = Modifier.height(16.dp)) }
                 item {
-                    TextButton(onClick = { tasks.clear(); tasks.addAll(allTasks) }) {
-                        Text(stringResource(R.string.add_tasks))
+                    Surface(
+                        modifier = Modifier.fillMaxWidth(),
+                        shadowElevation = 2.dp
+                    ) {
+                        if (weatherLoading) {
+                            LoadingRow()
+                        } else {
+                            WeatherRow(onRefresh = {
+                                coroutineScope.launch {
+                                    loadWeather()
+                                }
+                            })
+                        }
                     }
                 }
-            }
-            items(count = tasks.size) { i ->
-                val task = tasks.getOrNull(i)
-                if (task != null) {
-                    key(task) {
-                        TaskRow(
-                            task = task,
-                            onRemove = { tasks.remove(task) }
-                        )
+                item { Spacer(modifier = Modifier.height(32.dp)) }
+
+                // Topics
+                item { Header(title = stringResource(R.string.topics)) }
+                item { Spacer(modifier = Modifier.height(16.dp)) }
+                items(allTopics) { topic ->
+                    TopicRow(
+                        topic = topic,
+                        expanded = expandedTopic == topic,
+                        onClick = {
+                            expandedTopic = if (expandedTopic == topic) null else topic
+                        }
+                    )
+                }
+                item { Spacer(modifier = Modifier.height(32.dp)) }
+
+                // Tasks
+                item { Header(title = stringResource(R.string.tasks)) }
+                item { Spacer(modifier = Modifier.height(16.dp)) }
+                if (tasks.isEmpty()) {
+                    item {
+                        TextButton(onClick = { tasks.clear(); tasks.addAll(allTasks) }) {
+                            Text(stringResource(R.string.add_tasks))
+                        }
                     }
                 }
+                items(tasks, key = { it }) { task ->
+                    TaskRow(
+                        task = task,
+                        onRemove = { tasks.remove(task) }
+                    )
+                }
             }
+            EditMessage(editMessageShown)
         }
-        EditMessage(editMessageShown)
     }
 }
 
@@ -294,8 +330,8 @@ private fun EditMessage(shown: Boolean) {
     ) {
         Surface(
             modifier = Modifier.fillMaxWidth(),
-            color = MaterialTheme.colors.secondary,
-            elevation = 4.dp
+            color = MaterialTheme.colorScheme.secondary,
+            shadowElevation = 18.dp
         ) {
             Text(
                 text = stringResource(R.string.edit_message),
@@ -310,8 +346,8 @@ private fun EditMessage(shown: Boolean) {
  */
 @Composable
 private fun LazyListState.isScrollingUp(): Boolean {
-    var previousIndex by remember(this) { mutableStateOf(firstVisibleItemIndex) }
-    var previousScrollOffset by remember(this) { mutableStateOf(firstVisibleItemScrollOffset) }
+    var previousIndex by remember(this) { mutableIntStateOf(firstVisibleItemIndex) }
+    var previousScrollOffset by remember(this) { mutableIntStateOf(firstVisibleItemScrollOffset) }
     return remember(this) {
         derivedStateOf {
             if (previousIndex != firstVisibleItemIndex) {
@@ -338,7 +374,7 @@ private fun Header(
     Text(
         text = title,
         modifier = Modifier.semantics { heading() },
-        style = MaterialTheme.typography.h5
+        style = MaterialTheme.typography.headlineLarge
     )
 }
 
@@ -349,14 +385,13 @@ private fun Header(
  * @param expanded Whether the row should be shown expanded with the topic body.
  * @param onClick Called when the row is clicked.
  */
-@OptIn(ExperimentalMaterialApi::class)
 @Composable
 private fun TopicRow(topic: String, expanded: Boolean, onClick: () -> Unit) {
     TopicRowSpacer(visible = expanded)
     Surface(
         modifier = Modifier
             .fillMaxWidth(),
-        elevation = 2.dp,
+        shadowElevation = 2.dp,
         onClick = onClick
     ) {
         // TODO 3: Animate the size change of the content.
@@ -373,7 +408,7 @@ private fun TopicRow(topic: String, expanded: Boolean, onClick: () -> Unit) {
                 Spacer(modifier = Modifier.width(16.dp))
                 Text(
                     text = topic,
-                    style = MaterialTheme.typography.body1
+                    style = MaterialTheme.typography.bodySmall
                 )
             }
             if (expanded) {
@@ -411,23 +446,27 @@ private fun HomeTabBar(
     tabPage: TabPage,
     onTabSelected: (tabPage: TabPage) -> Unit
 ) {
-    TabRow(
-        selectedTabIndex = tabPage.ordinal,
-        backgroundColor = backgroundColor,
-        indicator = { tabPositions ->
-            HomeTabIndicator(tabPositions, tabPage)
+    Column(modifier = Modifier.windowInsetsPadding(WindowInsets.safeDrawing.only(Horizontal))) {
+        Spacer(Modifier.windowInsetsTopHeight(WindowInsets.safeDrawing))
+        TabRow(
+            selectedTabIndex = tabPage.ordinal,
+            containerColor = backgroundColor,
+            contentColor = MaterialTheme.colorScheme.onPrimary,
+            indicator = { tabPositions ->
+                HomeTabIndicator(tabPositions, tabPage)
+            }
+        ){
+            HomeTab(
+                icon = Icons.Default.Home,
+                title = stringResource(R.string.home),
+                onClick = { onTabSelected(TabPage.Home) }
+            )
+            HomeTab(
+                icon = Icons.Default.AccountBox,
+                title = stringResource(R.string.work),
+                onClick = { onTabSelected(TabPage.Work) }
+            )
         }
-    ) {
-        HomeTab(
-            icon = Icons.Default.Home,
-            title = stringResource(R.string.home),
-            onClick = { onTabSelected(TabPage.Home) }
-        )
-        HomeTab(
-            icon = Icons.Default.AccountBox,
-            title = stringResource(R.string.work),
-            onClick = { onTabSelected(TabPage.Work) }
-        )
     }
 }
 
@@ -445,7 +484,7 @@ private fun HomeTabIndicator(
     // TODO 4: Animate these value changes.
     val indicatorLeft = tabPositions[tabPage.ordinal].left
     val indicatorRight = tabPositions[tabPage.ordinal].right
-    val color = if (tabPage == TabPage.Home) Purple700 else Green800
+    val color = if (tabPage == TabPage.Home) PaleDogwood else Green
     Box(
         Modifier
             .fillMaxSize()
@@ -566,7 +605,7 @@ private fun TaskRow(task: String, onRemove: () -> Unit) {
         modifier = Modifier
             .fillMaxWidth()
             .swipeToDismiss(onRemove),
-        elevation = 2.dp
+        shadowElevation = 2.dp
     ) {
         Row(
             modifier = Modifier
@@ -580,7 +619,7 @@ private fun TaskRow(task: String, onRemove: () -> Unit) {
             Spacer(modifier = Modifier.width(16.dp))
             Text(
                 text = task,
-                style = MaterialTheme.typography.body1
+                style = MaterialTheme.typography.bodySmall
             )
         }
     }
@@ -638,11 +677,13 @@ private fun Modifier.swipeToDismiss(
 @Preview
 @Composable
 private fun PreviewHomeTabBar() {
-    HomeTabBar(
-        backgroundColor = Purple100,
-        tabPage = TabPage.Home,
-        onTabSelected = {}
-    )
+    AnimationCodelabTheme {
+        HomeTabBar(
+            backgroundColor = White,
+            tabPage = TabPage.Home,
+            onTabSelected = {}
+        )
+    }
 }
 
 @Preview

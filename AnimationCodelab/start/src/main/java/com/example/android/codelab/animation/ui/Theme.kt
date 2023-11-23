@@ -16,19 +16,23 @@
 
 package com.example.android.codelab.animation.ui
 
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.lightColors
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.graphics.Color
 
 @Composable
 fun AnimationCodelabTheme(content: @Composable () -> Unit) {
-    val colors = lightColors(
-        primary = Purple500,
-        primaryVariant = Purple700,
-        secondary = Teal200
+    val colors = lightColorScheme(
+        primary = Melon,
+        primaryContainer = PaleDogwood,
+        onPrimary = Color.Black,
+        secondary = Peach,
+        onSecondary = Color.Black
     )
     MaterialTheme(
-        colors = colors,
+        colorScheme = colors,
         content = content
     )
 }
+
