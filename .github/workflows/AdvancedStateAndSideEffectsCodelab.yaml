@@ -48,14 +48,14 @@ jobs:
         run: ./gradlew assembleDebug lintDebug --stacktrace
 
       - name: Upload build outputs (APKs)
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v3
         with:
           name: build-outputs
           path: ${{ env.SAMPLE_PATH }}/app/build/outputs
 
       - name: Upload build reports
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v3
         with:
           name: build-reports
           path: ${{ env.SAMPLE_PATH }}/app/build/reports
@@ -104,7 +104,7 @@ jobs:
 
       - name: Upload test reports
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v3
         with:
           name: test-reports
           path: ${{ env.SAMPLE_PATH }}/app/build/reports
