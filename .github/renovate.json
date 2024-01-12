@@ -11,7 +11,7 @@
       "groupName": "Kotlin Dependencies",
       "matchPackagePrefixes": [
         "org.jetbrains.kotlin",
-        "^androidx.compose.compiler"
+        "androidx.compose.compiler"
       ]
     }
   ]
