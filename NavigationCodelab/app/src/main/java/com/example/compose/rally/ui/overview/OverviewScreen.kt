@@ -35,7 +35,7 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.material.TextButton
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Sort
+import androidx.compose.material.icons.automirrored.filled.Sort
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -162,7 +162,7 @@ private fun AlertItem(message: String) {
                 .align(Alignment.Top)
                 .clearAndSetSemantics {}
         ) {
-            Icon(Icons.Filled.Sort, contentDescription = null)
+            Icon(Icons.AutoMirrored.Filled.Sort, contentDescription = null)
         }
     }
 }

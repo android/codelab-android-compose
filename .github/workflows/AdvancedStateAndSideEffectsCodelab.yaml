@@ -35,7 +35,7 @@ jobs:
       - name: Generate cache key
         run: ./scripts/checksum.sh $SAMPLE_PATH checksum.txt
 
-      - uses: actions/cache@v3
+      - uses: actions/cache@v4
         with:
           path: |
             ~/.gradle/caches/modules-*
@@ -48,14 +48,14 @@ jobs:
         run: ./gradlew assembleDebug lintDebug --stacktrace
 
       - name: Upload build outputs (APKs)
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: build-outputs
           path: ${{ env.SAMPLE_PATH }}/app/build/outputs
 
       - name: Upload build reports
         if: always()
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: build-reports
           path: ${{ env.SAMPLE_PATH }}/app/build/reports
@@ -84,7 +84,7 @@ jobs:
       - name: Generate cache key
         run: ./scripts/checksum.sh $SAMPLE_PATH checksum.txt
 
-      - uses: actions/cache@v3
+      - uses: actions/cache@v4
         with:
           path: |
             ~/.gradle/caches/modules-*
@@ -104,7 +104,7 @@ jobs:
 
       - name: Upload test reports
         if: always()
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: test-reports
           path: ${{ env.SAMPLE_PATH }}/app/build/reports
