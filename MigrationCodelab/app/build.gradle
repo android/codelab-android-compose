@@ -50,7 +50,7 @@ android {
         compose true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion '1.5.7'
+        kotlinCompilerExtensionVersion '1.5.8'
     }
     packagingOptions {
         // Multiple dependency bring these files in. Exclude them to enable
