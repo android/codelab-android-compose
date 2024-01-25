@@ -93,7 +93,7 @@ dependencies {
     androidTestImplementation "androidx.compose.ui:ui-test"
     androidTestImplementation "androidx.compose.ui:ui-test-junit4"
 
-    def accompanist_version = '0.32.0'
+    def accompanist_version = '0.34.0'
     implementation "com.google.accompanist:accompanist-swiperefresh:$accompanist_version"
     implementation "com.google.accompanist:accompanist-systemuicontroller:$accompanist_version"
 
