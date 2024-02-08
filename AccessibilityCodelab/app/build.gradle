@@ -73,7 +73,7 @@ android {
 }
 
 dependencies {
-    def composeBom = platform('androidx.compose:compose-bom:2024.01.00')
+    def composeBom = platform('androidx.compose:compose-bom:2024.02.00')
     implementation(composeBom)
     testImplementation(composeBom)
     androidTestImplementation(composeBom)
@@ -111,7 +111,7 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.7.0"
     implementation "androidx.lifecycle:lifecycle-viewmodel-compose:2.7.0"
 
-    implementation 'androidx.navigation:navigation-compose:2.7.6'
+    implementation 'androidx.navigation:navigation-compose:2.7.7'
 
     androidTestImplementation 'androidx.test:rules:1.5.0'
     androidTestImplementation 'androidx.test:runner:1.5.2'
