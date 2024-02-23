@@ -25,7 +25,7 @@ buildscript {
         // App dependencies
         appCompatVersion = '1.6.1'
         activityComposeVersion = '1.8.2'
-        composeCompilerVersion = '1.5.8'
+        composeCompilerVersion = '1.5.10'
         coreTestingVersion = '2.2.0'
         coroutinesVersion = "1.5.2"
         espressoVersion = '3.5.1'
