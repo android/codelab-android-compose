@@ -147,6 +147,7 @@ fun FavoriteCollectionCard(
 ) {
     Surface(
         shape = MaterialTheme.shapes.medium,
+        color = MaterialTheme.colorScheme.surfaceVariant,
         modifier = modifier
     ) {
         Row(
@@ -154,19 +155,20 @@ fun FavoriteCollectionCard(
             modifier = Modifier.width(255.dp)
         ) {
             Image(
-                painter = painterResource(id = R.drawable.fc2_nature_meditations),
+                painter = painterResource(drawable),
                 contentDescription = null,
                 contentScale = ContentScale.Crop,
                 modifier = Modifier.size(80.dp)
             )
             Text(
-                text = stringResource(id = R.string.fc2_nature_meditations),
+                text = stringResource(text),
                 style = MaterialTheme.typography.titleMedium,
                 modifier = Modifier.padding(horizontal = 16.dp)
             )
         }
     }
 }
+
 
 @Composable
 fun AlignYourBodyRow(
