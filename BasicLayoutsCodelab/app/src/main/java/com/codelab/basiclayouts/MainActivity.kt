@@ -241,7 +241,8 @@ private fun SootheBottomNavigation(modifier: Modifier = Modifier) {
                 )
             },
             label = {
-                Text(text = stringResource(id = R.string.bottom_navigation_home)
+                Text(
+                    text = stringResource(id = R.string.bottom_navigation_home)
                 )
             },
             selected = true,
@@ -250,12 +251,13 @@ private fun SootheBottomNavigation(modifier: Modifier = Modifier) {
         NavigationBarItem(
             icon = {
                 Icon(
-                    imageVector = Icons.Default.AccountCircle, 
+                    imageVector = Icons.Default.AccountCircle,
                     contentDescription = null
                 )
             },
             label = {
-                Text(text = stringResource(id = R.string.bottom_navigation_profile)
+                Text(
+                    text = stringResource(id = R.string.bottom_navigation_profile)
                 )
             },
             selected = false,
@@ -268,9 +270,8 @@ private fun SootheBottomNavigation(modifier: Modifier = Modifier) {
 fun MySootheAppPortrait() {
     MySootheTheme {
         Scaffold(
-            bottomBar = { SootheBottomNavigation()}
-        ) {
-            padding ->
+            bottomBar = { SootheBottomNavigation() }
+        ) { padding ->
             HomeScreen(Modifier.padding(padding))
         }
     }
@@ -303,7 +304,8 @@ private fun SootheNavigationRail(modifier: Modifier = Modifier) {
             )
             NavigationRailItem(
                 icon = {
-                    Icon(imageVector = Icons.Default.AccountCircle,
+                    Icon(
+                        imageVector = Icons.Default.AccountCircle,
                         contentDescription = null
                     )
                 },
@@ -320,10 +322,11 @@ private fun SootheNavigationRail(modifier: Modifier = Modifier) {
 @Composable
 fun MySootheAppLandscape() {
     MySootheTheme {
-        Surface (color = MaterialTheme.colorScheme.background) {
-        Row {
-            SootheNavigationRail()
-            HomeScreen()
+        Surface(color = MaterialTheme.colorScheme.background) {
+            Row {
+                SootheNavigationRail()
+                HomeScreen()
+            }
         }
     }
 }
