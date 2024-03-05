@@ -21,6 +21,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.compose.material.MaterialTheme
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.app.ShareCompat
 import androidx.core.widget.NestedScrollView
@@ -71,26 +72,24 @@ class PlantDetailFragment : Fragment() {
                     }
                 }
             }
-
+            composeView.setContent {
+                MaterialTheme {
+                    PlantDetailDescription()
+                }
+            }
             var isToolbarShown = false
 
-            // scroll change listener begins at Y = 0 when image is fully collapsed
             plantDetailScrollview.setOnScrollChangeListener(
                 NestedScrollView.OnScrollChangeListener { _, _, scrollY, _, _ ->
 
-                    // User scrolled past image to height of toolbar and the title text is
-                    // underneath the toolbar, so the toolbar should be shown.
                     val shouldShowToolbar = scrollY > toolbar.height
 
-                    // The new state of the toolbar differs from the previous state; update
-                    // appbar and toolbar attributes.
+
                     if (isToolbarShown != shouldShowToolbar) {
                         isToolbarShown = shouldShowToolbar
 
-                        // Use shadow animator to add elevation if toolbar is shown
                         appbar.isActivated = shouldShowToolbar
 
-                        // Show the plant name if toolbar is shown
                         toolbarLayout.isTitleEnabled = shouldShowToolbar
                     }
                 }
