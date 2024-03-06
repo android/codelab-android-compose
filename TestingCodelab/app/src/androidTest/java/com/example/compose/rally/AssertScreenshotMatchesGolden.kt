@@ -19,10 +19,10 @@ package com.example.compose.rally
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.Build
-import androidx.annotation.RequiresApi
 import androidx.compose.ui.graphics.asAndroidBitmap
 import androidx.compose.ui.test.SemanticsNodeInteraction
 import androidx.compose.ui.test.captureToImage
+import androidx.test.filters.SdkSuppress
 import androidx.test.platform.app.InstrumentationRegistry
 import java.io.FileOutputStream
 
@@ -35,7 +35,7 @@ import java.io.FileOutputStream
  *
  * Screenshots are saved on device in `/data/data/{package}/files`.
  */
-@RequiresApi(Build.VERSION_CODES.O)
+@SdkSuppress(minSdkVersion = Build.VERSION_CODES.O)
 fun assertScreenshotMatchesGolden(
     goldenName: String,
     node: SemanticsNodeInteraction
