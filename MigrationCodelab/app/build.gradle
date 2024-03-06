@@ -61,7 +61,7 @@ android {
 }
 
 dependencies {
-    def composeBom = platform('androidx.compose:compose-bom:2024.02.01')
+    def composeBom = platform('androidx.compose:compose-bom:2024.02.02')
     implementation(composeBom)
     androidTestImplementation(composeBom)
 
@@ -105,7 +105,7 @@ dependencies {
     androidTestImplementation "androidx.test.uiautomator:uiautomator:2.3.0"
     androidTestImplementation "androidx.work:work-testing:2.9.0"
     androidTestImplementation "com.google.android.apps.common.testing.accessibility.framework:accessibility-test-framework:4.1.0"
-    androidTestImplementation "com.google.truth:truth:1.4.1"
+    androidTestImplementation "com.google.truth:truth:1.4.2"
     androidTestImplementation "androidx.compose.ui:ui-test-junit4"
     testImplementation "junit:junit:4.13.2"
 }
