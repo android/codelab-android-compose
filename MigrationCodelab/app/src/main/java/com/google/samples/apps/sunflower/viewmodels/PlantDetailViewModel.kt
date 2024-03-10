@@ -21,6 +21,7 @@ import androidx.lifecycle.viewModelScope
 import com.google.samples.apps.sunflower.data.GardenPlantingRepository
 import com.google.samples.apps.sunflower.data.PlantRepository
 import com.google.samples.apps.sunflower.plantdetail.PlantDetailFragment
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 /**
@@ -36,7 +37,7 @@ class PlantDetailViewModel(
     val plant = plantRepository.getPlant(plantId)
 
     fun addPlantToGarden() {
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
             gardenPlantingRepository.createGardenPlanting(plantId)
         }
     }
