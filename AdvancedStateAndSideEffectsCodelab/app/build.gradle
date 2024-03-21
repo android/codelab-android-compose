@@ -109,7 +109,7 @@ dependencies {
     implementation "androidx.activity:activity-compose:1.8.2"
     implementation "androidx.appcompat:appcompat:1.6.1"
 
-    def composeBom = platform('androidx.compose:compose-bom:2024.02.02')
+    def composeBom = platform('androidx.compose:compose-bom:2024.03.00')
     implementation(composeBom)
     androidTestImplementation(composeBom)
     implementation "androidx.compose.runtime:runtime"
