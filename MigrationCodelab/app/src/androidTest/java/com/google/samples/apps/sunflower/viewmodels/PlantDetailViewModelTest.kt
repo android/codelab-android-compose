@@ -24,6 +24,7 @@ import com.google.samples.apps.sunflower.data.GardenPlantingRepository
 import com.google.samples.apps.sunflower.data.PlantRepository
 import com.google.samples.apps.sunflower.utilities.getValue
 import com.google.samples.apps.sunflower.utilities.testPlant
+import kotlinx.coroutines.Dispatchers
 import org.junit.After
 import org.junit.Assert.assertFalse
 import org.junit.Before
@@ -45,7 +46,8 @@ class PlantDetailViewModelTest {
 
         val plantRepo = PlantRepository.getInstance(appDatabase.plantDao())
         val gardenPlantingRepo = GardenPlantingRepository.getInstance(
-            appDatabase.gardenPlantingDao()
+            appDatabase.gardenPlantingDao(),
+            Dispatchers.IO
         )
         viewModel = PlantDetailViewModel(plantRepo, gardenPlantingRepo, testPlant.plantId)
     }
