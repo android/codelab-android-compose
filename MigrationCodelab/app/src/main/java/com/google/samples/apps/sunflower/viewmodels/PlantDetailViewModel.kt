@@ -37,7 +37,7 @@ class PlantDetailViewModel(
     val plant = plantRepository.getPlant(plantId)
 
     fun addPlantToGarden() {
-        viewModelScope.launch(Dispatchers.IO) {
+        viewModelScope.launch {
             gardenPlantingRepository.createGardenPlanting(plantId)
         }
     }
