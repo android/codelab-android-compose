@@ -16,13 +16,20 @@
 
 package com.google.samples.apps.sunflower.data
 
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
+
 class GardenPlantingRepository private constructor(
-    private val gardenPlantingDao: GardenPlantingDao
+    private val gardenPlantingDao: GardenPlantingDao,
+    private val ioDispatcher: CoroutineDispatcher
 ) {
 
     suspend fun createGardenPlanting(plantId: String) {
-        val gardenPlanting = GardenPlanting(plantId)
-        gardenPlantingDao.insertGardenPlanting(gardenPlanting)
+        withContext(ioDispatcher) {
+            val gardenPlanting = GardenPlanting(plantId)
+            gardenPlantingDao.insertGardenPlanting(gardenPlanting)
+        }
     }
 
     suspend fun removeGardenPlanting(gardenPlanting: GardenPlanting) {
@@ -39,9 +46,11 @@ class GardenPlantingRepository private constructor(
         // For Singleton instantiation
         @Volatile private var instance: GardenPlantingRepository? = null
 
-        fun getInstance(gardenPlantingDao: GardenPlantingDao) =
+        fun getInstance(gardenPlantingDao: GardenPlantingDao, ioDispatcher: CoroutineDispatcher) =
             instance ?: synchronized(this) {
-                instance ?: GardenPlantingRepository(gardenPlantingDao).also { instance = it }
+                instance ?: GardenPlantingRepository(gardenPlantingDao, ioDispatcher).also {
+                    instance = it
+                }
             }
     }
 }
