@@ -24,11 +24,14 @@ import com.google.samples.apps.sunflower.data.PlantRepository
 import com.google.samples.apps.sunflower.viewmodels.GardenPlantingListViewModelFactory
 import com.google.samples.apps.sunflower.viewmodels.PlantDetailViewModelFactory
 import com.google.samples.apps.sunflower.viewmodels.PlantListViewModelFactory
+import kotlinx.coroutines.Dispatchers
 
 /**
  * Static methods used to inject classes needed for various Activities and Fragments.
  */
 object InjectorUtils {
+
+    private val ioDispatcher = Dispatchers.IO
 
     private fun getPlantRepository(context: Context): PlantRepository {
         return PlantRepository.getInstance(
@@ -38,7 +41,8 @@ object InjectorUtils {
 
     private fun getGardenPlantingRepository(context: Context): GardenPlantingRepository {
         return GardenPlantingRepository.getInstance(
-            AppDatabase.getInstance(context.applicationContext).gardenPlantingDao()
+            AppDatabase.getInstance(context.applicationContext).gardenPlantingDao(),
+            ioDispatcher
         )
     }
 
