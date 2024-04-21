@@ -30,7 +30,7 @@ import androidx.navigation.navDeepLink
  * Contract for information needed on every Rally navigation destination
  */
 
-interface RallyDestination {
+sealed interface RallyDestination {
     val icon: ImageVector
     val route: String
 }
@@ -38,22 +38,22 @@ interface RallyDestination {
 /**
  * Rally app navigation destinations
  */
-object Overview : RallyDestination {
+data object Overview : RallyDestination {
     override val icon = Icons.Filled.PieChart
     override val route = "overview"
 }
 
-object Accounts : RallyDestination {
+data object Accounts : RallyDestination {
     override val icon = Icons.Filled.AttachMoney
     override val route = "accounts"
 }
 
-object Bills : RallyDestination {
+data object Bills : RallyDestination {
     override val icon = Icons.Filled.MoneyOff
     override val route = "bills"
 }
 
-object SingleAccount : RallyDestination {
+data object SingleAccount : RallyDestination {
     // Added for simplicity, this icon will not in fact be used, as SingleAccount isn't
     // part of the RallyTabRow selection
     override val icon = Icons.Filled.Money
