@@ -62,12 +62,23 @@ jobs:
   test:
     needs: build
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 55
     strategy:
       matrix:
-        api-level: [23, 26, 29]
+        api-level: [26, 30]
 
     steps:
+      - name: Delete unnecessary tools
+        uses: jlumbroso/free-disk-space@v1.3.1
+        with:
+          android: false # Don't remove Android tools
+          tool-cache: true # Remove image tool cache - rm -rf "$AGENT_TOOLSDIRECTORY"
+          dotnet: true # rm -rf /usr/share/dotnet
+          haskell: true # rm -rf /opt/ghc...
+          swap-storage: true # rm -f /mnt/swapfile (4GiB)
+          docker-images: false # Takes 16s, enable if needed in the future
+          large-packages: false # includes google-cloud-sdk and it's slow
+
       - name: Checkout
         uses: actions/checkout@v4
 
