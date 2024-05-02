@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - main
-      - end
     paths:
       - 'MigrationCodelab/**'
   pull_request:
@@ -62,11 +61,11 @@ jobs:
 
   test:
     needs: build
-    runs-on: macos-latest # enables hardware acceleration in the virtual machine
+    runs-on: ubuntu-latest
     timeout-minutes: 30
     strategy:
       matrix:
-        api-level: [23, 26, 29]
+        api-level: [26, 29]
 
     steps:
       - name: Checkout
@@ -96,7 +95,6 @@ jobs:
         uses: reactivecircus/android-emulator-runner@v2
         with:
           api-level: ${{ matrix.api-level }}
-          target: google_apis
           arch: x86
           disable-animations: true
           script: ./gradlew connectedCheck --stacktrace
@@ -106,5 +104,5 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: test-reports-${{ matrix.api-level }}
+          name: test-reports-migration-${{ matrix.api-level }}
           path: ${{ env.SAMPLE_PATH }}/app/build/reports
