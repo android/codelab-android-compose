@@ -61,8 +61,8 @@ jobs:
 
   test:
     needs: build
-    runs-on: ubuntu-latest
-    timeout-minutes: 55
+    runs-on: macos-13
+    timeout-minutes: 30
     strategy:
       matrix:
         api-level: [26, 29]
@@ -95,6 +95,7 @@ jobs:
         uses: reactivecircus/android-emulator-runner@v2
         with:
           api-level: ${{ matrix.api-level }}
+          target: google_apis
           arch: x86
           disable-animations: true
           script: ./gradlew connectedCheck --stacktrace

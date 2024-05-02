@@ -62,7 +62,7 @@ jobs:
   test:
     needs: build
     runs-on: ubuntu-latest
-    timeout-minutes: 55
+    timeout-minutes: 30
     strategy:
       matrix:
         api-level: [26, 29]
