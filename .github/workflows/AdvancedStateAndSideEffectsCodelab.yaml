@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - main
-      - end
     paths:
       - 'AdvancedStateAndSideEffectsCodelab/**'
   pull_request:
@@ -62,11 +61,11 @@ jobs:
 
   test:
     needs: build
-    runs-on: macos-latest # enables hardware acceleration in the virtual machine
+    runs-on: macos-13
     timeout-minutes: 30
     strategy:
       matrix:
-        api-level: [23, 26, 29]
+        api-level: [26, 29]
 
     steps:
       - name: Checkout
@@ -106,5 +105,5 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: test-reports-${{ matrix.api-level }}
+          name: test-reports-state-${{ matrix.api-level }}
           path: ${{ env.SAMPLE_PATH }}/app/build/reports
