@@ -41,6 +41,7 @@ fun SearchBar(
     modifier: Modifier = Modifier
 ) {
     // Implement composable here
+    //init commit
 }
 
 // Step: Align your body - Alignment
