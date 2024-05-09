@@ -72,7 +72,7 @@ dependencies {
     androidTestImplementation(composeBom)
 
     implementation(libs.androidx.material3)
-    implementation(libs.androidx.material3.windowSizeClass)
+    implementation(libs.androidx.material3.adaptive)
     implementation(libs.androidx.material.icons.extended)
     implementation(libs.androidx.ui.tooling.preview)
     androidTestImplementation(libs.androidx.ui.test.junit4)

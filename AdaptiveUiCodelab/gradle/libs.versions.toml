@@ -10,7 +10,7 @@ kotlin = "1.9.23"
 kotlinxCoroutinesAndroid = "1.8.0"
 lifecycleViewmodelCompose = "2.7.0"
 lifecycleRuntimeKtx = "2.7.0"
-material3WindowSizeClass = "1.2.1"
+material3Adaptive = "1.0.0-alpha12"
 window = "1.2.0"
 
 [libraries]
@@ -23,7 +23,7 @@ androidx-lifecycle-runtime-ktx = { module = "androidx.lifecycle:lifecycle-runtim
 androidx-lifecycle-viewmodel-compose = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "lifecycleViewmodelCompose" }
 androidx-material-icons-extended = { module = "androidx.compose.material:material-icons-extended" }
 androidx-material3 = { module = "androidx.compose.material3:material3" }
-androidx-material3-windowSizeClass = { module = "androidx.compose.material3:material3-window-size-class", version.ref = "material3WindowSizeClass" }
+androidx-material3-adaptive = { module = "androidx.compose.material3.adaptive:adaptive", version.ref = "material3Adaptive" }
 androidx-ui-test-manifest = { module = "androidx.compose.ui:ui-test-manifest" }
 androidx-ui-tooling = { module = "androidx.compose.ui:ui-tooling" }
 androidx-ui-test-junit4 = { module = "androidx.compose.ui:ui-test-junit4" }
