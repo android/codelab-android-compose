@@ -79,12 +79,12 @@ fun MyShape(size: () -> Dp, modifier: Modifier = Modifier) = trace("MyShape") {
                 val sizePx = size()
                     .roundToPx()
                     .coerceAtLeast(0)
-                val constraints = Constraints(
-                    minWidth = sizePx,
-                    maxWidth = sizePx,
-                    minHeight = sizePx,
-                    maxHeight = sizePx
+
+                val constraints = Constraints.fixed(
+                    width = sizePx,
+                    height = sizePx,
                 )
+                
                 val placeable = measurable.measure(constraints)
                 layout(sizePx, sizePx) {
                     placeable.place(0, 0)
