@@ -15,6 +15,7 @@
  */
 package com.compose.performance.stability
 
+import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.neverEqualPolicy
@@ -32,6 +33,7 @@ import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.stateIn
 
 // TODO Codelab task: make this class Stable
+@Immutable
 data class StabilityItem(
     val id: Int,
     val type: StabilityItemType,
