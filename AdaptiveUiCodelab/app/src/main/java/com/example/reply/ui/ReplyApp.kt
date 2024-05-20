@@ -16,7 +16,6 @@
 
 package com.example.reply.ui
 
-import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -27,47 +26,29 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Article
-import androidx.compose.material.icons.filled.Chat
-import androidx.compose.material.icons.filled.Inbox
-import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.filled.MenuOpen
-import androidx.compose.material.icons.outlined.Chat
-import androidx.compose.material.icons.outlined.People
-import androidx.compose.material.icons.outlined.Videocam
-import androidx.compose.material3.DrawerValue
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.ModalDrawerSheet
-import androidx.compose.material3.ModalNavigationDrawer
-import androidx.compose.material3.NavigationBar
-import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.NavigationDrawerItem
 import androidx.compose.material3.NavigationDrawerItemDefaults
-import androidx.compose.material3.NavigationRail
-import androidx.compose.material3.NavigationRailItem
-import androidx.compose.material3.PermanentDrawerSheet
-import androidx.compose.material3.PermanentNavigationDrawer
 import androidx.compose.material3.Text
-import androidx.compose.material3.rememberDrawerState
+import androidx.compose.material3.adaptive.navigationsuite.NavigationSuiteScaffold
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.window.core.layout.WindowWidthSizeClass
 import com.example.reply.R
 import com.example.reply.ui.utils.DevicePosture
 import com.example.reply.ui.utils.ReplyContentType
-import com.example.reply.ui.utils.ReplyNavigationType
-import kotlinx.coroutines.launch
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ReplyApp(
     windowSize: WindowWidthSizeClass,
@@ -81,16 +62,13 @@ fun ReplyApp(
      * In the state of folding device If it's half fold in BookPosture we want to avoid content
      * at the crease/hinge
      */
-    val navigationType: ReplyNavigationType
     val contentType: ReplyContentType
 
     when (windowSize) {
         WindowWidthSizeClass.COMPACT -> {
-            navigationType = ReplyNavigationType.BOTTOM_NAVIGATION
             contentType = ReplyContentType.LIST_ONLY
         }
         WindowWidthSizeClass.MEDIUM -> {
-            navigationType = ReplyNavigationType.NAVIGATION_RAIL
             contentType = if (foldingDevicePosture != DevicePosture.NormalPosture) {
                 ReplyContentType.LIST_AND_DETAIL
             } else {
@@ -98,169 +76,62 @@ fun ReplyApp(
             }
         }
         WindowWidthSizeClass.EXPANDED -> {
-            navigationType = if (foldingDevicePosture is DevicePosture.BookPosture) {
-                ReplyNavigationType.NAVIGATION_RAIL
-            } else {
-                ReplyNavigationType.PERMANENT_NAVIGATION_DRAWER
-            }
             contentType = ReplyContentType.LIST_AND_DETAIL
         }
         else -> {
-            navigationType = ReplyNavigationType.BOTTOM_NAVIGATION
             contentType = ReplyContentType.LIST_ONLY
         }
     }
 
-    ReplyNavigationWrapperUI(navigationType, contentType, replyHomeUIState)
+    ReplyNavigationWrapperUI(contentType, replyHomeUIState)
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 private fun ReplyNavigationWrapperUI(
-    navigationType: ReplyNavigationType,
     contentType: ReplyContentType,
     replyHomeUIState: ReplyHomeUIState
 ) {
-    val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
-    val scope = rememberCoroutineScope()
-    val selectedDestination = ReplyDestinations.INBOX
-
-    if (navigationType == ReplyNavigationType.PERMANENT_NAVIGATION_DRAWER) {
-        PermanentNavigationDrawer(
-            drawerContent = {
-                PermanentDrawerSheet {
-                    NavigationDrawerContent(selectedDestination)
-                }
+    var selectedDestination: ReplyDestination by remember {
+        mutableStateOf(ReplyDestination.Inbox)
+    }
+    NavigationSuiteScaffold(
+        navigationSuiteItems = {
+            ReplyDestination.entries.forEach {
+                item(
+                    label = { Text(stringResource(it.labelRes)) },
+                    icon = { Icon(it.icon, stringResource(it.labelRes)) },
+                    selected = it == selectedDestination,
+                    onClick = { /*TODO update selection*/ },
+                )
             }
-        ) {
-            ReplyAppContent(navigationType, contentType, replyHomeUIState)
         }
-    } else {
-        ModalNavigationDrawer(
-            drawerContent = {
-                ModalDrawerSheet {
-                    NavigationDrawerContent(
-                        selectedDestination,
-                        onDrawerClicked = {
-                            scope.launch {
-                                drawerState.close()
-                            }
-                        }
-                    )
-                }
-            },
-            drawerState = drawerState
-        ) {
-            ReplyAppContent(
-                navigationType, contentType, replyHomeUIState,
-                onDrawerClicked = {
-                    scope.launch {
-                        drawerState.open()
-                    }
-                }
-            )
-        }
+    ) {
+        ReplyAppContent(contentType, replyHomeUIState)
     }
 }
+
 
 @Composable
 fun ReplyAppContent(
-    navigationType: ReplyNavigationType,
     contentType: ReplyContentType,
     replyHomeUIState: ReplyHomeUIState,
-    onDrawerClicked: () -> Unit = {}
 ) {
-    Row(modifier = Modifier.fillMaxSize()) {
-        AnimatedVisibility(visible = navigationType == ReplyNavigationType.NAVIGATION_RAIL) {
-            ReplyNavigationRail(
-                onDrawerClicked = onDrawerClicked
-            )
-        }
-        Column(modifier = Modifier
-            .fillMaxSize()
-            .background(MaterialTheme.colorScheme.inverseOnSurface)
-        ) {
-            if (contentType == ReplyContentType.LIST_AND_DETAIL) {
-                ReplyListAndDetailContent(
-                    replyHomeUIState = replyHomeUIState,
-                    modifier = Modifier.weight(1f),
-                )
-            } else {
-                ReplyListOnlyContent(replyHomeUIState = replyHomeUIState, modifier = Modifier.weight(1f))
-            }
-
-            AnimatedVisibility(visible = navigationType == ReplyNavigationType.BOTTOM_NAVIGATION) {
-                ReplyBottomNavigationBar()
-            }
-        }
-    }
-}
-
-@Composable
-@Preview
-fun ReplyNavigationRail(
-    onDrawerClicked: () -> Unit = {},
-) {
-    NavigationRail(modifier = Modifier.fillMaxHeight()) {
-        NavigationRailItem(
-            selected = false,
-            onClick = onDrawerClicked,
-            icon =  { Icon(imageVector = Icons.Default.Menu, contentDescription = stringResource(id = R.string.navigation_drawer)) }
+    if (contentType == ReplyContentType.LIST_AND_DETAIL) {
+        ReplyListAndDetailContent(
+            replyHomeUIState = replyHomeUIState,
+            modifier = Modifier.fillMaxSize(),
         )
-        NavigationRailItem(
-            selected = true,
-            onClick = { /*TODO*/ },
-            icon =  { Icon(imageVector = Icons.Default.Inbox, contentDescription = stringResource(id = R.string.tab_inbox)) }
-        )
-        NavigationRailItem(
-            selected = false,
-            onClick = {/*TODO*/ },
-            icon =  { Icon(imageVector = Icons.Default.Article, stringResource(id = R.string.tab_article)) }
-        )
-        NavigationRailItem(
-            selected = false,
-            onClick = { /*TODO*/ },
-            icon =  { Icon(imageVector = Icons.Outlined.Chat, stringResource(id = R.string.tab_dm)) }
-        )
-        NavigationRailItem(
-            selected = false,
-            onClick = { /*TODO*/ },
-            icon =  { Icon(imageVector = Icons.Outlined.People, stringResource(id = R.string.tab_groups)) }
+    } else {
+        ReplyListOnlyContent(
+            replyHomeUIState = replyHomeUIState,
+            modifier = Modifier.fillMaxSize(),
         )
     }
 }
 
-@Composable
-@Preview
-fun ReplyBottomNavigationBar() {
-    NavigationBar(modifier = Modifier.fillMaxWidth()) {
-       NavigationBarItem(
-           selected = true,
-           onClick = { /*TODO*/ },
-           icon = { Icon(imageVector = Icons.Default.Inbox, contentDescription = stringResource(id = R.string.tab_inbox)) }
-       )
-        NavigationBarItem(
-            selected = false,
-            onClick = { /*TODO*/ },
-            icon = { Icon(imageVector = Icons.Default.Article, contentDescription = stringResource(id = R.string.tab_inbox)) }
-        )
-        NavigationBarItem(
-            selected = false,
-            onClick = { /*TODO*/ },
-            icon = { Icon(imageVector = Icons.Outlined.Chat, contentDescription = stringResource(id = R.string.tab_inbox)) }
-        )
-        NavigationBarItem(
-            selected = false,
-            onClick = { /*TODO*/ },
-            icon = { Icon(imageVector = Icons.Outlined.Videocam, contentDescription = stringResource(id = R.string.tab_inbox)) }
-        )
-    }
-}
-
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun NavigationDrawerContent(
-    selectedDestination: String,
+    selectedDestination: ReplyDestination,
     modifier: Modifier = Modifier,
     onDrawerClicked: () -> Unit = {}
 ) {
@@ -291,33 +162,21 @@ fun NavigationDrawerContent(
             }
         }
 
-        NavigationDrawerItem(
-            selected = selectedDestination == ReplyDestinations.INBOX,
-            label = { Text(text = stringResource(id = R.string.tab_inbox), modifier = Modifier.padding(horizontal = 16.dp)) },
-            icon = { Icon(imageVector = Icons.Default.Inbox, contentDescription =  stringResource(id = R.string.tab_inbox)) },
-            colors = NavigationDrawerItemDefaults.colors(unselectedContainerColor = Color.Transparent),
-            onClick = { /*TODO*/ }
-        )
-        NavigationDrawerItem(
-            selected = selectedDestination == ReplyDestinations.ARTICLES,
-            label = { Text(text = stringResource(id = R.string.tab_article), modifier = Modifier.padding(horizontal = 16.dp)) },
-            icon = { Icon(imageVector =  Icons.Default.Article, contentDescription =  stringResource(id = R.string.tab_article)) },
-            colors = NavigationDrawerItemDefaults.colors(unselectedContainerColor = Color.Transparent),
-            onClick = { /*TODO*/ }
-        )
-        NavigationDrawerItem(
-            selected = selectedDestination == ReplyDestinations.DM,
-            label = { Text(text = stringResource(id = R.string.tab_dm), modifier = Modifier.padding(horizontal = 16.dp)) },
-            icon = { Icon(imageVector =  Icons.Default.Chat, contentDescription =  stringResource(id = R.string.tab_dm)) },
-            colors = NavigationDrawerItemDefaults.colors(unselectedContainerColor = Color.Transparent),
-            onClick = { /*TODO*/ }
-        )
-        NavigationDrawerItem(
-            selected = selectedDestination == ReplyDestinations.GROUPS,
-            label = { Text(text = stringResource(id = R.string.tab_groups), modifier = Modifier.padding(horizontal = 16.dp)) },
-            icon = { Icon(imageVector =  Icons.Default.Article, contentDescription =  stringResource(id = R.string.tab_groups)) },
-            colors = NavigationDrawerItemDefaults.colors(unselectedContainerColor = Color.Transparent),
-            onClick = { /*TODO*/ }
-        )
+        ReplyDestination.entries.forEach {
+            NavigationDrawerItem(
+                selected = selectedDestination == it,
+                label = {
+                    Text(
+                        text = stringResource(it.labelRes),
+                        modifier = Modifier.padding(horizontal = 16.dp)
+                    )
+                },
+                icon = { Icon(it.icon, stringResource(it.labelRes)) },
+                colors = NavigationDrawerItemDefaults.colors(
+                    unselectedContainerColor = Color.Transparent
+                ),
+                onClick = { /*TODO*/ },
+            )
+        }
     }
 }
