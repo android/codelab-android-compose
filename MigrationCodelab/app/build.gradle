@@ -50,7 +50,7 @@ android {
         compose true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion '1.5.13'
+        kotlinCompilerExtensionVersion '1.5.14'
     }
     packagingOptions {
         // Multiple dependency bring these files in. Exclude them to enable
@@ -83,8 +83,8 @@ dependencies {
     implementation "com.github.bumptech.glide:glide:4.16.0"
     implementation "com.google.android.material:material:1.11.0"
     implementation "com.google.code.gson:gson:2.10.1"
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.8.0"
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.0"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.8.1"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.1"
 
     // Compose
     implementation "androidx.compose.runtime:runtime"
