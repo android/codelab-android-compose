@@ -52,7 +52,6 @@ import androidx.compose.material3.PermanentDrawerSheet
 import androidx.compose.material3.PermanentNavigationDrawer
 import androidx.compose.material3.Text
 import androidx.compose.material3.rememberDrawerState
-import androidx.compose.material3.windowsizeclass.WindowWidthSizeClass
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
@@ -61,6 +60,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.window.core.layout.WindowWidthSizeClass
 import com.example.reply.R
 import com.example.reply.ui.utils.DevicePosture
 import com.example.reply.ui.utils.ReplyContentType
@@ -85,11 +85,11 @@ fun ReplyApp(
     val contentType: ReplyContentType
 
     when (windowSize) {
-        WindowWidthSizeClass.Compact -> {
+        WindowWidthSizeClass.COMPACT -> {
             navigationType = ReplyNavigationType.BOTTOM_NAVIGATION
             contentType = ReplyContentType.LIST_ONLY
         }
-        WindowWidthSizeClass.Medium -> {
+        WindowWidthSizeClass.MEDIUM -> {
             navigationType = ReplyNavigationType.NAVIGATION_RAIL
             contentType = if (foldingDevicePosture != DevicePosture.NormalPosture) {
                 ReplyContentType.LIST_AND_DETAIL
@@ -97,7 +97,7 @@ fun ReplyApp(
                 ReplyContentType.LIST_ONLY
             }
         }
-        WindowWidthSizeClass.Expanded -> {
+        WindowWidthSizeClass.EXPANDED -> {
             navigationType = if (foldingDevicePosture is DevicePosture.BookPosture) {
                 ReplyNavigationType.NAVIGATION_RAIL
             } else {
