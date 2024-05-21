@@ -16,20 +16,22 @@
 
 package com.example.reply.ui
 
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
+import androidx.compose.material3.adaptive.ExperimentalMaterial3AdaptiveApi
+import androidx.compose.material3.adaptive.layout.AnimatedPane
+import androidx.compose.material3.adaptive.layout.ListDetailPaneScaffold
+import androidx.compose.material3.adaptive.navigation.rememberListDetailPaneScaffoldNavigator
 import androidx.compose.material3.adaptive.navigationsuite.NavigationSuiteScaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.window.core.layout.WindowWidthSizeClass
+import com.example.reply.data.Email
 import com.example.reply.ui.utils.DevicePosture
-import com.example.reply.ui.utils.ReplyContentType
 
 @Composable
 fun ReplyApp(
@@ -37,41 +39,14 @@ fun ReplyApp(
     foldingDevicePosture: DevicePosture,
     replyHomeUIState: ReplyHomeUIState
 ) {
-    /**
-     * This will help us select type of navigation and content type depending on window size and
-     * fold state of the device.
-     *
-     * In the state of folding device If it's half fold in BookPosture we want to avoid content
-     * at the crease/hinge
-     */
-    val contentType: ReplyContentType
-
-    when (windowSize) {
-        WindowWidthSizeClass.COMPACT -> {
-            contentType = ReplyContentType.LIST_ONLY
-        }
-        WindowWidthSizeClass.MEDIUM -> {
-            contentType = if (foldingDevicePosture != DevicePosture.NormalPosture) {
-                ReplyContentType.LIST_AND_DETAIL
-            } else {
-                ReplyContentType.LIST_ONLY
-            }
-        }
-        WindowWidthSizeClass.EXPANDED -> {
-            contentType = ReplyContentType.LIST_AND_DETAIL
-        }
-        else -> {
-            contentType = ReplyContentType.LIST_ONLY
-        }
+    ReplyNavigationWrapperUI {
+        ReplyAppContent(replyHomeUIState)
     }
-
-    ReplyNavigationWrapperUI(contentType, replyHomeUIState)
 }
 
 @Composable
 private fun ReplyNavigationWrapperUI(
-    contentType: ReplyContentType,
-    replyHomeUIState: ReplyHomeUIState
+    content: @Composable () -> Unit = {}
 ) {
     var selectedDestination: ReplyDestination by remember {
         mutableStateOf(ReplyDestination.Inbox)
@@ -88,25 +63,33 @@ private fun ReplyNavigationWrapperUI(
             }
         }
     ) {
-        ReplyAppContent(contentType, replyHomeUIState)
+        content()
     }
 }
 
 
+@OptIn(ExperimentalMaterial3AdaptiveApi::class)
 @Composable
 fun ReplyAppContent(
-    contentType: ReplyContentType,
     replyHomeUIState: ReplyHomeUIState,
 ) {
-    if (contentType == ReplyContentType.LIST_AND_DETAIL) {
-        ReplyListAndDetailContent(
-            replyHomeUIState = replyHomeUIState,
-            modifier = Modifier.fillMaxSize(),
-        )
-    } else {
-        ReplyListOnlyContent(
-            replyHomeUIState = replyHomeUIState,
-            modifier = Modifier.fillMaxSize(),
-        )
-    }
+    val selectedEmail: Email? = replyHomeUIState.emails.firstOrNull()
+    val navigator = rememberListDetailPaneScaffoldNavigator()
+
+    ListDetailPaneScaffold(
+        directive = navigator.scaffoldDirective,
+        value = navigator.scaffoldValue,
+        listPane = {
+           AnimatedPane {
+               ReplyListPane(replyHomeUIState)
+           }
+        },
+        detailPane = {
+            AnimatedPane {
+                if (selectedEmail != null) {
+                    ReplyDetailPane(selectedEmail)
+                }
+            }
+        }
+    )
 }

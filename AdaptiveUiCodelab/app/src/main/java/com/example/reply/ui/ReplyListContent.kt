@@ -51,7 +51,7 @@ import com.example.reply.R
 import com.example.reply.data.Email
 
 @Composable
-fun ReplyListOnlyContent(
+fun ReplyListPane(
     replyHomeUIState: ReplyHomeUIState,
     modifier: Modifier = Modifier
 ) {
@@ -66,24 +66,13 @@ fun ReplyListOnlyContent(
 }
 
 @Composable
-fun ReplyListAndDetailContent(
-    replyHomeUIState: ReplyHomeUIState,
-    modifier: Modifier = Modifier,
-    selectedItemIndex: Int = 0
+fun ReplyDetailPane(
+    email: Email,
+    modifier: Modifier = Modifier
 ) {
-    Row(modifier = modifier, horizontalArrangement = Arrangement.spacedBy(12.dp)) {
-        LazyColumn(modifier = modifier.weight(1f)) {
-            item {
-                ReplySearchBar(modifier = Modifier.fillMaxWidth())
-            }
-            items(replyHomeUIState.emails) { email ->
-                ReplyEmailListItem(email = email)
-            }
-        }
-        LazyColumn(modifier = modifier.weight(1f)) {
-            items(replyHomeUIState.emails[selectedItemIndex].threads) { email ->
-                ReplyEmailThreadItem(email = email)
-            }
+    LazyColumn(modifier = modifier) {
+        items(email.threads) {
+            ReplyEmailThreadItem(it)
         }
     }
 }
@@ -92,7 +81,8 @@ fun ReplyListAndDetailContent(
 @Composable
 fun ReplyEmailListItem(
     email: Email,
-    modifier: Modifier = Modifier.padding(horizontal = 16.dp, vertical = 4.dp)) {
+    modifier: Modifier = Modifier.padding(horizontal = 16.dp, vertical = 4.dp)
+) {
     Card(modifier = modifier) {
         Column(
             modifier = Modifier
@@ -100,7 +90,7 @@ fun ReplyEmailListItem(
                 .padding(20.dp)
         ) {
             Row(modifier = Modifier.fillMaxWidth()) {
-               ReplyProfileImage(
+                ReplyProfileImage(
                     drawableResource = email.sender.avatar,
                     description = email.sender.fullName,
                 )
@@ -155,15 +145,19 @@ fun ReplyEmailListItem(
 @Composable
 fun ReplyEmailThreadItem(
     email: Email,
-    modifier: Modifier = Modifier.padding(horizontal = 16.dp, vertical = 4.dp)) {
-    Card(modifier = modifier, colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface)) {
+    modifier: Modifier = Modifier.padding(horizontal = 16.dp, vertical = 4.dp)
+) {
+    Card(
+        modifier = modifier,
+        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface)
+    ) {
         Column(
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(20.dp)
         ) {
             Row(modifier = Modifier.fillMaxWidth()) {
-              ReplyProfileImage(
+                ReplyProfileImage(
                     drawableResource = email.sender.avatar,
                     description = email.sender.fullName,
                 )
@@ -203,13 +197,13 @@ fun ReplyEmailThreadItem(
                 color = MaterialTheme.colorScheme.outline,
                 modifier = Modifier.padding(top = 12.dp, bottom = 8.dp),
             )
-            
+
             Text(
                 text = email.body,
                 style = MaterialTheme.typography.bodyLarge,
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
             )
-            
+
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
