@@ -18,6 +18,7 @@ package com.example.reply.ui
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -53,14 +54,18 @@ import com.example.reply.data.Email
 @Composable
 fun ReplyListPane(
     replyHomeUIState: ReplyHomeUIState,
+    onEmailClick: (Email) -> Unit,
     modifier: Modifier = Modifier
 ) {
-    LazyColumn(modifier = modifier) {
+    LazyColumn(modifier = modifier.fillMaxWidth()) {
         item {
             ReplySearchBar(modifier = Modifier.fillMaxWidth())
         }
         items(replyHomeUIState.emails) { email ->
-            ReplyEmailListItem(email = email)
+            ReplyEmailListItem(
+                email = email,
+                onEmailClick = onEmailClick
+            )
         }
     }
 }
@@ -70,8 +75,11 @@ fun ReplyDetailPane(
     email: Email,
     modifier: Modifier = Modifier
 ) {
-    LazyColumn(modifier = modifier) {
-        items(email.threads) {
+    LazyColumn(modifier = modifier.fillMaxWidth()) {
+        item {
+            ReplyEmailThreadItem(email)
+        }
+        items(email.replies) {
             ReplyEmailThreadItem(it)
         }
     }
@@ -81,9 +89,16 @@ fun ReplyDetailPane(
 @Composable
 fun ReplyEmailListItem(
     email: Email,
-    modifier: Modifier = Modifier.padding(horizontal = 16.dp, vertical = 4.dp)
+    onEmailClick: (Email) -> Unit,
+    modifier: Modifier = Modifier
 ) {
-    Card(modifier = modifier) {
+    Card(
+        modifier = modifier
+            .padding(horizontal = 16.dp, vertical = 4.dp)
+            .clickable {
+                onEmailClick(email)
+            }
+    ) {
         Column(
             modifier = Modifier
                 .fillMaxWidth()
@@ -145,10 +160,10 @@ fun ReplyEmailListItem(
 @Composable
 fun ReplyEmailThreadItem(
     email: Email,
-    modifier: Modifier = Modifier.padding(horizontal = 16.dp, vertical = 4.dp)
+    modifier: Modifier = Modifier
 ) {
     Card(
-        modifier = modifier,
+        modifier = modifier.padding(horizontal = 16.dp, vertical = 4.dp),
         colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface)
     ) {
         Column(

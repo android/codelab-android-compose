@@ -76,7 +76,12 @@ class MainActivity : ComponentActivity() {
                 val windowAdaptiveInfo = currentWindowAdaptiveInfo()
                 val devicePosture = devicePostureFlow.collectAsState().value
                 val uiState = viewModel.uiState.collectAsState().value
-                ReplyApp(windowAdaptiveInfo.windowSizeClass.windowWidthSizeClass, devicePosture, uiState)
+                ReplyApp(
+                    windowAdaptiveInfo.windowSizeClass.windowWidthSizeClass,
+                    devicePosture,
+                    uiState,
+                    viewModel::setSelectedEmail
+                )
             }
         }
     }
@@ -89,7 +94,8 @@ fun ReplyAppPreview() {
         ReplyApp(
             replyHomeUIState = ReplyHomeUIState(emails = LocalEmailsDataProvider.allEmails),
             windowSize = WindowWidthSizeClass.COMPACT,
-            foldingDevicePosture = DevicePosture.NormalPosture
+            foldingDevicePosture = DevicePosture.NormalPosture,
+            onEmailClick = {}
         )
     }
 }
@@ -101,7 +107,8 @@ fun ReplyAppPreviewTablet() {
         ReplyApp(
             replyHomeUIState = ReplyHomeUIState(emails = LocalEmailsDataProvider.allEmails),
             windowSize = WindowWidthSizeClass.MEDIUM,
-            foldingDevicePosture = DevicePosture.NormalPosture
+            foldingDevicePosture = DevicePosture.NormalPosture,
+            onEmailClick = {}
         )
     }
 }
@@ -113,7 +120,8 @@ fun ReplyAppPreviewDesktop() {
         ReplyApp(
             replyHomeUIState = ReplyHomeUIState(emails = LocalEmailsDataProvider.allEmails),
             windowSize = WindowWidthSizeClass.EXPANDED,
-            foldingDevicePosture = DevicePosture.NormalPosture
+            foldingDevicePosture = DevicePosture.NormalPosture,
+            onEmailClick = {}
         )
     }
 }

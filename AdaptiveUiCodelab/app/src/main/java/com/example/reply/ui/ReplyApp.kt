@@ -16,11 +16,13 @@
 
 package com.example.reply.ui
 
+import androidx.activity.compose.BackHandler
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.material3.adaptive.ExperimentalMaterial3AdaptiveApi
 import androidx.compose.material3.adaptive.layout.AnimatedPane
 import androidx.compose.material3.adaptive.layout.ListDetailPaneScaffold
+import androidx.compose.material3.adaptive.layout.ListDetailPaneScaffoldRole
 import androidx.compose.material3.adaptive.navigation.rememberListDetailPaneScaffoldNavigator
 import androidx.compose.material3.adaptive.navigationsuite.NavigationSuiteScaffold
 import androidx.compose.runtime.Composable
@@ -37,10 +39,14 @@ import com.example.reply.ui.utils.DevicePosture
 fun ReplyApp(
     windowSize: WindowWidthSizeClass,
     foldingDevicePosture: DevicePosture,
-    replyHomeUIState: ReplyHomeUIState
+    replyHomeUIState: ReplyHomeUIState,
+    onEmailClick: (Email) -> Unit,
 ) {
     ReplyNavigationWrapperUI {
-        ReplyAppContent(replyHomeUIState)
+        ReplyAppContent(
+            replyHomeUIState = replyHomeUIState,
+            onEmailClick = onEmailClick
+        )
     }
 }
 
@@ -72,16 +78,27 @@ private fun ReplyNavigationWrapperUI(
 @Composable
 fun ReplyAppContent(
     replyHomeUIState: ReplyHomeUIState,
+    onEmailClick: (Email) -> Unit,
 ) {
-    val selectedEmail: Email? = replyHomeUIState.emails.firstOrNull()
-    val navigator = rememberListDetailPaneScaffoldNavigator()
+    val selectedEmail = replyHomeUIState.selectedEmail
+    val navigator = rememberListDetailPaneScaffoldNavigator<Long>()
+
+    BackHandler(navigator.canNavigateBack()) {
+        navigator.navigateBack()
+    }
 
     ListDetailPaneScaffold(
         directive = navigator.scaffoldDirective,
         value = navigator.scaffoldValue,
         listPane = {
            AnimatedPane {
-               ReplyListPane(replyHomeUIState)
+               ReplyListPane(
+                   replyHomeUIState = replyHomeUIState,
+                   onEmailClick = { email ->
+                       onEmailClick(email)
+                       navigator.navigateTo(ListDetailPaneScaffoldRole.Detail, email.id)
+                   }
+               )
            }
         },
         detailPane = {
