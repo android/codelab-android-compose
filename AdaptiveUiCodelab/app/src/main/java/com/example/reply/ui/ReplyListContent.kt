@@ -18,7 +18,6 @@ package com.example.reply.ui
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -93,11 +92,8 @@ fun ReplyEmailListItem(
     modifier: Modifier = Modifier
 ) {
     Card(
-        modifier = modifier
-            .padding(horizontal = 16.dp, vertical = 4.dp)
-            .clickable {
-                onEmailClick(email)
-            }
+        onClick = { onEmailClick(email) },
+        modifier = modifier.padding(horizontal = 16.dp, vertical = 4.dp)
     ) {
         Column(
             modifier = Modifier

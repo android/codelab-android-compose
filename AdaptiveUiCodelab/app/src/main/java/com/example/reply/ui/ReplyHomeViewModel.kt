@@ -24,6 +24,7 @@ import com.example.reply.data.EmailsRepositoryImpl
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
 class ReplyHomeViewModel(private val emailsRepository: EmailsRepository = EmailsRepositoryImpl()): ViewModel() {
@@ -54,10 +55,9 @@ class ReplyHomeViewModel(private val emailsRepository: EmailsRepository = Emails
     }
 
     fun setSelectedEmail(email: Email) {
-        val currentState = _uiState.value
-        _uiState.value = currentState.copy(
-            selectedEmail = email
-        )
+        _uiState.update {
+            it.copy(selectedEmail = email)
+        }
     }
 }
 
