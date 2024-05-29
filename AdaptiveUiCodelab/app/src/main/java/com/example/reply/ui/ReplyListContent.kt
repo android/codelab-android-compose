@@ -35,7 +35,6 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -79,13 +78,12 @@ fun ReplyDetailPane(
         item {
             ReplyEmailThreadItem(email)
         }
-        items(email.replies) {
-            ReplyEmailThreadItem(it)
+        items(email.replies) { reply ->
+            ReplyEmailThreadItem(reply)
         }
     }
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ReplyEmailListItem(
     email: Email,
@@ -156,7 +154,6 @@ fun ReplyEmailListItem(
     }
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ReplyEmailThreadItem(
     email: Email,
@@ -255,10 +252,12 @@ fun ReplyEmailThreadItem(
 fun ReplyProfileImage(
     drawableResource: Int,
     description: String,
-    modifier: Modifier = Modifier.size(40.dp),
+    modifier: Modifier = Modifier,
 ) {
     Image(
-        modifier = modifier.clip(CircleShape),
+        modifier = modifier
+            .size(40.dp)
+            .clip(CircleShape),
         painter = painterResource(id = drawableResource),
         contentDescription = description,
     )
@@ -266,10 +265,11 @@ fun ReplyProfileImage(
 
 @Composable
 fun ReplySearchBar(modifier: Modifier = Modifier) {
-    Row(modifier = modifier
-        .fillMaxWidth()
-        .padding(16.dp)
-        .background(MaterialTheme.colorScheme.surface, CircleShape),
+    Row(
+        modifier = modifier
+            .fillMaxWidth()
+            .padding(16.dp)
+            .background(MaterialTheme.colorScheme.surface, CircleShape),
         verticalAlignment = Alignment.CenterVertically
     ) {
         Icon(
@@ -278,7 +278,8 @@ fun ReplySearchBar(modifier: Modifier = Modifier) {
             modifier = Modifier.padding(start = 16.dp),
             tint = MaterialTheme.colorScheme.outline
         )
-        Text(text = stringResource(id = R.string.search_replies),
+        Text(
+            text = stringResource(id = R.string.search_replies),
             modifier = Modifier
                 .weight(1f)
                 .padding(16.dp),
