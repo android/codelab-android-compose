@@ -27,7 +27,7 @@ import com.example.reply.data.MailboxType
 
 object LocalEmailsDataProvider {
 
-    private val threads = listOf(
+    private val replies = listOf(
         Email(
             4L,
             LocalAccountsDataProvider.getContactAccountByUid(11L),
@@ -116,7 +116,7 @@ object LocalEmailsDataProvider {
             """.trimIndent(),
             createAt = "20 mins ago",
             isStarred = true,
-            threads = threads,
+            replies = replies,
         ),
         Email(
             1L,
@@ -133,7 +133,7 @@ object LocalEmailsDataProvider {
                 Ali
             """.trimIndent(),
             createAt = "40 mins ago",
-            threads = threads,
+            replies = replies,
         ),
         Email(
             2L,
@@ -149,7 +149,7 @@ object LocalEmailsDataProvider {
             ),
             true,
             createAt = "1 hour ago",
-            threads = threads,
+            replies = replies,
         ),
         Email(
             3L,
@@ -311,4 +311,3 @@ object LocalEmailsDataProvider {
         "Grocery coupons"
     )
 }
-
