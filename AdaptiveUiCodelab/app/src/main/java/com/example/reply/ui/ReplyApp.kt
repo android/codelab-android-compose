@@ -20,20 +20,29 @@ import androidx.activity.compose.BackHandler
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.material3.adaptive.ExperimentalMaterial3AdaptiveApi
+import androidx.compose.material3.adaptive.currentWindowAdaptiveInfo
+import androidx.compose.material3.adaptive.currentWindowSize
 import androidx.compose.material3.adaptive.layout.AnimatedPane
 import androidx.compose.material3.adaptive.layout.ListDetailPaneScaffold
 import androidx.compose.material3.adaptive.layout.ListDetailPaneScaffoldRole
 import androidx.compose.material3.adaptive.navigation.rememberListDetailPaneScaffoldNavigator
 import androidx.compose.material3.adaptive.navigationsuite.NavigationSuiteScaffold
+import androidx.compose.material3.adaptive.navigationsuite.NavigationSuiteScaffoldDefaults
+import androidx.compose.material3.adaptive.navigationsuite.NavigationSuiteType
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.toSize
 import androidx.window.core.layout.WindowWidthSizeClass
 import com.example.reply.data.Email
 import com.example.reply.ui.utils.DevicePosture
+
+private val WINDOW_WIDTH_LARGE = 1200.dp
 
 @Composable
 fun ReplyApp(
@@ -57,6 +66,18 @@ private fun ReplyNavigationWrapperUI(
     var selectedDestination: ReplyDestination by remember {
         mutableStateOf(ReplyDestination.Inbox)
     }
+
+    val windowSize = with(LocalDensity.current) {
+        currentWindowSize().toSize().toDpSize()
+    }
+    val navLayoutType = if (windowSize.width >= WINDOW_WIDTH_LARGE) {
+        // Show a permanent drawer when window width is large.
+        NavigationSuiteType.NavigationDrawer
+    } else {
+        // Otherwise use the default from NavigationSuiteScaffold.
+        NavigationSuiteScaffoldDefaults.calculateFromAdaptiveInfo(currentWindowAdaptiveInfo())
+    }
+
     NavigationSuiteScaffold(
         navigationSuiteItems = {
             ReplyDestination.entries.forEach {
@@ -67,7 +88,8 @@ private fun ReplyNavigationWrapperUI(
                     onClick = { /*TODO update selection*/ },
                 )
             }
-        }
+        },
+        layoutType = navLayoutType
     ) {
         content()
     }
