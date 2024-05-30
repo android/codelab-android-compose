@@ -21,8 +21,9 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.reply.data.local.LocalEmailsDataProvider
 import com.example.reply.ui.theme.ReplyTheme
 
@@ -35,8 +36,11 @@ class MainActivity : ComponentActivity() {
 
         setContent {
             ReplyTheme {
-                val uiState = viewModel.uiState.collectAsState().value
-                ReplyApp(uiState)
+                val uiState by viewModel.uiState.collectAsStateWithLifecycle()
+                ReplyApp(
+                    replyHomeUIState = uiState,
+                    onEmailClick = viewModel::setSelectedEmail
+                )
             }
         }
     }
@@ -46,9 +50,12 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun ReplyAppPreview() {
     ReplyTheme {
-        ReplyApp(replyHomeUIState = ReplyHomeUIState(
-            emails = LocalEmailsDataProvider.allEmails
-        ))
+        ReplyApp(
+            replyHomeUIState = ReplyHomeUIState(
+                emails = LocalEmailsDataProvider.allEmails
+            ),
+            onEmailClick = {}
+        )
     }
 }
 
@@ -56,9 +63,12 @@ fun ReplyAppPreview() {
 @Composable
 fun ReplyAppPreviewTablet() {
     ReplyTheme {
-        ReplyApp(replyHomeUIState = ReplyHomeUIState(
-            emails = LocalEmailsDataProvider.allEmails
-        ))
+        ReplyApp(
+            replyHomeUIState = ReplyHomeUIState(
+                emails = LocalEmailsDataProvider.allEmails
+            ),
+            onEmailClick = {}
+        )
     }
 }
 
@@ -66,8 +76,11 @@ fun ReplyAppPreviewTablet() {
 @Composable
 fun ReplyAppPreviewDesktop() {
     ReplyTheme {
-        ReplyApp(replyHomeUIState = ReplyHomeUIState(
-            emails = LocalEmailsDataProvider.allEmails
-        ))
+        ReplyApp(
+            replyHomeUIState = ReplyHomeUIState(
+                emails = LocalEmailsDataProvider.allEmails
+            ),
+            onEmailClick = {}
+        )
     }
 }
