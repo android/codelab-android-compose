@@ -38,16 +38,12 @@ import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.toSize
-import androidx.window.core.layout.WindowWidthSizeClass
 import com.example.reply.data.Email
-import com.example.reply.ui.utils.DevicePosture
 
 private val WINDOW_WIDTH_LARGE = 1200.dp
 
 @Composable
 fun ReplyApp(
-    windowSize: WindowWidthSizeClass,
-    foldingDevicePosture: DevicePosture,
     replyHomeUIState: ReplyHomeUIState,
     onEmailClick: (Email) -> Unit,
 ) {
