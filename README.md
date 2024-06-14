@@ -11,7 +11,7 @@ For more information about Jetpack Compose, please [read the documentation](http
 
 ## 🧬 Codelabs
 
-### [Basics codelabs](https://developer.android.com/codelabs/jetpack-compose-basics)
+### [Basics codelab](https://developer.android.com/codelabs/jetpack-compose-basics)
 
 Go hands-on and learn the fundamentals of declarative UI, working with state, layouts and theming.
 
