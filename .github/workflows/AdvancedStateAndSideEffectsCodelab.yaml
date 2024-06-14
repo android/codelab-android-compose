@@ -6,9 +6,11 @@ on:
       - main
     paths:
       - 'AdvancedStateAndSideEffectsCodelab/**'
+      - '.github/workflows/AdvancedStateAndSideEffectsCodelab.yaml'
   pull_request:
     paths:
       - 'AdvancedStateAndSideEffectsCodelab/**'
+      - '.github/workflows/AdvancedStateAndSideEffectsCodelab.yaml'
 
 env:
   SAMPLE_PATH: AdvancedStateAndSideEffectsCodelab
@@ -31,16 +33,7 @@ jobs:
           distribution: 'zulu'
           java-version: 17
 
-      - name: Generate cache key
-        run: ./scripts/checksum.sh $SAMPLE_PATH checksum.txt
-
-      - uses: actions/cache@v4
-        with:
-          path: |
-            ~/.gradle/caches/modules-*
-            ~/.gradle/caches/jars-*
-            ~/.gradle/caches/build-cache-*
-          key: gradle-${{ hashFiles('checksum.txt') }}
+      - uses: gradle/actions/setup-gradle@v3
 
       - name: Build project
         working-directory: ${{ env.SAMPLE_PATH }}
@@ -75,7 +68,7 @@ jobs:
           sudo udevadm control --reload-rules
           sudo udevadm trigger --name-match=kvm
           ls /dev/kvm
-          
+
       - name: Checkout
         uses: actions/checkout@v4
 
@@ -88,16 +81,7 @@ jobs:
           distribution: 'zulu'
           java-version: 17
 
-      - name: Generate cache key
-        run: ./scripts/checksum.sh $SAMPLE_PATH checksum.txt
-
-      - uses: actions/cache@v4
-        with:
-          path: |
-            ~/.gradle/caches/modules-*
-            ~/.gradle/caches/jars-*
-            ~/.gradle/caches/build-cache-*
-          key: gradle-${{ hashFiles('checksum.txt') }}
+      - uses: gradle/actions/setup-gradle@v3
 
       - name: Run instrumentation tests
         uses: reactivecircus/android-emulator-runner@v2
