@@ -25,13 +25,12 @@ buildscript {
         // App dependencies
         appCompatVersion = '1.6.1'
         activityComposeVersion = '1.9.0'
-        composeCompilerVersion = '1.5.13'
         coreTestingVersion = '2.2.0'
         coroutinesVersion = "1.5.2"
         espressoVersion = '3.5.1'
         fragmentVersion = '1.7.0'
         junitVersion = '4.13.1'
-        kotlinVersion = '1.9.23'
+        kotlinVersion = '2.0.0'
         ktlintVersion = '0.48.2'
         ktxVersion = '1.13.1'
         lifecycleVersion = '2.3.0'
@@ -51,6 +50,7 @@ buildscript {
     dependencies {
         classpath "com.android.tools.build:gradle:8.4.0"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
+        classpath "org.jetbrains.kotlin:compose-compiler-gradle-plugin:$kotlinVersion"
     }
 }
 

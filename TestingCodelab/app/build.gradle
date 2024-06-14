@@ -17,6 +17,7 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'org.jetbrains.kotlin.plugin.compose'
 }
 
 android {
@@ -73,10 +74,6 @@ android {
         renderScript false
         resValues false
         shaders false
-    }
-
-    composeOptions {
-        kotlinCompilerExtensionVersion rootProject.composeCompilerVersion
     }
 
     packagingOptions {
