@@ -19,6 +19,7 @@ plugins {
     id 'kotlin-android'
     id 'kotlin-kapt'
     id 'dagger.hilt.android.plugin'
+    id 'org.jetbrains.kotlin.plugin.compose'
 }
 
 // Reads the Google maps key that is used in the AndroidManifest
@@ -81,10 +82,6 @@ android {
         renderScript false
         resValues false
         shaders false
-    }
-
-    composeOptions {
-        kotlinCompilerExtensionVersion '1.5.14'
     }
 
     packagingOptions {

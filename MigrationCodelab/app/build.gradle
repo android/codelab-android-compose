@@ -18,6 +18,8 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'androidx.navigation.safeargs.kotlin'
+apply plugin: 'org.jetbrains.kotlin.plugin.compose'
+
 
 android {
     compileSdkVersion 34
@@ -48,9 +50,6 @@ android {
     buildFeatures {
         dataBinding true
         compose true
-    }
-    composeOptions {
-        kotlinCompilerExtensionVersion '1.5.14'
     }
     packagingOptions {
         // Multiple dependency bring these files in. Exclude them to enable
