@@ -61,13 +61,21 @@ jobs:
 
   test:
     needs: build
-    runs-on: macos-14
+    runs-on: ubuntu-latest
     timeout-minutes: 30
     strategy:
       matrix:
         api-level: [26, 29]
 
     steps:
+      # https://github.blog/changelog/2023-02-23-hardware-accelerated-android-virtualization-on-actions-windows-and-linux-larger-hosted-runners
+      - name: Enable KVM group perms
+        run: |
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
+          ls /dev/kvm
+          
       - name: Checkout
         uses: actions/checkout@v4
 
@@ -96,7 +104,7 @@ jobs:
         with:
           api-level: ${{ matrix.api-level }}
           target: google_apis
-          arch: arm64-v8a
+          arch: x86
           disable-animations: true
           script: ./gradlew connectedCheck --stacktrace
           working-directory: ${{ env.SAMPLE_PATH }}
