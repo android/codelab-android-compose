@@ -96,7 +96,7 @@ jobs:
         with:
           api-level: ${{ matrix.api-level }}
           target: google_apis
-          arch: arm-v8
+          arch: arm64-v8a
           disable-animations: true
           script: ./gradlew connectedCheck --stacktrace
           working-directory: ${{ env.SAMPLE_PATH }}
