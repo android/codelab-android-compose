@@ -81,13 +81,13 @@ android {
 }
 
 dependencies {
-    def composeBom = platform('androidx.compose:compose-bom:2024.05.00')
+    def composeBom = platform('androidx.compose:compose-bom:2024.06.00')
     implementation(composeBom)
     androidTestImplementation(composeBom)
 
-    implementation "androidx.appcompat:appcompat:1.6.1"
+    implementation "androidx.appcompat:appcompat:1.7.0"
     implementation "androidx.core:core-ktx:1.13.1"
-    implementation "com.google.android.material:material:1.11.0"
+    implementation "com.google.android.material:material:1.12.0"
 
     // Compose
     implementation "androidx.compose.runtime:runtime"
