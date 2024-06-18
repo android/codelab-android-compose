@@ -17,6 +17,7 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'org.jetbrains.kotlin.plugin.compose'
 }
 
 android {
@@ -39,13 +40,10 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
-    composeOptions {
-        kotlinCompilerExtensionVersion '1.5.13'
-    }
 }
 
 dependencies {
-    def composeBom = platform('androidx.compose:compose-bom:2024.05.00')
+    def composeBom = platform('androidx.compose:compose-bom:2024.06.00')
     implementation(composeBom)
 
     implementation 'androidx.activity:activity-compose:1.9.0'

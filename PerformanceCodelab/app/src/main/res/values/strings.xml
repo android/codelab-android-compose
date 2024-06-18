@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">compose_performance_workshop</string>
+    <string name="add_item">Add Item</string>
+    <string name="latest_change_was">Latest change was %1$s</string>
+    <string name="remove">Remove</string>
+    <string name="performance_dashboard">Performance dashboard</string>
+    <string name="previous_task">Previous task</string>
+    <string name="next_task">Next task</string>
+</resources>
