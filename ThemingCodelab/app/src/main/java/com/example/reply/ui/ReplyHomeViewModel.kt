@@ -22,6 +22,7 @@ import com.example.reply.data.Email
 import com.example.reply.data.LocalEmailsDataProvider
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.launch
 
@@ -29,7 +30,7 @@ class ReplyHomeViewModel : ViewModel() {
 
     // UI state exposed to the UI
     private val _uiState = MutableStateFlow(ReplyHomeUIState(loading = true))
-    val uiState: StateFlow<ReplyHomeUIState> = _uiState
+    val uiState: StateFlow<ReplyHomeUIState> = _uiState.asStateFlow()
 
     init {
         initEmailList()

@@ -1,0 +1,16 @@
+*.iml
+.gradle
+local.properties
+.idea/*
+!.idea/copyright
+# Keep the code styles.
+!/.idea/codeStyles
+/.idea/codeStyles/*
+!/.idea/codeStyles/Project.xml
+!/.idea/codeStyles/codeStyleConfig.xml
+
+.DS_Store
+/build
+/captures
+.externalNativeBuild
+.cxx
