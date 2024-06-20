@@ -25,9 +25,12 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
-class ReplyHomeViewModel(private val emailsRepository: EmailsRepository = EmailsRepositoryImpl()): ViewModel() {
+class ReplyHomeViewModel(
+    private val emailsRepository: EmailsRepository = EmailsRepositoryImpl()
+): ViewModel() {
 
     // UI state exposed to the UI
     private val _uiState = MutableStateFlow(ReplyHomeUIState(loading = true))
@@ -44,14 +47,26 @@ class ReplyHomeViewModel(private val emailsRepository: EmailsRepository = Emails
                     _uiState.value = ReplyHomeUIState(error = ex.message)
                 }
                 .collect { emails ->
-                    _uiState.value = ReplyHomeUIState(emails = emails)
+                    // If nothing is selected, initially select the first element.
+                    val currentSelected = _uiState.value.selectedEmail
+                    _uiState.value = ReplyHomeUIState(
+                        emails = emails,
+                        selectedEmail = currentSelected ?: emails.firstOrNull()
+                    )
                 }
+        }
+    }
+
+    fun setSelectedEmail(email: Email) {
+        _uiState.update {
+            it.copy(selectedEmail = email)
         }
     }
 }
 
 data class ReplyHomeUIState(
     val emails : List<Email> = emptyList(),
+    val selectedEmail: Email? = null,
     val loading: Boolean = false,
     val error: String? = null
 )
