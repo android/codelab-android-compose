@@ -33,7 +33,7 @@ data class Email(
     var isStarred: Boolean = false,
     var mailbox: MailboxType = MailboxType.INBOX,
     var createAt: String,
-    val threads: List<Email> = emptyList()
+    val replies: List<Email> = emptyList()
 ) {
     val senderPreview: String = "${sender.fullName} - 4 hrs ago"
     val hasBody: Boolean = body.isNotBlank()
@@ -44,5 +44,3 @@ data class Email(
     val nonUserAccountRecipients = recipients
         .filterNot { LocalAccountsDataProvider.isUserAccount(it.uid) }
 }
-
-
