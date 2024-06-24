@@ -8,10 +8,10 @@ junit = "4.13.2"
 junitVersion = "1.1.5"
 kotlin = "2.0.0"
 kotlinxCoroutinesAndroid = "1.8.1"
-lifecycle = "2.7.0"
+lifecycle = "2.8.2"
 material3Adaptive = "1.0.0-beta01"
 material3AdaptiveNavSuite = "1.3.0-beta01"
-window = "1.2.0"
+window = "1.3.0"
 
 [libraries]
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "activityCompose" }
@@ -39,3 +39,4 @@ kotlinx-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutine
 [plugins]
 android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
