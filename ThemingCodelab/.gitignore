@@ -10,3 +10,4 @@ app/build
 .cxx
 local.properties
 /buildSrc/.gradle/*
+.kotlin/
