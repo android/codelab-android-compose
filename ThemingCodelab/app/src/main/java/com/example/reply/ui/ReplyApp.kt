@@ -123,12 +123,12 @@ val TOP_LEVEL_DESTINATIONS = listOf(
         route = ReplyRoute.DM,
         selectedIcon = Icons.Outlined.ChatBubbleOutline,
         unselectedIcon = Icons.Outlined.ChatBubbleOutline,
-        iconTextId = R.string.tab_inbox
+        iconTextId = R.string.tab_dm
     ),
     ReplyTopLevelDestination(
         route = ReplyRoute.GROUPS,
         selectedIcon = Icons.Default.People,
         unselectedIcon = Icons.Default.People,
-        iconTextId = R.string.tab_article
+        iconTextId = R.string.tab_groups
     )
 )
