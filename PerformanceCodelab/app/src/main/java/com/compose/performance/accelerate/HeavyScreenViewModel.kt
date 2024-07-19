@@ -80,12 +80,11 @@ private val poolOfTags =
     listOf("Lorem", "ipsum", "dolor", "sit", "amet", "consectetur", "adipiscing", "elit")
 
 private val poolOfImageUrls = listOf(
-    "https://source.unsplash.com/qwtCeJ5cLYs",
-    "https://source.unsplash.com/dBI_My696Rk",
-    "https://source.unsplash.com/JKUTrJ4vK00",
-    "https://source.unsplash.com/hpjSkU2UYSU",
-    "https://source.unsplash.com/HUJDz6CJEaM",
-    "https://source.unsplash.com/2pBo7hWjzIc"
+    "https://picsum.photos/id/57/2448/3264",
+    "https://picsum.photos/id/36/4179/2790",
+    "https://picsum.photos/id/96/4752/3168",
+    "https://picsum.photos/id/180/2400/1600",
+    "https://picsum.photos/id/252/5000/3281"
 )
 
 private val stableRandom = Random(0)
