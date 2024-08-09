@@ -114,23 +114,23 @@ dependencies {
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.8.1"
 
     implementation 'androidx.appcompat:appcompat:1.7.0'
-    implementation 'androidx.activity:activity-ktx:1.9.0'
+    implementation 'androidx.activity:activity-ktx:1.9.1'
     implementation 'androidx.core:core-ktx:1.13.1'
-    implementation "androidx.activity:activity-compose:1.9.0"
+    implementation "androidx.activity:activity-compose:1.9.1"
 
-    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.2"
-    implementation "androidx.lifecycle:lifecycle-viewmodel-savedstate:2.8.2"
-    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.8.2"
-    implementation "androidx.lifecycle:lifecycle-viewmodel-compose:2.8.2"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.4"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-savedstate:2.8.4"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.8.4"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-compose:2.8.4"
 
     implementation 'androidx.navigation:navigation-compose:2.7.7'
 
-    androidTestImplementation 'androidx.test:rules:1.6.0'
-    androidTestImplementation 'androidx.test:runner:1.6.0'
+    androidTestImplementation 'androidx.test:rules:1.6.1'
+    androidTestImplementation 'androidx.test:runner:1.6.1'
 
     // TODO: Bump to latest after Espresso 3.5.0 goes stable
     //  (due to https://github.com/robolectric/robolectric/issues/6593)
-    testImplementation 'org.robolectric:robolectric:4.12.2'
+    testImplementation 'org.robolectric:robolectric:4.13'
 }
 
 tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).configureEach {
