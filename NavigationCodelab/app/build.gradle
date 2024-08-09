@@ -95,14 +95,14 @@ dependencies {
     implementation "androidx.compose.foundation:foundation"
     implementation "androidx.compose.material:material"
     implementation "androidx.compose.material:material-icons-extended"
-    implementation "androidx.activity:activity-compose:1.9.0"
+    implementation "androidx.activity:activity-compose:1.9.1"
     implementation "androidx.navigation:navigation-compose:2.7.7"
     debugImplementation "androidx.compose.ui:ui-tooling"
 
     // Testing dependencies
     androidTestImplementation "androidx.arch.core:core-testing:2.2.0"
-    androidTestImplementation "androidx.test.espresso:espresso-contrib:3.6.0"
-    androidTestImplementation "androidx.test.espresso:espresso-core:3.6.0"
+    androidTestImplementation "androidx.test.espresso:espresso-contrib:3.6.1"
+    androidTestImplementation "androidx.test.espresso:espresso-core:3.6.1"
 
     // Compose testing dependencies
     androidTestImplementation "androidx.compose.ui:ui-test-junit4"

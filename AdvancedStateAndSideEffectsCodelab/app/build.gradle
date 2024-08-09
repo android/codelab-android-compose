@@ -103,7 +103,7 @@ dependencies {
         }
     }
 
-    implementation "androidx.activity:activity-compose:1.9.0"
+    implementation "androidx.activity:activity-compose:1.9.1"
     implementation "androidx.appcompat:appcompat:1.7.0"
     implementation "androidx.tracing:tracing:1.2.0"
 
@@ -121,23 +121,23 @@ dependencies {
     debugImplementation "androidx.compose.ui:ui-test-manifest"
 
 
-    def lifecycle_version = "2.8.2"
+    def lifecycle_version = "2.8.4"
     implementation "androidx.lifecycle:lifecycle-viewmodel-compose:$lifecycle_version"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
     implementation "androidx.lifecycle:lifecycle-runtime-compose:$lifecycle_version"
-    implementation "com.google.dagger:hilt-android:2.51.1"
-    kapt "com.google.dagger:hilt-compiler:2.51.1"
+    implementation "com.google.dagger:hilt-android:2.52"
+    kapt "com.google.dagger:hilt-compiler:2.52"
 
-    implementation "io.coil-kt:coil-compose:2.6.0"
+    implementation "io.coil-kt:coil-compose:2.7.0"
 
     androidTestImplementation "junit:junit:4.13.2"
-    androidTestImplementation "androidx.test:core:1.6.0"
-    androidTestImplementation "androidx.test:runner:1.6.0"
-    androidTestImplementation "androidx.test:rules:1.6.0"
-    androidTestImplementation "androidx.test.espresso:espresso-core:3.6.0"
-    androidTestImplementation "androidx.test.ext:junit-ktx:1.2.0"
+    androidTestImplementation "androidx.test:core:1.6.1"
+    androidTestImplementation "androidx.test:runner:1.6.1"
+    androidTestImplementation "androidx.test:rules:1.6.1"
+    androidTestImplementation "androidx.test.espresso:espresso-core:3.6.1"
+    androidTestImplementation "androidx.test.ext:junit-ktx:1.2.1"
     androidTestImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.8.1"
-    androidTestImplementation "com.google.dagger:hilt-android:2.51.1"
-    androidTestImplementation "com.google.dagger:hilt-android-testing:2.51.1"
-    kaptAndroidTest "com.google.dagger:hilt-compiler:2.51.1"
+    androidTestImplementation "com.google.dagger:hilt-android:2.52"
+    androidTestImplementation "com.google.dagger:hilt-android-testing:2.52"
+    kaptAndroidTest "com.google.dagger:hilt-compiler:2.52"
 }
