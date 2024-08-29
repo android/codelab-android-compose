@@ -89,9 +89,14 @@ fun ReplyDetailPane(
     email: Email,
     modifier: Modifier = Modifier
 ) {
+
+    val layoutDirection = LocalLayoutDirection.current
+
     LazyColumn(
         modifier = modifier.fillMaxWidth(),
         contentPadding = WindowInsets.safeDrawing.asPaddingValues()
+            .copy(layoutDirection = layoutDirection, bottom = 0.dp)
+
     ) {
         item {
             ReplyEmailThreadItem(email)
