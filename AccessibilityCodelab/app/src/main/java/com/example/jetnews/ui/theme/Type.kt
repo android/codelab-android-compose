@@ -16,7 +16,7 @@
 
 package com.example.jetnews.ui.theme
 
-import androidx.compose.material.Typography
+import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
@@ -36,54 +36,62 @@ private val Domine = FontFamily(
 )
 
 val JetnewsTypography = Typography(
-    defaultFontFamily = Montserrat,
-    h4 = TextStyle(
+    headlineMedium = TextStyle(
+        fontFamily = Montserrat,
         fontWeight = FontWeight.SemiBold,
         fontSize = 30.sp,
         letterSpacing = 0.sp
     ),
-    h5 = TextStyle(
+    headlineSmall = TextStyle(
+        fontFamily = Montserrat,
         fontWeight = FontWeight.SemiBold,
         fontSize = 24.sp,
         letterSpacing = 0.sp
     ),
-    h6 = TextStyle(
+    titleLarge = TextStyle(
+        fontFamily = Montserrat,
         fontWeight = FontWeight.SemiBold,
         fontSize = 20.sp,
         letterSpacing = 0.sp
     ),
-    subtitle1 = TextStyle(
+    titleMedium = TextStyle(
+        fontFamily = Montserrat,
         fontWeight = FontWeight.SemiBold,
         fontSize = 16.sp,
         letterSpacing = 0.15.sp
     ),
-    subtitle2 = TextStyle(
+    titleSmall = TextStyle(
+        fontFamily = Montserrat,
         fontWeight = FontWeight.Medium,
         fontSize = 14.sp,
         letterSpacing = 0.1.sp
     ),
-    body1 = TextStyle(
+    bodyLarge = TextStyle(
         fontFamily = Domine,
         fontWeight = FontWeight.Normal,
         fontSize = 16.sp,
         letterSpacing = 0.5.sp
     ),
-    body2 = TextStyle(
+    bodyMedium = TextStyle(
+        fontFamily = Montserrat,
         fontWeight = FontWeight.Medium,
         fontSize = 14.sp,
         letterSpacing = 0.25.sp
     ),
-    button = TextStyle(
+    labelLarge = TextStyle(
+        fontFamily = Montserrat,
         fontWeight = FontWeight.SemiBold,
         fontSize = 14.sp,
         letterSpacing = 1.25.sp
     ),
-    caption = TextStyle(
+    bodySmall = TextStyle(
+        fontFamily = Montserrat,
         fontWeight = FontWeight.Medium,
         fontSize = 12.sp,
         letterSpacing = 0.4.sp
     ),
-    overline = TextStyle(
+    labelSmall = TextStyle(
+        fontFamily = Montserrat,
         fontWeight = FontWeight.SemiBold,
         fontSize = 12.sp,
         letterSpacing = 1.sp

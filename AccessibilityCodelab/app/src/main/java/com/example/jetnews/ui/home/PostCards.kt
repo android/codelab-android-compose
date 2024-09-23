@@ -25,17 +25,17 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.material.AlertDialog
-import androidx.compose.material.Card
-import androidx.compose.material.ContentAlpha
-import androidx.compose.material.ExperimentalMaterialApi
-import androidx.compose.material.Icon
-import androidx.compose.material.LocalContentAlpha
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
+import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.Card
+import androidx.compose.material3.Icon
+import androidx.compose.material3.LocalContentColor
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
+import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.CardElevation
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.getValue
@@ -75,10 +75,10 @@ fun PostCardHistory(post: Post, navigateToArticle: (String) -> Unit) {
                 .weight(1f)
                 .padding(top = 16.dp, bottom = 16.dp)
         ) {
-            Text(post.title, style = MaterialTheme.typography.subtitle1)
+            Text(post.title, style = MaterialTheme.typography.titleMedium)
             Row(Modifier.padding(top = 4.dp)) {
-                CompositionLocalProvider(LocalContentAlpha provides ContentAlpha.medium) {
-                    val textStyle = MaterialTheme.typography.body2
+                CompositionLocalProvider(LocalContentColor provides MaterialTheme.colorScheme.onSurfaceVariant) {
+                    val textStyle = MaterialTheme.typography.bodyMedium
                     Text(
                         text = post.metadata.author.name,
                         style = textStyle
@@ -90,7 +90,7 @@ fun PostCardHistory(post: Post, navigateToArticle: (String) -> Unit) {
                 }
             }
         }
-        CompositionLocalProvider(LocalContentAlpha provides ContentAlpha.medium) {
+        CompositionLocalProvider(LocalContentColor provides MaterialTheme.colorScheme.onSurfaceVariant) {
             Icon(
                 imageVector = Icons.Default.Close,
                 contentDescription = stringResource(R.string.cd_show_fewer),
@@ -107,20 +107,20 @@ fun PostCardHistory(post: Post, navigateToArticle: (String) -> Unit) {
             title = {
                 Text(
                     text = stringResource(id = R.string.fewer_stories),
-                    style = MaterialTheme.typography.h6
+                    style = MaterialTheme.typography.titleLarge
                 )
             },
             text = {
                 Text(
                     text = stringResource(id = R.string.fewer_stories_content),
-                    style = MaterialTheme.typography.body1
+                    style = MaterialTheme.typography.bodyLarge
                 )
             },
             confirmButton = {
                 Text(
                     text = stringResource(id = R.string.agree),
-                    style = MaterialTheme.typography.button,
-                    color = MaterialTheme.colors.primary,
+                    style = MaterialTheme.typography.labelLarge,
+                    color = MaterialTheme.colorScheme.primary,
                     modifier = Modifier
                         .padding(15.dp)
                         .clickable { openDialog = false }
@@ -130,7 +130,6 @@ fun PostCardHistory(post: Post, navigateToArticle: (String) -> Unit) {
     }
 }
 
-@OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun PostCardPopular(
     post: Post,
@@ -138,9 +137,11 @@ fun PostCardPopular(
     modifier: Modifier = Modifier
 ) {
     Card(
+        colors = CardDefaults.cardColors(),
         shape = MaterialTheme.shapes.medium,
         modifier = modifier.size(280.dp, 240.dp),
-        onClick = { navigateToArticle(post.id) }
+        onClick = { navigateToArticle(post.id) },
+        elevation = CardDefaults.elevatedCardElevation()
     ) {
         Column {
 
@@ -156,7 +157,7 @@ fun PostCardPopular(
             Column(modifier = Modifier.padding(16.dp)) {
                 Text(
                     text = post.title,
-                    style = MaterialTheme.typography.h6,
+                    style = MaterialTheme.typography.titleLarge,
                     maxLines = 2,
                     overflow = TextOverflow.Ellipsis
                 )
@@ -164,7 +165,7 @@ fun PostCardPopular(
                     text = post.metadata.author.name,
                     maxLines = 1,
                     overflow = TextOverflow.Ellipsis,
-                    style = MaterialTheme.typography.body2
+                    style = MaterialTheme.typography.bodyMedium
                 )
 
                 Text(
@@ -175,7 +176,7 @@ fun PostCardPopular(
                             post.metadata.readTimeMinutes
                         )
                     ),
-                    style = MaterialTheme.typography.body2
+                    style = MaterialTheme.typography.bodyMedium
                 )
             }
         }

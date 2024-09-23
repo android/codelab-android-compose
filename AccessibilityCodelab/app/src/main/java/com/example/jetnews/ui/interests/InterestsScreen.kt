@@ -25,15 +25,13 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Checkbox
-import androidx.compose.material.Divider
-import androidx.compose.material.Icon
-import androidx.compose.material.IconButton
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Scaffold
-import androidx.compose.material.ScaffoldState
-import androidx.compose.material.Text
-import androidx.compose.material.rememberScaffoldState
+import androidx.compose.material3.Checkbox
+import androidx.compose.material3.Divider
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -59,14 +57,12 @@ import kotlinx.coroutines.launch
  *
  * @param interestsRepository data source for this screen
  * @param openDrawer (event) request opening the app drawer
- * @param scaffoldState (state) state for screen Scaffold
  */
 @Composable
 fun InterestsScreen(
     interestsRepository: InterestsRepository,
     openDrawer: () -> Unit,
     modifier: Modifier = Modifier,
-    scaffoldState: ScaffoldState = rememberScaffoldState()
 ) {
     // Returns a [CoroutineScope] that is scoped to the lifecycle of [InterestsScreen]. When this
     // screen is removed from composition, the scope will be cancelled.
@@ -83,7 +79,6 @@ fun InterestsScreen(
         onTopicSelect = onTopicSelect,
         openDrawer = openDrawer,
         modifier = modifier,
-        scaffoldState = scaffoldState
     )
 }
 
@@ -94,7 +89,6 @@ fun InterestsScreen(
  * @param selectedTopics (state) currently selected topics
  * @param onTopicSelect (event) request a topic selection be changed
  * @param openDrawer (event) request opening the app drawer
- * @param scaffoldState (state) the state for the screen's [Scaffold]
  */
 @Composable
 fun InterestsScreen(
@@ -102,11 +96,9 @@ fun InterestsScreen(
     selectedTopics: Set<TopicSelection>,
     onTopicSelect: (TopicSelection) -> Unit,
     openDrawer: () -> Unit,
-    scaffoldState: ScaffoldState,
     modifier: Modifier = Modifier
 ) {
     Scaffold(
-        scaffoldState = scaffoldState,
         topBar = {
             InsetAwareTopAppBar(
                 title = { Text("Interests") },
@@ -130,7 +122,7 @@ fun InterestsScreen(
                         text = section,
                         modifier = Modifier
                             .padding(16.dp),
-                        style = MaterialTheme.typography.subtitle1
+                        style = MaterialTheme.typography.titleMedium
                     )
                 }
                 items(topics) { topic ->
@@ -172,7 +164,7 @@ private fun TopicItem(itemTitle: String, selected: Boolean, onToggle: () -> Unit
             modifier = Modifier
                 .align(Alignment.CenterVertically)
                 .padding(16.dp),
-            style = MaterialTheme.typography.subtitle1
+            style = MaterialTheme.typography.titleMedium
         )
         Spacer(Modifier.weight(1f))
         Checkbox(
@@ -190,7 +182,7 @@ private fun TopicItem(itemTitle: String, selected: Boolean, onToggle: () -> Unit
 private fun TopicDivider() {
     Divider(
         modifier = Modifier.padding(start = 90.dp),
-        color = MaterialTheme.colors.onSurface.copy(alpha = 0.1f)
+        color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.1f)
     )
 }
 
