@@ -23,9 +23,9 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentWidth
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
@@ -72,7 +72,7 @@ fun PlantDetailContent(plant: Plant) {
 private fun PlantName(name: String) {
     Text(
         text = name,
-        style = MaterialTheme.typography.h5,
+        style = MaterialTheme.typography.headlineSmall,
         modifier = Modifier
             .fillMaxWidth()
             .padding(horizontal = dimensionResource(R.dimen.margin_small))
@@ -93,7 +93,7 @@ private fun PlantWatering(wateringInterval: Int) {
 
         Text(
             text = stringResource(R.string.watering_needs_prefix),
-            color = MaterialTheme.colors.primaryVariant,
+            color = MaterialTheme.colorScheme.primaryContainer,
             fontWeight = FontWeight.Bold,
             modifier = centerWithPaddingModifier.padding(top = normalPadding)
         )

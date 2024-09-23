@@ -18,9 +18,9 @@ package com.google.samples.apps.sunflower.theme
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.isSystemInDarkTheme
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.darkColors
-import androidx.compose.material.lightColors
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.darkColorScheme
+import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.colorResource
 import com.google.samples.apps.sunflower.R
@@ -31,17 +31,17 @@ fun SunflowerTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     content: @Composable () -> Unit
 ) {
-    val lightColors  = lightColors(
+    val lightColors  = lightColorScheme(
         primary = colorResource(id = R.color.sunflower_green_500),
-        primaryVariant = colorResource(id = R.color.sunflower_green_700),
+        primaryContainer = colorResource(id = R.color.sunflower_green_700),
         secondary = colorResource(id = R.color.sunflower_yellow_500),
         background = colorResource(id = R.color.sunflower_green_500),
         onPrimary = colorResource(id = R.color.sunflower_black),
         onSecondary = colorResource(id = R.color.sunflower_black),
     )
-    val darkColors  = darkColors(
+    val darkColors  = darkColorScheme(
         primary = colorResource(id = R.color.sunflower_green_100),
-        primaryVariant = colorResource(id = R.color.sunflower_green_200),
+        primaryContainer = colorResource(id = R.color.sunflower_green_200),
         secondary = colorResource(id = R.color.sunflower_yellow_300),
         onPrimary = colorResource(id = R.color.sunflower_black),
         onSecondary = colorResource(id = R.color.sunflower_black),
@@ -51,7 +51,7 @@ fun SunflowerTheme(
     )
     val colors = if (darkTheme) darkColors else lightColors
     MaterialTheme(
-        colors = colors,
+        colorScheme = colors,
         content = content
     )
 }
