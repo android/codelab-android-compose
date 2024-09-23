@@ -27,11 +27,11 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
-import androidx.compose.material.Divider
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
-import androidx.compose.material.TextButton
+import androidx.compose.material3.Divider
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.ListAlt
@@ -58,7 +58,7 @@ fun AppDrawer(
     Column(modifier = Modifier.fillMaxSize()) {
         Spacer(Modifier.height(24.dp))
         JetNewsLogo(Modifier.padding(16.dp))
-        Divider(color = MaterialTheme.colors.onSurface.copy(alpha = .2f))
+        Divider(color = MaterialTheme.colorScheme.onSurface.copy(alpha = .2f))
         DrawerButton(
             icon = Icons.Filled.Home,
             label = "Home",
@@ -87,13 +87,13 @@ private fun JetNewsLogo(modifier: Modifier = Modifier) {
         Image(
             painter = painterResource(R.drawable.ic_jetnews_logo),
             contentDescription = null,
-            colorFilter = ColorFilter.tint(MaterialTheme.colors.primary)
+            colorFilter = ColorFilter.tint(MaterialTheme.colorScheme.primary)
         )
         Spacer(Modifier.width(8.dp))
         Image(
             painter = painterResource(R.drawable.ic_jetnews_wordmark),
             contentDescription = null,
-            colorFilter = ColorFilter.tint(MaterialTheme.colors.onSurface)
+            colorFilter = ColorFilter.tint(MaterialTheme.colorScheme.onSurface)
         )
     }
 }
@@ -106,7 +106,7 @@ private fun DrawerButton(
     action: () -> Unit,
     modifier: Modifier = Modifier
 ) {
-    val colors = MaterialTheme.colors
+    val colors = MaterialTheme.colorScheme
     val imageAlpha = if (isSelected) {
         1f
     } else {
@@ -149,7 +149,7 @@ private fun DrawerButton(
                 Spacer(Modifier.width(16.dp))
                 Text(
                     text = label,
-                    style = MaterialTheme.typography.body2,
+                    style = MaterialTheme.typography.bodyMedium,
                     color = textIconColor
                 )
             }

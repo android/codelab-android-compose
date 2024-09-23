@@ -32,16 +32,14 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material.Colors
-import androidx.compose.material.ContentAlpha
-import androidx.compose.material.LocalContentAlpha
-import androidx.compose.material.LocalContentColor
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
-import androidx.compose.material.Typography
+import androidx.compose.material3.LocalContentColor
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
+import androidx.compose.material3.Typography
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountCircle
+import androidx.compose.material3.ColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Modifier
@@ -88,15 +86,15 @@ fun PostContent(post: Post, modifier: Modifier = Modifier) {
             PostHeaderImage(post)
         }
         item {
-            Text(text = post.title, style = MaterialTheme.typography.h4)
+            Text(text = post.title, style = MaterialTheme.typography.headlineMedium)
             Spacer(Modifier.height(8.dp))
         }
         post.subtitle?.let { subtitle ->
             item {
-                CompositionLocalProvider(LocalContentAlpha provides ContentAlpha.medium) {
+                CompositionLocalProvider(LocalContentColor provides MaterialTheme.colorScheme.onSurfaceVariant) {
                     Text(
                         text = subtitle,
-                        style = MaterialTheme.typography.body2,
+                        style = MaterialTheme.typography.bodyMedium,
                         lineHeight = 20.sp
                     )
                 }
@@ -147,14 +145,14 @@ private fun PostMetadata(metadata: Metadata) {
         Column {
             Text(
                 text = metadata.author.name,
-                style = typography.caption,
+                style = typography.bodySmall,
                 modifier = Modifier.padding(top = 4.dp)
             )
 
-            CompositionLocalProvider(LocalContentAlpha provides ContentAlpha.medium) {
+            CompositionLocalProvider(LocalContentColor provides MaterialTheme.colorScheme.onSurfaceVariant) {
                 Text(
                     text = "${metadata.date} • ${metadata.readTimeMinutes} min read",
-                    style = typography.caption
+                    style = typography.bodySmall
                 )
             }
         }
@@ -168,7 +166,7 @@ private fun Paragraph(paragraph: Paragraph) {
     val annotatedString = paragraphToAnnotatedString(
         paragraph,
         MaterialTheme.typography,
-        MaterialTheme.colors.codeBlockBackground
+        MaterialTheme.colorScheme.codeBlockBackground
     )
     Box(modifier = Modifier.padding(bottom = trailingPadding)) {
         when (paragraph.type) {
@@ -207,7 +205,7 @@ private fun CodeBlockParagraph(
     paragraphStyle: ParagraphStyle
 ) {
     Surface(
-        color = MaterialTheme.colors.codeBlockBackground,
+        color = MaterialTheme.colorScheme.codeBlockBackground,
         shape = MaterialTheme.shapes.small,
         modifier = Modifier.fillMaxWidth()
     ) {
@@ -257,29 +255,29 @@ private data class ParagraphStyling(
 @Composable
 private fun ParagraphType.getTextAndParagraphStyle(): ParagraphStyling {
     val typography = MaterialTheme.typography
-    var textStyle: TextStyle = typography.body1
+    var textStyle: TextStyle = typography.bodyLarge
     var paragraphStyle = ParagraphStyle()
     var trailingPadding = 24.dp
 
     when (this) {
-        ParagraphType.Caption -> textStyle = typography.body1
-        ParagraphType.Title -> textStyle = typography.h4
+        ParagraphType.Caption -> textStyle = typography.bodyLarge
+        ParagraphType.Title -> textStyle = typography.headlineMedium
         ParagraphType.Subhead -> {
-            textStyle = typography.h6
+            textStyle = typography.titleLarge
             trailingPadding = 16.dp
         }
         ParagraphType.Text -> {
-            textStyle = typography.body1.copy(lineHeight = 28.sp)
+            textStyle = typography.bodyLarge.copy(lineHeight = 28.sp)
             paragraphStyle = paragraphStyle.copy(lineHeight = 28.sp)
         }
         ParagraphType.Header -> {
-            textStyle = typography.h5
+            textStyle = typography.headlineSmall
             trailingPadding = 16.dp
         }
-        ParagraphType.CodeBlock -> textStyle = typography.body1.copy(
+        ParagraphType.CodeBlock -> textStyle = typography.bodyLarge.copy(
             fontFamily = FontFamily.Monospace
         )
-        ParagraphType.Quote -> textStyle = typography.body1
+        ParagraphType.Quote -> textStyle = typography.bodyLarge
         ParagraphType.Bullet -> {
             paragraphStyle = ParagraphStyle(textIndent = TextIndent(firstLine = 8.sp))
         }
@@ -308,28 +306,28 @@ fun Markup.toAnnotatedStringItem(
     return when (this.type) {
         MarkupType.Italic -> {
             AnnotatedString.Range(
-                typography.body1.copy(fontStyle = FontStyle.Italic).toSpanStyle(),
+                typography.bodyLarge.copy(fontStyle = FontStyle.Italic).toSpanStyle(),
                 start,
                 end
             )
         }
         MarkupType.Link -> {
             AnnotatedString.Range(
-                typography.body1.copy(textDecoration = TextDecoration.Underline).toSpanStyle(),
+                typography.bodyLarge.copy(textDecoration = TextDecoration.Underline).toSpanStyle(),
                 start,
                 end
             )
         }
         MarkupType.Bold -> {
             AnnotatedString.Range(
-                typography.body1.copy(fontWeight = FontWeight.Bold).toSpanStyle(),
+                typography.bodyLarge.copy(fontWeight = FontWeight.Bold).toSpanStyle(),
                 start,
                 end
             )
         }
         MarkupType.Code -> {
             AnnotatedString.Range(
-                typography.body1
+                typography.bodyLarge
                     .copy(
                         background = codeBlockBackground,
                         fontFamily = FontFamily.Monospace
@@ -341,7 +339,7 @@ fun Markup.toAnnotatedStringItem(
     }
 }
 
-private val Colors.codeBlockBackground: Color
+private val ColorScheme.codeBlockBackground: Color
     get() = onSurface.copy(alpha = .15f)
 
 @Preview("Post content")

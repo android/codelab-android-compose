@@ -17,7 +17,7 @@
     <!-- Base application theme. In this Jetpack Compose sample app, these colors
      don't affect the Composable functions, just the color of the Status Bar.
      For the colors used by the Composable functions, see Theme.kt -->
-    <style name="Theme.Jetnews" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <style name="Theme.Jetnews" parent="Theme.AppCompat.DayNight.NoActionBar">
         <item name="colorPrimary">@color/red700</item>
         <item name="colorPrimaryDark">@color/red900</item>
         <item name="colorAccent">@color/red700</item>
