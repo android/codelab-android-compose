@@ -29,17 +29,13 @@ import androidx.compose.foundation.layout.systemBars
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material.Divider
-import androidx.compose.material.ExperimentalMaterialApi
-import androidx.compose.material.Icon
-import androidx.compose.material.IconButton
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Scaffold
-import androidx.compose.material.ScaffoldState
-import androidx.compose.material.Text
-import androidx.compose.material.rememberScaffoldState
+import androidx.compose.material3.Divider
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
@@ -61,20 +57,17 @@ import kotlinx.coroutines.launch
  * @param postsRepository data source for this screen
  * @param navigateToArticle (event) request navigation to Article screen
  * @param openDrawer (event) request opening the app drawer
- * @param scaffoldState (state) state for the [Scaffold] component on this screen
  */
 @Composable
 fun HomeScreen(
     postsRepository: PostsRepository,
     navigateToArticle: (String) -> Unit,
     openDrawer: () -> Unit,
-    scaffoldState: ScaffoldState = rememberScaffoldState()
 ) {
     HomeScreen(
         posts = postsRepository.getPosts(),
         navigateToArticle = navigateToArticle,
         openDrawer = openDrawer,
-        scaffoldState = scaffoldState
     )
 }
 
@@ -88,19 +81,15 @@ fun HomeScreen(
  * @param onToggleFavorite (event) toggles favorite for a post
  * @param navigateToArticle (event) request navigation to Article screen
  * @param openDrawer (event) request opening the app drawer
- * @param scaffoldState (state) state for the [Scaffold] component on this screen
  */
-@OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun HomeScreen(
     posts: List<Post>,
     navigateToArticle: (String) -> Unit,
     openDrawer: () -> Unit,
-    scaffoldState: ScaffoldState
 ) {
     val coroutineScope = rememberCoroutineScope()
     Scaffold(
-        scaffoldState = scaffoldState,
         topBar = {
             val title = stringResource(id = R.string.app_name)
             InsetAwareTopAppBar(
@@ -170,7 +159,7 @@ private fun PostListPopularSection(
         Text(
             modifier = Modifier.padding(16.dp),
             text = stringResource(id = R.string.home_popular_section_title),
-            style = MaterialTheme.typography.subtitle1
+            style = MaterialTheme.typography.titleMedium
         )
 
         LazyRow(contentPadding = PaddingValues(end = 16.dp)) {
@@ -193,7 +182,7 @@ private fun PostListPopularSection(
 private fun PostListDivider() {
     Divider(
         modifier = Modifier.padding(horizontal = 14.dp),
-        color = MaterialTheme.colors.onSurface.copy(alpha = 0.08f)
+        color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.08f)
     )
 }
 
@@ -217,7 +206,6 @@ fun PreviewHomeScreen() {
             posts = PostsRepository().getPosts(),
             navigateToArticle = { /*TODO*/ },
             openDrawer = { /*TODO*/ },
-            scaffoldState = rememberScaffoldState()
         )
     }
 }
