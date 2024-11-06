@@ -23,10 +23,12 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.WindowInsetsSides
 import androidx.compose.foundation.layout.asPaddingValues
 import androidx.compose.foundation.layout.calculateEndPadding
 import androidx.compose.foundation.layout.calculateStartPadding
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.only
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.size
@@ -65,12 +67,11 @@ fun ReplyListPane(
     onEmailClick: (Email) -> Unit,
     modifier: Modifier = Modifier
 ) {
-    val layoutDirection = LocalLayoutDirection.current
 
     LazyColumn(
         modifier = modifier.fillMaxWidth(),
-        contentPadding = WindowInsets.safeDrawing.asPaddingValues()
-            .copy(layoutDirection, bottom = 0.dp)
+        contentPadding = WindowInsets.safeDrawing.only(
+            WindowInsetsSides.Horizontal + WindowInsetsSides.Top).asPaddingValues()
     ) {
         item {
             ReplySearchBar(modifier = Modifier.fillMaxWidth())
@@ -94,9 +95,8 @@ fun ReplyDetailPane(
 
     LazyColumn(
         modifier = modifier.fillMaxWidth(),
-        contentPadding = WindowInsets.safeDrawing.asPaddingValues()
-            .copy(layoutDirection = layoutDirection, bottom = 0.dp)
-
+        contentPadding = WindowInsets.safeDrawing.only(
+            WindowInsetsSides.Horizontal + WindowInsetsSides.Top).asPaddingValues()
     ) {
         item {
             ReplyEmailThreadItem(email)
@@ -315,17 +315,3 @@ fun ReplySearchBar(modifier: Modifier = Modifier) {
         )
     }
 }
-
-private fun PaddingValues.copy(
-    layoutDirection: LayoutDirection,
-    start: Dp? = null,
-    top: Dp? = null,
-    end: Dp? = null,
-    bottom: Dp? = null,
-) = PaddingValues(
-    start = start ?: calculateStartPadding(layoutDirection),
-    top = top ?: calculateTopPadding(),
-    end = end ?: calculateEndPadding(layoutDirection),
-    bottom = bottom ?: calculateBottomPadding(),
-)
-
