@@ -42,6 +42,10 @@ Learn how to use Jetpack Compose Animation APIs.
 Learn how to use the Jetpack Navigation library in Compose, navigate within your application,
 navigate with arguments, support deep-links, and test your navigation.
 
+### [Performance codelab](https://developer.android.com/codelabs/jetpack-compose-performance)
+
+Learn how to measure, investigate and improve the runtime performance of a Compose app.
+
 ### [Testing codelab](https://developer.android.com/codelabs/jetpack-compose-testing)
 
 Learn about testing Jetpack Compose UIs. Write your first tests, and learn about testing in
