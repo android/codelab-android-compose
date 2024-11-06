@@ -22,7 +22,7 @@ plugins {
 
 android {
     namespace "com.example.reply"
-    compileSdkVersion 34
+    compileSdkVersion 35
     defaultConfig {
         applicationId 'com.example.reply'
         minSdkVersion 21

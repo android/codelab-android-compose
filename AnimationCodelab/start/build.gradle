@@ -22,7 +22,7 @@ plugins {
 
 android {
     namespace "com.example.android.codelab.animation"
-    compileSdk 34
+    compileSdk 35
     defaultConfig {
         applicationId 'com.example.android.codelab.animation'
         minSdkVersion 21
