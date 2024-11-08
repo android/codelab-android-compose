@@ -6,9 +6,11 @@ on:
       - main
     paths:
       - 'BasicLayoutsCodelab/**'
+      - '.github/workflows/BasicLayoutsCodelab.yaml'
   pull_request:
     paths:
       - 'BasicLayoutsCodelab/**'
+      - '.github/workflows/BasicLayoutsCodelab.yaml'
 
 env:
   SAMPLE_PATH: BasicLayoutsCodelab
@@ -23,7 +25,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Copy CI gradle.properties
-        run: mkdir -p ~/.gradle ; cp .github/ci-gradle.properties ~/.gradle/gradle.properties        
+        run: mkdir -p ~/.gradle ; cp .github/ci-gradle.properties ~/.gradle/gradle.properties
 
       - name: Set up JDK 17
         uses: actions/setup-java@v4
@@ -31,16 +33,7 @@ jobs:
           distribution: 'zulu'
           java-version: 17
 
-      - name: Generate cache key
-        run: ./scripts/checksum.sh $SAMPLE_PATH checksum.txt
-
-      - uses: actions/cache@v4
-        with:
-          path: |
-            ~/.gradle/caches/modules-*
-            ~/.gradle/caches/jars-*
-            ~/.gradle/caches/build-cache-*
-          key: gradle-${{ hashFiles('checksum.txt') }}
+      - uses: gradle/actions/setup-gradle@v3
 
       - name: Build project
         working-directory: ${{ env.SAMPLE_PATH }}
