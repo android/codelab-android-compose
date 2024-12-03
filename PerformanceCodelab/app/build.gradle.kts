@@ -1,3 +1,6 @@
+import org.jetbrains.kotlin.compose.compiler.gradle.ComposeFeatureFlag
+import org.jetbrains.kotlin.compose.compiler.gradle.ComposeFeatureFlag.Companion.StrongSkipping
+
 /*
  * Copyright 2024 The Android Open Source Project
  *
@@ -69,7 +72,7 @@ composeCompiler {
     // This settings enables strong-skipping mode for all module in this project.
     // As an effect, Compose can skip a composable even if it's unstable by comparing it's instance equality (===).
     // TODO Codelab task: Enable Strong Skipping Mode
-    enableStrongSkippingMode = false
+    featureFlags.add(StrongSkipping.disabled())
 
     // TODO Codelab task: Enable Stability Configuration file
 }
