@@ -21,9 +21,9 @@ buildscript {
     }
     dependencies {
         classpath "com.android.tools.build:gradle:8.7.3"
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:2.0.21"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:2.1.0"
         classpath "com.google.dagger:hilt-android-gradle-plugin:2.53.1"
-        classpath "org.jetbrains.kotlin:compose-compiler-gradle-plugin:2.0.21"
+        classpath "org.jetbrains.kotlin:compose-compiler-gradle-plugin:2.1.0"
     }
 }
 
