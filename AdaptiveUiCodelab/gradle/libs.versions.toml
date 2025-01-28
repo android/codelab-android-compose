@@ -1,8 +1,8 @@
 [versions]
-androidGradlePlugin = "8.7.3"
-composeBom = "2024.12.01"
+androidGradlePlugin = "8.8.0"
+composeBom = "2025.01.00"
 coreKtx = "1.15.0"
-activityCompose = "1.9.3"
+activityCompose = "1.10.0"
 espressoCore = "3.6.1"
 junit = "4.13.2"
 junitVersion = "1.2.1"
