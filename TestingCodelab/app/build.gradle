@@ -48,6 +48,7 @@ android {
     buildTypes {
         debug {
             signingConfig signingConfigs.debug
+            testCoverageEnabled true
         }
 
         release {
@@ -80,6 +81,11 @@ android {
         exclude "META-INF/licenses/**"
         exclude "META-INF/AL2.0"
         exclude "META-INF/LGPL2.1"
+        exclude "META-INF/LICENSE.md"
+        exclude "META-INF/LICENSE"
+        exclude "META-INF/NOTICE"
+        exclude "META-INF/*.md"
+        exclude "META-INF/DEPENDENCIE"
     }
 }
 
@@ -115,4 +121,6 @@ dependencies {
     androidTestImplementation "androidx.compose.ui:ui-test"
     androidTestImplementation "androidx.compose.ui:ui-test-junit4"
     debugImplementation "androidx.compose.ui:ui-test-manifest"
+
+    androidTestImplementation("io.mockk:mockk-android:1.13.16")
 }
