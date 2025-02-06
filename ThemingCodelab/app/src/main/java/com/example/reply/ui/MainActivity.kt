@@ -60,7 +60,7 @@ class MainActivity : ComponentActivity() {
     name = "DefaultPreviewLight"
 )
 @Composable
-fun ReplyAppPreviewLight() {
+fun ReplyAppPreview() {
     ReplyApp(
         replyHomeUIState = ReplyHomeUIState(
             emails = LocalEmailsDataProvider.allEmails
