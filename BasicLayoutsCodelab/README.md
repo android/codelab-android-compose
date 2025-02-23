@@ -3,6 +3,11 @@
 This folder contains the source code for
 the [Basic Layouts in Compose Codelab](https://developer.android.com/codelabs/jetpack-compose-layouts)
 
+## Screenshots
+Portrait Screen             |  Landscape Screen
+:-------------------------:|:-------------------------:
+<img src="screenshots/screenshot_portrait.png" alt="Alt Text" style="width:50%; height:auto;">  |  <img src="screenshots/screenshot_landscape.png" alt="Alt Text" style="width:60%; height:auto;">
+
 ## License
 
 ```
