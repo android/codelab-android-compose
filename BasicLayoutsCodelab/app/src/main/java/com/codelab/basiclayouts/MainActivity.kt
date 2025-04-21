@@ -23,6 +23,7 @@ import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
@@ -33,6 +34,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
@@ -113,7 +115,18 @@ fun AlignYourBodyElement(
 fun FavoriteCollectionCard(
     modifier: Modifier = Modifier
 ) {
-    // Implement composable here
+    Surface(
+        shape = MaterialTheme.shapes.medium,
+        modifier = modifier
+    ) {
+        Row {
+            Image(
+                painter = painterResource(R.drawable.fc2_nature_meditations),
+                contentDescription = null
+            )
+            Text(text = stringResource(R.string.fc2_nature_meditations))
+        }
+    }
 }
 
 // Step: Align your body row - Arrangements
