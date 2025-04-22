@@ -107,14 +107,14 @@ fun AlignYourBodyElement(
             painter = painterResource(drawable),
             contentDescription = null,
             contentScale = ContentScale.Crop,
-            modifier = modifier
+            modifier = Modifier
                 .size(88.dp)
                 .clip(CircleShape)
         )
         Text(
             text = stringResource(text),
             style = MaterialTheme.typography.bodyMedium,
-            modifier = modifier.paddingFromBaseline(top = 24.dp, bottom = 8.dp),
+            modifier = Modifier.paddingFromBaseline(top = 24.dp, bottom = 8.dp),
         )
     }
 }
@@ -133,18 +133,18 @@ fun FavoriteCollectionCard(
     ) {
         Row(
             verticalAlignment = Alignment.CenterVertically,
-            modifier = modifier.width(255.dp),
+            modifier = Modifier.width(255.dp),
         ) {
             Image(
                 painter = painterResource(drawable),
                 contentDescription = null,
                 contentScale = ContentScale.Crop,
-                modifier = modifier.size(80.dp),
+                modifier = Modifier.size(80.dp),
             )
             Text(
                 text = stringResource(text),
                 style = MaterialTheme.typography.titleMedium,
-                modifier = modifier.padding(horizontal = 16.dp),
+                modifier = Modifier.padding(horizontal = 16.dp),
             )
         }
     }
