@@ -196,7 +196,13 @@ fun HomeSection(
     content: @Composable () -> Unit
 ) {
     Column(modifier) {
-        Text(stringResource(title))
+        Text(
+            text = stringResource(title),
+            style = MaterialTheme.typography.titleMedium,
+            modifier = modifier
+                .paddingFromBaseline(top = 40.dp, bottom = 16.dp)
+                .padding(horizontal = 16.dp),
+        )
         content()
     }
 }
