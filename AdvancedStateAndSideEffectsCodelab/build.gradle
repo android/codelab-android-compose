@@ -20,15 +20,15 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath "com.android.tools.build:gradle:8.8.1"
+        classpath "com.android.tools.build:gradle:8.9.2"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:2.1.10"
-        classpath "com.google.dagger:hilt-android-gradle-plugin:2.55"
+        classpath "com.google.dagger:hilt-android-gradle-plugin:2.56.2"
         classpath "org.jetbrains.kotlin:compose-compiler-gradle-plugin:2.1.10"
     }
 }
 
 plugins {
-    id 'com.diffplug.spotless' version '7.0.2'
+    id 'com.diffplug.spotless' version '7.0.3'
 }
 
 subprojects {
