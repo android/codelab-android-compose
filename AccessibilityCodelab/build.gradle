@@ -21,13 +21,13 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:8.8.1'
+        classpath 'com.android.tools.build:gradle:8.9.2'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:2.1.10"
     }
 }
 
 plugins {
-    id 'com.diffplug.spotless' version '7.0.2'
+    id 'com.diffplug.spotless' version '7.0.3'
     id 'org.jetbrains.kotlin.plugin.compose' version "2.1.10" apply false
 }
 
