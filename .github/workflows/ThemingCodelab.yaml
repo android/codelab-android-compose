@@ -1,6 +1,7 @@
 name: ThemingCodelab
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - main
