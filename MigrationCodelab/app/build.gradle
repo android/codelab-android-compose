@@ -60,7 +60,7 @@ android {
 }
 
 dependencies {
-    def composeBom = platform('androidx.compose:compose-bom:2025.04.01')
+    def composeBom = platform('androidx.compose:compose-bom:2025.05.00')
     implementation(composeBom)
     androidTestImplementation(composeBom)
 
@@ -70,10 +70,10 @@ dependencies {
     implementation "androidx.constraintlayout:constraintlayout:2.2.1"
     implementation "androidx.core:core-ktx:1.16.0"
     implementation "androidx.fragment:fragment-ktx:1.8.6"
-    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.8.7"
-    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.7"
-    implementation "androidx.navigation:navigation-fragment-ktx:2.8.9"
-    implementation "androidx.navigation:navigation-ui-ktx:2.8.9"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.9.0"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.9.0"
+    implementation "androidx.navigation:navigation-fragment-ktx:2.9.0"
+    implementation "androidx.navigation:navigation-ui-ktx:2.9.0"
     implementation "androidx.recyclerview:recyclerview:1.4.0"
     implementation "androidx.room:room-runtime:2.7.1"
     implementation "androidx.room:room-ktx:2.7.1"
