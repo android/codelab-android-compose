@@ -93,7 +93,7 @@ android {
 }
 
 dependencies {
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.10.1"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.10.2"
     implementation "com.google.android.libraries.maps:maps:3.1.0-beta"
     implementation "com.google.maps.android:maps-v3-ktx:3.4.0"
     constraints {
@@ -134,7 +134,7 @@ dependencies {
     androidTestImplementation "androidx.test:rules:1.6.1"
     androidTestImplementation "androidx.test.espresso:espresso-core:3.6.1"
     androidTestImplementation "androidx.test.ext:junit-ktx:1.2.1"
-    androidTestImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.10.1"
+    androidTestImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.10.2"
     androidTestImplementation "com.google.dagger:hilt-android:2.56.2"
     androidTestImplementation "com.google.dagger:hilt-android-testing:2.56.2"
     kaptAndroidTest "com.google.dagger:hilt-compiler:2.56.2"
