@@ -12,7 +12,9 @@
       "matchPackagePrefixes": [
         "org.jetbrains.kotlin",
         "androidx.compose.compiler"
-      ]
+      ],
+      "matchDatasources": ["maven"],
+      "registryUrls": ["https://dl.google.com/dl/android/maven2/", "https://repo.maven.apache.org/maven2/"]
     }
   ]
 }
