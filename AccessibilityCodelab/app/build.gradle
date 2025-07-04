@@ -123,7 +123,7 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.9.1"
     implementation "androidx.lifecycle:lifecycle-viewmodel-compose:2.9.1"
 
-    implementation 'androidx.navigation:navigation-compose:2.9.0'
+    implementation 'androidx.navigation:navigation-compose:2.9.1'
 
     androidTestImplementation 'androidx.test:rules:1.6.1'
     androidTestImplementation 'androidx.test:runner:1.6.2'
