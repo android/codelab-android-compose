@@ -22,7 +22,7 @@ plugins {
 
 android {
     namespace = "com.compose.performance"
-    compileSDK = 36
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "com.compose.performance"
