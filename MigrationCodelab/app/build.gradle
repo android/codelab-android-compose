@@ -22,7 +22,7 @@ apply plugin: 'org.jetbrains.kotlin.plugin.compose'
 
 
 android {
-    compileSdkVersion 35
+    compileSdkVersion 36
     namespace "com.google.samples.apps.sunflower"
     defaultConfig {
         applicationId "com.google.samples.apps.sunflower"

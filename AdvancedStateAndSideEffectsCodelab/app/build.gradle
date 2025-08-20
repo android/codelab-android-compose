@@ -30,7 +30,7 @@ if (rootProject.file("local.properties").exists()) {
 
 android {
     namespace "androidx.compose.samples.crane"
-    compileSdkVersion 35
+    compileSdkVersion 36
     defaultConfig {
         applicationId "androidx.compose.samples.crane"
         minSdkVersion 21
