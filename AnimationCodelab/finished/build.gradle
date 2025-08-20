@@ -22,7 +22,7 @@ plugins {
 
 android {
     namespace "com.example.android.codelab.animation"
-    compileSdk 35
+    compileSdk 36
     defaultConfig {
         applicationId 'com.example.android.codelab.animation'
         minSdkVersion 21
@@ -43,11 +43,11 @@ android {
 }
 
 dependencies {
-    def composeBom = platform('androidx.compose:compose-bom:2025.06.01')
+    def composeBom = platform('androidx.compose:compose-bom:2025.08.00')
     implementation(composeBom)
 
     implementation 'androidx.activity:activity-compose:1.10.1'
-    implementation 'androidx.core:core-ktx:1.16.0'
+    implementation 'androidx.core:core-ktx:1.17.0'
     implementation "androidx.compose.ui:ui"
     implementation "androidx.compose.material3:material3"
     implementation "androidx.compose.ui:ui-tooling-preview"
