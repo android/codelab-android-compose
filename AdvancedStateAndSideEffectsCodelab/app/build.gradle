@@ -29,7 +29,7 @@ if (rootProject.file("local.properties").exists()) {
 }
 
 android {
-    compileSdkVersion 35
+    compileSdkVersion 36
     namespace "androidx.compose.samples.crane"
     defaultConfig {
         applicationId "androidx.compose.samples.crane"
