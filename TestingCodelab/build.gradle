@@ -18,7 +18,7 @@ buildscript {
     // Define versions in a single place
     ext {
         // Sdk and tools
-        compileSdkVersion = 35
+        compileSdkVersion = 36
         minSdkVersion = 21
         targetSdkVersion = 33
 
@@ -27,12 +27,12 @@ buildscript {
         activityComposeVersion = '1.10.1'
         coreTestingVersion = '2.2.0'
         coroutinesVersion = "1.5.2"
-        espressoVersion = '3.6.1'
-        fragmentVersion = '1.8.8'
+        espressoVersion = '3.7.0'
+        fragmentVersion = '1.8.9'
         junitVersion = '4.13.1'
         kotlinVersion = '2.1.21'
         ktlintVersion = '0.48.2'
-        ktxVersion = '1.16.0'
+        ktxVersion = '1.17.0'
         lifecycleVersion = '2.3.0'
         materialVersion = '1.12.0'
         runnerVersion = '1.0.1'
@@ -48,14 +48,14 @@ buildscript {
     }
 
     dependencies {
-        classpath "com.android.tools.build:gradle:8.10.1"
+        classpath "com.android.tools.build:gradle:8.12.1"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
         classpath "org.jetbrains.kotlin:compose-compiler-gradle-plugin:$kotlinVersion"
     }
 }
 
 plugins {
-    id 'com.diffplug.spotless' version '7.0.4'
+    id 'com.diffplug.spotless' version '7.2.1'
 }
 
 subprojects {

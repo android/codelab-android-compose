@@ -22,7 +22,7 @@ plugins {
 
 android {
     namespace = "com.compose.performance"
-    compileSdk = 35
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "com.compose.performance"
@@ -92,7 +92,7 @@ dependencies {
     implementation(libs.androidx.tracing.ktx)
 
     // TODO Codelab task: Add androidx.runtime-tracing dependency to enable Composition Tracing
-    implementation("androidx.compose.runtime:runtime-tracing:1.8.3")
+    implementation("androidx.compose.runtime:runtime-tracing:1.9.0")
 
     implementation(libs.coil.compose)
     implementation(libs.androidx.media3.exoplayer)
