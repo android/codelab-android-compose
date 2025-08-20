@@ -23,7 +23,7 @@ plugins {
 
 android {
     namespace = "com.compose.performance.measure"
-    compileSdk = 35
+    compileSdk = 36
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
