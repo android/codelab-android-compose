@@ -21,11 +21,11 @@ import androidx.benchmark.macro.ExperimentalMetricApi
 import androidx.benchmark.macro.FrameTimingMetric
 import androidx.benchmark.macro.MacrobenchmarkScope
 import androidx.benchmark.macro.Metric
-import androidx.benchmark.macro.StartupMode
 import androidx.benchmark.macro.TraceSectionMetric
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.LargeTest
 import androidx.test.uiautomator.By
+import androidx.test.uiautomator.BySelector
 import androidx.test.uiautomator.Until
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -33,30 +33,55 @@ import org.junit.runner.RunWith
 @LargeTest
 @RunWith(AndroidJUnit4::class)
 @OptIn(ExperimentalMetricApi::class)
-class AccelerateHeavyScreenBenchmark : AbstractBenchmark(StartupMode.COLD) {
+class AccelerateHeavyScreenBenchmark : AbstractBenchmark(
+  // This benchmark tests scrolling from an already started activity in the setup phase, we don't
+  // want the activity to be started in the measure phase.
+  startupMode = null,
+  iterations = 10
+) {
 
-    @Test
-    fun accelerateHeavyScreenCompilationFull() = benchmark(CompilationMode.Full())
+  @Test
+  fun accelerateHeavyScreenCompilationFull() = benchmark(CompilationMode.Full())
 
-    override val metrics: List<Metric> =
-        listOf(
-            FrameTimingMetric(),
-            TraceSectionMetric("ImagePlaceholder", TraceSectionMetric.Mode.Sum),
-            TraceSectionMetric("PublishDate.registerReceiver", TraceSectionMetric.Mode.Sum),
-            TraceSectionMetric("ItemTag", TraceSectionMetric.Mode.Sum)
-        )
+  override val metrics: List<Metric> =
+    listOf(
+      FrameTimingMetric(),
+      TraceSectionMetric("ImagePlaceholder", TraceSectionMetric.Mode.Sum),
+      TraceSectionMetric("PublishDate.registerReceiver", TraceSectionMetric.Mode.Sum),
+      TraceSectionMetric("ItemTag", TraceSectionMetric.Mode.Sum)
+    )
 
-    override fun MacrobenchmarkScope.measureBlock() {
-        pressHome()
-        startTaskActivity("accelerate_heavy")
+  private var isFirstSetup = true
 
-        device.wait(Until.hasObject(By.res("list_of_items")), 5_000)
-        val feed = device.findObject(By.res("list_of_items"))
-        feed.setGestureMargin(device.displayWidth / 5)
-
-        repeat(2) {
-            feed.drag(Point(feed.visibleCenter.x, feed.visibleBounds.top))
-            Thread.sleep(500)
-        }
+  override fun MacrobenchmarkScope.setupBlock() {
+    if (isFirstSetup) {
+      isFirstSetup = false
+      startActivity()
+      // Perform a warmup round that will trigger the initial loading of images to avoid having
+      // a first iteration that's significantly slower than other iterations
+      measureBlock()
     }
+    finishActivity()
+    startActivity()
+  }
+
+  private fun MacrobenchmarkScope.startActivity() {
+    startTaskActivity("accelerate_heavy")
+    device.wait(Until.hasObject(By.res("list_of_items")), 5_000)
+  }
+
+  private fun MacrobenchmarkScope.finishActivity() {
+    device.pressBack()
+    device.wait(Until.gone(By.res("list_of_items")), 2_000)
+  }
+
+  override fun MacrobenchmarkScope.measureBlock() {
+    val feed = device.findObject(By.res("list_of_items"))
+
+    repeat(2) {
+      feed.drag(Point(feed.visibleCenter.x, feed.visibleBounds.top))
+      // Enough time for scroll to settle.
+      Thread.sleep(1000)
+    }
+  }
 }
