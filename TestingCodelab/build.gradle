@@ -24,7 +24,7 @@ buildscript {
 
         // App dependencies
         appCompatVersion = '1.7.1'
-        activityComposeVersion = '1.10.1'
+        activityComposeVersion = '1.11.0'
         coreTestingVersion = '2.2.0'
         coroutinesVersion = "1.5.2"
         espressoVersion = '3.7.0'
@@ -55,7 +55,7 @@ buildscript {
 }
 
 plugins {
-    id 'com.diffplug.spotless' version '7.2.1'
+    id 'com.diffplug.spotless' version '8.0.0'
 }
 
 subprojects {

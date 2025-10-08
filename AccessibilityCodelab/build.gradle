@@ -27,7 +27,7 @@ buildscript {
 }
 
 plugins {
-    id 'com.diffplug.spotless' version '7.2.1'
+    id 'com.diffplug.spotless' version '8.0.0'
     id 'org.jetbrains.kotlin.plugin.compose' version "2.1.21" apply false
 }
 
