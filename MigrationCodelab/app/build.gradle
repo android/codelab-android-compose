@@ -26,7 +26,7 @@ android {
     namespace "com.google.samples.apps.sunflower"
     defaultConfig {
         applicationId "com.google.samples.apps.sunflower"
-        minSdkVersion 21
+        minSdkVersion 23
         targetSdkVersion 33
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         versionCode 1
