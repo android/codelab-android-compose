@@ -22,13 +22,13 @@ buildscript {
     dependencies {
         classpath "com.android.tools.build:gradle:8.13.0"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:2.1.21"
-        classpath "com.google.dagger:hilt-android-gradle-plugin:2.57.1"
+        classpath "com.google.dagger:hilt-android-gradle-plugin:2.57.2"
         classpath "org.jetbrains.kotlin:compose-compiler-gradle-plugin:2.1.21"
     }
 }
 
 plugins {
-    id 'com.diffplug.spotless' version '7.2.1'
+    id 'com.diffplug.spotless' version '8.0.0'
 }
 
 subprojects {

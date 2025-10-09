@@ -23,13 +23,13 @@ buildscript {
     dependencies {
         classpath "com.android.tools.build:gradle:8.13.0"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:2.1.21"
-        classpath "androidx.navigation:navigation-safe-args-gradle-plugin:2.9.3"
+        classpath "androidx.navigation:navigation-safe-args-gradle-plugin:2.9.5"
         classpath "org.jetbrains.kotlin:compose-compiler-gradle-plugin:2.1.21"
     }
 }
 
 plugins {
-    id 'com.diffplug.spotless' version '7.2.1'
+    id 'com.diffplug.spotless' version '8.0.0'
 }
 
 allprojects {

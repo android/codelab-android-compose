@@ -33,12 +33,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.toSize
 import com.example.reply.data.Email
+import kotlinx.coroutines.launch
 
 private val WINDOW_WIDTH_LARGE = 1200.dp
 
@@ -100,9 +102,10 @@ fun ReplyAppContent(
 ) {
     val selectedEmail = replyHomeUIState.selectedEmail
     val navigator = rememberListDetailPaneScaffoldNavigator<Long>()
+    val coroutineScope = rememberCoroutineScope()
 
     BackHandler(navigator.canNavigateBack()) {
-        navigator.navigateBack()
+        coroutineScope.launch { navigator.navigateBack() }
     }
 
     ListDetailPaneScaffold(
@@ -114,7 +117,9 @@ fun ReplyAppContent(
                    replyHomeUIState = replyHomeUIState,
                    onEmailClick = { email ->
                        onEmailClick(email)
-                       navigator.navigateTo(ListDetailPaneScaffoldRole.Detail, email.id)
+                       coroutineScope.launch {
+                           navigator.navigateTo(ListDetailPaneScaffoldRole.Detail, email.id)
+                       }
                    }
                )
            }
