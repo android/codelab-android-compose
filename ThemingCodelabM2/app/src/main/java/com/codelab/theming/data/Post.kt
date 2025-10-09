@@ -27,8 +27,8 @@ data class Post(
     val subtitle: String? = null,
     val url: String,
     val metadata: Metadata,
-    @DrawableRes val imageId: Int,
-    @DrawableRes val imageThumbId: Int,
+    @param:DrawableRes val imageId: Int,
+    @param:DrawableRes val imageThumbId: Int,
     val tags: Set<String>
 )
 
