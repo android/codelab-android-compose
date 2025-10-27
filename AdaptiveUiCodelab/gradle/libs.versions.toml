@@ -1,6 +1,6 @@
 [versions]
 androidGradlePlugin = "8.13.0"
-composeBom = "2025.10.00"
+composeBom = "2025.10.01"
 coreKtx = "1.17.0"
 activityCompose = "1.11.0"
 espressoCore = "3.7.0"
