@@ -26,7 +26,7 @@ android {
     namespace "com.example.compose.rally"
     defaultConfig {
         applicationId "com.example.compose.rally"
-        minSdkVersion 21
+        minSdkVersion 23
         targetSdkVersion 33
         versionCode 1
         versionName '1.0'
