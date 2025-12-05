@@ -33,7 +33,7 @@ android {
     compileSdkVersion 36
     defaultConfig {
         applicationId "androidx.compose.samples.crane"
-        minSdkVersion 21
+        minSdkVersion 23
         targetSdkVersion 33
         versionCode 1
         versionName "1.0"
