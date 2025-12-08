@@ -26,7 +26,7 @@ android {
     namespace "com.example.compose.rally"
     defaultConfig {
         applicationId "com.example.compose.rally"
-        minSdkVersion 21
+        minSdkVersion 23
         targetSdkVersion 33
         versionCode 1
         versionName '1.0'
@@ -84,7 +84,7 @@ android {
 }
 
 dependencies {
-    def composeBom = platform('androidx.compose:compose-bom:2025.10.01')
+    def composeBom = platform('androidx.compose:compose-bom:2025.12.00')
     implementation(composeBom)
     androidTestImplementation(composeBom)
 
