@@ -123,8 +123,10 @@ dependencies {
     def lifecycle_version = "2.10.0"
     implementation "androidx.lifecycle:lifecycle-viewmodel-compose:$lifecycle_version"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
+
     implementation "com.google.dagger:hilt-android:2.57.2"
     kapt "com.google.dagger:hilt-compiler:2.57.2"
+    kapt "org.jetbrains.kotlin:kotlin-metadata-jvm:2.3.0"
 
     implementation "io.coil-kt:coil-compose:2.7.0"
 
@@ -138,4 +140,5 @@ dependencies {
     androidTestImplementation "com.google.dagger:hilt-android:2.57.2"
     androidTestImplementation "com.google.dagger:hilt-android-testing:2.57.2"
     kaptAndroidTest "com.google.dagger:hilt-compiler:2.57.2"
+    kaptAndroidTest "org.jetbrains.kotlin:kotlin-metadata-jvm:2.3.0"
 }
