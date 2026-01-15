@@ -30,7 +30,7 @@ buildscript {
         espressoVersion = '3.7.0'
         fragmentVersion = '1.8.9'
         junitVersion = '4.13.1'
-        kotlinVersion = '2.2.21'
+        kotlinVersion = '2.3.0'
         ktlintVersion = '0.48.2'
         ktxVersion = '1.17.0'
         lifecycleVersion = '2.3.0'
