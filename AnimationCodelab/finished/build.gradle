@@ -16,7 +16,6 @@
 
 plugins {
     id 'com.android.application'
-    id 'kotlin-android'
     id 'org.jetbrains.kotlin.plugin.compose'
 }
 
@@ -36,9 +35,6 @@ android {
     }
     buildFeatures {
         compose true
-    }
-    kotlinOptions {
-        jvmTarget = '1.8'
     }
 }
 
