@@ -15,18 +15,17 @@
  */
 
 apply plugin: 'com.android.application'
-apply plugin: 'kotlin-kapt'
 apply plugin: 'androidx.navigation.safeargs.kotlin'
 apply plugin: 'org.jetbrains.kotlin.plugin.compose'
 
 
 android {
-    compileSdkVersion 36
+    compileSdk 36
+    minSdk 23
+    targetSdk 33
     namespace "com.google.samples.apps.sunflower"
     defaultConfig {
         applicationId "com.google.samples.apps.sunflower"
-        minSdkVersion 23
-        targetSdkVersion 33
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         versionCode 1
         versionName "0.1.6"
