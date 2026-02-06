@@ -21,14 +21,14 @@ buildscript {
     }
     dependencies {
         classpath "com.android.tools.build:gradle:9.0.0"
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:2.2.0"
         classpath "com.google.dagger:hilt-android-gradle-plugin:2.59.1"
-        classpath "org.jetbrains.kotlin:compose-compiler-gradle-plugin:2.2.0"
+        classpath "org.jetbrains.kotlin:compose-compiler-gradle-plugin:2.3.10"
     }
 }
 
 plugins {
     id 'com.diffplug.spotless' version '8.2.1'
+    id 'com.google.devtools.ksp' version '2.3.4' apply false
 }
 
 subprojects {

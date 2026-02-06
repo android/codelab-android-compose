@@ -16,10 +16,9 @@
 
 plugins {
     id 'com.android.application'
-    id 'kotlin-android'
-    id 'kotlin-kapt'
-    id 'dagger.hilt.android.plugin'
+    id 'com.google.devtools.ksp'
     id 'org.jetbrains.kotlin.plugin.compose'
+    id 'dagger.hilt.android.plugin'
 }
 
 // Reads the Google maps key that is used in the AndroidManifest
@@ -29,6 +28,7 @@ if (rootProject.file("local.properties").exists()) {
 }
 
 android {
+    namespace "androidx.compose.samples.crane"
     compileSdkVersion 36
     namespace "androidx.compose.samples.crane"
     defaultConfig {
@@ -67,10 +67,6 @@ android {
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
-    }
-
-    kotlinOptions {
-        jvmTarget = "1.8"
     }
 
     buildFeatures {
@@ -120,14 +116,14 @@ dependencies {
     debugImplementation "androidx.compose.ui:ui-tooling"
     debugImplementation "androidx.compose.ui:ui-test-manifest"
 
-
     def lifecycle_version = "2.10.0"
     implementation "androidx.lifecycle:lifecycle-viewmodel-compose:$lifecycle_version"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
     implementation "androidx.lifecycle:lifecycle-runtime-compose:$lifecycle_version"
+
     implementation "com.google.dagger:hilt-android:2.59.1"
-    kapt "com.google.dagger:hilt-compiler:2.59.1"
-    kapt "org.jetbrains.kotlinx:kotlinx-metadata-jvm:0.9.0"
+    ksp "com.google.dagger:hilt-compiler:2.59.1"
+    ksp "org.jetbrains.kotlin:kotlin-metadata-jvm:2.3.0"
 
     implementation "io.coil-kt:coil-compose:2.7.0"
 
@@ -140,6 +136,6 @@ dependencies {
     androidTestImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.10.2"
     androidTestImplementation "com.google.dagger:hilt-android:2.59.1"
     androidTestImplementation "com.google.dagger:hilt-android-testing:2.59.1"
-    kaptAndroidTest "com.google.dagger:hilt-compiler:2.59.1"
-    kaptAndroidTest "org.jetbrains.kotlinx:kotlinx-metadata-jvm:0.9.0"
+    kspAndroidTest "com.google.dagger:hilt-compiler:2.59.1"
+    kspAndroidTest "org.jetbrains.kotlin:kotlin-metadata-jvm:2.3.0"
 }
