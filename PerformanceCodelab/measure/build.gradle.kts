@@ -17,7 +17,6 @@ import com.android.build.api.dsl.ManagedVirtualDevice
 
 plugins {
     alias(libs.plugins.androidTest)
-    alias(libs.plugins.org.jetbrains.kotlin.android)
     alias(libs.plugins.androidx.baselineprofile)
 }
 
