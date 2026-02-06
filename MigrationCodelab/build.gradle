@@ -30,6 +30,7 @@ buildscript {
 
 plugins {
     id 'com.diffplug.spotless' version '8.2.1'
+    id 'com.android.legacy-kapt' version '9.0.0' apply false
 }
 
 allprojects {

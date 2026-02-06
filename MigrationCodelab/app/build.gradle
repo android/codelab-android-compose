@@ -17,15 +17,16 @@
 apply plugin: 'com.android.application'
 apply plugin: 'androidx.navigation.safeargs.kotlin'
 apply plugin: 'org.jetbrains.kotlin.plugin.compose'
+apply plugin: 'com.android.legacy-kapt'
 
 
 android {
-    compileSdk 36
-    minSdk 23
-    targetSdk 33
+    compileSdkVersion 36
     namespace "com.google.samples.apps.sunflower"
     defaultConfig {
         applicationId "com.google.samples.apps.sunflower"
+        minSdkVersion 23
+        targetSdkVersion 33
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         versionCode 1
         versionName "0.1.6"
@@ -34,17 +35,14 @@ android {
     buildTypes {
         release {
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_17
         targetCompatibility JavaVersion.VERSION_17
     }
-    kotlinOptions {
-        jvmTarget = "17"
-        freeCompilerArgs = ['-Xjvm-default=all-compatibility']
-    }
+
     buildFeatures {
         dataBinding true
         compose true
