@@ -123,7 +123,7 @@ dependencies {
 
     implementation "com.google.dagger:hilt-android:2.59.1"
     ksp "com.google.dagger:hilt-compiler:2.59.1"
-    ksp "org.jetbrains.kotlin:kotlin-metadata-jvm:2.3.0"
+    ksp "org.jetbrains.kotlin:kotlin-metadata-jvm:2.3.10"
 
     implementation "io.coil-kt:coil-compose:2.7.0"
 
@@ -137,5 +137,5 @@ dependencies {
     androidTestImplementation "com.google.dagger:hilt-android:2.59.1"
     androidTestImplementation "com.google.dagger:hilt-android-testing:2.59.1"
     kspAndroidTest "com.google.dagger:hilt-compiler:2.59.1"
-    kspAndroidTest "org.jetbrains.kotlin:kotlin-metadata-jvm:2.3.0"
+    kspAndroidTest "org.jetbrains.kotlin:kotlin-metadata-jvm:2.3.10"
 }
