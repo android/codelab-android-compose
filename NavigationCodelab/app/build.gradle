@@ -76,7 +76,7 @@ android {
 }
 
 dependencies {
-    def composeBom = platform('androidx.compose:compose-bom:2026.01.01')
+    def composeBom = platform('androidx.compose:compose-bom:2026.02.00')
     implementation(composeBom)
     androidTestImplementation(composeBom)
 
@@ -90,7 +90,7 @@ dependencies {
     implementation "androidx.compose.foundation:foundation"
     implementation "androidx.compose.material:material"
     implementation "androidx.compose.material:material-icons-extended"
-    implementation "androidx.activity:activity-compose:1.12.3"
+    implementation "androidx.activity:activity-compose:1.12.4"
     debugImplementation "androidx.compose.ui:ui-tooling"
 
     // Testing dependencies
