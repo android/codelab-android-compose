@@ -92,7 +92,7 @@ dependencies {
     implementation(libs.androidx.tracing.ktx)
 
     // TODO Codelab task: Add androidx.runtime-tracing dependency to enable Composition Tracing
-    implementation("androidx.compose.runtime:runtime-tracing:1.10.2")
+    implementation("androidx.compose.runtime:runtime-tracing:1.10.3")
 
     implementation(libs.coil.compose)
     implementation(libs.androidx.media3.exoplayer)
