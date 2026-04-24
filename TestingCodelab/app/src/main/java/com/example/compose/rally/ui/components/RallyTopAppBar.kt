@@ -47,6 +47,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.example.compose.rally.RallyScreen
 import java.util.Locale
+import androidx.compose.ui.platform.LocalLocale
 
 @Composable
 fun RallyTopAppBar(
@@ -113,7 +114,7 @@ private fun RallyTab(
         Icon(imageVector = icon, contentDescription = null, tint = tabTintColor)
         if (selected) {
             Spacer(Modifier.width(12.dp))
-            Text(text.uppercase(Locale.getDefault()), color = tabTintColor)
+            Text(text.uppercase(LocalLocale.current.platformLocale), color = tabTintColor)
         }
     }
 }
