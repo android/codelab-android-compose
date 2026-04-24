@@ -48,14 +48,14 @@ buildscript {
     }
 
     dependencies {
-        classpath "com.android.tools.build:gradle:9.1.0"
+        classpath "com.android.tools.build:gradle:9.2.0"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
         classpath "org.jetbrains.kotlin:compose-compiler-gradle-plugin:$kotlinVersion"
     }
 }
 
 plugins {
-    id 'com.diffplug.spotless' version '8.3.0'
+    id 'com.diffplug.spotless' version '8.4.0'
 }
 
 subprojects {
