@@ -27,8 +27,8 @@ buildscript {
 }
 
 plugins {
-    id 'com.diffplug.spotless' version '8.4.0'
-    id 'com.google.devtools.ksp' version '2.3.7' apply false
+    id 'com.diffplug.spotless' version '8.7.0'
+    id 'com.google.devtools.ksp' version '2.3.9' apply false
 }
 
 subprojects {
@@ -50,7 +50,7 @@ subprojects {
 
     tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).configureEach {
         kotlinOptions {
-            jvmTarget = "1.8"
+            jvmTarget = "17"
 
             // Use experimental APIs
             freeCompilerArgs += '-opt-in=kotlin.RequiresOptIn'
