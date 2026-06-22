@@ -21,7 +21,7 @@ plugins {
 
 android {
     namespace 'com.example.jetnews'
-    compileSdkVersion 36
+    compileSdkVersion 37
     defaultConfig {
         applicationId 'com.example.jetnews'
         minSdkVersion 23
