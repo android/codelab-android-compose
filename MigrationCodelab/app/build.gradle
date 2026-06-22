@@ -21,7 +21,7 @@ apply plugin: 'com.android.legacy-kapt'
 
 
 android {
-    compileSdkVersion 36
+    compileSdkVersion 37
     namespace "com.google.samples.apps.sunflower"
     defaultConfig {
         applicationId "com.google.samples.apps.sunflower"
@@ -62,6 +62,7 @@ dependencies {
 
     kapt "androidx.room:room-compiler:2.8.4"
     kapt "com.github.bumptech.glide:compiler:5.0.7"
+    kapt "org.jetbrains.kotlin:kotlin-metadata-jvm:2.3.10"
     implementation "androidx.appcompat:appcompat:1.7.1"
     implementation "androidx.constraintlayout:constraintlayout:2.2.1"
     implementation "androidx.core:core-ktx:1.19.0"
