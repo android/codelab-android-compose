@@ -2,7 +2,7 @@
 coil = "2.7.0"
 com-android-application = "9.2.1"
 desugar_jdk_libs = "2.1.5"
-kotlinx-datetime = "0.7.1-0.6.x-compat"
+kotlinx-datetime = "0.8.0-0.6.x-compat"
 lifecycle-viewmodel-compose = "2.11.0"
 material-icons-core = "1.7.8"
 media3 = "1.10.1"
