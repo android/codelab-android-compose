@@ -21,7 +21,7 @@ plugins {
 
 android {
     namespace "com.example.compose.rally"
-    compileSdkVersion 36
+    compileSdkVersion 37
 
     defaultConfig {
         applicationId "com.example.compose.rally"
@@ -56,8 +56,8 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
 
     buildFeatures {
@@ -76,13 +76,13 @@ android {
 }
 
 dependencies {
-    def composeBom = platform('androidx.compose:compose-bom:2026.05.00')
+    def composeBom = platform('androidx.compose:compose-bom:2026.06.00')
     implementation(composeBom)
     androidTestImplementation(composeBom)
 
     implementation "androidx.appcompat:appcompat:1.7.1"
-    implementation "androidx.core:core-ktx:1.18.0"
-    implementation "com.google.android.material:material:1.13.0"
+    implementation "androidx.core:core-ktx:1.19.0"
+    implementation "com.google.android.material:material:1.14.0"
 
     // Compose
     implementation "androidx.compose.runtime:runtime"
@@ -111,6 +111,6 @@ tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).configureEach {
         freeCompilerArgs += '-opt-in=kotlin.RequiresOptIn'
 
         // Set JVM target to 1.8
-        jvmTarget = "1.8"
+        jvmTarget = "17"
     }
 }

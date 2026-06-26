@@ -23,13 +23,13 @@ buildscript {
         classpath "com.android.tools.build:gradle:9.2.1"
         classpath "com.google.dagger:hilt-android-gradle-plugin:2.59.2"
         classpath "org.jetbrains.kotlin:compose-compiler-gradle-plugin:2.3.10"
-        classpath "com.google.devtools.ksp:symbol-processing-gradle-plugin:2.3.7"
+        classpath "com.google.devtools.ksp:symbol-processing-gradle-plugin:2.3.9"
     }
 }
 
 plugins {
-    id 'com.diffplug.spotless' version '8.4.0'
-    id 'com.google.devtools.ksp' version '2.3.7' apply false
+    id 'com.diffplug.spotless' version '8.7.0'
+    id 'com.google.devtools.ksp' version '2.3.9' apply false
 }
 
 subprojects {
@@ -51,7 +51,7 @@ subprojects {
 
     tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).configureEach {
         kotlinOptions {
-            jvmTarget = "1.8"
+            jvmTarget = "17"
 
             // Use experimental APIs
             freeCompilerArgs += '-opt-in=kotlin.RequiresOptIn'
