@@ -31,16 +31,7 @@ jobs:
           distribution: 'zulu'
           java-version: 17
 
-      - name: Generate cache key
-        run: ./scripts/checksum.sh $SAMPLE_PATH checksum.txt
-
-      - uses: actions/cache@v6
-        with:
-          path: |
-            ~/.gradle/caches/modules-*
-            ~/.gradle/caches/jars-*
-            ~/.gradle/caches/build-cache-*
-          key: gradle-${{ hashFiles('checksum.txt') }}
+      - uses: gradle/actions/setup-gradle@v6
 
       - name: Build project
         working-directory: ${{ env.SAMPLE_PATH }}
@@ -68,9 +59,17 @@ jobs:
         api-level: [26, 29]
 
     steps:
+      # https://github.blog/changelog/2023-02-23-hardware-accelerated-android-virtualization-on-actions-windows-and-linux-larger-hosted-runners
+      - name: Enable KVM group perms
+        run: |
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
+          ls /dev/kvm
+
       - name: Checkout
         uses: actions/checkout@v7
-      
+
       - name: Copy CI gradle.properties
         run: mkdir -p ~/.gradle ; cp .github/ci-gradle.properties ~/.gradle/gradle.properties
 
@@ -80,16 +79,7 @@ jobs:
           distribution: 'zulu'
           java-version: 17
 
-      - name: Generate cache key
-        run: ./scripts/checksum.sh $SAMPLE_PATH checksum.txt
-
-      - uses: actions/cache@v6
-        with:
-          path: |
-            ~/.gradle/caches/modules-*
-            ~/.gradle/caches/jars-*
-            ~/.gradle/caches/build-cache-*
-          key: gradle-${{ hashFiles('checksum.txt') }}
+      - uses: gradle/actions/setup-gradle@v6
 
       - name: Run instrumentation tests
         uses: reactivecircus/android-emulator-runner@v2
