@@ -43,7 +43,7 @@ subprojects {
             target '**/*.kt'
             targetExclude("$buildDir/**/*.kt")
             targetExclude('bin/**/*.kt')
-            ktlint("0.45.2")
+            ktlint("1.2.1")
             licenseHeaderFile rootProject.file('spotless/copyright.kt')
         }
     }
