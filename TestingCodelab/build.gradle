@@ -23,12 +23,12 @@ buildscript {
         targetSdkVersion = 33
 
         // App dependencies
-        appCompatVersion = '1.7.1'
+        appCompatVersion = '1.8.0'
         activityComposeVersion = '1.13.0'
         coreTestingVersion = '2.2.0'
         coroutinesVersion = "1.5.2"
         espressoVersion = '3.7.0'
-        fragmentVersion = '1.8.9'
+        fragmentVersion = '1.9.0'
         junitVersion = '4.13.1'
         kotlinVersion = '2.3.10'
         ktlintVersion = '0.48.2'
@@ -71,7 +71,7 @@ subprojects {
             targetExclude("$buildDir/**/*.kt")
             targetExclude('bin/**/*.kt')
 
-            ktlint(rootProject.ktlintVersion)
+            ktlint("1.2.1")
             licenseHeaderFile rootProject.file('spotless/copyright.kt')
         }
     }
@@ -87,8 +87,8 @@ subprojects {
             freeCompilerArgs += '-opt-in=kotlinx.coroutines.ExperimentalCoroutinesApi'
             freeCompilerArgs += '-opt-in=kotlinx.coroutines.FlowPreview'
 
-            // Set JVM target to 1.8
-            jvmTarget = "1.8"
+            // Set JVM target to 17
+            jvmTarget = "17"
         }
     }
 }

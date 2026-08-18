@@ -56,16 +56,12 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
 
     buildFeatures {
         compose true
-    }
-
-    composeOptions {
-        kotlinCompilerExtensionVersion '1.5.15'
     }
 
     packagingOptions {
@@ -76,11 +72,11 @@ android {
 }
 
 dependencies {
-    def composeBom = platform('androidx.compose:compose-bom:2026.06.01')
+    def composeBom = platform('androidx.compose:compose-bom:2026.08.00')
     implementation(composeBom)
     androidTestImplementation(composeBom)
 
-    implementation "androidx.appcompat:appcompat:1.7.1"
+    implementation "androidx.appcompat:appcompat:1.8.0"
     implementation "androidx.core:core-ktx:1.19.0"
     implementation "com.google.android.material:material:1.14.0"
 
@@ -112,7 +108,7 @@ tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).configureEach {
 
         freeCompilerArgs += '-opt-in=kotlin.RequiresOptIn'
 
-        // Set JVM target to 1.8
-        jvmTarget = "1.8"
+        // Set JVM target to 17
+        jvmTarget = "17"
     }
 }
