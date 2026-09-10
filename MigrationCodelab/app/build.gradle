@@ -56,11 +56,11 @@ android {
 }
 
 dependencies {
-    def composeBom = platform('androidx.compose:compose-bom:2026.08.00')
+    def composeBom = platform('androidx.compose:compose-bom:2026.09.00')
     implementation(composeBom)
     androidTestImplementation(composeBom)
 
-    kapt "androidx.room:room-compiler:2.8.4"
+    kapt "androidx.room:room-compiler:2.8.5"
     kapt "com.github.bumptech.glide:compiler:5.0.9"
     kapt "org.jetbrains.kotlin:kotlin-metadata-jvm:2.3.10"
     implementation "androidx.appcompat:appcompat:1.8.0"
@@ -69,12 +69,12 @@ dependencies {
     implementation "androidx.fragment:fragment-ktx:1.9.0"
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.11.0"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.11.0"
-    implementation "androidx.navigation:navigation-fragment-ktx:2.9.8"
-    implementation "androidx.navigation:navigation-ui-ktx:2.9.8"
+    implementation "androidx.navigation:navigation-fragment-ktx:2.10.1"
+    implementation "androidx.navigation:navigation-ui-ktx:2.10.1"
     implementation "androidx.recyclerview:recyclerview:1.4.0"
-    implementation "androidx.room:room-runtime:2.8.4"
-    implementation "androidx.room:room-ktx:2.8.4"
-    implementation "androidx.tracing:tracing:2.0.0"
+    implementation "androidx.room:room-runtime:2.8.5"
+    implementation "androidx.room:room-ktx:2.8.5"
+    implementation "androidx.tracing:tracing:2.0.2"
     implementation "androidx.viewpager2:viewpager2:1.1.0"
     implementation "androidx.work:work-runtime-ktx:2.11.2"
     implementation "com.github.bumptech.glide:glide:5.0.9"
