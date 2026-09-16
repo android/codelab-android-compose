@@ -24,7 +24,7 @@ android {
     namespace 'com.example.jetnews'
     defaultConfig {
         applicationId 'com.example.jetnews'
-        minSdkVersion 23
+        minSdkVersion 24
         targetSdkVersion 33
         versionCode 1
         versionName '1.0'
