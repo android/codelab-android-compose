@@ -24,7 +24,7 @@ android {
     compileSdk 37
     defaultConfig {
         applicationId 'com.example.android.codelab.animation'
-        minSdkVersion 23
+        minSdkVersion 24
         targetSdk 34
         versionCode 1
         versionName '1.0'

@@ -24,7 +24,7 @@ android {
     compileSdkVersion 37
     defaultConfig {
         applicationId 'com.codelab.theming'
-        minSdkVersion 23
+        minSdkVersion 24
         targetSdkVersion 33
         versionCode 1
         versionName '1.0'
@@ -32,10 +32,6 @@ android {
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_17
         targetCompatibility JavaVersion.VERSION_17
-    }
-    kotlinOptions {
-        jvmTarget = "17"
-        allWarningsAsErrors = true
     }
     buildFeatures {
          compose true
@@ -53,4 +49,11 @@ dependencies {
     implementation 'androidx.activity:activity-compose:1.13.0'
     implementation "androidx.compose.ui:ui-tooling-preview"
     debugImplementation "androidx.compose.ui:ui-tooling"
+}
+
+tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).configureEach {
+    kotlinOptions {
+        jvmTarget = "17"
+        allWarningsAsErrors = true
+    }
 }
