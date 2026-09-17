@@ -24,7 +24,7 @@ android {
     compileSdk 37
     defaultConfig {
         applicationId 'com.example.android.codelab.animation'
-        minSdkVersion 23
+        minSdkVersion 24
         targetSdk 34
         versionCode 1
         versionName '1.0'
@@ -39,7 +39,7 @@ android {
 }
 
 dependencies {
-    def composeBom = platform('androidx.compose:compose-bom:2026.08.00')
+    def composeBom = platform('androidx.compose:compose-bom:2026.09.00')
     implementation(composeBom)
 
     implementation 'androidx.activity:activity-compose:1.13.0'
