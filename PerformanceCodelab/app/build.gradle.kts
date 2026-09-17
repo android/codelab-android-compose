@@ -25,7 +25,7 @@ android {
 
     defaultConfig {
         applicationId = "com.compose.performance"
-        minSdk = 23
+        minSdk = 24
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -88,7 +88,7 @@ dependencies {
     implementation(libs.androidx.tracing.ktx)
 
     // TODO Codelab task: Add androidx.runtime-tracing dependency to enable Composition Tracing
-    implementation("androidx.compose.runtime:runtime-tracing:1.12.0")
+    implementation("androidx.compose.runtime:runtime-tracing:1.12.1")
 
     implementation(libs.coil.compose)
     implementation(libs.androidx.media3.exoplayer)

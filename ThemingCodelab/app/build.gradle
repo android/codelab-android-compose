@@ -24,7 +24,7 @@ android {
     compileSdk 37
     defaultConfig {
         applicationId 'com.example.reply'
-        minSdkVersion 23
+        minSdkVersion 24
         targetSdkVersion 33
         versionCode 1
         versionName '1.0'
@@ -86,7 +86,7 @@ android {
 }
 
 dependencies {
-    def composeBom = platform('androidx.compose:compose-bom:2026.08.00')
+    def composeBom = platform('androidx.compose:compose-bom:2026.09.00')
     implementation(composeBom)
     testImplementation(composeBom)
     androidTestImplementation(composeBom)
