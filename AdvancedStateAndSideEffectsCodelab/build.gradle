@@ -20,7 +20,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath "com.android.tools.build:gradle:9.4.0"
+        classpath "com.android.tools.build:gradle:9.4.1"
         classpath "com.google.dagger:hilt-android-gradle-plugin:2.60.1"
         classpath "org.jetbrains.kotlin:compose-compiler-gradle-plugin:2.3.10"
         classpath "com.google.devtools.ksp:symbol-processing-gradle-plugin:2.3.12"
@@ -28,7 +28,7 @@ buildscript {
 }
 
 plugins {
-    id 'com.diffplug.spotless' version '8.10.2'
+    id 'com.diffplug.spotless' version '8.10.3'
     id 'com.google.devtools.ksp' version '2.3.12' apply false
 }
 
