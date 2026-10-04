@@ -16,6 +16,7 @@
 
 package com.example.reply.ui.theme
 
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
@@ -37,7 +38,7 @@ private val LightColorScheme = lightColorScheme(
 
 @Composable
 fun ReplyTheme(
-    darkTheme: Boolean = false,
+    darkTheme: Boolean = isSystemInDarkTheme(),
     content: @Composable () -> Unit
 ) {
     val replyColorScheme = when {
