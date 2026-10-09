@@ -101,7 +101,7 @@ dependencies {
 
     implementation "androidx.activity:activity-compose:1.13.0"
     implementation "androidx.appcompat:appcompat:1.8.0"
-    implementation "androidx.tracing:tracing:2.0.2"
+    implementation "androidx.tracing:tracing:2.0.3"
 
     def composeBom = platform('androidx.compose:compose-bom:2026.09.00')
     implementation(composeBom)
