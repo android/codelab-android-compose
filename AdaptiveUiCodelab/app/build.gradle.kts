@@ -22,6 +22,7 @@ plugins {
 android {
     namespace = "com.example.reply"
     compileSdk = 37
+    compileSdkMinor = 2
 
     defaultConfig {
         applicationId = "com.example.reply"
