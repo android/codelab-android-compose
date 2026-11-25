@@ -21,6 +21,7 @@ plugins {
 
 android {
     compileSdkVersion 37
+    compileSdkMinor 2
 
     namespace "com.example.compose.rally"
     defaultConfig {
@@ -79,7 +80,7 @@ android {
 }
 
 dependencies {
-    def composeBom = platform('androidx.compose:compose-bom:2026.09.00')
+    def composeBom = platform('androidx.compose:compose-bom:2026.11.01')
     implementation(composeBom)
     androidTestImplementation(composeBom)
 
