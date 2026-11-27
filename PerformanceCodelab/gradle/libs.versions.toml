@@ -1,6 +1,6 @@
 [versions]
 coil = "2.7.0"
-com-android-application = "9.5.1"
+com-android-application = "9.5.3"
 desugar_jdk_libs = "2.1.5"
 kotlinx-datetime = "0.7.1-0.6.x-compat"
 lifecycle-viewmodel-compose = "2.11.1"
@@ -22,7 +22,7 @@ benchmark = "1.5.0"
 androidx-baselineprofile = "1.5.0"
 profileinstaller = "1.4.1"
 material3 = "1.5.0"
-spotless = "8.11.0"
+spotless = "8.12.0"
 ktlint = "1.2.1"
 
 [libraries]
